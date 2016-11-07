@@ -8,5 +8,5 @@
 'use strict'
 
 module.exports = {
-
+  engine: 'hapi-react-views'
 }

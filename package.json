@@ -15,9 +15,13 @@
     "trailsjs"
   ],
   "dependencies": {
+    "hapi-react-views": "^9.2.1",
     "pg": "^6.1.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
     "trailpack-core": "^1.0.0-beta-3",
     "trailpack-footprints": "^1.0.1",
+    "trailpack-gulp": "^1.0.2",
     "trailpack-hapi": "^1.0.4",
     "trailpack-repl": "^1.0.0-beta-3",
     "trailpack-router": "^1.0.0-beta-4",
