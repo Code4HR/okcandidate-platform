@@ -1,0 +1,49 @@
+{
+  "name": "okcandidate-platform",
+  "version": "0.0.0",
+  "description": "You don’t have to go to the polls alone. Find your OKCandidate.",
+  "homepage": "http://okcandidate.code4hr.org/",
+  "author": {
+    "name": "code4hr",
+    "email": "code4hr-team@codeforamerica.org",
+    "url": "http://code4hr.org/"
+  },
+  "main": "index.js",
+  "keywords": [
+    "",
+    "trails",
+    "trailsjs"
+  ],
+  "dependencies": {
+    "trailpack-core": "^1.0.0-beta-3",
+    "trailpack-footprints": "^1.0.1",
+    "trailpack-hapi": "^1.0.4",
+    "trailpack-repl": "^1.0.0-beta-3",
+    "trailpack-router": "^1.0.0-beta-4",
+    "trailpack-sequelize": "^1.1.1",
+    "trails": "^1.0.0-beta-1",
+    "trails-controller": "^1.0.0-beta-2",
+    "trails-model": "^1.0.0-beta-2",
+    "trails-policy": "^1.0.1",
+    "trails-service": "1.0.0-beta-2",
+    "winston": "^2.2"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-trails": "^1.0.8",
+    "eslint-plugin-react": "^6.6.0",
+    "mocha": "^2.4",
+    "supertest": "^1.2"
+  },
+  "scripts": {
+    "test": "eslint . && mocha"
+  },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "eslintConfig": {
+    "extends": "trails"
+  },
+  "repository": "git@github.com:wbprice/okcandidate-platform.git",
+  "license": "MIT"
+}
