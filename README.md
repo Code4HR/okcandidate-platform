@@ -13,7 +13,7 @@ export OKC_DB_USER=blaine
 export OKC_DB_PASSWORD=''
 export OKC_DB_NAME=okcandidate_platform_dev
 export OKC_DB_HOST=localhost
-export OKC_SESSION_SECRET_KEY=<32-characters-long>
+export OKC_SESSION_SECRET_KEY=someGobbledygookThatIsAtLeast32CharactersLong
 ```
 
 ## Installation
