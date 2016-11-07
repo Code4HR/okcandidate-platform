@@ -12,16 +12,7 @@ module.exports = {
   /**
    * Define the session implementation, e.g. 'jwt' or 'cookie'
    */
-  strategy: 'jwt',
-
-  /**
-   * Define jwt-specific options
-   */
-  jwt: {
-    secret: '',
-    connection: 'localStorage',
-    model: 'WebToken'
-  },
+  strategy: 'cookie',
 
   /**
    * Define cookie-specific options

@@ -12,7 +12,7 @@
 module.exports = [
 
   /**
-   * Render the HelloWorld view
+   * Frontend Routes
    */
   {
     method: 'GET',
@@ -24,6 +24,34 @@ module.exports = [
     method: 'GET',
     path: '/admin',
     handler: 'ViewController.admin'
+  },
+
+  {
+    method: 'GET',
+    path: '/login',
+    handler: 'ViewController.login'
+  },
+
+  {
+    method: ['POST'],
+    path: '/login',
+    handler: 'AuthController.login'
+  },
+
+  {
+    method: 'GET',
+    path: '/logout',
+    handler: 'AuthController.logout'
+  },
+
+  /**
+   * Backend Routes
+   */
+
+  {
+    method: 'POST',
+    path: '/api/v1/user',
+    handler: 'UserController.create'
   },
 
   {

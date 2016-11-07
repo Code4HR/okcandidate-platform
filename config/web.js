@@ -1,3 +1,5 @@
+const path = require('path')
+
 /**
  * Server Configuration
  * (app.config.web)
@@ -6,39 +8,51 @@
  *
  * @see {@link http://trailsjs.io/doc/config/web}
  */
-
-const Path = require('path')
-
 module.exports = {
 
   /**
-  * The port to bind the web server to
-  */
+   * The port to bind the web server to
+   */
   port: process.env.PORT || 3000,
+
+  /**
+   * The host to bind the web server to
+   */
+  host: process.env.HOST || '0.0.0.0',
 
   plugins: [
     {
-      register: require('vision'),
-      options: { }
+      register: require('ivision'),
+      options: {}
     },
     {
       register: require('inert'),
-      options: { }
+      options: {}
+    },
+    {
+      register: require('yar'),
+      options: {
+        storeBlank: false,
+        cookieOptions: {
+          password: process.env['OKC_SESSION_SECRET_KEY'],
+          isSecure: false
+        }
+      }
     }
   ],
 
-  onPluginsLoaded: function (err) {
+  onPluginsLoaded: function(err) {
 
     this.packs.hapi.server.views({
       engines: {
         js: require('hapi-react-views')
       },
       relativeTo: __dirname,
-      path: Path.join(__dirname, '..', 'dist', 'components', 'environments'),
+      path: path.join(__dirname, '..', 'dist', 'components', 'environments'),
       compileOptions: {
         renderMethod: 'renderToString',
-        layoutPath: Path.join(__dirname, '..', 'dist', 'components'),
-        layout: 'layout'
+        layoutPath: path.join(__dirname, '..', 'dist', 'components'),
+        layout: 'Layout'
       }
     })
 

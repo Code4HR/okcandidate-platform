@@ -1,5 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 
+import Header from './../ecosystems/Header'
+
 class Admin extends Component {
 
   constructor(props) {
@@ -9,13 +11,18 @@ class Admin extends Component {
   render() {
 
     return (
-      <pre>OKCandidate Admin Panel</pre>
+      <section>
+        <Header user={this.props.user} />
+        <pre>OKCandidate Admin Panel</pre>
+      </section>
     )
 
   }
 
 }
 
-Admin.propTypes = {}
+Admin.propTypes = {
+  user: PropTypes.object
+}
 
 export default Admin

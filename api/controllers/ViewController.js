@@ -9,11 +9,17 @@ module.exports = class ViewController extends Controller {
   }
 
   home (request, reply) {
-    reply.view('Home')
+    const user = request.yar.get('user')
+    reply.view('Home', {user})
   }
 
   admin (request, reply) {
-    reply.view('Admin')
+    const user = request.yar.get('user')
+    reply.view('Admin', {user})
+  }
+
+  login (request, reply) {
+    reply.view('Login')
   }
 
 }
