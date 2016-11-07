@@ -22,7 +22,7 @@ module.exports = {
 
   plugins: [
     {
-      register: require('vision'),
+      register: require('ivision'),
       options: {}
     },
     {
@@ -34,7 +34,7 @@ module.exports = {
       options: {
         storeBlank: false,
         cookieOptions: {
-          password: process.env['SESSION_SECRET_KEY'],
+          password: process.env['OKC_SESSION_SECRET_KEY'],
           isSecure: false
         }
       }
