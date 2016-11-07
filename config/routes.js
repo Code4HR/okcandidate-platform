@@ -17,15 +17,19 @@ module.exports = [
   {
     method: 'GET',
     path: '/',
-    handler: 'ViewController.helloWorld'
+    handler: 'ViewController.home'
   },
 
-  /**
-   * Constrain the DefaultController.info handler to accept only GET requests.
-   */
+  {
+    method: 'GET',
+    path: '/admin',
+    handler: 'ViewController.admin'
+  },
+
   {
     method: [ 'GET' ],
     path: '/api/v1/default/info',
     handler: 'DefaultController.info'
   }
+
 ]
