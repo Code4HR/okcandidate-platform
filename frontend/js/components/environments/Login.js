@@ -1,8 +1,9 @@
 import React, { PropTypes, Component } from 'react'
 
 import Header from './../ecosystems/Header'
+import LoginForm from './../ecosystems/LoginForm'
 
-class Home extends Component {
+class Login extends Component {
 
   constructor(props) {
     super(props)
@@ -13,7 +14,7 @@ class Home extends Component {
     return (
       <section>
         <Header user={this.props.user}/>
-        <pre>OKCandidate Home Screen</pre>
+        <LoginForm error={this.props.error} />
       </section>
     )
 
@@ -21,8 +22,9 @@ class Home extends Component {
 
 }
 
-Home.propTypes = {
+Login.propTypes = {
+  error: PropTypes.string,
   user: PropTypes.object
 }
 
-export default Home
+export default Login
