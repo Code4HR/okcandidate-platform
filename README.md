@@ -11,7 +11,7 @@ The following environment variables are expected to be available to the shell in
 ```bash
 export OKC_DB_USER=blaine
 export OKC_DB_PASSWORD=''
-export OKC_DB_NAME=okcandidate_platform__dev
+export OKC_DB_NAME=okcandidate_platform_dev
 export OKC_DB_HOST=localhost
 ```
 
