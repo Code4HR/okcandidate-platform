@@ -16,6 +16,10 @@ module.exports = {
 
   DefaultController: {
     info: [ ]
+  },
+
+  ViewController: {
+    admin: ['Auth.isLoggedIn', 'Auth.isAdmin']
   }
 
 }
