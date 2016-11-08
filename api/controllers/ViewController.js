@@ -10,12 +10,22 @@ module.exports = class ViewController extends Controller {
 
   home (request, reply) {
     const user = request.yar.get('user')
-    reply.view('Home', {user})
+    const context = {
+      route: '/',
+      user: user || {}
+    }
+    context.state = 'window.state = ' + JSON.stringify(context)
+    reply.view('Home', context)
   }
 
   admin (request, reply) {
     const user = request.yar.get('user')
-    reply.view('Admin', {user})
+    const context = {
+      route: '/admin',
+      user: user || {}
+    }
+    context.state = 'window.state = ' + JSON.stringify(context)
+    reply.view('Admin', context)
   }
 
   login (request, reply) {

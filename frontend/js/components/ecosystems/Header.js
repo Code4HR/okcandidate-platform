@@ -9,7 +9,7 @@ class Header extends Component {
         <div className="container">
           <div className="three columns">
             <a href="/">
-              <img className="app-logo" alt="OKCandidate" src="dist/images/okcandidate-logo.svg" />
+              <img className="app-logo" alt="OKCandidate" src="/dist/images/okcandidate-logo.svg" />
             </a>
           </div>
           <div className="nine columns app-profile">
