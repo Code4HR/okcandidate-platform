@@ -3,6 +3,9 @@ import React, { PropTypes, Component } from 'react'
 class Layout extends Component {
 
   render() {
+
+    console.log('props', this.props.state)
+
     return (
       <html>
 
@@ -23,6 +26,16 @@ class Layout extends Component {
             dangerouslySetInnerHTML={{ __html: this.props.state }}>
           </script>
 
+          {
+            this.props.bundle === 'client' &&
+            <script src="/dist/client-bundle.js"></script>
+          }
+
+          {
+            this.props.bundle === 'admin' &&
+            <script src="/dist/admin-bundle.js"></script>
+          }
+
         </body>
 
       </html>
@@ -32,6 +45,7 @@ class Layout extends Component {
 }
 
 Layout.propTypes = {
+  bundle: PropTypes.string,
   children: PropTypes.any,
   state: PropTypes.object
 }

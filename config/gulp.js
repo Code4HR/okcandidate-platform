@@ -3,6 +3,7 @@
 const gulp = require('gulp')
 const babel = require('gulp-babel')
 const sass = require('gulp-sass')
+const webpack = require('webpack-stream')
 
 const babelConfig = {
   presets: ['react', 'es2015'],
@@ -23,7 +24,7 @@ module.exports = {
   defaultTaskName: 'default',
 
   tasks: {
-    default: ['compileTemplate', 'compileStyles', 'moveImages'],
+    default: ['compileTemplate', 'compileStyles', 'moveImages', 'bundleAdmin', 'bundleClient'],
     compileTemplate: () => {
       return gulp.src('./frontend/js/**/*.js')
         .pipe(babel(babelConfig))
@@ -41,6 +42,50 @@ module.exports = {
     moveImages: () => {
       return gulp.src('./frontend/images/**/*.*')
       .pipe(gulp.dest('dist/images'))
+    },
+    bundleAdmin: () => {
+      return gulp.src('frontend/js/components/admin-bundle.js')
+        .pipe(webpack({
+          output: {
+            filename: 'admin-bundle.js'
+          },
+          module: {
+            loaders: [{
+              test: /\.js$/,
+              loader: 'babel-loader',
+              query: {
+                presets: ['react', 'es2015']
+              }
+            },
+            {
+              test: /\.(css|scss)$/,
+              loaders: ['style', 'css', 'sass']
+            }]
+          }
+        }))
+        .pipe(gulp.dest('dist'))
+    },
+    bundleClient: () => {
+      return gulp.src('frontend/js/components/client-bundle.js')
+        .pipe(webpack({
+          output: {
+            filename: 'client-bundle.js'
+          },
+          module: {
+            loaders: [{
+              test: /\.js$/,
+              loader: 'babel-loader',
+              query: {
+                presets: ['react', 'es2015']
+              }
+            },
+            {
+              test: /\.(css|scss)$/,
+              loaders: ['style', 'css', 'sass']
+            }]
+          }
+        }))
+        .pipe(gulp.dest('dist'))
     }
   }
 
