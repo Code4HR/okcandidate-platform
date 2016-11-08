@@ -7,22 +7,31 @@ class LoginForm extends Component {
       <form
         action="/login"
         method="POST">
+
+        {
+          this.props.error &&
+          <label>{this.props.error}</label>
+        }
+
         <fieldset>
 
-          {
-            this.props.error &&
-            <label>{this.props.error}</label>
-          }
+          <legend>Login to Continue</legend>
 
-          <legend>Login to continue</legend>
           <label htmlFor="emailAddress">Email Address</label>
-          <input name="emailAddress" />
+          <input
+            type="text"
+            name="emailAddress"
+            placeholder="name@domain.com" />
 
           <label htmlFor="password">Password</label>
-          <input name="password" />
-        </fieldset>
+          <input
+            type="password"
+            name="password"
+            placeholder="hunter2" />
 
-        <button type="submit">Submit</button>
+          <button type="submit">Submit</button>
+
+        </fieldset>
 
       </form>
     )
