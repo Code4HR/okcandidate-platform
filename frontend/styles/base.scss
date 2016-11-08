@@ -1,0 +1,11 @@
+@import 'colors';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin-top: 64px;
+  background: $lightBlue;
+  background-image: url("/dist/images/background.png");
+}

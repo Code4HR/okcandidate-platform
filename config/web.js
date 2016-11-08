@@ -22,7 +22,7 @@ module.exports = {
 
   plugins: [
     {
-      register: require('ivision'),
+      register: require('vision'),
       options: {}
     },
     {

@@ -23,7 +23,7 @@ module.exports = {
   defaultTaskName: 'default',
 
   tasks: {
-    default: ['compileTemplate', 'compileStyles'],
+    default: ['compileTemplate', 'compileStyles', 'moveImages'],
     compileTemplate: () => {
       return gulp.src('./frontend/js/**/*.js')
         .pipe(babel(babelConfig))
@@ -37,6 +37,10 @@ module.exports = {
           })
           .on('error', sass.logError))
         .pipe(gulp.dest('dist/styles'))
+    },
+    moveImages: () => {
+      return gulp.src('./frontend/images/**/*.*')
+      .pipe(gulp.dest('dist/images'))
     }
   }
 

@@ -13,7 +13,13 @@ class Home extends Component {
     return (
       <section>
         <Header user={this.props.user}/>
-        <pre>OKCandidate Home Screen</pre>
+        <div className="container">
+          <div className="six columns">
+            <div className="card">
+              <pre>OKCandidate Home Screen</pre>
+            </div>
+          </div>
+        </div>
       </section>
     )
 
