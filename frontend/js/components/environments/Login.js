@@ -14,7 +14,13 @@ class Login extends Component {
     return (
       <section>
         <Header user={this.props.user}/>
-        <LoginForm error={this.props.error} />
+        <div className="container">
+          <div className="six columns">
+            <div className="card">
+              <LoginForm error={this.props.error} />
+            </div>
+          </div>
+        </div>
       </section>
     )
 

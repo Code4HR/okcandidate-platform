@@ -1,0 +1,17 @@
+@import 'colors';
+
+.app-header {
+  background: $white;
+  height: 52px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 0;
+
+  .app-logo {
+    height: 42px;
+    display: block;
+  }
+
+}

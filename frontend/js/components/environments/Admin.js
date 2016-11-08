@@ -13,7 +13,13 @@ class Admin extends Component {
     return (
       <section>
         <Header user={this.props.user} />
-        <pre>OKCandidate Admin Panel</pre>
+        <div className="container">
+          <div className="six columns">
+            <div className="card">
+              <pre>OKCandidate Admin Panel</pre>
+            </div>
+          </div>
+        </div>
       </section>
     )
 

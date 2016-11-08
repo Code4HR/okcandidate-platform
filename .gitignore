@@ -3,3 +3,4 @@ dist
 env_vars
 coverage
 .tmp
+.DS_STORE
