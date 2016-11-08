@@ -22,7 +22,8 @@ module.exports = {
     require('trailpack-hapi'),
     require('trailpack-sequelize'),
     require('trailpack-footprints'),
-    require('trailpack-gulp')
+    require('trailpack-gulp'),
+    require('trailpack-bootstrap')
   ],
 
   /**
