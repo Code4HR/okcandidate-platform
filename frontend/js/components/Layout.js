@@ -4,8 +4,6 @@ class Layout extends Component {
 
   render() {
 
-    console.log('props', this.props.state)
-
     return (
       <html>
 
@@ -13,6 +11,7 @@ class Layout extends Component {
           <title>OKCandidate</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="stylesheet" href="/dist/styles/style.css" />
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         </head>
 
         <body>

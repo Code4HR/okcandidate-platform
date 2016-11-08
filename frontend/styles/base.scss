@@ -9,3 +9,7 @@ body {
   background: $lightBlue;
   background-image: url("/dist/images/background.png");
 }
+
+.container {
+  max-width: 1200px;
+}

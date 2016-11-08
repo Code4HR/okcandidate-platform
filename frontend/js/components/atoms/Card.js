@@ -8,7 +8,9 @@ class Card extends Component {
 
   render() {
     return (
-      <section className="card">
+      <section
+        className="card"
+        style={this.props.style}>
         {this.props.children}
       </section>
     )
@@ -17,6 +19,7 @@ class Card extends Component {
 }
 
 Card.propTypes = {
+  style: PropTypes.object,
   children: PropTypes.any
 }
 
