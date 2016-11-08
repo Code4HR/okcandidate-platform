@@ -11,7 +11,7 @@ module.exports = class ViewController extends Controller {
   home (request, reply) {
     const user = request.yar.get('user')
     const context = {
-      bundle: 'client',
+      route: '/',
       user: user || {}
     }
     context.state = 'window.state = ' + JSON.stringify(context)
@@ -21,8 +21,8 @@ module.exports = class ViewController extends Controller {
   admin (request, reply) {
     const user = request.yar.get('user')
     const context = {
-      user,
-      bundle: 'admin'
+      route: '/admin',
+      user: user || {}
     }
     context.state = 'window.state = ' + JSON.stringify(context)
     reply.view('Admin', context)

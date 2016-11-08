@@ -22,7 +22,7 @@ module.exports = [
 
   {
     method: 'GET',
-    path: '/admin',
+    path: '/admin/{view*}',
     handler: 'ViewController.admin'
   },
 
