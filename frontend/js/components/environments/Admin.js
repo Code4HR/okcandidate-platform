@@ -1,7 +1,9 @@
 import React, { PropTypes, Component } from 'react'
 
+import { connect } from 'react-redux'
+
 import Header from './../ecosystems/Header'
-import AdminMenu from './../ecosystems/AdminMenu'
+import Sidebar from './../ecosystems/Sidebar'
 import Card from './../atoms/Card'
 
 class Admin extends Component {
@@ -11,15 +13,20 @@ class Admin extends Component {
   }
 
   render() {
-
     return (
       <section>
-        <Header user={this.props.user} />
+        <Header
+          dispatch={this.props.dispatch}
+          user={this.props.user} />
+
+        <Sidebar 
+          role="admin"
+          dispatch={this.props.dispatch}
+          width={300} 
+          isOpen={this.props.ui.sidebarVisibility} />
+
         <div className="container">
-          <div className="three columns">
-            <AdminMenu />
-          </div>
-          <div className="nine columns">
+          <div className="twelve columns">
             <Card>
               <pre>OKCandidate Admin Panel</pre>
             </Card>
@@ -34,7 +41,14 @@ class Admin extends Component {
 }
 
 Admin.propTypes = {
-  user: PropTypes.object
+  admin: PropTypes.object,
+  user: PropTypes.object,
+  dispatch: PropTypes.func
 }
 
-export default Admin
+export default connect(
+  state => ({
+    admin: state.admin,
+    ui: state.ui
+  })
+)(Admin)

@@ -9,7 +9,7 @@ class Card extends Component {
   render() {
     return (
       <section
-        className="card"
+        className="card height-1"
         style={this.props.style}>
         {this.props.children}
       </section>

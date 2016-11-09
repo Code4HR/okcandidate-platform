@@ -4,7 +4,7 @@ class Icon extends Component {
 
   render() {
     return (
-      <i className="material-icons">{this.props.children}</i>
+      <i className="icon material-icons">{this.props.children}</i>
     )
   }
 
