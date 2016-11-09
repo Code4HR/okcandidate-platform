@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 
 import Header from './../ecosystems/Header'
+import AdminMenu from './../ecosystems/AdminMenu'
+import Card from './../atoms/Card'
 
 class Admin extends Component {
 
@@ -14,10 +16,13 @@ class Admin extends Component {
       <section>
         <Header user={this.props.user} />
         <div className="container">
-          <div className="six columns">
-            <div className="card">
+          <div className="three columns">
+            <AdminMenu />
+          </div>
+          <div className="nine columns">
+            <Card>
               <pre>OKCandidate Admin Panel</pre>
-            </div>
+            </Card>
           </div>
         </div>
 

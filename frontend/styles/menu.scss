@@ -1,0 +1,35 @@
+@import 'colors';
+
+ul.menu {
+  margin: 0 -1rem;
+
+  li {
+    list-style-type: none;
+    margin: 0;
+
+    a {
+      font-size: 1em;
+      padding: 0 1rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      cursor: pointer;
+      &:hover {
+        background: $lightGray;
+      }
+
+      i, span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 48px;
+      }
+
+      i {
+        margin-right: 1em;
+      }
+
+    }
+
+  }
+
+}
