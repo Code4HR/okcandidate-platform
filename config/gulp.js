@@ -4,6 +4,8 @@ const gulp = require('gulp')
 const babel = require('gulp-babel')
 const sass = require('gulp-sass')
 const webpack = require('webpack-stream')
+const watch = require('gulp-watch')
+const path = require('path')
 
 const babelConfig = {
   presets: ['react', 'es2015'],
@@ -24,25 +26,33 @@ module.exports = {
   defaultTaskName: 'default',
 
   tasks: {
-    default: ['compileTemplate', 'compileStyles', 'moveImages', 'bundleAdmin', 'bundleClient'],
+
+    default: ['compileTemplate', 'compileStyles', 'moveImages', 'bundleAdmin', 'bundleClient', 'watch'],
+
+    watch: () => {
+      return gulp.watch(
+        path.join('frontend', '**', '*'),
+        ['compileTemplate', 'compileStyles', 'moveImages', 'bundleAdmin', 'bundleClient'])
+    },
+
     compileTemplate: () => {
       return gulp.src('./frontend/js/**/*.js')
         .pipe(babel(babelConfig))
         .pipe(gulp.dest('dist'))
     },
+
     compileStyles: () => {
       return gulp.src('./frontend/styles/**/*.scss')
-        .pipe(
-          sass({
-            includePaths: [ 'node_modules' ]
-          })
-          .on('error', sass.logError))
+        .pipe(sass({includePaths: [ 'node_modules' ]})
+        .on('error', sass.logError))
         .pipe(gulp.dest('dist/styles'))
     },
+
     moveImages: () => {
       return gulp.src('./frontend/images/**/*.*')
       .pipe(gulp.dest('dist/images'))
     },
+
     bundleAdmin: () => {
       return gulp.src('frontend/js/components/admin-bundle.js')
         .pipe(webpack({
@@ -65,6 +75,7 @@ module.exports = {
         }))
         .pipe(gulp.dest('dist'))
     },
+
     bundleClient: () => {
       return gulp.src('frontend/js/components/client-bundle.js')
         .pipe(webpack({

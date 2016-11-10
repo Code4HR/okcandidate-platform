@@ -1,30 +1,36 @@
 'use strict'
 
 const Controller = require('trails-controller')
+const createStore = require('redux').createStore
+
+require('babel-register')({
+  only: /frontend/,
+  presets: [
+    'react',
+    'es2015'
+  ]
+})
+
+const admin = require('./../../frontend/js/redux/admin-reducer')
+const survey = require('./../../frontend/js/redux/survey-reducer')
 
 module.exports = class ViewController extends Controller {
-
-  helloWorld (request, reply) {
-    reply('Hello Trails.js !')
-  }
 
   home (request, reply) {
     const user = request.yar.get('user')
     const context = {
-      route: '/',
-      user: user || {}
+      bundle: 'survey',
+      store: createStore(survey)
     }
-    context.state = 'window.state = ' + JSON.stringify(context)
     reply.view('Home', context)
   }
 
   admin (request, reply) {
     const user = request.yar.get('user')
     const context = {
-      route: '/admin',
-      user: user || {}
+      bundle: 'admin',
+      store: createStore(admin)
     }
-    context.state = 'window.state = ' + JSON.stringify(context)
     reply.view('Admin', context)
   }
 

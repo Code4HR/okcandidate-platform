@@ -23,7 +23,7 @@ class MenuListItem extends Component {
 MenuListItem.propTypes = {
   href: PropTypes.string,
   label: PropTypes.string,
-  icon: PropTypes.icon
+  icon: PropTypes.string
 }
 
 export default MenuListItem

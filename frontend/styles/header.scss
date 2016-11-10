@@ -9,14 +9,29 @@
   width: 100%;
   padding: 5px 0;
 
-  .app-logo {
-    height: 42px;
-    display: block;
-  }
-
   .app-profile {
     line-height: 42px;
     text-align: right;
+  }
+
+}
+
+.app-logo {
+  margin: 0 -.5em;
+
+  a, button {
+    margin: 0 .5em;
+  }
+
+  i, a {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 42px;
+  }
+
+  img {
+    height: 42px;
+    display: block;
   }
 
 }

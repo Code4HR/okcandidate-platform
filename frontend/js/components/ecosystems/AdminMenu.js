@@ -28,21 +28,19 @@ class AdminMenu extends Component {
 
   render() {
     return (
-      <Card>
-        <label>Sidebar</label>
-        <ul className="menu">
-          {
-            menuItems.map(menuItem => {
-              return (
-                <MenuListItem
-                  href={menuItem.href}
-                  icon={menuItem.icon}
-                  label={menuItem.label} />
-              )
-            })
-          }
-        </ul>
-      </Card>
+      <ul className="menu">
+        {
+          menuItems.map((menuItem, index) => {
+            return (
+              <MenuListItem
+                key={index}
+                href={menuItem.href}
+                icon={menuItem.icon}
+                label={menuItem.label} />
+            )
+          })
+        }
+      </ul>
     )
   }
 
