@@ -1,0 +1,17 @@
+.sidemenu {
+
+  .wrapper {
+    height: 52px;
+  }
+
+  transition: all .3s;
+  padding: 5px 15px;
+  z-index: 1000;
+  position: fixed;
+  width: 300px;
+  left: -300px;
+  top: 0;
+  height: 100%;
+  background: white;
+
+}
