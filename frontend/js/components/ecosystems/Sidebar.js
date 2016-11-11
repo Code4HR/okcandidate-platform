@@ -18,10 +18,10 @@ class Sidebar extends Component {
 
     const style = {
       width: this.props.width,
-      left: -this.props.width
+      left: -this.props.width - 15
     }
     if (this.props.isOpen) {
-      style.transform = `translatex(${this.props.width}px)`
+      style.transform = `translatex(${this.props.width + 15}px)`
     }
 
     return (
