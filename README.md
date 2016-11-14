@@ -29,5 +29,35 @@ npm start
 ```
 to begin running application locally.
 
+# Fixture Data
+In a development environment, some records are generated automatically.  
+
+## User Records
+These user/pass combinations can be used to login as user of various roles.
+```js
+  // config/dev-fixtures/user-fixtures.js
+
+  ...
+
+  {
+    name: 'A. Voter',
+    emailAddress: 'user@gmail.com',
+    password: 'leafygreen'
+  },
+  {
+    name: 'A. Candidate',
+    emailAddress: 'candidate@gmail.com',
+    password: 'mashedpotato'
+  },
+  {
+    name: 'Anne Admin',
+    emailAddress: 'admin@okcandidate.org',
+    password: 'adminpass'
+  }
+  
+  ...
+  
+```
+
 # Contributing
 This project follows a loose interpretation of Git flow. Master is production, develop is staging. Each feature gets one branch.  When opening a PR, please open it against the develop branch.
