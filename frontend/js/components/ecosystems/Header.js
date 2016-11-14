@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 
 import AppLogo from './../organisms/AppLogo'
+import Profile from './../organisms/Profile'
 
 import {
   toggleSidebarVisibility
@@ -29,7 +30,6 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  user: PropTypes.object,
   dispatch: PropTypes.func
 }
 

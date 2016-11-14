@@ -1,41 +1,38 @@
 import React, { PropTypes, Component } from 'react'
-import { Provider } from 'react-redux'
 
 class Layout extends Component {
 
   render() {
 
     return (
-      <Provider store={this.props.store}>
-        <html>
+      <html>
 
-          <head>
-            <title>OKCandidate</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link rel="stylesheet" href="/dist/styles/style.css" />
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-          </head>
+        <head>
+          <title>OKCandidate</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="stylesheet" href="/dist/styles/style.css" />
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        </head>
 
-          <body>
-            <div id="app-mount"
-              className="app-container"
-              dangerouslySetInnerHTML={{ __html: this.props.children }}>
-            </div>
+        <body>
+          <div id="app-mount" dangerouslySetInnerHTML={{ __html: this.props.children }} />
 
-            {
-              this.props.bundle === 'survey' &&
-              <script src="/dist/client-bundle.js"></script>
-            }
+          <script id="app-state"
+            dangerouslySetInnerHTML={{ __html: 'window.state = ' + JSON.stringify(this.props.state)}}></script>
 
-            {
-              this.props.bundle === 'admin' &&
-              <script src="/dist/admin-bundle.js"></script>
-            }
+          {
+            this.props.bundle === 'survey' &&
+            <script src="/dist/client-bundle.js"></script>
+          }
 
-          </body>
+          {
+            this.props.bundle === 'admin' &&
+            <script src="/dist/admin-bundle.js"></script>
+          }
 
-        </html>
-      </Provider>
+        </body>
+
+      </html>
     )
   }
 
@@ -43,7 +40,8 @@ class Layout extends Component {
 
 Layout.propTypes = {
   bundle: PropTypes.string,
-  children: PropTypes.any,
+  state: PropTypes.object,
+  children: PropTypes.string,
   store: PropTypes.object
 }
 

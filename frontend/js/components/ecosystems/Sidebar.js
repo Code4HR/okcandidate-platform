@@ -1,11 +1,12 @@
 import React, { PropTypes, Component } from 'react'
 
 import AppLogo from './../organisms/AppLogo'
+import Profile from './../organisms/Profile'
 import SidebarMenu from './../ecosystems/SidebarMenu'
 
 import {
   toggleSidebarVisibility
-} from './../../redux/actions/ui-actions' 
+} from './../../redux/actions/ui-actions'
 
 const adminMenu = [
   {
@@ -17,20 +18,14 @@ const adminMenu = [
         href: '/admin/survey/new'
       },
       {
-        label: 'Edit Survey',
+        label: 'Manage Surveys',
         icon: 'edit',
-        href: '/admin/survey/'
-      },
-      {
-
-        label: 'Publish Survey',
-        icon: 'publish',
-        href: '/admin/surveys/'
+        href: '/admin/survey'
       },
       {
         label: 'Analyze Survey',
         icon: 'trending_up',
-        href: '/admin/users/'
+        href: '/admin/survey/analyze'
       }
     ]
   },
@@ -40,7 +35,7 @@ const adminMenu = [
       {
         label: 'Manage Users',
         icon: 'people',
-        href: '/admin/users/'
+        href: '/admin/user'
       }
     ]
   }
@@ -53,7 +48,7 @@ const userMenu = [
       {
         label: 'Take Survey',
         icon: 'check_circle',
-        href: '/admin/survey/new'
+        href: '/'
       }
     ]
   }
@@ -66,13 +61,11 @@ class Sidebar extends Component {
   }
 
   getMenu() {
-    switch(this.props.role) {
-      case 'admin':
-        return adminMenu
-      case 'user':
-        return userMenu
-      default: 
-        return userMenu
+    if (this.props.login && this.props.login.name) {
+      return adminMenu
+    }
+    else {
+      return userMenu
     }
   }
 
@@ -87,13 +80,15 @@ class Sidebar extends Component {
     }
 
     return (
-      <section 
+      <section
         style={style}
         className="sidemenu height-3">
 
         <div className="wrapper">
           <AppLogo onClick={this.toggleSidebarVisibility.bind(this)} />
         </div>
+
+        <Profile login={this.props.login} />
 
         <SidebarMenu menu={this.getMenu.call(this)} />
 
@@ -104,9 +99,10 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
+  login: PropTypes.object,
+  role: PropTypes.string,
   width: PropTypes.number,
   isOpen: PropTypes.bool
 }
 
 export default Sidebar
-

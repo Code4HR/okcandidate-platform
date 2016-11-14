@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import Card from './../atoms/Card'
 
-class Admin extends Component {
+class SurveyCreator extends Component {
 
   constructor(props) {
     super(props)
@@ -15,7 +15,7 @@ class Admin extends Component {
       <section className="container">
         <div className="twelve columns">
           <Card>
-            <pre>OKCandidate Admin Panel</pre>
+            <pre>Survey Creator</pre>
           </Card>
         </div>
       </section>
@@ -25,7 +25,7 @@ class Admin extends Component {
 
 }
 
-Admin.propTypes = {
+SurveyCreator.propTypes = {
   admin: PropTypes.object,
   user: PropTypes.object,
   ui: PropTypes.object,
@@ -36,4 +36,4 @@ export default connect(
   state => ({
     admin: state.admin
   })
-)(Admin)
+)(SurveyCreator)
