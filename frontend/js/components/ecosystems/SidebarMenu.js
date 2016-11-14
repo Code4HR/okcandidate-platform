@@ -14,7 +14,7 @@ class SidebarMenu extends Component {
         {
           this.props.menu.map((menuItem, index) => {
             return (
-              <nav className="menu">
+              <nav className="menu" key={index}>
                 <label>{menuItem.label}</label>
                 <ul>
                   {
@@ -33,12 +33,14 @@ class SidebarMenu extends Component {
             )
           })
         }
-      </div>  
+      </div>
     )
   }
 
 }
 
-SidebarMenu.propTypes = {}
+SidebarMenu.propTypes = {
+  menu: PropTypes.array
+}
 
 export default SidebarMenu

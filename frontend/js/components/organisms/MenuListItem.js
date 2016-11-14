@@ -1,5 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 
+import { Link } from 'react-router'
+
 import Icon from './../atoms/Icon'
 
 class MenuListItem extends Component {
@@ -7,13 +9,13 @@ class MenuListItem extends Component {
   render() {
     return (
       <li>
-        <a href={this.props.href}>
+        <Link to={this.props.href}>
           {
             this.props.icon &&
             <Icon>{this.props.icon}</Icon>
           }
           <span>{this.props.label}</span>
-        </a>
+        </Link>
       </li>
     )
   }

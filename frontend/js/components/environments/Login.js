@@ -13,7 +13,6 @@ class Login extends Component {
 
     return (
       <section>
-        <Header user={this.props.user}/>
         <div className="container">
           <div className="six columns">
             <div className="card">
