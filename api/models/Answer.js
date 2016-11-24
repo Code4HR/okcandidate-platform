@@ -9,6 +9,7 @@ const Model = require('trails-model')
 module.exports = class Answer extends Model {
 
   static config (app, Sequelize) {
+
   }
 
   static schema (app, Sequelize) {
