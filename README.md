@@ -10,7 +10,7 @@ A local postgres database will need to be created to run okcandidate-platform.  
 The following environment variables are expected to be available to the shell in which okcandidate-platform is running.
 ```bash
 export OKC_DB_USER=blaine
-export OKC_DB_PASSWORD=''
+export OKC_DB_PASS=''
 export OKC_DB_NAME=okcandidate_platform_dev
 export OKC_DB_HOST=localhost
 export OKC_SESSION_SECRET_KEY=someGobbledygookThatIsAtLeast32CharactersLong
@@ -54,9 +54,9 @@ These user/pass combinations can be used to login as user of various roles.
     emailAddress: 'admin@okcandidate.org',
     password: 'adminpass'
   }
-  
+
   ...
-  
+
 ```
 
 # Contributing

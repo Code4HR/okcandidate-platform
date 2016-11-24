@@ -7,10 +7,10 @@
  * @see {@link http://trailsjs.io/doc/config/database}
  */
 
-const dbName = process.env.PG_DATABASE_NAME || 'okcandidate_platform_dev'
-const dbUser = process.env.PG_DATABASE_USER || 'blaine'
-const dbPass = process.env.PG_DATABASE_PASS || ''
-const dbHost = process.env.PG_DATABASE_HOST || 'localhost'
+const dbName = process.env.OKC_DB_NAME || 'okcandidate_dev'
+const dbUser = process.env.OKC_DB_USER || 'blaine'
+const dbPass = process.env.OKC_DB_PASS || ''
+const dbHost = process.env.OKC_DB_HOST || 'localhost'
 
 module.exports = {
 
