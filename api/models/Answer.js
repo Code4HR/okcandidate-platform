@@ -15,4 +15,5 @@ module.exports = class Answer extends Model {
   static schema (app, Sequelize) {
 
   }
+
 }
