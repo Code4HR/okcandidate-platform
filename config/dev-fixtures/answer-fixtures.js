@@ -15,15 +15,13 @@ module.exports = {
   load: (app) => {
     return app.orm.Answer.count({})
     .then(count => {
-      debugger
       if (count > 0) {
-        return
+        return []
       }
       else {
         // For all questions, create three answers.
-        app.orm.Question.findAll({where: {}})
+        return app.orm.Question.findAll({where: {}})
         .then(questions => {
-
           return Promise.all(
             questions.map((question, index) => {
               return Promise.all(

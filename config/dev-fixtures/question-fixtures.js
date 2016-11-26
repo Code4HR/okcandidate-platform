@@ -16,7 +16,7 @@ module.exports = {
     return app.orm.Question.count({})
     .then(count => {
       if (count > 0) {
-        return
+        return []
       }
       else {
         // Create Questions
