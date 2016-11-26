@@ -18,11 +18,6 @@ module.exports = class SurveyResult extends Model {
               foreignKey: {
                 allowNull: false
               }
-            }),
-            models.Candidate.hasOne(models.SurveyResult, {
-              foreignKey: {
-                allowNull: true
-              }
             })
           }
         }
