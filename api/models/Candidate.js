@@ -8,7 +8,21 @@ const Model = require('trails-model')
  */
 module.exports = class Candidate extends Model {
 
-  static config (app, Sequelize) {}
+  static config (app, Sequelize) {
+    return {
+      options: {
+        classMethods: {
+          associate: (models) => {
+            models.Candidate.hasOne(models.SurveyResult, {
+              foreignKey: {
+                allowNull: true
+              }
+            })
+          }
+        }
+      }
+    }
+  }
 
   static schema (app, Sequelize) {
     return {
