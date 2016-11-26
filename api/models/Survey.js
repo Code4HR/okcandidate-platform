@@ -9,7 +9,15 @@ const Model = require('trails-model')
 module.exports = class Survey extends Model {
 
   static config (app, Sequelize) {
-
+    return {
+      options: {
+        classMethods: {
+          associate: (models) => {
+            models.Survey.hasMany(models.Question)
+          }
+        }
+      }
+    }
   }
 
   static schema (app, Sequelize) {
