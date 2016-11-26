@@ -14,6 +14,7 @@ module.exports = class Office extends Model {
         classMethods: {
           associate: (models) => {
             models.Office.belongsToMany(models.Survey, {through: 'surveyoffice'})
+            models.Office.belongsToMany(models.Region, {through: 'officeregion'})
             models.Office.hasMany(models.Candidate)
           }
         }

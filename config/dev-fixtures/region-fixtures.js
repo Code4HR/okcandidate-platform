@@ -41,6 +41,26 @@ module.exports = {
             )
           })
         })
+        .then(() => {
+          return Promise.all([
+            app.orm.Office.findAll({where: {}}),
+            app.orm.Region.findAll({where: {}})
+          ])
+          .then(([offices, regions]) => {
+
+            debugger
+
+            return Promise.all(
+              offices.map(office => {
+                return Promise.all(
+                  regions.map(region => {
+                    return office.addRegion(region)
+                  })
+                )
+              })
+            )
+          })
+        })
         // Whew!
         .then(regions => {
           app.log.info('Regions created.')
