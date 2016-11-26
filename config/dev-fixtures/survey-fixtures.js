@@ -1,9 +1,15 @@
 'use strict'
 
 const surveys = [
-  {},
-  {},
-  {}
+  {
+    name: 'Survey 1'
+  },
+  {
+    name: 'Survey 2'
+  },
+  {
+    name: 'Survey 3'
+  }
 ]
 
 module.exports = {

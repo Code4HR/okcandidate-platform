@@ -21,6 +21,12 @@ module.exports = class Survey extends Model {
   }
 
   static schema (app, Sequelize) {
+    return {
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false
+      }
+    }
 
   }
 
