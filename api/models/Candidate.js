@@ -8,9 +8,7 @@ const Model = require('trails-model')
  */
 module.exports = class Candidate extends Model {
 
-  static config (app, Sequelize) {
-    return {}
-  }
+  static config (app, Sequelize) {}
 
   static schema (app, Sequelize) {
     return {
