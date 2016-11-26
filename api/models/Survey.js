@@ -14,6 +14,9 @@ module.exports = class Survey extends Model {
         classMethods: {
           associate: (models) => {
             models.Survey.hasMany(models.Question)
+            models.Survey.hasMany(models.SurveyResult)
+            models.Survey.belongsToMany(models.Region, {through: 'surveyregion'})
+            models.Survey.belongsToMany(models.Office, {through: 'surveyoffice'})
           }
         }
       }

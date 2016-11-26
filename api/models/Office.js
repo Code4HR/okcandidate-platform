@@ -9,11 +9,24 @@ const Model = require('trails-model')
 module.exports = class Office extends Model {
 
   static config (app, Sequelize) {
-
+    return {
+      options: {
+        classMethods: {
+          associate: (models) => {
+            models.Office.belongsToMany(models.Survey, {through: 'surveyoffice'})
+          }
+        }
+      }
+    }
   }
 
   static schema (app, Sequelize) {
-
+    return {
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false
+      }
+    }
   }
 
 }
