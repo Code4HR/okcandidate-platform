@@ -56,14 +56,34 @@ module.exports = [
   /**
    * Backend Routes
    */
-    {
-        method: 'POST',
-        path: '/api/v1/user',
-        handler: 'UserController.create'
-    },
-    {
-        method: ['GET'],
-        path: '/api/v1/default/info',
-        handler: 'DefaultController.info'
-    }
-];
+  {
+    method: 'POST',
+    path: '/api/v1/user',
+    handler: 'UserController.create'
+  },
+
+  {
+    method: 'POST',
+    path: '/api/v1/user/edit',
+    handler: 'UserController.update'
+  },
+
+  {
+    method: 'GET',
+    path: '/api/v1/user',
+    handler: 'UserController.getAll'
+  },
+
+  {
+    method: 'GET',
+    path: '/api/v1/user/{id*}',
+    handler: 'UserController.getOne'
+  },
+
+  {
+    method: [ 'GET' ],
+    path: '/api/v1/default/info',
+    handler: 'DefaultController.info'
+  }
+
+]
