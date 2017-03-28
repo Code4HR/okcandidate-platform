@@ -10,3 +10,5 @@ npm-debug.log
 .env
 docker/*.crt
 docker/*.key
+docker/*.srl
+docker/*.csr
