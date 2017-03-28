@@ -5,3 +5,8 @@ coverage
 .tmp
 .DS_STORE
 npm-debug.log
+
+# Docker stuff
+.env
+docker/*.crt
+docker/*.key
