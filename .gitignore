@@ -12,3 +12,4 @@ docker/*.crt
 docker/*.key
 docker/*.srl
 docker/*.csr
+.vscode
