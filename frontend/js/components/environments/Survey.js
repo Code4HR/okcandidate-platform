@@ -2,16 +2,16 @@
 
 import React, { PropTypes, Component } from 'react';
 
-class Results extends Component {
-    render () {
+class Survey extends Component { 
+    render() {
         return (
             <article>
-                <pre>Results Page</pre>
+                <pre>Survey Page</pre>
             </article>
         );
     }
 }
 
-Results.propTypes = {};
+Survey.propTypes = {};
 
-module.exports = Results;
+module.exports = Survey;
