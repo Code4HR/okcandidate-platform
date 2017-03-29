@@ -5,3 +5,4 @@ coverage
 .tmp
 .DS_STORE
 npm-debug.log
+.vscode
