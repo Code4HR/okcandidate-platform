@@ -29,8 +29,6 @@ module.exports = class ViewController extends Controller {
   home (request, reply) {
     const store = createStore(survey)
     match({routes: routes, location: request.url.path }, (error, redirectLocation, renderProps) => {
-      const foundUser = request.yar.get('user') || {}
-      const user = { name: foundUser.name, emailAddress: foundUser.emailAddress }
       const layout = renderToStaticMarkup(
         React.createElement(Layout, { bundle: 'survey', state: store.getState() },
           renderToString(

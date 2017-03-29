@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react'
 
-import Header from './../ecosystems/Header'
 import LoginForm from './../ecosystems/LoginForm'
 
 class Login extends Component {

@@ -102,7 +102,8 @@ Sidebar.propTypes = {
   login: PropTypes.object,
   role: PropTypes.string,
   width: PropTypes.number,
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
+  dispatch: PropTypes.func
 }
 
 export default Sidebar

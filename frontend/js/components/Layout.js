@@ -18,7 +18,9 @@ class Layout extends Component {
           <div id="app-mount" dangerouslySetInnerHTML={{ __html: this.props.children }} />
 
           <script id="app-state"
-            dangerouslySetInnerHTML={{ __html: 'window.state = ' + JSON.stringify(this.props.state)}}></script>
+            dangerouslySetInnerHTML={{
+              __html: 'window.state = ' + JSON.stringify(this.props.state)
+            }}></script>
 
           {
             this.props.bundle === 'survey' &&
