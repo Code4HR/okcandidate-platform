@@ -23,6 +23,15 @@ module.exports = class ViewController extends Controller {
         });
     }
 
+    category(request, reply) {
+        getLayout(request, 'survey', function(error, html) {
+            if (error) {
+                // handle error
+            }
+            reply(html);
+        });
+    }
+
     admin(request, reply) {
         getLayout(request, 'admin', function(error, html) {
             if (error) {
