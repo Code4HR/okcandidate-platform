@@ -2,9 +2,10 @@
 /* global describe, it */
 
 const assert = require('assert')
+const app = require('../../../index')
 
 describe('Region Model', () => {
   it('should exist', () => {
-    assert(global.app.api.models['Region'])
+    assert(app.api.models['Region'])
   })
 })
