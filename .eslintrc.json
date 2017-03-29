@@ -1,6 +1,13 @@
 {
+  "plugins": [
+    "mocha"
+  ],
   "extends": "trails/react",
   "parserOptions": {
     "sourceType": "module"
+  },
+  "globals": {
+      "describe": true,
+      "it": true
   }
 }
