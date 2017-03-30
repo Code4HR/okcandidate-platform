@@ -1,10 +1,10 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
 class Layout extends Component {
 
-  render() {
+    render() {
 
-    return (
+        return (
       <html>
 
         <head>
@@ -19,7 +19,7 @@ class Layout extends Component {
 
           <script id="app-state"
             dangerouslySetInnerHTML={{
-              __html: 'window.state = ' + JSON.stringify(this.props.state)
+                __html: 'window.state = ' + JSON.stringify(this.props.state)
             }}></script>
 
           {
@@ -35,16 +35,16 @@ class Layout extends Component {
         </body>
 
       </html>
-    )
-  }
+    );
+    }
 
 }
 
 Layout.propTypes = {
-  bundle: PropTypes.string,
-  state: PropTypes.object,
-  children: PropTypes.string,
-  store: PropTypes.object
-}
+    bundle: PropTypes.string,
+    state: PropTypes.object,
+    children: PropTypes.string,
+    store: PropTypes.object
+};
 
-export default Layout
+export default Layout;

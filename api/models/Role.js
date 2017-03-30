@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const Model = require('trails-model')
+const Model = require('trails-model');
 
 /**
  * @module Role
@@ -8,26 +8,26 @@ const Model = require('trails-model')
  */
 module.exports = class Role extends Model {
 
-  static config (app, Sequelize) {
-    return {
-      options: {
-        classMethods: {
-          associate: (models) => {
-            models.Role.hasMany(models.User, {
-              as: 'users'
-            })
-          }
-        }
-      }
+    static config (app, Sequelize) {
+        return {
+            options: {
+                classMethods: {
+                    associate: (models) => {
+                        models.Role.hasMany(models.User, {
+                            as: 'users'
+                        });
+                    }
+                }
+            }
+        };
     }
-  }
 
-  static schema (app, Sequelize) {
-    return {
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false
-      }
+    static schema (app, Sequelize) {
+        return {
+            name: {
+                type: Sequelize.STRING,
+                allowNull: false
+            }
+        };
     }
-  }
-}
+};

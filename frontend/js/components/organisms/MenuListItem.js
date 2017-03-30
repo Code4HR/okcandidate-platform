@@ -1,13 +1,13 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
-import Icon from './../atoms/Icon'
+import Icon from './../atoms/Icon';
 
 class MenuListItem extends Component {
 
-  render() {
-    return (
+    render() {
+        return (
       <li>
         <Link to={this.props.href}>
           {
@@ -17,15 +17,15 @@ class MenuListItem extends Component {
           <span>{this.props.label}</span>
         </Link>
       </li>
-    )
-  }
+    );
+    }
 
 }
 
 MenuListItem.propTypes = {
-  href: PropTypes.string,
-  label: PropTypes.string,
-  icon: PropTypes.string
-}
+    href: PropTypes.string,
+    label: PropTypes.string,
+    icon: PropTypes.string
+};
 
-export default MenuListItem
+export default MenuListItem;

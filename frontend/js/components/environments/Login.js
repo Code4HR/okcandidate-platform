@@ -1,16 +1,16 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
-import LoginForm from './../ecosystems/LoginForm'
+import LoginForm from './../ecosystems/LoginForm';
 
 class Login extends Component {
 
-  constructor(props) {
-    super(props)
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  render() {
+    render() {
 
-    return (
+        return (
       <section>
         <div className="container">
           <div className="six columns">
@@ -20,15 +20,15 @@ class Login extends Component {
           </div>
         </div>
       </section>
-    )
+    );
 
-  }
+    }
 
 }
 
 Login.propTypes = {
-  error: PropTypes.string,
-  user: PropTypes.object
-}
+    error: PropTypes.string,
+    user: PropTypes.object
+};
 
-export default Login
+export default Login;

@@ -1,2 +1,2 @@
-'use strict'
-exports.Auth = require('./Auth')
+'use strict';
+exports.Auth = require('./Auth');

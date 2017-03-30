@@ -1,17 +1,17 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
 class Icon extends Component {
 
-  render() {
-    return (
+    render() {
+        return (
       <i className="icon material-icons">{this.props.children}</i>
-    )
-  }
+    );
+    }
 
 }
 
 Icon.propTypes = {
-  children: PropTypes.any
-}
+    children: PropTypes.any
+};
 
-export default Icon
+export default Icon;
