@@ -8,7 +8,12 @@ class Profile extends Component {
       <section className="app-profile">
         { (() => {
             if (this.props.login && this.props.login.name) {
-                return <span>Logged in as: {this.props.login.name}. <a href="/logout">Logout</a></span>;
+                return (
+                  <span>
+                    Logged in as: {this.props.login.name}.
+                    <a href="/logout">Logout</a>
+                  </span>
+                );
             }
             else {
                 return <a href="/login">Login</a>;
