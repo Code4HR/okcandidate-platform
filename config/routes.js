@@ -20,6 +20,16 @@ module.exports = [
     },
     {
         method: 'GET',
+        path: '/survey',
+        handler: 'ViewController.survey'
+    },
+    {
+        method: 'GET',
+        path: '/category',
+        handler: 'ViewController.category'
+    },
+    {
+        method: 'GET',
         path: '/admin/{view*}',
         handler: 'ViewController.admin'
     },
