@@ -1,5 +1,5 @@
-'use strict'
+'use strict';
 
-exports.DefaultService = require('./DefaultService')
-exports.AuthService = require('./AuthService')
-exports.UserService = require('./UserService')
+exports.DefaultService = require('./DefaultService');
+exports.AuthService = require('./AuthService');
+exports.UserService = require('./UserService');

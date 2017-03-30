@@ -1,24 +1,24 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
-import Icon from './../atoms/Icon'
+import Icon from './../atoms/Icon';
 
 class IconButton extends Component {
 
-  render() {
-    return (
+    render() {
+        return (
       <button
         onClick={this.props.onClick}
         className="icon-button">
         <Icon>{this.props.icon}</Icon>
       </button>
-    )
-  }
+    );
+    }
 
 }
 
 IconButton.propTypes = {
-  icon: PropTypes.string,
-  onClick: PropTypes.func
-}
+    icon: PropTypes.string,
+    onClick: PropTypes.func
+};
 
-export default IconButton
+export default IconButton;

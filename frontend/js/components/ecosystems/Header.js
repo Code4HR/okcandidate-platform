@@ -1,21 +1,20 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
-import AppLogo from './../organisms/AppLogo'
-import Profile from './../organisms/Profile'
+import AppLogo from './../organisms/AppLogo';
 
 import {
   toggleSidebarVisibility
-} from './../../redux/actions/ui-actions'
+} from './../../redux/actions/ui-actions';
 
 class Header extends Component {
 
-  toggleSidebarVisibility() {
-    this.props.dispatch(toggleSidebarVisibility())
-  }
+    toggleSidebarVisibility() {
+        this.props.dispatch(toggleSidebarVisibility());
+    }
 
-  render() {
+    render() {
 
-    return (
+        return (
       <header className="app-header height-1">
         <div className="flex-container">
           <div className="twelve columns">
@@ -23,14 +22,14 @@ class Header extends Component {
           </div>
         </div>
       </header>
-    )
+    );
 
-  }
+    }
 
 }
 
 Header.propTypes = {
-  dispatch: PropTypes.func
-}
+    dispatch: PropTypes.func
+};
 
-export default Header
+export default Header;

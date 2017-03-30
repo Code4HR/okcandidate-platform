@@ -1,11 +1,11 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
-import IconButton from './../molecules/IconButton'
+import IconButton from './../molecules/IconButton';
 
 class AppLogo extends Component {
 
-  render() {
-    return (
+    render() {
+        return (
       <section className="app-logo">
         <IconButton
           onClick={this.props.onClick}
@@ -14,13 +14,13 @@ class AppLogo extends Component {
           <img alt="OKCandidate" src="/dist/images/okcandidate-logo.svg" />
         </a>
       </section>
-    )
-  }
+    );
+    }
 
 }
 
 AppLogo.propTypes = {
-  onClick: PropTypes.func
-}
+    onClick: PropTypes.func
+};
 
-export default AppLogo
+export default AppLogo;
