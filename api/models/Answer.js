@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const Model = require('trails-model')
+const Model = require('trails-model');
 
 /**
  * @module Answer
@@ -8,12 +8,12 @@ const Model = require('trails-model')
  */
 module.exports = class Answer extends Model {
 
-  static config (app, Sequelize) {
+    static config (app, Sequelize) {
 
-  }
+    }
 
-  static schema (app, Sequelize) {
+    static schema (app, Sequelize) {
 
-  }
+    }
 
-}
+};

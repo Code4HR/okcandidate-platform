@@ -1,14 +1,14 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
-import Header from './ecosystems/Header'
-import Sidebar from './ecosystems/Sidebar'
+import Header from './ecosystems/Header';
+import Sidebar from './ecosystems/Sidebar';
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 class Frame extends Component {
 
-  render() {
-    return (
+    render() {
+        return (
       <section className="potato">
         <Header dispatch={this.props.dispatch} />
 
@@ -22,21 +22,21 @@ class Frame extends Component {
         { this.props.children }
 
       </section>
-    )
-  }
+    );
+    }
 
 }
 
 Frame.propTypes = {
-  login: PropTypes.object,
-  ui: PropTypes.object,
-  dispatch: PropTypes.func,
-  children: PropTypes.object
-}
+    login: PropTypes.object,
+    ui: PropTypes.object,
+    dispatch: PropTypes.func,
+    children: PropTypes.object
+};
 
 export default connect(
   state => ({
-    ui: state.ui,
-    login: state.login
+      ui: state.ui,
+      login: state.login
   })
-)(Frame)
+)(Frame);

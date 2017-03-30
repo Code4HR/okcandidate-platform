@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const Model = require('trails-model')
+const Model = require('trails-model');
 
 /**
  * @module User
@@ -8,22 +8,22 @@ const Model = require('trails-model')
  */
 module.exports = class User extends Model {
 
-  static config (app, Sequelize) {
+    static config (app, Sequelize) {
 
-  }
-
-  static schema (app, Sequelize) {
-    return {
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      emailAddress: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      password: Sequelize.STRING
     }
-  }
 
-}
+    static schema (app, Sequelize) {
+        return {
+            name: {
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            emailAddress: {
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            password: Sequelize.STRING
+        };
+    }
+
+};

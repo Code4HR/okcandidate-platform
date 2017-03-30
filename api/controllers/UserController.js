@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
-const Controller = require('trails-controller')
-const Boom = require('boom')
+const Controller = require('trails-controller');
+const Boom = require('boom');
 
 /**
  * @module UserController
@@ -9,18 +9,18 @@ const Boom = require('boom')
  */
 module.exports = class UserController extends Controller{
 
-  create (request, reply) {
+    create (request, reply) {
 
-    const userData = request.payload
+        const userData = request.payload;
 
-    this.app.services.UserService.create(userData)
+        this.app.services.UserService.create(userData)
     .then(response => {
-      reply(response)
+        reply(response);
     })
     .catch(error => {
-      reply(Boom.badRequest('There was an error creating the user.'))
-    })
+        reply(Boom.badRequest('There was an error creating the user.'));
+    });
 
-  }
+    }
 
-}
+};
