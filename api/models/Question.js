@@ -20,6 +20,5 @@ module.exports = class Question extends Model {
       }
     }
   }
->>>>>>> update models
 
 };
