@@ -24,13 +24,21 @@ module.exports = class Candidate extends Model {
         };
     }
 
-    static schema (app, Sequelize) {
-        return {
-            name: {
-                type: Sequelize.STRING,
-                allowNull: false
-            }
-        };
+  static schema (app, Sequelize) {
+    return {
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      picture: {
+        type: Sequelize.STRING
+      },
+      url: {
+        type: Sequelize.STRING
+      },
+      bio: {
+        type: Sequelize.STRING
+      }
     }
 
 };

@@ -9,7 +9,6 @@ const offices = require('./dev-fixtures/office-fixtures')
 const candidates = require('./dev-fixtures/candidate-fixtures')
 const regions = require('./dev-fixtures/region-fixtures')
 const questions = require('./dev-fixtures/question-fixtures')
-const answers = require('./dev-fixtures/answer-fixtures')
 
 module.exports = (app) => {
 

@@ -8,20 +8,18 @@ const Model = require('trails-model');
  */
 module.exports = class Question extends Model {
 
-    static config (app, Sequelize) {
-        return {
-            options: {
-                classMethods: {
-                    associate: (models) => {
-                        models.Question.hasMany(models.Answer);
-                    }
-                }
-            }
-        };
-    }
+  static config (app, Sequelize) {
 
-    static schema (app, Sequelize) {
+  }
 
+  static schema (app, Sequelize) {
+    return {
+      text: {
+        type: Sequelize.STRING,
+        allowNull: false
+      }
     }
+  }
+>>>>>>> update models
 
 };
