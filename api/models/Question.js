@@ -9,7 +9,20 @@ const Model = require('trails-model');
 module.exports = class Question extends Model {
 
   static config (app, Sequelize) {
-
+    return {
+      options: {
+        classMethods: {
+          associate: (models) => {
+            models.Category.hasOne(models.Question, {
+              onDelete: 'CASCADE',
+              foreignKey: {
+                allowNull: false
+              }
+            })
+          }
+        }
+      }
+    }
   }
 
   static schema (app, Sequelize) {

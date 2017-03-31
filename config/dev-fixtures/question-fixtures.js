@@ -2,13 +2,16 @@
 
 const questions = [
   {
-    text: 'What do you think about free child care?'
+    text: 'What do you think about free child care?',
+    CategoryId: 1
   },
   {
-    text: 'What do you think about light rail?'
+    text: 'What do you think about light rail?',
+    CategoryId: 2
   },
   {
-    text: 'What do you think about the ferry'
+    text: 'What do you think about the ferry',
+    CategoryId: 3
   }
 ]
 
