@@ -40,5 +40,6 @@ module.exports = class Candidate extends Model {
         type: Sequelize.STRING
       }
     }
+  }
 
 };

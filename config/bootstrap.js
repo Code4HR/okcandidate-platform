@@ -20,7 +20,6 @@ module.exports = (app) => {
   .then(candidates.load.bind(this, app))
   .then(regions.load.bind(this, app))
   .then(questions.load.bind(this, app))
-  .then(answers.load.bind(this, app))
   .then(surveyResultAnswers.load.bind(this, app))
   .then(() => {
     app.log.info('Fixtures loaded.')
