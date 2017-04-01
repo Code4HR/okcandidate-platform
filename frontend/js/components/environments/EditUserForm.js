@@ -18,6 +18,10 @@ class EditUserForm extends Component {
     this.props.dispatch(fetchUser(this.props.params.id))
   }
 
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
   render() {
 
     const editId = this.props.admin.users.currentlyEditing
@@ -47,13 +51,15 @@ class EditUserForm extends Component {
               <input
                 type="text"
                 name="name"
-                value={user.name ? user.name : ""} />
+                value={user.name ? user.name : ""}
+                onChange={this.handleChange} />
 
               <label htmlFor="emailAddress">Email Address</label>
               <input
                 type="text"
                 name="emailAddress"
-                value={user.emailAddress ? user.emailAddress : ""} />
+                value={user.emailAddress ? user.emailAddress : ""}
+                onChange={this.handleChange} />
 
               <label htmlFor="password">Password</label>
               <input
