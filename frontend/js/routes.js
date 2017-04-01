@@ -12,6 +12,7 @@ import SurveyAnalyzer from './components/environments/SurveyAnalyzer'
 import UserManager from './components/environments/UserManager'
 import NewUserForm from './components/environments/NewUserForm'
 import EditUserForm from './components/environments/EditUserForm'
+import DeleteUserForm from './components/environments/DeleteUserForm'
 import Results from './components/environments/Results';
 
 module.exports = (
@@ -28,5 +29,6 @@ module.exports = (
     <Route path="admin/user" component={UserManager} />
     <Route path="admin/user/new" component={NewUserForm} />
     <Route path="admin/user/edit/:id" component={EditUserForm} />
+    <Route path="admin/user/delete/:id" component={DeleteUserForm} />
   </Route>
 );

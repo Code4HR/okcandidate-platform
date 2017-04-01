@@ -57,6 +57,10 @@ module.exports = class UserService extends Service {
 
   }
 
+  delete(id) {
+    return this.app.orm.User.destroy({where: {id: id}})
+  }
+  
   getOne(id) {
     return this.app.orm.User.find({
       attributes: ['id', 'name', 'emailAddress'],

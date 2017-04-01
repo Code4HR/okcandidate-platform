@@ -33,10 +33,22 @@ module.exports = class UserController extends Controller{
       reply.redirect('/admin/user')
     })
     .catch(error => {
-      console.log(error)
       reply(Boom.badRequest('There was an error updating the user.'))
     })
 
+  }
+
+  delete (request, reply) {
+
+    const id = request.params.id
+
+    this.app.services.UserService.delete(id)
+    .then(response => {
+      reply.redirect('/admin/user')
+    })
+    .catch(error => {
+      reply(Boom.badRequest('There was an error deleting the user.'))
+    })
   }
 
   getOne (request, reply) {

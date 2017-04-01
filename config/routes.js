@@ -69,6 +69,12 @@ module.exports = [
   },
 
   {
+    method: 'POST',
+    path: '/api/v1/user/delete/{id*}',
+    handler: 'UserController.delete'
+  },
+
+  {
     method: 'GET',
     path: '/api/v1/user',
     handler: 'UserController.getAll'

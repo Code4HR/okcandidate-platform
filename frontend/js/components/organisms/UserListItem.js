@@ -21,7 +21,9 @@ class UserListItem extends Component {
           {this.props.emailAddress}
         </div>
         <div className='two columns'>
-          <Icon children='delete' />
+          <Link to={'/admin/user/delete/' + this.props.id}>
+            <Icon children='delete' />
+          </Link>
         </div>
       </div>
     )
