@@ -25,9 +25,10 @@ module.exports = class UserService extends Service {
 
     }
 
-  update (userData) {
+  update (id, userData) {
 
     return new Promise((resolve, reject) => {
+
       if (userData.password != null) {
         bcrypt.hash(userData.password, 10, (err, hash) => {
           if (err) reject(err)
@@ -40,8 +41,8 @@ module.exports = class UserService extends Service {
     })
     .then(hash => {
       return this.app.orm.User.update(
-        Object.assign({}, userData, {password: hash},
-        {where: {id: userData.id}})
+        Object.assign({}, userData, {password: hash}),
+        {where: {id: parseInt(id, 10)}}
       )
     })
 

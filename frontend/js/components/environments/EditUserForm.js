@@ -33,7 +33,7 @@ class EditUserForm extends Component {
         <Card>
           <pre>Edit User</pre>
           <form
-            action="/api/v1/user/edit"
+            action={"/api/v1/user/edit/" + user.id}
             method="POST">
 
             {
@@ -42,11 +42,6 @@ class EditUserForm extends Component {
             }
 
             <fieldset>
-
-              <input
-                type="hidden"
-                name="id"
-                value={user.id ? user.id : 0} />
 
               <label htmlFor="name">Name</label>
               <input

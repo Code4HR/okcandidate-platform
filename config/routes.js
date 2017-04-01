@@ -64,7 +64,7 @@ module.exports = [
 
   {
     method: 'POST',
-    path: '/api/v1/user/edit',
+    path: '/api/v1/user/edit/{id*}',
     handler: 'UserController.update'
   },
 

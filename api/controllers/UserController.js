@@ -26,13 +26,15 @@ module.exports = class UserController extends Controller{
   update (request, reply) {
 
     const userData = request.payload
+    const id = request.params.id
 
-    this.app.services.UserService.update(userData)
+    this.app.services.UserService.update(id, userData)
     .then(response => {
       reply.redirect('/admin/user')
     })
     .catch(error => {
-      reply(Boom.badRequest('There was an error creating the user.'))
+      console.log(error)
+      reply(Boom.badRequest('There was an error updating the user.'))
     })
 
   }
