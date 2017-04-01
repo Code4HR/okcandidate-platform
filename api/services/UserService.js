@@ -28,22 +28,31 @@ module.exports = class UserService extends Service {
   update (id, userData) {
 
     return new Promise((resolve, reject) => {
-
-      if (userData.password != null) {
+      if (userData.password == '') {
+        resolve(null)
+      }
+      else {
         bcrypt.hash(userData.password, 10, (err, hash) => {
           if (err) reject(err)
           resolve(hash)
         })
       }
-      else {
-        resolve(null)
-      }
     })
     .then(hash => {
-      return this.app.orm.User.update(
-        Object.assign({}, userData, {password: hash}),
-        {where: {id: parseInt(id, 10)}}
-      )
+      if (hash == null) {
+        delete userData.password
+
+        return this.app.orm.User.update(
+          Object.assign({}, userData),
+          {where: {id: parseInt(id, 10)}}
+        )
+      }
+      else {
+        return this.app.orm.User.update(
+          Object.assign({}, userData, {password: hash}),
+          {where: {id: parseInt(id, 10)}}
+        )
+      }
     })
 
   }
