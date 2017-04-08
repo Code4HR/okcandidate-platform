@@ -22,7 +22,6 @@ module.exports = (
     <Route path="survey" component={Survey} />
     <Route path="results" component={Results} />
     <Route path="admin" component={Admin} />
-    <Route path="admin" component={Admin} />
     <Route path="admin/survey" component={SurveyManager} />
     <Route path="admin/survey/new" component={SurveyCreator} />
     <Route path="admin/survey/analyze" component={SurveyAnalyzer} />

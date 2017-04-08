@@ -52,30 +52,9 @@ export default (state = initialState, action) => {
       })
 
     case FETCH_USER_SUCCESS:
-      const userExists = state.users.results.filter(user => {
-        if (user.id === action.response.id) {
-          return user
-        }
+      return Object.assign({}, state, {
+        editUser: action.response
       })
-
-      if (userExists.length > 0) {
-        return Object.assign({}, state, {
-          users: Object.assign({}, state.users, {
-            isFetching: false,
-            currentlyEditing: action.response.id
-          })
-        })
-      }
-
-      else {
-        return Object.assign({}, state, {
-          users: Object.assign({}, state.users, {
-            isFetching: false,
-            currentlyEditing: action.response.id,
-            results: [action.response]
-          })
-        })
-      }
 
     case FETCH_USER_FAILURE:
       return Object.assign({}, state, {

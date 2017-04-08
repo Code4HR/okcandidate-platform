@@ -12,32 +12,39 @@ class EditUserForm extends Component {
 
   constructor(props) {
     super(props)
+
+    this.state = {
+      name: '',
+      emailAddress: ''
+    }
+
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(event) {
+    const target = event.target
+    const name = target.name
+    const value = target.value
+
+    this.setState({ [name]: value })
   }
 
   componentDidMount() {
     this.props.dispatch(fetchUser(this.props.params.id))
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  componentWillReceiveProps(newProps) {
+    console.log(newProps)
+    this.setState(newProps.admin.editUser)
   }
 
   render() {
-
-    const editId = this.props.admin.users.currentlyEditing
-
-    const user = editId ?
-    this.props.admin.users.results.find(user => {
-      return user.id === editId
-    }) :
-    {}
-
     return (
       <section className="container">
         <Card>
           <pre>Edit User</pre>
           <form
-            action={"/api/v1/user/edit/" + user.id}
+            action={"/api/v1/user/edit/" + this.props.params.id}
             method="POST">
 
             {
@@ -51,14 +58,14 @@ class EditUserForm extends Component {
               <input
                 type="text"
                 name="name"
-                value={user.name ? user.name : ""}
+                value={this.state.name}
                 onChange={this.handleChange} />
 
               <label htmlFor="emailAddress">Email Address</label>
               <input
                 type="text"
                 name="emailAddress"
-                value={user.emailAddress ? user.emailAddress : ""}
+                value={this.state.emailAddress}
                 onChange={this.handleChange} />
 
               <label htmlFor="password">Password</label>
