@@ -10,14 +10,18 @@ class CategoryListItem extends Component {
 
   render() {
     return (
-      <div className='category-item'>
-        <div className='category-rank'>{this.props.rank}</div>
-        <div className='category-info'>
-          {
-            this.props.icon &&
-            <Icon>{this.props.icon}</Icon>
-          }
-          <span className='category-name'>{this.props.name}</span>
+      <div className='category-item row'>
+        <div className='category-rank one column'>{this.props.rank}</div>
+        <div className='category-info eleven columns'>
+          <div className='two columns'>
+            {
+              this.props.icon &&
+              <Icon>{this.props.icon}</Icon>
+            }
+          </div>
+          <div className='ten columns'>
+            <span className='category-name'>{this.props.name}</span>
+          </div>
         </div>
       </div>
     )

@@ -7,7 +7,7 @@ class CategoryList extends Component {
   render() {
 
     return (
-      <div className='category-list'>
+      <div className='category-list container'>
         {
           this.props.categories.map((categoryItem, index) => {
             return <CategoryListItem

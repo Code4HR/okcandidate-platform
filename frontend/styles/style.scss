@@ -3,6 +3,7 @@ This file exists only to import other stylesheets.
 *************************************************/
 
 @import 'skeleton-scss/scss/skeleton';
+@import 'colors';
 @import 'base';
 @import 'header';
 @import 'profile';
@@ -10,3 +11,4 @@ This file exists only to import other stylesheets.
 @import 'menu';
 @import 'icon-button';
 @import 'sidebar';
+@import 'category';

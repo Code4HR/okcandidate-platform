@@ -1,0 +1,28 @@
+@import 'colors';
+
+.category-list {
+
+}
+
+.category-item {
+  padding: 1rem;
+  background: #ffffff;
+  cursor: move;
+}
+
+.category-rank {
+  font-size: 1.5em;
+  color: $darkGray;
+}
+
+.category-info {
+  padding: 0.5rem 1rem;
+  margin-bottom: .5rem;
+  border: 1px solid $darkGray;
+  border-radius: 2px;
+
+}
+
+.category-name {
+  color: $darkGray;
+}

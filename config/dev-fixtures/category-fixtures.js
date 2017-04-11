@@ -2,13 +2,16 @@
 
 const categories = [
   {
-    name: 'Category 1'
+    name: 'Category 1',
+    icon: 'language'
   },
   {
-    name: 'Category 2'
+    name: 'Category 2',
+    icon: 'account_balance'
   },
   {
-    name: 'Category 3'
+    name: 'Category 3',
+    icon: 'trending_up'
   }
 ]
 
