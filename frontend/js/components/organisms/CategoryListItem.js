@@ -10,14 +10,14 @@ class CategoryListItem extends Component {
 
   render() {
     return (
-      <div class='category-item'>
-        <div class='category-rank'>{this.props.rank}</div>
-        <div class='category-info'>
+      <div className='category-item'>
+        <div className='category-rank'>{this.props.rank}</div>
+        <div className='category-info'>
           {
             this.props.icon &&
             <Icon>{this.props.icon}</Icon>
           }
-          <span class='category-name'>{this.props.name}</span>
+          <span className='category-name'>{this.props.name}</span>
         </div>
       </div>
     )

@@ -4,14 +4,10 @@ import CategoryListItem from './../organisms/CategoryListItem';
 
 class CategoryList extends Component {
 
-  constructor(props) {
-      super(props);
-  }
-
   render() {
 
     return (
-      <div class='category-list'>
+      <div className='category-list'>
         {
           this.props.categories.map((categoryItem, index) => {
             return <CategoryListItem
@@ -28,7 +24,7 @@ class CategoryList extends Component {
 
 }
 
-CategoryList.propTypes = {
+CategoryList.PropTypes = {
     categories: PropTypes.Array
 };
 
