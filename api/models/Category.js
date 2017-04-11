@@ -17,6 +17,9 @@ module.exports = class Category extends Model {
       name: {
         type: Sequelize.STRING,
         allowNull: false
+      },
+      icon: {
+        type: Sequelize.STRING
       }
     }
   }

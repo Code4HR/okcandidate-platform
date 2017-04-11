@@ -3,3 +3,4 @@
 exports.DefaultService = require('./DefaultService');
 exports.AuthService = require('./AuthService');
 exports.UserService = require('./UserService');
+exports.CategoryService = require('./CategoryService')

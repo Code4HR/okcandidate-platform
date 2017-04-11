@@ -63,6 +63,11 @@ module.exports = [
     },
     {
         method: ['GET'],
+        path: '/api/v1/category',
+        handler: 'CategoryController.getAll'
+    },
+    {
+        method: ['GET'],
         path: '/api/v1/default/info',
         handler: 'DefaultController.info'
     }
