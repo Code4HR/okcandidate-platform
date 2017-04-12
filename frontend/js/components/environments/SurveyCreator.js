@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Card from './../atoms/Card';
 import SurveyGeneral from '../ecosystems/SurveyGeneral'
 import SurveyOffices from '../ecosystems/SurveyOffices'
+import SurveyQuestions from '../ecosystems/SurveyQuestions'
 
 class SurveyCreator extends Component {
 
@@ -20,7 +21,8 @@ class SurveyCreator extends Component {
             <pre>Survey Creator</pre>
           </Card>
           <SurveyGeneral></SurveyGeneral>
-          <SurveyOffices></SurveyOffices>
+          <SurveyOffices offices={["Mayor", "Vice Mayor", "dogcatcher"]}></SurveyOffices>
+          <SurveyQuestions questions={["Lorem Ipsum", "Lorem Ipsum","Lorem Ipsum","Lorem Ipsum"]}></SurveyQuestions>
         </div>
       </section>
     );

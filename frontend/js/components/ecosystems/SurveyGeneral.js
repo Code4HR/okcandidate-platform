@@ -21,10 +21,10 @@ class SurveyGeneral extends Component {
                 <div className="float-right"> <label>What city(or cities) should the survey be active in?</label></div>
                 <SearchBox></SearchBox>
                 <label>Start Date</label>
-                <input class="datepicker" type="date" />
+                <input className="datepicker" type="date" />
                 <div className="float-right"> <label>What day and time should the survey begin and end?</label></div>
                 <label>End Date</label>
-                <input class="datepicker" type="date"/>
+                <input className="datepicker" type="date"/>
             </div>
           </Card>
     );
