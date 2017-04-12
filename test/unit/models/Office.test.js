@@ -2,9 +2,10 @@
 /* global describe, it */
 
 const assert = require('assert');
+const app = require('../../../index');
 
 describe('Office Model', () => {
     it('should exist', () => {
-        assert(global.app.api.models['Office']);
+        assert(app.api.models['Office']);
     });
 });
