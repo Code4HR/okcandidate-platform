@@ -13,18 +13,18 @@ class SurveyGeneral extends Component {
         return (
           <Card>
             <div className="">
-            <pre>OKCandidate General</pre>
-            <label>Survey Name</label>
-            <div label className="float-right"> <label>What should the survey's nickname be?</label></div>
-            <input type="text" for="survey name"/>
-            <label>Survey City</label>
-            <div label className="float-right"> <label>What city(or cities) should the survey be active in?</label></div>
-            <SearchBox></SearchBox>
-            <label>Start Date</label>
-            <input class="datepicker" type="date" />
-            <div label className="float-right"> <label>What day and time should the survey begin and end?</label></div>
-            <label>End Date</label>
-            <input class="datepicker" type="date"/>
+                <pre>OKCandidate General</pre>
+                <label>Survey Name</label>
+                <div className="float-right"> <label>What should the survey's nickname be?</label></div>
+                <input type="text" for="survey name"/>
+                <label>Survey City</label>
+                <div className="float-right"> <label>What city(or cities) should the survey be active in?</label></div>
+                <SearchBox></SearchBox>
+                <label>Start Date</label>
+                <input class="datepicker" type="date" />
+                <div className="float-right"> <label>What day and time should the survey begin and end?</label></div>
+                <label>End Date</label>
+                <input class="datepicker" type="date"/>
             </div>
           </Card>
     );
