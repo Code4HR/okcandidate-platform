@@ -40,5 +40,6 @@ services:
       - /usr/src/app/node_modules
 
   db:
+    env_file: .env
     image: postgres:alpine
 
