@@ -3,6 +3,24 @@ A comprehensive refactor of [OKCandidate](https://github.com/Code4HR/okcandidate
 
 # Setup
 
+## Docker
+
+A few setup steps need to happen before you can run everything in Docker.
+First, copy `.env-example` to `.env` to configure the application, then run
+`./gen-dev-cert` to create a development certificate chain so you can test
+everything over https.
+
+Then you can run `docker-compose up` and you just have to wait for everything to
+get started.
+
+Summary:
+
+    cp .env-example .env
+    ./gen-dev-cert
+    docker-compose up
+
+That will get you started with OkCandidate!
+
 ## Database
 A local postgres database will need to be created to run okcandidate-platform.  PgAdmin can be used to do this.
 
