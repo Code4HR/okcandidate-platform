@@ -3,6 +3,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 
 import Card from './../atoms/Card';
+import SurveyGeneral from '../ecosystems/SurveyGeneral'
 
 class SurveyCreator extends Component {
 
@@ -17,6 +18,7 @@ class SurveyCreator extends Component {
           <Card>
             <pre>Survey Creator</pre>
           </Card>
+          <SurveyGeneral></SurveyGeneral>
         </div>
       </section>
     );
