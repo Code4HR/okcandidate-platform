@@ -2,9 +2,10 @@
 /* global describe, it */
 
 const assert = require('assert');
+const app = require('../../../index');
 
 describe('AuthController', () => {
     it('should exist', () => {
-        assert(global.app.api.controllers['AuthController']);
+        assert(app.api.controllers['AuthController']);
     });
 });
