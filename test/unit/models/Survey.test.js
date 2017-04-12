@@ -1,10 +1,11 @@
 'use strict';
 /* global describe, it */
 
-const assert = require('assert');
+const assert = require('assert')
+const app = require('../../../index')
 
 describe('Survey Model', () => {
-    it('should exist', () => {
-        assert(global.app.api.models['Survey']);
-    });
-});
+  it('should exist', () => {
+    assert(app.api.models['Survey'])
+  })
+})
