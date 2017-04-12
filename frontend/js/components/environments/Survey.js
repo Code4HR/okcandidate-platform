@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import SurveyCard from './../ecosystems/SurveyCard';
 
 import {
-  fetchCategoryList
+  fetchSurveyQuestions
 } from './../../redux/actions/survey-actions';
 
 class Survey extends Component {
@@ -14,21 +14,22 @@ class Survey extends Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.dispatch(fetchSurveyQuestions());
+    }
+
     render() {
         return (
             <article>
                 <pre>Survey Page</pre>
-                {
-                    this.state.survey.map((question, index) => {
-                        return <SurveyCard key={index}/>;
-                    })
-                }
             </article>
         );
     }
 }
 
-Survey.propTypes = {};
+Survey.propTypes = {
+    dispatch: PropTypes.func
+};
 
 module.exports = connect(
     state => ({

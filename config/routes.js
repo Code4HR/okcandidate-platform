@@ -68,6 +68,11 @@ module.exports = [
     },
     {
         method: ['GET'],
+        path: '/api/v1/questions',
+        handler: 'QuestionController.getAll'
+    },
+    {
+        method: ['GET'],
         path: '/api/v1/default/info',
         handler: 'DefaultController.info'
     }

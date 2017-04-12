@@ -1,39 +1,39 @@
 import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
 
-export const FETCH_CATEGORY_LIST_REQUEST = 'FETCH_CATEGORY_LIST_REQUEST';
-export const FETCH_CATEGORY_LIST_SUCCESS = 'FETCH_CATEGORY_LIST_SUCCESS';
-export const FETCH_CATEGORY_LIST_FAILURE = 'FETCH_CATEGORY_LIST_FAILURE';
+export const FETCH_SURVEY_QUESTIONS_REQUEST = 'FETCH_SURVEY_QUESTIONS_REQUEST';
+export const FETCH_SURVEY_QUESTIONS_SUCCESS = 'FETCH_SURVEY_QUESTIONS_SUCCESS';
+export const FETCH_SURVEY_QUESTIONS_FAILURE = 'FETCH_SURVEY_QUESTIONS_FAILURE';
 
-export function fetchCategoryListRequest() {
+export function fetchSurveyQuestionsRequest() {
     return {
-        type: FETCH_CATEGORY_LIST_REQUEST
+        type: FETCH_SURVEY_QUESTIONS_REQUEST
     };
 }
 
-export function fetchCategoryListSuccess(response) {
+export function fetchSurveyQuestionsSuccess(response) {
     return {
-        type: FETCH_CATEGORY_LIST_SUCCESS,
+        type: FETCH_SURVEY_QUESTIONS_SUCCESS,
         response
     };
 }
 
-export function fetchCategoryListFailure(response) {
+export function fetchSurveyQuestionsFailure(error) {
     return {
-        type: FETCH_CATEGORY_LIST_FAILURE,
-        response
+        type: FETCH_SURVEY_QUESTIONS_FAILURE,
+        error
     };
 }
 
-export function fetchCategoryList() {
+export function fetchSurveyQuestions() {
     return function(dispatch) {
-        dispatch(fetchCategoryListRequest());
-        return fetch('/api/v1/category')
-      .then(checkStatus)
-      .then(response => response.json())
-      .then(response => {
-          dispatch(fetchCategoryListSuccess(response));
-      })
-      .catch(error => dispatch(fetchCategoryListFailure(error)));
+        dispatch(fetchSurveyQuestionsRequest());
+        return fetch('/api/v1/question')
+        .then(checkStatus)
+        .then(response => response.json())
+        .then(response => {
+            dispatch(fetchSurveyQuestionsSuccess(response));
+        })
+        .catch(error => dispatch(fetchSurveyQuestionsFailure(error)));
     };
 }
