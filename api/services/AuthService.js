@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
-const Service = require('trails-service')
-const bcrypt = require('bcrypt')
+const Service = require('trails-service');
+const bcrypt = require('bcrypt');
 
 /**
  * @module LoginService
@@ -9,24 +9,24 @@ const bcrypt = require('bcrypt')
  */
 module.exports = class AuthService extends Service {
 
-  login(emailAddress, password) {
+    login(emailAddress, password) {
 
-    return this.app.orm.User.findOne({where: {emailAddress}})
+        return this.app.orm.User.findOne({where: {emailAddress}})
     .then(user => {
 
-      return new Promise((resolve, reject) => {
-        bcrypt.compare(password, user.password, (err, isValid) => {
-          if (err) reject(err)
-          if (isValid) {
-            resolve(user)
-          }
-          else {
-            resolve(false)
-          }
-        })
-      })
-    })
+        return new Promise((resolve, reject) => {
+            bcrypt.compare(password, user.password, (err, isValid) => {
+                if (err) reject(err);
+                if (isValid) {
+                    resolve(user);
+                }
+                else {
+                    resolve(false);
+                }
+            });
+        });
+    });
 
-  }
+    }
 
-}
+};

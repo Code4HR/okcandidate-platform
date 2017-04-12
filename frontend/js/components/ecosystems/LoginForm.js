@@ -1,9 +1,9 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
 class LoginForm extends Component {
 
-  render() {
-    return (
+    render() {
+        return (
       <form
         action="/login"
         method="POST">
@@ -34,13 +34,13 @@ class LoginForm extends Component {
         </fieldset>
 
       </form>
-    )
-  }
+    );
+    }
 
 }
 
 LoginForm.propTypes = {
-  error: PropTypes.string
-}
+    error: PropTypes.string
+};
 
-export default LoginForm
+export default LoginForm;

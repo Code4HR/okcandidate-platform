@@ -1,9 +1,9 @@
 'use strict'
 
 const surveyResultAnswer = [
-  { intensity: 3, AnswerId: 1 },
-  { intensity: 3, AnswerId: 2 },
-  { intensity: 3, AnswerId: 3 }
+  { intensity: 3, QuestionId: 1 },
+  { intensity: 3, QuestionId: 2 },
+  { intensity: 3, QuestionId: 3 }
 ]
 
 module.exports = {

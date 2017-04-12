@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const Model = require('trails-model')
+const Model = require('trails-model');
 
 /**
  * @module Office
@@ -8,27 +8,27 @@ const Model = require('trails-model')
  */
 module.exports = class Office extends Model {
 
-  static config (app, Sequelize) {
-    return {
-      options: {
-        classMethods: {
-          associate: (models) => {
-            models.Office.belongsToMany(models.Survey, {through: 'surveyoffice'})
-            models.Office.belongsToMany(models.Region, {through: 'officeregion'})
-            models.Office.hasMany(models.Candidate)
-          }
-        }
-      }
+    static config (app, Sequelize) {
+        return {
+            options: {
+                classMethods: {
+                    associate: (models) => {
+                        models.Office.belongsToMany(models.Survey, {through: 'surveyoffice'});
+                        models.Office.belongsToMany(models.Region, {through: 'officeregion'});
+                        models.Office.hasMany(models.Candidate);
+                    }
+                }
+            }
+        };
     }
-  }
 
-  static schema (app, Sequelize) {
-    return {
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false
-      }
+    static schema (app, Sequelize) {
+        return {
+            name: {
+                type: Sequelize.STRING,
+                allowNull: false
+            }
+        };
     }
-  }
 
-}
+};

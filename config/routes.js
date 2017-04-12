@@ -20,6 +20,16 @@ module.exports = [
     },
     {
         method: 'GET',
+        path: '/survey',
+        handler: 'ViewController.survey'
+    },
+    {
+        method: 'GET',
+        path: '/category',
+        handler: 'ViewController.category'
+    },
+    {
+        method: 'GET',
         path: '/admin/{view*}',
         handler: 'ViewController.admin'
     },
@@ -46,14 +56,39 @@ module.exports = [
   /**
    * Backend Routes
    */
-    {
-        method: 'POST',
-        path: '/api/v1/user',
-        handler: 'UserController.create'
-    },
-    {
-        method: ['GET'],
-        path: '/api/v1/default/info',
-        handler: 'DefaultController.info'
-    }
-];
+  {
+    method: 'POST',
+    path: '/api/v1/user',
+    handler: 'UserController.create'
+  },
+
+  {
+    method: 'POST',
+    path: '/api/v1/user/edit/{id*}',
+    handler: 'UserController.update'
+  },
+
+  {
+    method: 'POST',
+    path: '/api/v1/user/delete/{id*}',
+    handler: 'UserController.delete'
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/user',
+    handler: 'UserController.getAll'
+  },
+
+  {
+    method: 'GET',
+    path: '/api/v1/user/{id*}',
+    handler: 'UserController.getOne'
+  },
+
+  {
+    method: [ 'GET' ],
+    path: '/api/v1/default/info',
+    handler: 'DefaultController.info'
+  }
+
+]

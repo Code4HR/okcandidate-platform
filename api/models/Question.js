@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const Model = require('trails-model')
+const Model = require('trails-model');
 
 /**
  * @module Question
@@ -13,7 +13,12 @@ module.exports = class Question extends Model {
       options: {
         classMethods: {
           associate: (models) => {
-            models.Question.hasMany(models.Answer)
+            models.Category.hasOne(models.Question, {
+              onDelete: 'CASCADE',
+              foreignKey: {
+                allowNull: false
+              }
+            })
           }
         }
       }
@@ -21,7 +26,12 @@ module.exports = class Question extends Model {
   }
 
   static schema (app, Sequelize) {
-
+    return {
+      text: {
+        type: Sequelize.STRING,
+        allowNull: false
+      }
+    }
   }
 
-}
+};

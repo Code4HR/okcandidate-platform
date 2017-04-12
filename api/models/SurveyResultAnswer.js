@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const Model = require('trails-model')
+const Model = require('trails-model');
 
 /**
  * @module SurveyResultAnswer
@@ -19,7 +19,7 @@ module.exports = class SurveyResultAnswer extends Model {
                 allowNull: false
               }
             }),
-            models.Answer.hasOne(models.SurveyResultAnswer, {
+            models.Question.hasOne(models.SurveyResultAnswer, {
               onDelete: 'CASCADE',
               foreignKey: {
                 allowNull: false
@@ -31,13 +31,13 @@ module.exports = class SurveyResultAnswer extends Model {
     }
   }
 
-  static schema (app, Sequelize) {
-    return {
-      intensity: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      }
+    static schema (app, Sequelize) {
+        return {
+            intensity: {
+                type: Sequelize.INTEGER,
+                allowNull: false
+            }
+        };
     }
-  }
 
-}
+};

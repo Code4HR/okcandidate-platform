@@ -1,14 +1,20 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
 class Profile extends Component {
 
-  render() {
+    render() {
 
-    return (
+        return (
       <section className="app-profile">
         { (() => {
           if (this.props.login && this.props.login.name) {
-            return <span>Logged in as: {this.props.login.name}. <a href="/logout">Logout</a></span>
+            return (
+              <span>
+                Logged in as: {this.props.login.name}
+                <br />
+                <a href="/logout">Logout</a>
+              </span>
+            )
           }
           else {
             return <a href="/login">Login</a>
@@ -16,14 +22,14 @@ class Profile extends Component {
         })()
         }
       </section >
-    )
+    );
 
-  }
+    }
 
 }
 
 Profile.propTypes = {
-  login: PropTypes.object
-}
+    login: PropTypes.object
+};
 
-export default Profile
+export default Profile;
