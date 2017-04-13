@@ -21,14 +21,21 @@ class Survey extends Component {
     render() {
         return (
             <article>
-                <pre>Survey Page</pre>
+                {this.props.survey.questions.map((question, index) => {
+                    return (
+                        <SurveyCard
+                            text={question.text}
+                            key={index} />
+                    );
+                })}
             </article>
         );
     }
 }
 
 Survey.propTypes = {
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    survey: PropTypes.object
 };
 
 module.exports = connect(

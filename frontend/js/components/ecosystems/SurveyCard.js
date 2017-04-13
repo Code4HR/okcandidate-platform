@@ -9,15 +9,16 @@ class SurveyCard extends Component {
     render() {
         return (
             <Card>
-                <pre>SurveyCard</pre>
-                <Icon />
+                <Icon>check_circle</Icon>
+                <Icon>info_circle</Icon>
+                <pre>{this.props.text}</pre>
             </Card>
         );
     }
 }
 
 SurveyCard.propTypes = {
-
+    text: PropTypes.string
 };
 
 module.exports = SurveyCard;
