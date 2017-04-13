@@ -1,6 +1,7 @@
-'use strict'
+'use strict';
 
-const Controller = require('trails-controller')
+const Controller = require('trails-controller');
+const Boom = require('boom');
 
 /**
  * @module CategoryController
@@ -9,12 +10,12 @@ const Controller = require('trails-controller')
 module.exports = class CategoryController extends Controller {
 
     getAll (request, reply) {
-      this.app.services.CategoryService.getAll()
+        this.app.services.CategoryService.getAll()
       .then(response => {
-        reply(response)
+          reply(response);
       })
       .catch(error => {
-        reply(Boom.badRequest('Could not get the categories.'))
-      })
+          reply(Boom.badRequest('Could not get the categories.'));
+      });
     }
-}
+};

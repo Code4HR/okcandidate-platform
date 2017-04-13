@@ -6,7 +6,7 @@ const getLayout = require('./utils/getLayout');
 module.exports = class ViewController extends Controller {
 
     home(request, reply) {
-        getLayout(request, 'survey', function(error, html) {
+        getLayout(request, 'client', function(error, html) {
             if (error) {
                 // handle error.
             }
@@ -15,7 +15,7 @@ module.exports = class ViewController extends Controller {
     }
 
     survey(request, reply) {
-        getLayout(request, 'survey', function(error, html) {
+        getLayout(request, 'client', function(error, html) {
             if (error) {
                 // handle error
             }
@@ -24,7 +24,7 @@ module.exports = class ViewController extends Controller {
     }
 
     category(request, reply) {
-        getLayout(request, 'survey', function(error, html) {
+        getLayout(request, 'client', function(error, html) {
             if (error) {
                 // handle error
             }
@@ -46,7 +46,7 @@ module.exports = class ViewController extends Controller {
     }
 
     results(request, reply) {
-        getLayout(request, 'survey', function(error, html) {
+        getLayout(request, 'client', function(error, html) {
             if (error) {
                 // handle error.
             }

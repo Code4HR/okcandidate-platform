@@ -1,8 +1,23 @@
 'use strict';
 
 import React, { PropTypes, Component } from 'react';
+import { connect } from 'react-redux';
 
-class Survey extends Component { 
+import SurveyCard from './../ecosystems/SurveyCard';
+
+import {
+  fetchSurveyQuestions
+} from './../../redux/actions/survey-actions';
+
+class Survey extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        this.props.dispatch(fetchSurveyQuestions());
+    }
+
     render() {
         return (
             <article>
@@ -12,6 +27,14 @@ class Survey extends Component {
     }
 }
 
-Survey.propTypes = {};
+Survey.propTypes = {
+    dispatch: PropTypes.func
+};
 
-module.exports = Survey;
+module.exports = connect(
+    state => ({
+        ui: state.ui,
+        login: state.login,
+        survey: state.survey
+    })
+)(Survey);
