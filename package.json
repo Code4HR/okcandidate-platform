@@ -63,7 +63,6 @@
     "chai": "^3.5.0",
     "eslint": "^2.13.1",
     "eslint-config-trails": "^1.0.8",
-    "eslint-plugin-mocha": "^4.9.0",
     "eslint-plugin-react": "^6.6.0",
     "mocha": "^2.4",
     "supertest": "^1.2"
