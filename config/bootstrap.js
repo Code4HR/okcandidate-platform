@@ -8,8 +8,8 @@ const surveyResultAnswers = require('./dev-fixtures/survey-result-answer-fixture
 const offices = require('./dev-fixtures/office-fixtures')
 const candidates = require('./dev-fixtures/candidate-fixtures')
 const regions = require('./dev-fixtures/region-fixtures')
+const categories = require('./dev-fixtures/category-fixtures')
 const questions = require('./dev-fixtures/question-fixtures')
-const answers = require('./dev-fixtures/answer-fixtures')
 
 module.exports = (app) => {
 
@@ -20,8 +20,8 @@ module.exports = (app) => {
   .then(offices.load.bind(this, app))
   .then(candidates.load.bind(this, app))
   .then(regions.load.bind(this, app))
+  .then(categories.load.bind(this, app))
   .then(questions.load.bind(this, app))
-  .then(answers.load.bind(this, app))
   .then(surveyResultAnswers.load.bind(this, app))
   .then(() => {
     app.log.info('Fixtures loaded.')

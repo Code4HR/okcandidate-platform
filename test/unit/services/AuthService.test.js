@@ -2,9 +2,10 @@
 /* global describe, it */
 
 const assert = require('assert');
+const app = require('../../../index');
 
 describe('AuthService', () => {
     it('should exist', () => {
-        assert(global.app.api.services['AuthService']);
+        assert(app.api.services['AuthService']);
     });
 });

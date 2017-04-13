@@ -2,7 +2,15 @@ import React, { PropTypes, Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import Card from './../atoms/Card';
+import { Link } from 'react-router'
+
+import Icon from './../atoms/Icon'
+import Card from './../atoms/Card'
+import UserList from './../ecosystems/UserList'
+
+import {
+  fetchAllUsers
+} from './../../redux/actions/admin-actions'
 
 class UserManager extends Component {
 
@@ -10,14 +18,31 @@ class UserManager extends Component {
         super(props);
     }
 
-    render() {
-        return (
+  componentDidMount() {
+    this.props.dispatch(fetchAllUsers())
+  }
+
+  render() {
+
+    const users = this.props.admin.users
+
+    return (
       <section className="container">
-        <div className="twelve columns">
           <Card>
             <pre>User Manager</pre>
+            <Link to='admin/user/new'>
+              <Icon children='add' />
+            </Link>
+            {
+
+              users.isFetching ?
+                <div><Icon children='auto-renew' />Loading Users</div> :
+                <UserList
+                  users={users.results}
+                  dispatch={this.props.dispatch}
+                />
+            }
           </Card>
-        </div>
       </section>
     );
 
