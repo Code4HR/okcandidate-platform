@@ -25,7 +25,6 @@ export default function surveyReducer(state = initialState, action) {
             error: initialState.error
         });
     case FETCH_SURVEY_QUESTIONS_FAILURE:
-        debugger;
         return Object.assign({}, state, {
             isFetching: false,
             help: action.error

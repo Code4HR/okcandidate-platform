@@ -36,7 +36,8 @@ class Category extends Component {
     }
 }
 
-Category.PropTypes = {
+Category.propTypes = {
+    category: PropTypes.object,
     ui: PropTypes.object,
     login: PropTypes.object,
     survey: PropTypes.object,

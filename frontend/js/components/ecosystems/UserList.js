@@ -1,42 +1,41 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
-import UserListItem from './../organisms/UserListItem'
+import UserListItem from './../organisms/UserListItem';
 
 import {
   toggleUserManagerUserEditable
-} from './../../redux/actions/admin-actions'
+} from './../../redux/actions/admin-actions';
 
 class UserList extends Component {
 
-  constructor(props) {
-    super(props)
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  toggleEditable(id) {
-    console.log(id)
-    this.props.dispatch(toggleUserManagerUserEditable(id))
-  }
+    toggleEditable(id) {
+        this.props.dispatch(toggleUserManagerUserEditable(id));
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div>
-        <div className='row'>
-          <div className='two columns'>
+        <div className="row">
+          <div className="two columns">
             <strong>Edit</strong>
           </div>
-          <div className='four columns'>
+          <div className="four columns">
             <strong>Display Name</strong>
           </div>
-          <div className='four columns'>
+          <div className="four columns">
             <strong>Email</strong>
           </div>
-          <div className='two columns'>
+          <div className="two columns">
             <strong>Delete</strong>
           </div>
         </div>
         {
           this.props.users.map((userItem, index) => {
-            return (
+              return (
               <UserListItem
                 key={index}
                 id={userItem.id}
@@ -44,17 +43,17 @@ class UserList extends Component {
                 emailAddress={userItem.emailAddress}
                 toggleEditable={this.toggleEditable.bind(this)}
               />
-            )
+            );
           })
         }
       </div>
-    )
-  }
+    );
+    }
 }
 
 UserList.propTypes = {
-  users: PropTypes.array,
-  dispatch: PropTypes.func
-}
+    users: PropTypes.array,
+    dispatch: PropTypes.func
+};
 
-export default UserList
+export default UserList;

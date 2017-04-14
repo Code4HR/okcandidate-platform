@@ -1,40 +1,40 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
-import Icon from './../atoms/Icon'
+import Icon from './../atoms/Icon';
 
 class UserListItem extends Component {
 
-  render() {
-    return (
-      <div className='row'>
-        <div className='two columns'>
+    render() {
+        return (
+      <div className="row">
+        <div className="two columns">
             <Link to={'/admin/user/edit/' + this.props.id}>
-              <Icon children='edit' />
+              <Icon children="edit" />
             </Link>
         </div>
-        <div className='four columns'>
+        <div className="four columns">
           {this.props.name}
         </div>
-        <div className='four columns'>
+        <div className="four columns">
           {this.props.emailAddress}
         </div>
-        <div className='two columns'>
+        <div className="two columns">
           <Link to={'/admin/user/delete/' + this.props.id}>
-            <Icon children='delete' />
+            <Icon children="delete" />
           </Link>
         </div>
       </div>
-    )
-  }
+    );
+    }
 
 }
 
 UserListItem.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  emailAddress: PropTypes.string
-}
+    id: PropTypes.number,
+    name: PropTypes.string,
+    emailAddress: PropTypes.string
+};
 
-export default UserListItem
+export default UserListItem;
