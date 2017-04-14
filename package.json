@@ -25,6 +25,7 @@
     "bcrypt": "^0.8.7",
     "es6-promise": "^4.0.5",
     "graphql": "^0.7.2",
+    "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-sass": "^2.3.2",
     "gulp-watch": "^4.3.10",
