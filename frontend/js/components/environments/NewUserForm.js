@@ -1,11 +1,11 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
-import Card from './../atoms/Card'
+import Card from './../atoms/Card';
 
 class NewUserForm extends Component {
 
-  render() {
-    return (
+    render() {
+        return (
       <section className="container">
         <Card>
           <pre>New User</pre>
@@ -45,13 +45,13 @@ class NewUserForm extends Component {
           </form>
         </Card>
       </section>
-    )
-  }
+    );
+    }
 
 }
 
 NewUserForm.propTypes = {
-  error: PropTypes.string
-}
+    error: PropTypes.string
+};
 
-export default NewUserForm
+export default NewUserForm;

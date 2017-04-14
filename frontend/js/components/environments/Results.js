@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import Match from './../ecosystems/Match';
 
 class Results extends Component {

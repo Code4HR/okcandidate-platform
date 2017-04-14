@@ -1,50 +1,49 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import Card from './../atoms/Card'
+import Card from './../atoms/Card';
 
 import {
   fetchUser
-} from './../../redux/actions/admin-actions'
+} from './../../redux/actions/admin-actions';
 
 class EditUserForm extends Component {
 
-  constructor(props) {
-    super(props)
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      name: '',
-      emailAddress: ''
+        this.state = {
+            name: '',
+            emailAddress: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    this.handleChange = this.handleChange.bind(this)
-  }
+    handleChange(event) {
+        const target = event.target;
+        const name = target.name;
+        const value = target.value;
 
-  handleChange(event) {
-    const target = event.target
-    const name = target.name
-    const value = target.value
+        this.setState({ [name]: value });
+    }
 
-    this.setState({ [name]: value })
-  }
+    componentDidMount() {
+        this.props.dispatch(fetchUser(this.props.params.id));
+    }
 
-  componentDidMount() {
-    this.props.dispatch(fetchUser(this.props.params.id))
-  }
+    componentWillReceiveProps(newProps) {
+        this.setState(newProps.admin.editUser);
+    }
 
-  componentWillReceiveProps(newProps) {
-    console.log(newProps)
-    this.setState(newProps.admin.editUser)
-  }
-
-  render() {
-    return (
+    render() {
+        return (
       <section className="container">
         <Card>
           <pre>Edit User</pre>
           <form
-            action={"/api/v1/user/edit/" + this.props.params.id}
+            action={'/api/v1/user/edit/' + this.props.params.id}
             method="POST">
 
             {
@@ -81,24 +80,25 @@ class EditUserForm extends Component {
           </form>
         </Card>
       </section>
-    )
-  }
+    );
+    }
 
 }
 
 EditUserForm.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  emailAddress: PropTypes.string,
-  error: PropTypes.string,
-  admin: PropTypes.object,
-  user: PropTypes.object,
-  ui: PropTypes.object,
-  dispatch: PropTypes.func
-}
+    id: PropTypes.number,
+    name: PropTypes.string,
+    emailAddress: PropTypes.string,
+    error: PropTypes.string,
+    admin: PropTypes.object,
+    user: PropTypes.object,
+    ui: PropTypes.object,
+    params: PropTypes.object,
+    dispatch: PropTypes.func
+};
 
 export default connect(
   state => ({
-    admin: state.admin
+      admin: state.admin
   })
-)(EditUserForm)
+)(EditUserForm);

@@ -1,39 +1,39 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component } from 'react';
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import Card from './../atoms/Card'
+import Card from './../atoms/Card';
 
 import {
   fetchUser
-} from './../../redux/actions/admin-actions'
+} from './../../redux/actions/admin-actions';
 
 class DeleteUserForm extends Component {
 
-  constructor(props) {
-    super(props)
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  componentDidMount() {
-    this.props.dispatch(fetchUser(this.props.params.id))
-  }
+    componentDidMount() {
+        this.props.dispatch(fetchUser(this.props.params.id));
+    }
 
-  render() {
+    render() {
 
-    const deleteId = this.props.admin.users.currentlyEditing
+        const deleteId = this.props.admin.users.currentlyEditing;
 
-    const user = deleteId ?
+        const user = deleteId ?
     this.props.admin.users.results.find(user => {
-      return user.id === deleteId
+        return user.id === deleteId;
     }) :
-    {}
+    {};
 
-    return (
+        return (
       <section className="container">
         <Card>
           <pre>Delete User</pre>
           <form
-            action={"/api/v1/user/delete/" + user.id}
+            action={'/api/v1/user/delete/' + user.id}
             method="POST">
 
             {
@@ -43,7 +43,7 @@ class DeleteUserForm extends Component {
 
             <fieldset>
 
-              <div class='confirm-dialog'>Are you sure you want to delete {user.name}?</div>
+              <div className="confirm-dialog">Are you sure you want to delete {user.name}?</div>
 
               <button type="submit">Delete</button>
             </fieldset>
@@ -51,24 +51,25 @@ class DeleteUserForm extends Component {
           </form>
         </Card>
       </section>
-    )
-  }
+    );
+    }
 
 }
 
 DeleteUserForm.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  emailAddress: PropTypes.string,
-  error: PropTypes.string,
-  admin: PropTypes.object,
-  user: PropTypes.object,
-  ui: PropTypes.object,
-  dispatch: PropTypes.func
-}
+    id: PropTypes.number,
+    name: PropTypes.string,
+    emailAddress: PropTypes.string,
+    error: PropTypes.string,
+    admin: PropTypes.object,
+    user: PropTypes.object,
+    ui: PropTypes.object,
+    params: PropTypes.object,
+    dispatch: PropTypes.func
+};
 
 export default connect(
   state => ({
-    admin: state.admin
+      admin: state.admin
   })
-)(DeleteUserForm)
+)(DeleteUserForm);
