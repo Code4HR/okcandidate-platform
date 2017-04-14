@@ -8,28 +8,28 @@ const Model = require('trails-model');
  */
 module.exports = class SurveyResultAnswer extends Model {
 
-  static config (app, Sequelize) {
-    return {
-      options: {
-        classMethods: {
-          associate: (models) => {
-            models.SurveyResult.hasMany(models.SurveyResultAnswer, {
-              onDelete: 'CASCADE',
-              foreignKey: {
-                allowNull: false
-              }
-            }),
+    static config (app, Sequelize) {
+        return {
+            options: {
+                classMethods: {
+                    associate: (models) => {
+                        models.SurveyResult.hasMany(models.SurveyResultAnswer, {
+                            onDelete: 'CASCADE',
+                            foreignKey: {
+                                allowNull: false
+                            }
+                        }),
             models.Question.hasOne(models.SurveyResultAnswer, {
-              onDelete: 'CASCADE',
-              foreignKey: {
-                allowNull: false
-              }
-            })
-          }
-        }
-      }
+                onDelete: 'CASCADE',
+                foreignKey: {
+                    allowNull: false
+                }
+            });
+                    }
+                }
+            }
+        };
     }
-  }
 
     static schema (app, Sequelize) {
         return {

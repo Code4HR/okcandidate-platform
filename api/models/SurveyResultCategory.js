@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const Model = require('trails-model')
+const Model = require('trails-model');
 
 /**
  * @module SurveyResultCategory
@@ -8,35 +8,35 @@ const Model = require('trails-model')
  */
 module.exports = class SurveyResultCategory extends Model {
 
-  static config (app, Sequelize) {
-    return {
-      options: {
-        classMethods: {
-          associate: (models) => {
-            models.SurveyResult.hasMany(models.SurveyResultCategory, {
-              onDelete: 'CASCADE',
-              foreignKey: {
-                allowNull: false
-              }
-            }),
+    static config (app, Sequelize) {
+        return {
+            options: {
+                classMethods: {
+                    associate: (models) => {
+                        models.SurveyResult.hasMany(models.SurveyResultCategory, {
+                            onDelete: 'CASCADE',
+                            foreignKey: {
+                                allowNull: false
+                            }
+                        }),
             models.Category.hasOne(models.SurveyResultCategory, {
-              onDelete: 'CASCADE',
-              foreignKey: {
-                allowNull: false
-              }
-            })
-          }
-        }
-      }
+                onDelete: 'CASCADE',
+                foreignKey: {
+                    allowNull: false
+                }
+            });
+                    }
+                }
+            }
+        };
     }
-  }
 
-  static schema (app, Sequelize) {
-      return {
-          rank: {
-              type: Sequelize.INTEGER,
-              allowNull: false
-          }
-      };
-  }
-}
+    static schema (app, Sequelize) {
+        return {
+            rank: {
+                type: Sequelize.INTEGER,
+                allowNull: false
+            }
+        };
+    }
+};

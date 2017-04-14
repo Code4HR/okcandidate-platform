@@ -25,50 +25,50 @@ module.exports = class UserService extends Service {
 
     }
 
-  update (id, userData) {
+    update (id, userData) {
 
-    return new Promise((resolve, reject) => {
-      if (userData.password == '') {
-        resolve(null)
-      }
-      else {
-        bcrypt.hash(userData.password, 10, (err, hash) => {
-          if (err) reject(err)
-          resolve(hash)
+        return new Promise((resolve, reject) => {
+            if (userData.password == '') {
+                resolve(null);
+            }
+            else {
+                bcrypt.hash(userData.password, 10, (err, hash) => {
+                    if (err) reject(err);
+                    resolve(hash);
+                });
+            }
         })
-      }
-    })
     .then(hash => {
-      if (hash == null) {
-        delete userData.password
+        if (hash == null) {
+            delete userData.password;
 
-        return this.app.orm.User.update(
+            return this.app.orm.User.update(
           Object.assign({}, userData),
           {where: {id: parseInt(id, 10)}}
-        )
-      }
-      else {
-        return this.app.orm.User.update(
+        );
+        }
+        else {
+            return this.app.orm.User.update(
           Object.assign({}, userData, {password: hash}),
           {where: {id: parseInt(id, 10)}}
-        )
-      }
-    })
+        );
+        }
+    });
 
-  }
+    }
 
-  delete(id) {
-    return this.app.orm.User.destroy({where: {id: id}})
-  }
-  
-  getOne(id) {
-    return this.app.orm.User.find({
-      attributes: ['id', 'name', 'emailAddress'],
-      where: {id: id}})
-  }
+    delete(id) {
+        return this.app.orm.User.destroy({where: {id: id}});
+    }
 
-  getAll() {
-    return this.app.orm.User.findAll({attributes: ['id', 'name', 'emailAddress']})
-  }
+    getOne(id) {
+        return this.app.orm.User.find({
+            attributes: ['id', 'name', 'emailAddress'],
+            where: {id: id}});
+    }
 
-}
+    getAll() {
+        return this.app.orm.User.findAll({attributes: ['id', 'name', 'emailAddress']});
+    }
+
+};
