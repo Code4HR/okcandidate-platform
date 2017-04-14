@@ -4,28 +4,28 @@ import CategoryListItem from './../organisms/CategoryListItem';
 
 class CategoryList extends Component {
 
-  render() {
+    render() {
 
-    return (
-      <div className='category-list container'>
+        return (
+      <div className="category-list container">
         {
           this.props.categories.map((categoryItem, index) => {
-            return <CategoryListItem
+              return (<CategoryListItem
               key={index}
               name={categoryItem.name}
               icon={categoryItem.icon}
-              rank={categoryItem.rank} />
+              rank={categoryItem.rank} />);
           })
         }
       </div>
-    )
+    );
 
-  }
+    }
 
 }
 
-CategoryList.PropTypes = {
-    categories: PropTypes.Array
+CategoryList.propTypes = {
+    categories: PropTypes.array
 };
 
 export default CategoryList;
