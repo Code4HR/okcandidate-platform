@@ -18,13 +18,13 @@ module.exports = class SurveyResultAnswer extends Model {
                             foreignKey: {
                                 allowNull: false
                             }
-                        }),
-            models.Question.hasOne(models.SurveyResultAnswer, {
-                onDelete: 'CASCADE',
-                foreignKey: {
-                    allowNull: false
-                }
-            });
+                        });
+                        models.Question.hasOne(models.SurveyResultAnswer, {
+                            onDelete: 'CASCADE',
+                            foreignKey: {
+                                allowNull: false
+                            }
+                        });
                     }
                 }
             }
