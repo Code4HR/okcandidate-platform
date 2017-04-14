@@ -23,7 +23,7 @@ class Layout extends Component {
             }}></script>
 
           {
-            this.props.bundle === 'survey' &&
+            this.props.bundle === 'client' &&
             <script src="/dist/client-bundle.js"></script>
           }
 
