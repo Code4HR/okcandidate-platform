@@ -19,7 +19,7 @@ const renderToString = require('react-dom/server').renderToString;
 const Layout = require('./../../../frontend/js/components/Layout').default;
 const routes = require('./../../../frontend/js/routes');
 const admin = require('./../../../frontend/js/redux/admin-reducer');
-const survey = require('./../../../frontend/js/redux/survey-reducer');
+const client = require('./../../../frontend/js/redux/client-reducer');
 const loginActions = require('./../../../frontend/js/redux/actions/login-actions');
 
 /**
@@ -61,10 +61,10 @@ function whichStore(name) {
     switch (name) {
     case 'admin':
         return admin;
-    case 'survey':
-        return survey;
+    case 'client':
+        return client;
     default:
-        return;
+        return client;
     }
 }
 

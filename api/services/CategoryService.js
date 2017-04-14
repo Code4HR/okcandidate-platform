@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const Service = require('trails-service')
+const Service = require('trails-service');
 
 /**
  * @module CategoryService
@@ -8,8 +8,8 @@ const Service = require('trails-service')
  */
 module.exports = class CategoryService extends Service {
 
-  getAll() {
-    return this.app.orm.Category.findAll()
-  }
+    getAll() {
+        return this.app.orm.Category.findAll();
+    }
 
-}
+};
