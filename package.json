@@ -64,13 +64,16 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "cucumber": "^2.0.0-rc.9",
     "eslint": "^2.13.1",
     "eslint-config-trails": "^1.0.8",
     "eslint-plugin-react": "^6.6.0",
     "mocha": "^2.4",
-    "supertest": "^1.2"
+    "supertest": "^1.2",
+    "zombie": "^5.0.5"
   },
   "scripts": {
+    "acceptance": "cucumberjs",
     "test": "eslint api frontend test/unit test/integration && mocha --recursive"
   },
   "engines": {
