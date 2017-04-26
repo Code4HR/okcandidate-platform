@@ -20,15 +20,17 @@ class Survey extends Component {
 
     render() {
         return (
-            <article>
-                {this.props.survey.questions.map((question, index) => {
-                    return (
-                        <SurveyCard
-                            text={question.text}
-                            key={index} />
-                    );
-                })}
-            </article>
+            <div className="twelve columns">
+                <article className="survey">
+                    {this.props.survey.questions.slice(0, 3).map((question, index) => {
+                        return (
+                            <SurveyCard
+                                text={question.text}
+                                key={index} />
+                        );
+                    })}
+                </article>
+            </div>
         );
     }
 }

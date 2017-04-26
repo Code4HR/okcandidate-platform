@@ -8,10 +8,12 @@ import Card from './../atoms/Card';
 class SurveyCard extends Component {
     render() {
         return (
-            <Card>
+            <Card className="survey-card">
                 <Icon>check_circle</Icon>
-                <Icon>info_circle</Icon>
-                <pre>{this.props.text}</pre>
+                <p>{this.props.text}</p>
+                <pre>react-rating component here</pre>
+                <button>Skip</button>
+                <button>Next</button>
             </Card>
         );
     }
