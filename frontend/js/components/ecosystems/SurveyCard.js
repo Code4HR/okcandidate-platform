@@ -4,6 +4,7 @@ import React, { PropTypes, Component } from 'react';
 
 import Icon from './../atoms/Icon';
 import Card from './../atoms/Card';
+const Rating = require('react-rating');
 
 class SurveyCard extends Component {
     render() {
@@ -11,9 +12,12 @@ class SurveyCard extends Component {
             <Card className="survey-card">
                 <Icon>check_circle</Icon>
                 <p>{this.props.text}</p>
-                <pre>react-rating component here</pre>
-                <button>Skip</button>
-                <button>Next</button>
+                <Rating
+                  empty={<Icon className="hearts">favorite_border</Icon>}
+                  full={<Icon className="hearts">favorite</Icon>}
+                />
+                <div><button>Skip</button>
+                <button>Next</button></div>
             </Card>
         );
     }
