@@ -9,7 +9,7 @@ class Frame extends Component {
 
     render() {
         return (
-      <section className="potato">
+      <section className="frame">
         <Header dispatch={this.props.dispatch} />
 
         <Sidebar
@@ -19,7 +19,9 @@ class Frame extends Component {
           width={300}
           isOpen={this.props.ui.sidebarVisibility} />
 
-        { this.props.children }
+        <div className="container">
+          { this.props.children }
+        </div>
 
       </section>
     );

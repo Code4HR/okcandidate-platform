@@ -12,13 +12,11 @@ class Home extends Component {
     render() {
 
         return (
-      <section className="container">
-        <div className="twelve columns">
-          <Card>
-            <pre>OKCandidate Home Screen</pre>
-          </Card>
-        </div>
-      </section>
+          <div className="twelve columns">
+            <Card>
+              <pre>OKCandidate Home Screen</pre>
+            </Card>
+          </div>
     );
 
     }
