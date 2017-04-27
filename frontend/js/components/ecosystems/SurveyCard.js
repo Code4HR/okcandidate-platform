@@ -14,10 +14,9 @@ class SurveyCard extends Component {
 
     onHeartClick(heartNumber) {
       this.setState({
-        agreement:heartNumber
+        agreement: heartNumber
       });
     }
-
 
     render() {
         return (
