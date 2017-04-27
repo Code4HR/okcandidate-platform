@@ -16,8 +16,10 @@ class SurveyCard extends Component {
                   empty={<Icon className="hearts">favorite_border</Icon>}
                   full={<Icon className="hearts">favorite</Icon>}
                 />
-                <div><button>Skip</button>
-                <button>Next</button></div>
+                <div>
+                  <button>Skip</button>
+                  <button>Next</button>
+                </div>
             </Card>
         );
     }

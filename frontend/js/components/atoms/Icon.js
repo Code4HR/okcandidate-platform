@@ -2,10 +2,10 @@ import React, { PropTypes, Component } from 'react';
 
 class Icon extends Component {
 
-    render() {
+    render () {
         return (
-      <i className={`icon material-icons ${this.props.className}`}>{this.props.children}</i>
-    );
+            <i className={`icon material-icons ${this.props.className}`}>{this.props.children}</i>
+        );
     }
 
 }
