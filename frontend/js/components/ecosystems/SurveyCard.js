@@ -7,12 +7,24 @@ import Card from './../atoms/Card';
 const Rating = require('react-rating');
 
 class SurveyCard extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {};
+    }
+
+    onHeartClick(heartNumber) {
+      this.setState({
+        agreement: heartNumber
+      });
+    }
+
     render() {
         return (
             <Card className="survey-card">
                 <Icon>check_circle</Icon>
                 <p>{this.props.text}</p>
                 <Rating
+                  onChange={this.onHeartClick.bind(this)}
                   empty={<Icon className="hearts">favorite_border</Icon>}
                   full={<Icon className="hearts">favorite</Icon>}
                 />
