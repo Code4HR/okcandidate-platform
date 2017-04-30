@@ -12,11 +12,11 @@ const Rating = require('react-rating');
 
 class SurveyCard extends Component {
     constructor(props) {
-      super(props);
+        super(props);
     }
 
     onHeartClick(agreement) {
-      this.props.dispatch(setPromptAgreement(agreement, this.props.id));
+        this.props.dispatch(setPromptAgreement(agreement, this.props.id));
     }
 
     render() {
@@ -42,7 +42,8 @@ class SurveyCard extends Component {
 SurveyCard.propTypes = {
     text: PropTypes.string,
     dispatch: PropTypes.func,
-    id: PropTypes.number
+    id: PropTypes.number,
+    agreement: PropTypes.number
 };
 
 module.exports = SurveyCard;

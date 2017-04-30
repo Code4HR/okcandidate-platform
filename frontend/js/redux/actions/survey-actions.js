@@ -44,5 +44,5 @@ export function setPromptAgreement(agreement, questionId) {
         type: SET_PROMPT_AGREEMENT,
         agreement,
         questionId
-    }
+    };
 }
