@@ -34,11 +34,11 @@ export default function surveyReducer(state = initialState, action) {
         return Object.assign({}, state, {
             questions: state.questions.map(question => {
                 if (question.id === action.questionId) {
-                    question.agreement = action.agreement
+                    question.agreement = action.agreement;
                 }
                 return question;
             })
-        })        
+        });
     default:
         return state;
     }
