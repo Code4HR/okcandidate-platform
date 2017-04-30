@@ -37,3 +37,12 @@ export function fetchSurveyQuestions() {
         .catch(error => dispatch(fetchSurveyQuestionsFailure(error)));
     };
 }
+
+export const SET_PROMPT_AGREEMENT = 'SET_PROMPT_AGREEMENT';
+export function setPromptAgreement(agreement, questionId) {
+    return {
+        type: SET_PROMPT_AGREEMENT,
+        agreement,
+        questionId
+    }
+}

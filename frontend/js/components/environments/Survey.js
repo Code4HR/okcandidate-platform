@@ -25,7 +25,10 @@ class Survey extends Component {
                     {this.props.survey.questions.slice(0, 3).map((question, index) => {
                         return (
                             <SurveyCard
+                                dispatch={this.props.dispatch}
                                 text={question.text}
+                                id={question.id}
+                                agreement={question.agreement}
                                 key={index} />
                         );
                     })}
