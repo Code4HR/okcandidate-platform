@@ -1,7 +1,8 @@
 import {
     FETCH_SURVEY_QUESTIONS_REQUEST,
     FETCH_SURVEY_QUESTIONS_SUCCESS,
-    FETCH_SURVEY_QUESTIONS_FAILURE
+    FETCH_SURVEY_QUESTIONS_FAILURE,
+    SET_PROMPT_AGREEMENT
 } from './../actions/survey-actions';
 
 const initialState = {
@@ -29,6 +30,15 @@ export default function surveyReducer(state = initialState, action) {
             isFetching: false,
             help: action.error
         });
+    case SET_PROMPT_AGREEMENT:
+        return Object.assign({}, state, {
+            questions: state.questions.map(question => {
+                if (question.id === action.questionId) {
+                    question.agreement = action.agreement
+                }
+                return question;
+            })
+        })        
     default:
         return state;
     }

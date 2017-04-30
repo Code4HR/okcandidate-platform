@@ -4,18 +4,19 @@ import React, { PropTypes, Component } from 'react';
 
 import Icon from './../atoms/Icon';
 import Card from './../atoms/Card';
+import {
+  setPromptAgreement
+} from './../../redux/actions/survey-actions';
+
 const Rating = require('react-rating');
 
 class SurveyCard extends Component {
     constructor(props) {
       super(props);
-      this.state = {};
     }
 
-    onHeartClick(heartNumber) {
-      this.setState({
-        agreement: heartNumber
-      });
+    onHeartClick(agreement) {
+      this.props.dispatch(setPromptAgreement(agreement, this.props.id));
     }
 
     render() {
@@ -24,6 +25,7 @@ class SurveyCard extends Component {
                 <Icon>check_circle</Icon>
                 <p>{this.props.text}</p>
                 <Rating
+                  initialRate={this.props.agreement}
                   onChange={this.onHeartClick.bind(this)}
                   empty={<Icon className="hearts">favorite_border</Icon>}
                   full={<Icon className="hearts">favorite</Icon>}
@@ -38,7 +40,9 @@ class SurveyCard extends Component {
 }
 
 SurveyCard.propTypes = {
-    text: PropTypes.string
+    text: PropTypes.string,
+    dispatch: PropTypes.func,
+    id: PropTypes.number
 };
 
 module.exports = SurveyCard;
