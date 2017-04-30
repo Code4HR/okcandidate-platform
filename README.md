@@ -1,7 +1,29 @@
 # okcandidate-platform
 A comprehensive refactor of [OKCandidate](https://github.com/Code4HR/okcandidate/) based on feedback from users and our partners at the Virginian-Pilot.
 
+| Develop branch status |
+:-----------------------:
+[ ![Codeship Status for Code4HR/okcandidate-platform](https://app.codeship.com/projects/20e942f0-0356-0135-4909-4af64aa74b25/status?branch=develop)](https://app.codeship.com/projects/213312) |
+
 # Setup
+
+## Docker
+
+A few setup steps need to happen before you can run everything in Docker.
+First, copy `.env-example` to `.env` to configure the application, then run
+`./gen-dev-cert` to create a development certificate chain so you can test
+everything over https.
+
+Then you can run `docker-compose up` and you just have to wait for everything to
+get started.
+
+Summary:
+
+    cp .env-example .env
+    ./gen-dev-cert
+    docker-compose up
+
+That will get you started with OkCandidate!
 
 ## Database
 A local postgres database will need to be created to run okcandidate-platform.  PgAdmin can be used to do this.

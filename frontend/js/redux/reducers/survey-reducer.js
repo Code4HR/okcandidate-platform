@@ -1,43 +1,45 @@
 import {
-  FETCH_CATEGORY_LIST_REQUEST,
-  FETCH_CATEGORY_LIST_SUCCESS,
-  FETCH_CATEGORY_LIST_FAILURE
-} from '../actions/survey-actions'
+    FETCH_SURVEY_QUESTIONS_REQUEST,
+    FETCH_SURVEY_QUESTIONS_SUCCESS,
+    FETCH_SURVEY_QUESTIONS_FAILURE,
+    SET_PROMPT_AGREEMENT
+} from './../actions/survey-actions';
 
 const initialState = {
-  isFetching: false,
-  categories: [],
-  help: ""
+    isFetching: false,
+    questions: [],
+    error: ''
 };
 
-export default (state = initialState, action) => {
+export default function surveyReducer(state = initialState, action) {
+    switch (action.type) {
 
-  switch (action.type) {
-
-  case FETCH_CATEGORY_LIST_REQUEST:
-    return Object.assign({}, state, {
-      isFetching: true
-    })
-
-  case FETCH_CATEGORY_LIST_SUCCESS:
-    return Object.assign({}, state, {
-      isFetching: false,
-      categories: action.response.map((c, i) => {
-        return Object.assign({}, c, {
-          rank: i+1
-        })
-      })
-    })
-
-  case FETCH_CATEGORY_LIST_FAILURE:
-    return Object.assign({}, state, {
-      isFetching: false,
-      help: action.response
-    })
-
-  default:
-      return state;
-
-  }
-
-};
+    case FETCH_SURVEY_QUESTIONS_REQUEST:
+        return Object.assign({}, state, {
+            isFetching: true,
+            error: initialState.error
+        });
+    case FETCH_SURVEY_QUESTIONS_SUCCESS:
+        return Object.assign({}, state, {
+            isFetching: false,
+            questions: action.response,
+            error: initialState.error
+        });
+    case FETCH_SURVEY_QUESTIONS_FAILURE:
+        return Object.assign({}, state, {
+            isFetching: false,
+            help: action.error
+        });
+    case SET_PROMPT_AGREEMENT:
+        return Object.assign({}, state, {
+            questions: state.questions.map(question => {
+                if (question.id === action.questionId) {
+                    question.agreement = action.agreement;
+                }
+                return question;
+            })
+        });
+    default:
+        return state;
+    }
+}

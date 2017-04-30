@@ -15,7 +15,7 @@ module.exports = class UserController extends Controller{
 
         this.app.services.UserService.create(userData)
     .then(response => {
-      reply.redirect('/admin/user')
+        reply.redirect('/admin/user');
     })
     .catch(error => {
         reply(Boom.badRequest('There was an error creating the user.'));
@@ -23,52 +23,52 @@ module.exports = class UserController extends Controller{
 
     }
 
-  update (request, reply) {
+    update (request, reply) {
 
-    const userData = request.payload
-    const id = request.params.id
+        const userData = request.payload;
+        const id = request.params.id;
 
-    this.app.services.UserService.update(id, userData)
+        this.app.services.UserService.update(id, userData)
     .then(response => {
-      reply.redirect('/admin/user')
+        reply.redirect('/admin/user');
     })
     .catch(error => {
-      reply(Boom.badRequest('There was an error updating the user.'))
-    })
+        reply(Boom.badRequest('There was an error updating the user.'));
+    });
 
-  }
+    }
 
-  delete (request, reply) {
+    delete (request, reply) {
 
-    const id = request.params.id
+        const id = request.params.id;
 
-    this.app.services.UserService.delete(id)
+        this.app.services.UserService.delete(id)
     .then(response => {
-      reply.redirect('/admin/user')
+        reply.redirect('/admin/user');
     })
     .catch(error => {
-      reply(Boom.badRequest('There was an error deleting the user.'))
-    })
-  }
+        reply(Boom.badRequest('There was an error deleting the user.'));
+    });
+    }
 
-  getOne (request, reply) {
-    this.app.services.UserService.getOne(request.params.id)
+    getOne (request, reply) {
+        this.app.services.UserService.getOne(request.params.id)
     .then(response => {
-      reply(response)
+        reply(response);
     })
     .catch(error => {
-      reply(Boom.badRequest('Could not get the users.'))
-    })
-  }
+        reply(Boom.badRequest('Could not get the users.'));
+    });
+    }
 
-  getAll (request, reply) {
-    this.app.services.UserService.getAll()
+    getAll (request, reply) {
+        this.app.services.UserService.getAll()
     .then(response => {
-      reply(response)
+        reply(response);
     })
     .catch(error => {
-      reply(Boom.badRequest('Could not get the users.'))
-    })
-  }
+        reply(Boom.badRequest('Could not get the users.'));
+    });
+    }
 
-}
+};

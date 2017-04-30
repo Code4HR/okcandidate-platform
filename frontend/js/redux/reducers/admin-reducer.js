@@ -4,68 +4,67 @@ import {
   FETCH_ALL_USERS_FAILURE,
   FETCH_USER_REQUEST,
   FETCH_USER_SUCCESS,
-  FETCH_USER_FAILURE,
-  TOGGLE_USER_MANAGER_USER_EDITABLE
-} from '../actions/admin-actions'
+  FETCH_USER_FAILURE
+} from '../actions/admin-actions';
 
 const initialState = {
-  isFetching: false,
-  users: {
     isFetching: false,
-    currentlyEditing: null,
-    results: []
-  },
-  editUser: {}
-}
+    users: {
+        isFetching: false,
+        currentlyEditing: null,
+        results: []
+    },
+    editUser: {}
+};
 
 export default (state = initialState, action) => {
 
     switch (action.type) {
     case FETCH_ALL_USERS_REQUEST:
-      return Object.assign({}, state, {
-        users: Object.assign({}, state.users, {
-          isFetching: true
-        })
-      })
+        return Object.assign({}, state, {
+            users: Object.assign({}, state.users, {
+                isFetching: true
+            })
+        });
 
     case FETCH_ALL_USERS_SUCCESS:
-      return Object.assign({}, state, {
-        users: Object.assign({}, state.users, {
-          isFetching: false,
-          results: action.response
-        })
-      })
+        return Object.assign({}, state, {
+            users: Object.assign({}, state.users, {
+                isFetching: false,
+                results: action.response
+            })
+        });
 
     case FETCH_ALL_USERS_FAILURE:
-      return Object.assign({}, state, {
-        users: Object.assign({}, state.users, {
-          isFetching: false,
-          help: 'There was an error fetching users.'
-        })
-      })
+        return Object.assign({}, state, {
+            users: Object.assign({}, state.users, {
+                isFetching: false,
+                help: 'There was an error fetching users.'
+            })
+        });
 
     case FETCH_USER_REQUEST:
-      return Object.assign({}, state, {
-        users: Object.assign({}, state.users, {
-          isFetching: true
-        })
-      })
+        return Object.assign({}, state, {
+            users: Object.assign({}, state.users, {
+                isFetching: true
+            })
+        });
 
     case FETCH_USER_SUCCESS:
-      return Object.assign({}, state, {
-        editUser: action.response
-      })
+        return Object.assign({}, state, {
+            editUser: action.response
+        });
 
     case FETCH_USER_FAILURE:
-      return Object.assign({}, state, {
-        users: Object.assign({}, state.users, {
-          isFetching: false,
-          help: 'There was an error fetching user.'
-        })
-      })
+        return Object.assign({}, state, {
+            users: Object.assign({}, state.users, {
+                isFetching: false,
+                help: 'There was an error fetching user.'
+            })
+        });
 
     default:
-      return state
-  }
+        return state;
+    }
 
 };

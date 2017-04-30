@@ -2,15 +2,15 @@ import React, { PropTypes, Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
-import Icon from './../atoms/Icon'
-import Card from './../atoms/Card'
-import UserList from './../ecosystems/UserList'
+import Icon from './../atoms/Icon';
+import Card from './../atoms/Card';
+import UserList from './../ecosystems/UserList';
 
 import {
   fetchAllUsers
-} from './../../redux/actions/admin-actions'
+} from './../../redux/actions/admin-actions';
 
 class UserManager extends Component {
 
@@ -18,25 +18,25 @@ class UserManager extends Component {
         super(props);
     }
 
-  componentDidMount() {
-    this.props.dispatch(fetchAllUsers())
-  }
+    componentDidMount() {
+        this.props.dispatch(fetchAllUsers());
+    }
 
-  render() {
+    render() {
 
-    const users = this.props.admin.users
+        const users = this.props.admin.users;
 
-    return (
+        return (
       <section className="container">
           <Card>
             <pre>User Manager</pre>
-            <Link to='admin/user/new'>
-              <Icon children='add' />
+            <Link to="admin/user/new">
+              <Icon children="add" />
             </Link>
             {
 
               users.isFetching ?
-                <div><Icon children='auto-renew' />Loading Users</div> :
+                <div><Icon children="auto-renew" />Loading Users</div> :
                 <UserList
                   users={users.results}
                   dispatch={this.props.dispatch}
