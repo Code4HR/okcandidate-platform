@@ -18,7 +18,7 @@ class SurveyQuestions extends Component {
             {
                 this.props.questions.map(office=><div className="survey-question">{office}</div>)
             }
-            <input type="text" for="adding question"/>
+            <input type="text" />
 
             </div>
         </Card>
@@ -28,7 +28,7 @@ class SurveyQuestions extends Component {
 }
 
 SurveyQuestions.propTypes = {
-    questions: PropTypes.array,
+    questions: PropTypes.array
 };
 
 export default SurveyQuestions;

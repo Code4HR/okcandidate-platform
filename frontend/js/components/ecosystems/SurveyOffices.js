@@ -1,8 +1,8 @@
 import React, { PropTypes, Component } from 'react';
 import Card from './../atoms/Card';
 
-import SearchBox from './../organisms/SearchBox'
-import Icon from './../atoms/Icon'
+import SearchBox from './../organisms/SearchBox';
+import Icon from './../atoms/Icon';
 
 class SurveyOffices extends Component {
 
@@ -36,7 +36,7 @@ class SurveyOffices extends Component {
 }
 
 SurveyOffices.propTypes = {
-    offices: PropTypes.object,
+    offices: PropTypes.object
 };
 
 export default SurveyOffices;
