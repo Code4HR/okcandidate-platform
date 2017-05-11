@@ -13,8 +13,8 @@ class BestMatch extends Component {
 
     render() {
         return (
-            <Card style={{'text-align': 'center'}}>
-                <p className="match-text">It's a Match!</p>
+            <Card style={{'textAlign': 'center'}}>
+                <p className="match-text">{this.props.matchText}</p>
                 <CandidateDisplay
                   matchRate={this.props.matchRate} />
                 <div className="best-match-info">
@@ -31,6 +31,7 @@ class BestMatch extends Component {
 }
 
 BestMatch.propTypes = {
+    matchText: PropTypes.string,
     name: PropTypes.string,
     office: PropTypes.string,
     matchRate: PropTypes.number

@@ -13,6 +13,11 @@ class Results extends Component {
                 matchRate: 82
             },
             {
+                name: 'Joan Smith',
+                office: 'Party Affiliate',
+                matchRate: 82
+            },
+            {
                 name: 'Blaine Price',
                 office: 'Party Affiliate',
                 matchRate: 75
@@ -35,7 +40,7 @@ class Results extends Component {
 
         const bestMatch = matches.filter((o) => {
             return o.matchRate == bestRate;
-        })[0];
+        });
 
         const otherMatches = matches.filter((o) => {
             return o.matchRate != bestRate;
@@ -44,10 +49,17 @@ class Results extends Component {
         return (
             <article>
                 <pre>Results Page</pre>
-                <BestMatch
-                  name={bestMatch.name}
-                  office={bestMatch.office}
-                  matchRate={bestMatch.matchRate} />
+                { bestMatch.map((m) => {
+                    return (<BestMatch
+                            key={m.name}
+                            matchText={bestMatch.length > 1 ?
+                              "It's a duplicate" :
+                              "It's a match"}
+                            name={m.name}
+                            office={m.office}
+                            matchRate={m.matchRate} />);
+                })}
+
                 { otherMatches.map((m) => {
                     return (<OtherMatch
                             key={m.name}
