@@ -97,6 +97,11 @@ module.exports = [
     },
     {
         method: ['GET'],
+        path: '/api/v1/surveymatch/{id*}',
+        handler: 'SurveyResultController.match'
+    },
+    {
+        method: ['GET'],
         path: '/api/v1/default/info',
         handler: 'DefaultController.info'
     }

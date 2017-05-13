@@ -53,8 +53,8 @@ class Results extends Component {
                     return (<BestMatch
                             key={m.name}
                             matchText={bestMatch.length > 1 ?
-                              "It's a duplicate" :
-                              "It's a match"}
+                              "It's a duplicate!" :
+                              "It's a match!"}
                             name={m.name}
                             office={m.office}
                             matchRate={m.matchRate} />);
