@@ -2,6 +2,7 @@
 
 .survey-card {
     text-align: center;
+    padding: 3em 2em 1em 2em;
 
     &:nth-of-type(2) {
         position: absolute;
@@ -19,10 +20,30 @@
         top: 2%;
     }
 
-    // Rating Component (Hearts Styling)
-
     .hearts {
-      color: $red;
+      color: $darkGray;
     }
 
+    .question-text {
+        margin: 1.25em 0;
+        padding: 0 1em;
+        font-size: 1em;
+        line-height: 1.25em;
+        color: $darkGray;
+    }
+
+    .survey-card-buttons {
+        button {
+            display: block;
+            width: 66%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .question-text {
+            font-size: 1.25em;
+        }
+    }
 }

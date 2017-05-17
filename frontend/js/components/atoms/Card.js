@@ -13,7 +13,7 @@ class Card extends Component {
         style={this.props.style}>
         {this.props.children}
       </section>
-    );
+        );
     }
 
 }
