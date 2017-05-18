@@ -24,15 +24,19 @@ class AgreementSelector extends Component {
                     full={<Icon className="hearts big padded">favorite</Icon>}
                 />
                 <div className="agreement-selector-labels">
-                    <label className="argument-selector-label-disagree">Strongly<br/>Disagree</label>
-                    <label className="argument-selector-label-agree">Strongly<br/>Agree</label>
+                    <label className="argument-selector-label-disagree">
+                        Strongly<br/>Disagree
+                    </label>
+                    <label className="argument-selector-label-agree">
+                        Strongly<br/>Agree
+                    </label>
                 </div>
             </div>
         );
     }
 }
 
-AgreementSelector.PropTypes = {
+AgreementSelector.propTypes = {
     dispatch: PropTypes.func,
     agreement: PropTypes.number,
     id: PropTypes.number

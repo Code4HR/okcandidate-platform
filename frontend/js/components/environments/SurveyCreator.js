@@ -21,8 +21,12 @@ class SurveyCreator extends Component {
             <pre>Survey Creator</pre>
           </Card>
           <SurveyGeneral></SurveyGeneral>
-          <SurveyOffices offices={['Mayor', 'Vice Mayor', 'dogcatcher']}></SurveyOffices>
-          <SurveyQuestions questions={['Lorem Ipsum', 'Lorem Ipsum','Lorem Ipsum','Lorem Ipsum']}></SurveyQuestions>
+          <SurveyOffices
+            offices={['Mayor', 'Vice Mayor', 'dogcatcher']}>
+          </SurveyOffices>
+          <SurveyQuestions
+            questions={['Lorem Ipsum', 'Lorem Ipsum','Lorem Ipsum','Lorem Ipsum']}>
+          </SurveyQuestions>
         </div>
       </section>
     );
