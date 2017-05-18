@@ -22,7 +22,7 @@ class Survey extends Component {
         return (
             <div className="twelve columns">
                 <article className="survey">
-                    {this.props.survey.questions.slice(0, 3).map((question, index) => {
+                    {this.props.survey.questions.slice(0, 1).map((question, index) => {
                         return (
                             <SurveyCard
                                 dispatch={this.props.dispatch}

@@ -13,19 +13,16 @@ class Header extends Component {
     }
 
     render() {
-
         return (
-      <header className="app-header">
-        <div className="flex-container">
-          <div className="twelve columns">
-            <AppLogo onClick={this.toggleSidebarVisibility.bind(this)} />
-          </div>
-        </div>
-      </header>
-    );
-
+          <header className="app-header">
+            <div className="flex-container">
+              <div className="twelve columns">
+                <AppLogo onClick={this.toggleSidebarVisibility.bind(this)} />
+              </div>
+            </div>
+          </header>
+        );
     }
-
 }
 
 Header.propTypes = {
