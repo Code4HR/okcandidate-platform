@@ -4,7 +4,6 @@ import React, { PropTypes, Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import Card from '../atoms/Card';
 import CategoryList from '../ecosystems/CategoryList';
 
 import {
@@ -25,13 +24,10 @@ class Category extends Component {
         const categories = this.props.category.categories;
 
         return (
-        <Card>
-          <pre>Category Page</pre>
           <CategoryList
             categories={categories.sort((catA, catB) => {
                 return catA.rank - catB.rank;
             })} />
-        </Card>
       );
     }
 }

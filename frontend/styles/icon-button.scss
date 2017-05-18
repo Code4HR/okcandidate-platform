@@ -6,6 +6,10 @@
     font-size: 36px;
     width: 36px;
     height: 36px;
+    &.padded {
+      font-size: 24px;
+      line-height: 36px;
+    }
   }
 
   &.big {
