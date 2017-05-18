@@ -16,7 +16,9 @@ class SurveyOffices extends Component {
             <div className="">
             <pre>OKCandidate Offices</pre>
             <label>Offices</label>
-            <div className="float-right"> <label>What offices do you want to include in the survey?</label></div>
+            <div className="float-right">
+                <label>What offices do you want to include in the survey?</label>
+            </div>
             {
                 this.props.offices.map(office=><div className="office-wrapper">
                     <div><span>{office}</span>

@@ -9,7 +9,7 @@ class IconButton extends Component {
       <button
         onClick={this.props.onClick}
         className="icon-button">
-        <Icon>{this.props.icon}</Icon>
+        <Icon class="big padded">{this.props.icon}</Icon>
       </button>
     );
     }

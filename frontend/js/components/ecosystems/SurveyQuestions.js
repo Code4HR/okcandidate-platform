@@ -14,7 +14,9 @@ class SurveyQuestions extends Component {
             <div className="">
             <pre>OKCandidate Questions</pre>
             <label>Question</label>
-            <div className="float-right"> <label>What offices do you want to include in the survey?</label></div>
+            <div className="float-right">
+                <label>What offices do you want to include in the survey?</label>
+            </div>
             {
                 this.props.questions.map(office=><div className="survey-question">{office}</div>)
             }
