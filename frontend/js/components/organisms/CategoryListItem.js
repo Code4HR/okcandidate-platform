@@ -20,7 +20,7 @@ class CategoryListItem extends Component {
                       this.props.icon &&
                       <Icon className="medium padding">{this.props.icon}</Icon>
                     }
-                    <span className="category-name">{this.props.name}</span>
+                    <span className="category-name-label">{this.props.name}</span>
                 </div>
           </div>
         );
