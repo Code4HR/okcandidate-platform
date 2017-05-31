@@ -4,14 +4,14 @@ import React, { Component, PropTypes } from 'react';
 import Icon from './../atoms/Icon';
 
 import {
-  setPromptAgreement
+  setQuestionAgreement
 } from './../../redux/actions/survey-actions';
 
 const Rating = require('react-rating');
 
 class AgreementSelector extends Component {
     onHeartClick(agreement) {
-        this.props.dispatch(setPromptAgreement(agreement, this.props.id));
+        this.props.dispatch(setQuestionAgreement(agreement, this.props.id));
     }
 
     render() {

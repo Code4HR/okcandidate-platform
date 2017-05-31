@@ -19,19 +19,19 @@ class Survey extends Component {
     }
 
     render() {
+        const index = this.props.survey.questionIndex;
+        const question = this.props.survey.questions[index];
+
         return (
             <div className="twelve columns">
                 <article className="survey">
-                    {this.props.survey.questions.slice(0, 1).map((question, index) => {
-                        return (
-                            <SurveyCard
-                                dispatch={this.props.dispatch}
-                                text={question.text}
-                                id={question.id}
-                                agreement={question.agreement}
-                                key={index} />
-                        );
-                    })}
+                    { question &&
+                      <SurveyCard
+                          dispatch={this.props.dispatch}
+                          text={question.text}
+                          id={question.id}
+                          agreement={question.agreement} />
+                    }
                 </article>
             </div>
         );

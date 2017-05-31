@@ -38,11 +38,26 @@ export function fetchSurveyQuestions() {
     };
 }
 
-export const SET_PROMPT_AGREEMENT = 'SET_PROMPT_AGREEMENT';
-export function setPromptAgreement(agreement, questionId) {
+export const SET_QUESTION_AGREEMENT = 'SET_QUESTION_AGREEMENT';
+export function setQuestionAgreement(agreement, questionId) {
     return {
-        type: SET_PROMPT_AGREEMENT,
+        type: SET_QUESTION_AGREEMENT,
         agreement,
         questionId
+    };
+}
+
+export const GOTO_NEXT_QUESTION = 'GOTO_NEXT_QUESTION';
+export const GOTO_PREV_QUESTION = 'GOTO_PREV_QUESTION';
+
+export function gotoNextQuestion() {
+    return {
+        type: GOTO_NEXT_QUESTION
+    };
+}
+
+export function gotoPrevQuestion() {
+    return {
+        type: GOTO_PREV_QUESTION
     };
 }
