@@ -6,22 +6,10 @@ import Icon from './../atoms/Icon';
 import AgreementSelector from './../organisms/AgreementSelector';
 import Card from './../atoms/Card';
 
-import {
-    gotoNextQuestion,
-    gotoPrevQuestion
-} from './../../redux/actions/survey-actions';
 
 class SurveyCard extends Component {
     constructor(props) {
         super(props);
-    }
-
-    gotoPrevQuestion() {
-        this.props.dispatch(gotoPrevQuestion());
-    }
-
-    gotoNextQuestion() {
-        this.props.dispatch(gotoNextQuestion());
     }
 
     render() {
@@ -37,10 +25,10 @@ class SurveyCard extends Component {
                         dispatch={this.props.dispatch} />
 
                     <div className="survey-card-buttons">
-                        <button onClick={this.gotoPrevQuestion.bind(this)}>
+                        <button onClick={this.props.onBackClick}>
                             Back
                         </button>
-                        <button onClick={this.gotoNextQuestion.bind(this)}>
+                        <button onClick={this.props.onNextClick}>
                             Next
                         </button>
                     </div>
@@ -54,7 +42,9 @@ SurveyCard.propTypes = {
     text: PropTypes.string,
     dispatch: PropTypes.func,
     id: PropTypes.number,
-    agreement: PropTypes.number
+    agreement: PropTypes.number,
+    onBackClick: PropTypes.func,
+    onNextClick: PropTypes.func
 };
 
 module.exports = SurveyCard;
