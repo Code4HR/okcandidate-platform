@@ -13,6 +13,12 @@ module.exports = class SurveyResult extends Model {
             options: {
                 classMethods: {
                     associate: (models) => {
+                        models.SurveyResult.hasMany(models.SurveyResultAnswer, {
+                            onDelete: 'CASCADE',
+                            foreignKey: {
+                                allowNull: false
+                            }
+                        });
                         models.Survey.hasMany(models.SurveyResult, {
                             onDelete: 'CASCADE',
                             foreignKey: {

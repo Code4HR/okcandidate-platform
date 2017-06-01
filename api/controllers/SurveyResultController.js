@@ -20,9 +20,9 @@ module.exports = class SurveyResultController extends Controller {
 
     match(request, reply) {
 
-        const id = request.params.id;
+        const params = request.params;
 
-        this.app.services.SurveyResultService.match(id)
+        this.app.services.SurveyResultService.match(params)
         .then(response => {
             reply(response);
         });

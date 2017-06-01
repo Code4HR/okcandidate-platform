@@ -97,7 +97,7 @@ module.exports = [
     },
     {
         method: ['GET'],
-        path: '/api/v1/surveymatch/{id*}',
+        path: '/api/v1/surveymatch/{publicPassPhrase*}',
         handler: 'SurveyResultController.match'
     },
     {
