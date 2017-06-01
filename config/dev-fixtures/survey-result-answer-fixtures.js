@@ -17,6 +17,11 @@ const surveyResultAnswer = [
         QuestionId: 3
     },
     {
+        intensity: 4,
+        SurveyResultId: 1,
+        QuestionId: 4
+    },
+    {
         intensity: 3,
         SurveyResultId: 2,
         QuestionId: 1

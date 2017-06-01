@@ -12,6 +12,10 @@ const questions = [
     {
         text: 'What do you think about the ferry',
         CategoryId: 3
+    },
+    {
+        text: 'What do you think about clouds',
+        CategoryId: 4
     }
 ];
 
