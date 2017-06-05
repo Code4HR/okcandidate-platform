@@ -14,7 +14,7 @@ class CategoryListItem extends Component {
                 <div className="rank">
                     <label>{this.props.rank}</label>
                 </div>
-            
+
                 <div className="category-name card">
                     {
                       this.props.icon &&
