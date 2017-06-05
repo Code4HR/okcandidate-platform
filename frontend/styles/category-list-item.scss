@@ -1,0 +1,33 @@
+.category-list-item {
+    display: flex;
+    align-items: center;
+    margin: .5em 0em;
+
+    .rank {
+        min-width: 4em;
+        text-align: center;
+
+        label {
+            font-size: 2.125em;
+            font-weight: 300;
+        }
+    }
+
+    .category-name {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+
+        &.card {
+            padding: 1em 2em;
+            .icon {
+                margin-right: .5em;
+            }
+        }
+
+        &.category-name-label {
+            font-size: 1.125em;
+        }
+    }   
+}
