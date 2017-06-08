@@ -26,14 +26,12 @@ module.exports = {
             if (count > 0) {
                 return [];
             }
-            else {
-                // Create categories.
-                return Promise.all(
-                    categories.map(category => {
-                        return app.orm.Category.create(category);
-                    })
-                );
-            }
+            // Create categories.
+            return Promise.all(
+                categories.map(category => {
+                    return app.orm.Category.create(category);
+                })
+            );
         });
     }
 };
