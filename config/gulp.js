@@ -7,7 +7,7 @@ const webpack = require('webpack-stream');
 const path = require('path');
 
 const babelConfig = {
-    presets: ['react', 'es2015'],
+    presets: ['react', 'es2015', 'stage-0'],
     plugins: [
         [
             'css-modules-transform', {
@@ -76,6 +76,7 @@ module.exports = {
                     module: {
                         loaders: [{
                             test: /\.js$/,
+                            exclude: /node_modules/,
                             loader: 'babel-loader',
                             query: {
                                 presets: ['react', 'es2015']
@@ -99,6 +100,7 @@ module.exports = {
                     module: {
                         loaders: [{
                             test: /\.js$/,
+                            exclude: /node_modules/,
                             loader: 'babel-loader',
                             query: {
                                 presets: ['react', 'es2015']
