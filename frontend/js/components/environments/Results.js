@@ -1,38 +1,28 @@
 'use strict';
 
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
+
+import { connect } from 'react-redux';
+
 import BestMatch from './../ecosystems/BestMatch';
 import OtherMatch from './../ecosystems/OtherMatch';
 
+import {
+  fetchSurveyResults
+} from './../../redux/actions/result-actions';
+
 class Results extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        this.props.dispatch(fetchSurveyResults(this.props.params.passPhrase));
+    }
+
     render () {
-        const matches = [
-            {
-                name: 'John Smith',
-                office: 'Party Affiliate',
-                matchRate: 82
-            },
-            {
-                name: 'Joan Smith',
-                office: 'Party Affiliate',
-                matchRate: 82
-            },
-            {
-                name: 'Blaine Price',
-                office: 'Party Affiliate',
-                matchRate: 75
-            },
-            {
-                name: 'Tommy Tavenner',
-                office: 'Party Affiliate',
-                matchRate: 68
-            },
-            {
-                name: 'Cindy Pham',
-                office: 'Party Affiliate',
-                matchRate: 60
-            }
-        ];
+
+        const matches = this.props.result.matches;
 
         const bestRate = Math.max.apply(Math, matches.map((o) => {
             return o.matchRate;
@@ -72,6 +62,16 @@ class Results extends Component {
     }
 }
 
-Results.propTypes = {};
+Results.propTypes = {
+    params: PropTypes.object,
+    dispatch: PropTypes.func,
+    result: PropTypes.object
+};
 
-module.exports = Results;
+export default connect(
+  state => ({
+      ui: state.ui,
+      login: state.login,
+      result: state.result
+  })
+)(Results);

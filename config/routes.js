@@ -50,7 +50,7 @@ module.exports = [
     },
     {
         method: 'GET',
-        path: '/results',
+        path: '/results/{passPhrase*}',
         handler: 'ViewController.results'
     },
   /**

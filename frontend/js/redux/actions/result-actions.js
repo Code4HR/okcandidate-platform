@@ -25,10 +25,10 @@ export function fetchSurveyResultsFailure(error) {
     };
 }
 
-export function fetchSurveyResults() {
+export function fetchSurveyResults(passPhrase) {
     return function(dispatch) {
         dispatch(fetchSurveyResultsRequest());
-        return fetch('/api/v1/surveyresult')
+        return fetch('/api/v1/surveymatch/' + passPhrase)
         .then(checkStatus)
         .then(response => response.json())
         .then(response => {
