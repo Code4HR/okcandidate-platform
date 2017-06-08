@@ -73,6 +73,7 @@ module.exports = [
         path: '/api/v1/user/delete/{id*}',
         handler: 'UserController.delete'
     },
+
     {
         method: 'GET',
         path: '/api/v1/user',

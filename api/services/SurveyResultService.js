@@ -47,11 +47,32 @@ module.exports = class SurveyResultService extends Service {
             });
         })
         .then((answers) => {
+
+            return answers.reduce((a, v) => {
+                const candidate = {
+                    name: v.Name,
+                    office: v.Office,
+                    score: v.score,
+                    numQuestions: 1
+                };
+
+                const existing = a.findIndex(e =>
+                    (e.name == candidate.name && e.office == candidate.office));
+
+                if (existing >= 0) {
+                    a[existing].score += candidate.score;
+                    a[existing].numQuestions += candidate.numQuestions;
+                    return a;
+                }
+
+                return [candidate, ...a];
+            }, []);
+            /*
             return answers.map((answer) => {
                 return Object.assign(answer, {
                     score: (answer.SurveyResultIntensity + answer.CandidateItensity) / 10
                 });
-            });
+            });*/
         });
     }
 };
