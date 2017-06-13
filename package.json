@@ -67,7 +67,6 @@
     "yar": "^7.0.2"
   },
   "devDependencies": {
-    "babel-preset-stage-0": "^6.24.1",
     "chai": "^3.5.0",
     "cucumber": "^2.0.0-rc.9",
     "eslint": "^2.13.1",
