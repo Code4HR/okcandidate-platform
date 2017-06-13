@@ -63,7 +63,7 @@ const cardTarget = {
         // to avoid expensive index searches.
         monitor.getItem().index = hoverIndex;
     }
-}
+};
 
 class CategoryListItemName extends Component {
     render() {
