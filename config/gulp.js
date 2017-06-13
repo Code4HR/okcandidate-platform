@@ -7,7 +7,7 @@ const webpack = require('webpack-stream');
 const path = require('path');
 
 const babelConfig = {
-    presets: ['react', 'es2015', 'stage-0'],
+    presets: ['react', 'es2015'],
     plugins: [
         [
             'css-modules-transform', {
