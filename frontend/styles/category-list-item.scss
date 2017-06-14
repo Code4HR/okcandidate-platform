@@ -19,6 +19,10 @@
         align-items: center;
         margin-bottom: 0;
 
+        &.hidden {
+            opacity: 0;
+        }
+
         &.card {
             padding: 1em 2em;
             .icon {
@@ -30,4 +34,14 @@
             font-size: 1.125em;
         }
     }   
+}
+
+.category-list-item-dnd {
+    width: 100%;
+    padding: 0 1em 0 5em;
+    margin-left: -5em;
+
+    .category-list-item {
+        margin: 0em;
+    }
 }
