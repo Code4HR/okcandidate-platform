@@ -20,7 +20,7 @@ module.exports = (
     <IndexRoute component={Home} />
     <Route path="category" component={Category} />
     <Route path="survey" component={Survey} />
-    <Route path="results" component={Results} />
+    <Route path="results/:passPhrase" component={Results} />
     <Route path="admin" component={Admin} />
     <Route path="admin/survey" component={SurveyManager} />
     <Route path="admin/survey/new" component={SurveyCreator} />
