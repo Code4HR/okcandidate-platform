@@ -1,0 +1,30 @@
+@import 'colors';
+
+.alert {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5em 1em;
+    border-radius: 4px;
+
+    &.info {
+        background: $blue;
+        color: darken($blue, 50%);
+    }
+
+    &.danger {
+        background: $red;
+        color: darken($red, 50%);
+    }
+
+    &.warning {
+        background: $yellow;
+        color: darken($yellow, 50%);
+    }
+
+    &.success {
+        background: $green;
+        color: darken($green, 50%);
+    }
+
+}
