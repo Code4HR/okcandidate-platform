@@ -24,11 +24,11 @@ class Category extends Component {
         const categories = this.props.category.categories;
 
         return (
-          <CategoryList
-            categories={categories.sort((catA, catB) => {
-                return catA.rank - catB.rank;
-            })} />
-      );
+            <CategoryList
+                categories={categories.sort((catA, catB) => {
+                    return catA.rank - catB.rank;
+                })} />
+        );
     }
 }
 
