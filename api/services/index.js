@@ -6,3 +6,4 @@ exports.UserService = require('./UserService');
 exports.CategoryService = require('./CategoryService');
 exports.QuestionService = require('./QuestionService');
 exports.SurveyResultService = require('./SurveyResultService');
+exports.SurveyService = require('./SurveyService');
