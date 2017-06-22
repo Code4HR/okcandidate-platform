@@ -99,5 +99,10 @@ module.exports = [
         method: ['GET'],
         path: '/api/v1/default/info',
         handler: 'DefaultController.info'
+    },
+    {
+        method: 'POST',
+        path: '/api/v1/survey',
+        handler: 'SurveyResultController.create'
     }
 ];
