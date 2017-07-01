@@ -74,7 +74,8 @@
     "eslint-plugin-react": "^6.6.0",
     "mocha": "^2.4",
     "supertest": "^1.2",
-    "zombie": "^5.0.5"
+    "zombie": "^5.0.5",
+    "nodemon": "^1.11.0"
   },
   "scripts": {
     "acceptance": "cucumberjs",

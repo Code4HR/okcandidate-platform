@@ -1,4 +1,4 @@
-FROM node:6.10-alpine
+FROM node:6.11
 
 RUN mkdir -p /usr/src/app
 
@@ -15,18 +15,19 @@ EXPOSE $PORT 5858 9229
 # check every 30s to ensure this service returns HTTP 200
 # HEALTHCHECK CMD curl -fs http://localhost:$PORT || exit 1
 
-RUN apk add --no-cache python make g++
-
 # install dependencies first, in a different location for easier app bind mounting for local development
 WORKDIR /usr/src
 COPY package.json /usr/src/
 RUN npm install && npm cache clean
+# note that even with these two ENV's, node will still try to use the node_modules you
+# bind-mount in with compose files or -v docker commands, so ensure you remove that subdir 
+# on your dev host before running docker-compose
 ENV PATH /data/node_modules/.bin:$PATH
+ENV NODE_PATH=/usr/src/node_modules
 
 # copy in our source code last, as it changes the most
 WORKDIR /usr/src/app
 COPY . /usr/src/app
-
 
 # if you want to use npm start instead, then use `docker run --init in production`
 # so that signals are passed properly. Note the code in index.js is needed to catch Docker signals
