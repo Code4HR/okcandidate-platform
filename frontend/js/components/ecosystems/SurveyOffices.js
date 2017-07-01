@@ -1,8 +1,8 @@
 import React, { PropTypes, Component } from 'react';
 import Card from './../atoms/Card';
 
-import SearchBox from './../organisms/SearchBox'
-import Icon from './../atoms/Icon'
+import SearchBox from './../organisms/SearchBox';
+import Icon from './../atoms/Icon';
 
 class SurveyOffices extends Component {
 
@@ -16,7 +16,9 @@ class SurveyOffices extends Component {
             <div className="">
             <pre>OKCandidate Offices</pre>
             <label>Offices</label>
-            <div className="float-right"> <label>What offices do you want to include in the survey?</label></div>
+            <div className="float-right">
+                <label>What offices do you want to include in the survey?</label>
+            </div>
             {
                 this.props.offices.map(office=><div className="office-wrapper">
                     <div><span>{office}</span>
@@ -36,7 +38,7 @@ class SurveyOffices extends Component {
 }
 
 SurveyOffices.propTypes = {
-    offices: PropTypes.object,
+    offices: PropTypes.object
 };
 
 export default SurveyOffices;

@@ -9,11 +9,11 @@ class Card extends Component {
     render() {
         return (
       <section
-        className={`card height-1 ${this.props.className}`}
+        className={`card ${this.props.className}`}
         style={this.props.style}>
         {this.props.children}
       </section>
-    );
+        );
     }
 
 }

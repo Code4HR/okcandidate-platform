@@ -5,6 +5,7 @@
     },
     "rules": {
         "indent": ["error", 4],
-        "semi": ["error", "always"]
+        "semi": ["error", "always"],
+        "new-cap": 0
     }
 }

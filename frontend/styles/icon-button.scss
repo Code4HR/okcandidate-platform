@@ -1,6 +1,47 @@
 .icon {
   width: 24px;
-  height: 48px;
+  height: 24px;
+
+  &.medium {
+    font-size: 36px;
+    width: 36px;
+    height: 36px;
+    &.padded {
+      font-size: 24px;
+      line-height: 36px;
+    }
+  }
+
+  &.big {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    &.padded {
+      font-size: 36px;
+      line-height: 48px;
+    }
+  }
+
+  &.x-big {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    &.padded {
+      font-size: 48px;
+      line-height: 64px;
+    }
+  }
+
+  &.xx-big {
+    font-size: 72px;
+    width: 72px;
+    height: 72px;
+    &.padded {
+      font-size: 64px;
+      line-height: 72px;
+    }
+  }
+
 }
 
 .icon-button {
