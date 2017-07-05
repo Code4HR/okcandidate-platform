@@ -114,7 +114,7 @@ module.exports = [
     },
     {
         method: 'POST',
-        path: '/api/v1/survey',
+        path: '/api/v1/surveyresult',
         handler: 'SurveyResultController.create'
     }
 ];
