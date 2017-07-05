@@ -6,4 +6,5 @@ exports.AuthController = require('./AuthController');
 exports.UserController = require('./UserController');
 exports.CategoryController = require('./CategoryController');
 exports.QuestionController = require('./QuestionController');
-exports.SurveyResultController = require('./SurveyController');
+exports.SurveyResultController = require('./SurveyResultController');
+exports.SurveyController = require('./SurveyController');

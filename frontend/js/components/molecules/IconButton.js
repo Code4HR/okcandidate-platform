@@ -3,17 +3,15 @@ import React, { PropTypes, Component } from 'react';
 import Icon from './../atoms/Icon';
 
 class IconButton extends Component {
-
     render() {
         return (
-      <button
-        onClick={this.props.onClick}
-        className="icon-button">
-        <Icon class="big padded">{this.props.icon}</Icon>
-      </button>
-    );
+            <button
+                onClick={this.props.onClick}
+                className="icon-button">
+                <Icon class="big padded">{this.props.icon}</Icon>
+            </button>
+        );
     }
-
 }
 
 IconButton.propTypes = {

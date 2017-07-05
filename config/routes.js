@@ -50,7 +50,7 @@ module.exports = [
     },
     {
         method: 'GET',
-        path: '/results',
+        path: '/results/{passPhrase*}',
         handler: 'ViewController.results'
     },
   /**
@@ -73,6 +73,7 @@ module.exports = [
         path: '/api/v1/user/delete/{id*}',
         handler: 'UserController.delete'
     },
+
     {
         method: 'GET',
         path: '/api/v1/user',
@@ -86,6 +87,12 @@ module.exports = [
     },
 
     {
+        method: 'GET',
+        path: '/api/v1/survey/location',
+        handler: 'SurveyController.getSurveyByLatLng'
+    },
+
+    {
         method: ['GET'],
         path: '/api/v1/category',
         handler: 'CategoryController.getAll'
@@ -94,6 +101,11 @@ module.exports = [
         method: ['GET'],
         path: '/api/v1/questions',
         handler: 'QuestionController.getAll'
+    },
+    {
+        method: ['GET'],
+        path: '/api/v1/surveymatch/{publicPassPhrase*}',
+        handler: 'SurveyResultController.match'
     },
     {
         method: ['GET'],

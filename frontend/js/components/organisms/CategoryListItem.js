@@ -1,37 +1,35 @@
 import React, { PropTypes, Component } from 'react';
 
-import Icon from './../atoms/Icon';
+import { CategoryListItemName } from './../organisms/CategoryListItemName';
 
 class CategoryListItem extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="category-list-item">
-                <div className="rank">
-                    <label>{this.props.rank}</label>
-                </div>
+                {
+                    this.props.index + 1 &&
+                    <div className="rank">
+                        <label>{this.props.index + 1}</label>
+                    </div>
+                }
 
-                <div className="category-name card">
-                    {
-                      this.props.icon &&
-                      <Icon className="medium padding">{this.props.icon}</Icon>
-                    }
-                    <span className="category-name-label">{this.props.name}</span>
-                </div>
-          </div>
+                <CategoryListItemName
+                    index={this.props.index}
+                    id={this.props.id}
+                    name={this.props.name}
+                    icon={this.props.icon}
+                    moveCard={this.props.moveCard} />
+            </div>
         );
     }
-
 }
 
 CategoryListItem.propTypes = {
     name: PropTypes.string,
     icon: PropTypes.string,
-    rank: PropTypes.number
+    index: PropTypes.number,
+    moveCard: PropTypes.func,
+    id: PropTypes.number
 };
 
 export default CategoryListItem;
