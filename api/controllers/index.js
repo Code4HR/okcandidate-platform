@@ -8,4 +8,4 @@ exports.CategoryController = require('./CategoryController');
 exports.QuestionController = require('./QuestionController');
 exports.SurveyResultController = require('./SurveyResultController');
 exports.SurveyController = require('./SurveyController');
-exports.GeolocationController = require('./GeolocationController')
+exports.GeolocationController = require('./GeolocationController');
