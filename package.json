@@ -35,6 +35,7 @@
     "inert": "^4.2.0",
     "isomorphic-fetch": "^2.2.1",
     "pg": "^6.1.0",
+    "prop-types": "^15.5.10",
     "react": "^15.3.2",
     "react-burger-menu": "^1.10.9",
     "react-dnd": "^2.4.0",

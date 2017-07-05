@@ -1,0 +1,24 @@
+@import 'colors';
+
+.hr {
+    text-align: center;
+    position: relative;
+    z-index: 0;
+
+    .hr-line {
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        top: 50%;
+        background: $black;
+        z-index: -1;
+    }
+
+    .hr-label {
+        text-transform: uppercase;
+        color: $black;
+        display: inline;
+        padding: 0 1em;
+        background: $white;
+    }
+}
