@@ -1,10 +1,10 @@
 import {
-    FETCH_SURVEY_QUESTIONS_REQUEST,
-    FETCH_SURVEY_QUESTIONS_SUCCESS,
-    FETCH_SURVEY_QUESTIONS_FAILURE,
-    SET_QUESTION_AGREEMENT,
-    GOTO_NEXT_QUESTION,
-    GOTO_PREV_QUESTION
+  FETCH_SURVEY_QUESTIONS_REQUEST,
+  FETCH_SURVEY_QUESTIONS_SUCCESS,
+  FETCH_SURVEY_QUESTIONS_FAILURE,
+  SET_QUESTION_AGREEMENT,
+  GOTO_NEXT_QUESTION,
+  GOTO_PREV_QUESTION
 } from './../actions/survey-actions';
 
 const initialState = {
@@ -16,7 +16,6 @@ const initialState = {
 
 export default function surveyReducer(state = initialState, action) {
     switch (action.type) {
-
     case FETCH_SURVEY_QUESTIONS_REQUEST:
         return Object.assign({}, state, {
             isFetching: true,
