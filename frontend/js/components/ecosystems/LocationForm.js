@@ -50,7 +50,7 @@ class LocationForm extends Component {
                     <TextField
                         label="Locate Using Address"
                         name="address"
-                        value={this.state.value}
+                        value={this.state.address}
                         onChange={this.updateAddress.bind(this)}
                         button={
                             <button

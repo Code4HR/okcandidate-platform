@@ -78,6 +78,7 @@ export default function surveyReducer(state = initialState, action) {
         });
     case GET_LOCATION_BY_GPS_FAILURE:
         return Object.assign({}, state, {
+            isFetching: false,
             status: {
                 message: 'There was an error finding you with GPS.\nTry searching with an address?',
                 level: 'danger'

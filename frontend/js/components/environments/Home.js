@@ -31,7 +31,6 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-    user: PropTypes.object,
     pickSurvey: PropTypes.object,
     dispatch: PropTypes.func
 };
