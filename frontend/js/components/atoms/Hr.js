@@ -5,9 +5,13 @@ import PropTypes from 'prop-types';
 
 class Hr extends Component {
     render() {
+        const hrLineStyle = {
+            background: this.props.background
+        };
+
         return (
             <div className="hr">
-                <div className="hr-line"></div>
+                <div className="hr-line" style={hrLineStyle}></div>
                 {
                     this.props.label &&
                     <label className="hr-label">{this.props.label}</label>
@@ -19,7 +23,7 @@ class Hr extends Component {
 
 Hr.propTypes = {
     label: PropTypes.string,
-    color: PropTypes.string
+    background: PropTypes.string
 };
 
 export default Hr;
