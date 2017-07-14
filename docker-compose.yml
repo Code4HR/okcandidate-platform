@@ -29,5 +29,7 @@ services:
       POSTGRES_DB: okcandidate_platform_dev
       POSTGRES_USER: blaine
       POSTGRES_PASSWORD: complicatedPassword
+    ports:
+      - "5432:5432"
 
 
