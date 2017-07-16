@@ -111,5 +111,10 @@ module.exports = [
         method: ['GET'],
         path: '/api/v1/default/info',
         handler: 'DefaultController.info'
+    },
+    {
+        method: ['GET'],
+        path: '/api/v1/geolocation',
+        handler: 'GeolocationController.get'
     }
 ];

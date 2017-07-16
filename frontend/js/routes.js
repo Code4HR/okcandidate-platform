@@ -4,6 +4,7 @@ import { Route, IndexRoute } from 'react-router';
 import Frame from './components/Frame';
 import Home from './components/environments/Home';
 import Admin from './components/environments/Admin';
+import SurveySelector from './components/environments/SurveySelector';
 import Category from './components/environments/Category';
 import Survey from './components/environments/Survey';
 import SurveyCreator from './components/environments/SurveyCreator';
@@ -18,8 +19,9 @@ import Results from './components/environments/Results';
 module.exports = (
   <Route path="/" component={Frame}>
     <IndexRoute component={Home} />
-    <Route path="category" component={Category} />
-    <Route path="survey" component={Survey} />
+    <Route path="survey" component={SurveySelector} />
+    <Route path="survey/:id/category" component={Category} />
+    <Route path="survey/:id/questions" component={Survey} />
     <Route path="results/:passPhrase" component={Results} />
     <Route path="admin" component={Admin} />
     <Route path="admin/survey" component={SurveyManager} />

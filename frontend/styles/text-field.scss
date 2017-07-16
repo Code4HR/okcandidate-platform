@@ -1,0 +1,33 @@
+@import 'colors';
+
+.text-field {
+    text-align: left;
+    input {
+        margin-bottom: 16px;
+    }
+
+    .text-field-input {
+        display: flex;
+
+        input {
+            flex: 1;
+        }
+
+        &.has-button {
+            input {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            button {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+
+    .text-field-error {
+        color: $red;
+        position: relative;
+        bottom: 12px;
+    }
+}

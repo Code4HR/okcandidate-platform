@@ -11,7 +11,7 @@ module.exports = class SurveyController extends Controller {
 
     getSurveyByLatLng(request, reply) {
 
-        const coordinates = request.query.coordinates;
+        const coordinates = JSON.parse(request.query.coordinates);
 
         this.app.services.SurveyService.getSurveyByLatLng(coordinates.latitude,
                                                           coordinates.longitude)
