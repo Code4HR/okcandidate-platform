@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { gotoRoute } from './../../redux/actions/router-actions';
 
 import { connect } from 'react-redux';
 
@@ -12,19 +13,30 @@ class SurveySelector extends Component {
         super(props);
     }
 
+    onClickSurveyCard(id) {
+        gotoRoute(`survey/${id}`);
+    }
+
     render() {
         return (
             <section>
-                <Card>
-                    <pre>Survey Selector</pre>
-                </Card>
+                {this.props.pickSurvey.surveys.map((survey, index) => {
+                    return (
+                        <Card
+                            key={index}
+                            onClick={this.onClickSurveyCard.bind(this, survey.id)}>
+                            <h2>{survey.name}</h2>
+                            <button>Take it!</button>
+                        </Card>
+                    );
+                })}
             </section>
         );
     }
 }
 
 SurveySelector.propTypes = {
-    surveys: PropTypes.array
+    pickSurvey: PropTypes.object
 };
 
 export default connect(

@@ -33,7 +33,7 @@ class Survey extends Component {
 
     gotoNextQuestion() {
         if (this.props.survey.questionIndex >= this.props.survey.questions.length - 1) {
-            return gotoRoute('/results');
+            return gotoRoute('/results/publicPhraseOne');
         }
         return this.props.dispatch(gotoNextQuestion());
     }
