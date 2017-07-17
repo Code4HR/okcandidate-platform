@@ -6,7 +6,7 @@
 
 'use strict'
 
-const app = require('./')
+const app = require('./index.js')
 const TrailsApp = require('trails')
 const server = new TrailsApp(app)
 
