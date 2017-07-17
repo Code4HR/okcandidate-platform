@@ -16,7 +16,7 @@ module.exports = class UserService extends Service {
                 if (err) reject(err);
                 resolve(hash);
             });
-    })
+        })
     .then(hash => {
         return this.app.orm.User.create(
         Object.assign({}, userData, {password: hash})
