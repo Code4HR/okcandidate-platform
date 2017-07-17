@@ -20,7 +20,7 @@ module.exports = class SurveyResultController extends Controller {
       });
     }
     create(request, reply) {
-        const userData = request.payload;
+        const userData = request.payload || {};
         userData.publicPassPhrase = generatePhrase(3);
         userData.privatePassPhrase = generatePhrase(3);
         this.app.services.SurveyResultService
