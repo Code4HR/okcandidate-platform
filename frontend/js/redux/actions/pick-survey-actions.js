@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
+import { gotoRoute } from './../actions/router-actions';
 
 export const FETCH_SURVEYS_BY_LOCATION_REQUEST = 'FETCH_SURVEYS_BY_LOCATION_REQUEST';
 export const FETCH_SURVEYS_BY_LOCATION_SUCCESS = 'FETCH_SURVEYS_BY_LOCATION_SUCCESS';
@@ -33,6 +34,7 @@ export function fetchSurveysByLocation(coordinates) {
         .then(response => response.json())
         .then(response => {
             dispatch(fetchSurveysByLocationSuccess(response));
+            gotoRoute('/survey');
         })
         .catch(error => dispatch(fetchSurveysByLocationFailure(error)));
     };
