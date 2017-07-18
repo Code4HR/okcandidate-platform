@@ -2,6 +2,7 @@
 
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import uniqBy from 'lodash.uniqby';
 
 import SurveyCard from './../ecosystems/SurveyCard';
 
@@ -21,7 +22,7 @@ class Survey extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchSurveyQuestions());
+        this.props.dispatch(fetchSurveyQuestions(this.props.params.id));
     }
 
     gotoPrevQuestion() {
