@@ -22,9 +22,10 @@ class Category extends Component {
 
     render() {
         const categories = this.props.category.categories;
-
         return (
             <CategoryList
+                surveyId={this.props.router.params.id}
+                dispatch={this.props.dispatch}
                 categories={categories.sort((catA, catB) => {
                     return catA.rank - catB.rank;
                 })} />
@@ -37,7 +38,8 @@ Category.propTypes = {
     ui: PropTypes.object,
     login: PropTypes.object,
     survey: PropTypes.object,
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    params: PropTypes.object
 };
 
 export default connect(

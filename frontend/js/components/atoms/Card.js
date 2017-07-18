@@ -7,12 +7,20 @@ class Card extends Component {
     }
 
     render() {
+        const cardStyle = {};
+
+        if (this.props.onClick) {
+            cardStyle.cursor = 'pointer';
+        }
+
         return (
-      <section
-        className={`card ${this.props.className}`}
-        style={this.props.style}>
-        {this.props.children}
-      </section>
+            <section
+                style={cardStyle}
+                className={`card ${this.props.className}`}
+                style={this.props.style}
+                onClick={this.props.onClick}>
+                {this.props.children}
+            </section>
         );
     }
 
@@ -21,7 +29,8 @@ class Card extends Component {
 Card.propTypes = {
     style: PropTypes.object,
     children: PropTypes.any,
-    className: PropTypes.string
+    className: PropTypes.string,
+    onClick: PropTypes.func
 };
 
 export default Card;

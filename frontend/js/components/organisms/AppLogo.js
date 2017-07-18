@@ -10,7 +10,7 @@ class AppLogo extends Component {
         <IconButton
           onClick={this.props.onClick}
           icon="menu" />
-        <a href="#">
+        <a href="/">
           <img alt="OKCandidate" src="/dist/images/okcandidate-logo.svg" />
         </a>
       </section>

@@ -21,12 +21,22 @@ module.exports = [
     {
         method: 'GET',
         path: '/survey',
-        handler: 'ViewController.survey'
+        handler: 'ViewController.surveyList'
     },
     {
         method: 'GET',
-        path: '/category',
+        path: '/survey/{id}',
         handler: 'ViewController.category'
+    },
+    {
+        method: 'GET',
+        path: '/survey/{id}/category',
+        handler: 'ViewController.category'
+    },
+    {
+        method: 'GET',
+        path: '/survey/{id}/questions',
+        handler: 'ViewController.survey'
     },
     {
         method: 'GET',
