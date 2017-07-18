@@ -39,7 +39,8 @@ Category.propTypes = {
     login: PropTypes.object,
     survey: PropTypes.object,
     dispatch: PropTypes.func,
-    params: PropTypes.object
+    params: PropTypes.object,
+    router: PropTypes.object
 };
 
 export default connect(

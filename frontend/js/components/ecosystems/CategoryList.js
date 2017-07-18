@@ -54,11 +54,11 @@ class CategoryList extends Component {
     }
 
     back() {
-        gotoRoute('/')
+        gotoRoute('/');
     }
-    
+
     next() {
-        gotoRoute(`/survey/${this.props.surveyId}/questions`)
+        gotoRoute(`/survey/${this.props.surveyId}/questions`);
     }
 
     render() {

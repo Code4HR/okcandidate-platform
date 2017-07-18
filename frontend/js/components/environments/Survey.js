@@ -2,7 +2,6 @@
 
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import uniqBy from 'lodash.uniqby';
 
 import SurveyCard from './../ecosystems/SurveyCard';
 
@@ -63,7 +62,8 @@ class Survey extends Component {
 
 Survey.propTypes = {
     dispatch: PropTypes.func,
-    survey: PropTypes.object
+    survey: PropTypes.object,
+    params: PropTypes.object
 };
 
 module.exports = connect(
