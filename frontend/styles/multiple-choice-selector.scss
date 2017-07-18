@@ -1,0 +1,16 @@
+@import 'colors';
+
+.multiple-choice-selector {
+    margin-bottom: 1em;
+    
+    .multiple-choice-item {
+        
+        label {
+            display: inline;
+            color: $black;
+            font-weight: normal;
+        }
+
+    }
+
+}
