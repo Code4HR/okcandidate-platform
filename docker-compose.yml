@@ -17,6 +17,7 @@ services:
       OKC_DB_USER: blaine
       OKC_DB_PASS: complicatedPassword
       OKC_SESSION_SECRET_KEY: someGobbledygookThatIsAtLeast32CharactersLong
+      GOOGLE_API_KEY: google_api_key
     volumes:
       - .:/usr/src/app
     ports:
