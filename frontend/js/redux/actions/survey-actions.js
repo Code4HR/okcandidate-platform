@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
-import uniqBy from 'lodash.uniqby';
+import { uniqBy } from 'lodash';
 
 export const FETCH_SURVEY_QUESTIONS_REQUEST = 'FETCH_SURVEY_QUESTIONS_REQUEST';
 export const FETCH_SURVEY_QUESTIONS_SUCCESS = 'FETCH_SURVEY_QUESTIONS_SUCCESS';
