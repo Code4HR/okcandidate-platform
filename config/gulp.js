@@ -57,12 +57,8 @@ module.exports = {
 
         compileStyles: () => {
             return gulp.src('./frontend/styles/**/*.scss')
-                .pipe(sass({
-                    includePaths: [
-                        'node_modules',
-                        '../node_modules'
-                    ]}))
-                    .on('error', sass.logError)
+                .pipe(sass({ includePaths: ['node_modules', '../node_modules'] })
+                    .on('error', sass.logError))
                 .pipe(gulp.dest('dist/styles'));
         },
 

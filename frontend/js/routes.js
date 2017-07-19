@@ -8,6 +8,10 @@ import SurveySelector from './components/environments/SurveySelector';
 import Category from './components/environments/Category';
 import Survey from './components/environments/Survey';
 import SurveyCreator from './components/environments/SurveyCreator';
+import SurveyCreatorGeneral from './components/ecosystems/SurveyCreatorGeneral';
+import SurveyCreatorCandidates from './components/ecosystems/SurveyCreatorCandidates';
+import SurveyCreatorOffices from './components/ecosystems/SurveyCreatorOffices';
+import SurveyCreatorQuestions from './components/ecosystems/SurveyCreatorQuestions';
 import SurveyManager from './components/environments/SurveyManager';
 import SurveyAnalyzer from './components/environments/SurveyAnalyzer';
 import UserManager from './components/environments/UserManager';
@@ -26,7 +30,15 @@ module.exports = (
     <Route path="results/:passPhrase" component={Results} />
     <Route path="admin" component={Admin} />
     <Route path="admin/survey" component={SurveyManager} />
-    <Route path="admin/survey/new" component={SurveyCreator} />
+    <Route path="admin/survey/new" component={SurveyCreator}>
+      <IndexRoute component={SurveyCreatorGeneral} />
+    </Route>
+    <Route path="admin/survey/:id" component={SurveyCreator}>
+      <IndexRoute component={SurveyCreatorGeneral} />
+      <Route path="offices" component={SurveyCreatorOffices} />
+      <Route path="candidates" component={SurveyCreatorCandidates} />
+      <Route path="questions" component={SurveyCreatorQuestions} />
+    </Route>
     <Route path="admin/survey/analyze" component={SurveyAnalyzer} />
     <Route path="admin/user" component={UserManager} />
     <Route path="admin/user/new" component={NewUserForm} />

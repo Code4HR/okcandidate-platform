@@ -2,19 +2,16 @@
 
 const surveys = [
     {
-        id: 1,
         name: 'Multiple choice survey',
         QuestionTypeId: 1,
         SurveyStatusId: 1
     },
     {
-        id: 2,
         name: 'Multiple choice survey with intensity',
         QuestionTypeId: 2,
         SurveyStatusId: 2
     },
     {
-        id: 3,
         name: 'Intensity only survey',
         QuestionTypeId: 3,
         SurveyStatusId: 3

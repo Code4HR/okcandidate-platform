@@ -22,6 +22,12 @@ class TextField extends Component {
                     { this.props.button }
                 </div>
                 {
+                    this.props.help &&
+                    <div className="text-field-help">
+                        <span>{this.props.help}</span>
+                    </div>
+                }
+                {
                     this.props.error &&
                     <div className="text-field-error">
                         <span>{this.props.error}</span>

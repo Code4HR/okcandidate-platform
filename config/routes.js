@@ -101,7 +101,11 @@ module.exports = [
         path: '/api/v1/survey/location',
         handler: 'SurveyController.getSurveyByLatLng'
     },
-
+    {
+        method: 'POST',
+        path: '/api/v1/survey',
+        handler: 'SurveyController.create'
+    },
     {
         method: ['GET'],
         path: '/api/v1/category',
