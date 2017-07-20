@@ -37,6 +37,10 @@ module.exports = {
             );
         })
         .then(surveys => {
+
+            const maxId = Math.max.apply(Math,surveys.map(function(o){return o.id;}));
+            app.orm.Survey.sequelize.query('select setval(\'survey_id_seq\', ' + maxId + ')');
+
             app.log.info('Surveys created');
             return surveys;
         });
