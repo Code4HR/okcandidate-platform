@@ -3,21 +3,21 @@
 const Model = require('trails-model');
 
 /**
- * @module Region
- * @description Model describing a Region
+ * @module Answer
+ * @description Question answers
  */
-module.exports = class Region extends Model {
+module.exports = class Answer extends Model {
 
     static config (app, Sequelize) {
         return {
             options: {
                 classMethods: {
                     associate: (models) => {
-                        models.Region.belongsToMany(models.Survey, {through: 'surveyregion'}),
-                        models.Region.belongsToMany(models.Office, {through: 'officeregion'}),
-                        models.Region.hasMany(models.Region, {
+                        models.Question.hasOne(models.Answer, {
                             onDelete: 'CASCADE',
-                            foreignKey: 'parentRegionId'
+                            foreignKey: {
+                                allowNull: false
+                            }
                         });
                     }
                 }
@@ -27,11 +27,10 @@ module.exports = class Region extends Model {
 
     static schema (app, Sequelize) {
         return {
-            name: {
+            text: {
                 type: Sequelize.STRING,
                 allowNull: false
             }
         };
     }
-
 };

@@ -10,11 +10,15 @@ const candidates = require('./dev-fixtures/candidate-fixtures');
 const regions = require('./dev-fixtures/region-fixtures');
 const categories = require('./dev-fixtures/category-fixtures');
 const questions = require('./dev-fixtures/question-fixtures');
+const questionTypes = require('./dev-fixtures/question-type-fixtures');
+const surveyStatuses = require('./dev-fixtures/survey-status-fixtures');
 
 module.exports = (app) => {
 
     users.load(app)
     .then(roles.load.bind(this, app))
+    .then(questionTypes.load.bind(this, app))
+    .then(surveyStatuses.load.bind(this, app))
     .then(surveys.load.bind(this, app))
     .then(offices.load.bind(this, app))
     .then(candidates.load.bind(this, app))
