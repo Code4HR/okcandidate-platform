@@ -11,5 +11,5 @@ exports.Candidate = require('./Candidate');
 exports.Category = require('./Category');
 exports.SurveyResultCategory = require('./SurveyResultCategory');
 exports.Answer = require('./Answer');
-exports.QuestionType = require('./QuestionType')
-exports.SurveyStatus = require('./SurveyStatus')
+exports.QuestionType = require('./QuestionType');
+exports.SurveyStatus = require('./SurveyStatus');

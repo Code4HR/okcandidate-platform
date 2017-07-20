@@ -18,6 +18,6 @@ module.exports = class SurveyStatus extends Model {
                 type: Sequelize.STRING,
                 allowNull: false
             }
-        }
+        };
     }
 };

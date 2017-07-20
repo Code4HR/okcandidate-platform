@@ -19,6 +19,12 @@ module.exports = class Question extends Model {
                                 allowNull: false
                             }
                         });
+                        models.Survey.hasOne(models.Question, {
+                            onDelete: 'CASCADE',
+                            foreignKey: {
+                                allowNull: false
+                            }
+                        });
                     }
                 }
             }
