@@ -14,11 +14,11 @@ module.exports = class Region extends Model {
                 classMethods: {
                     associate: (models) => {
                         models.Region.belongsToMany(models.Survey, {through: 'surveyregion'}),
-            models.Region.belongsToMany(models.Office, {through: 'officeregion'}),
-            models.Region.hasMany(models.Region, {
-                onDelete: 'CASCADE',
-                foreignKey: 'parentRegionId'
-            });
+                        models.Region.belongsToMany(models.Office, {through: 'officeregion'}),
+                        models.Region.hasMany(models.Region, {
+                            onDelete: 'CASCADE',
+                            foreignKey: 'parentRegionId'
+                        });
                     }
                 }
             }

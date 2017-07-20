@@ -20,6 +20,12 @@ module.exports = class SurveyResultAnswer extends Model {
                                 allowNull: false
                             }
                         });
+                        models.Answer.hasOne(models.SurveyResultAnswer, {
+                            onDelete: 'CASCADE',
+                            foreignKey: {
+                                allowNull: true
+                            }
+                        });
                     }
                 }
             }
@@ -30,7 +36,7 @@ module.exports = class SurveyResultAnswer extends Model {
         return {
             intensity: {
                 type: Sequelize.INTEGER,
-                allowNull: false
+                allowNull: true
             }
         };
     }

@@ -3,23 +3,17 @@
 const Model = require('trails-model');
 
 /**
- * @module Question
- * @description Model describing a question
+ * @module Answer
+ * @description Question answers
  */
-module.exports = class Question extends Model {
+module.exports = class Answer extends Model {
 
     static config (app, Sequelize) {
         return {
             options: {
                 classMethods: {
                     associate: (models) => {
-                        models.Category.hasOne(models.Question, {
-                            onDelete: 'CASCADE',
-                            foreignKey: {
-                                allowNull: false
-                            }
-                        });
-                        models.Survey.hasOne(models.Question, {
+                        models.Question.hasOne(models.Answer, {
                             onDelete: 'CASCADE',
                             foreignKey: {
                                 allowNull: false
@@ -39,5 +33,4 @@ module.exports = class Question extends Model {
             }
         };
     }
-
 };
