@@ -3,7 +3,8 @@
 import React, { PropTypes, Component } from 'react';
 import Icon from './../atoms/Icon';
 
-import AgreementSelector from './../organisms/AgreementSelector';
+// import AgreementSelector from './../organisms/AgreementSelector';
+import MultipleChoiceSelector from './../organisms/MultipleChoiceSelector';
 import Card from './../atoms/Card';
 
 
@@ -19,9 +20,17 @@ class SurveyCard extends Component {
                 <p className="question-text">{this.props.text}</p>
 
                 <div className="survey-card-interface">
+
+                    {/*
                     <AgreementSelector
                         id={this.props.id}
                         agreement={this.props.agreement}
+                        dispatch={this.props.dispatch} />
+                    */}
+
+                    <MultipleChoiceSelector
+                        id={this.props.id}
+                        selection={this.props.agreement}
                         dispatch={this.props.dispatch} />
 
                     <div className="survey-card-buttons">
