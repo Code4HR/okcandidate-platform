@@ -3,6 +3,10 @@
 .radio-buttons {
     margin-bottom: 2em;
 
+    .radio-buttons-help {
+        color: $gray;
+    }
+
     .radio-button-item {
         position: relative;
         padding-left: 3.5em;

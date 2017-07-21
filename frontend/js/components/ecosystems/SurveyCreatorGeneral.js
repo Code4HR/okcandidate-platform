@@ -104,11 +104,13 @@ class SurveyCreatorGeneral extends Component {
                     onChange={this.setSelectedType.bind(this)}
                     selected={this.props.general.questionTypeId}
                     options={this.props.general.questionTypes}
+                    help="What kind of questions will voters and candidates see?"
                     name="Question Type" />
 
                 <Checkbox 
                     onChange={this.toggleRegionLimit.bind(this)}
                     checked={this.props.general.regionLimit}
+                    help="Should voters in different districts see different candidates?"
                     label="Limit by region?"/>
                 
                 <Tray>

@@ -2,14 +2,22 @@
 
 .checkbox {
     margin-bottom: 1em;
-    position: relative;
-    padding-left: 3.5em;
-    line-height: 2.5em;
 
-    & > input {
-        z-index: -1;
-        position: absolute;
-        opacity: 0;
+    label {
+        position: relative;
+        padding-left: 3.5em;
+        line-height: 2.5em;
+
+        input {
+            z-index: -1;
+            position: absolute;
+            opacity: 0;
+        }
+    }
+
+    .checkbox-help {
+        margin-top: 12px;
+        color: $gray;
     }
 
     .checkbox-indicator {
