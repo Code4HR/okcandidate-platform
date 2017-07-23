@@ -52,7 +52,7 @@ npm start
 to begin running application locally.
 
 # Fixture Data
-In a development environment, some records are generated automatically.  
+In a development environment, some records are generated automatically.
 
 ## User Records
 These user/pass combinations can be used to login as user of various roles.
@@ -80,6 +80,20 @@ These user/pass combinations can be used to login as user of various roles.
   ...
 
 ```
+
+# Testing
+
+We use mocha and superagent for testing. See the [trails.js](https://trailsjs.io/doc/en/test/) documentation to learn more about writing tests for okcandidate.
+
+## In Docker
+
+If installed with Docker and docker-compose run tests from npm using ` docker-compose exec app  npm run test`.
+
+## On Host Machine
+
+Run using `npm test` as usual
+
+
 
 # Contributing
 This project follows a loose interpretation of Git flow. Master is production, develop is staging. Each feature gets one branch.  When opening a PR, please open it against the develop branch.

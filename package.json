@@ -75,8 +75,7 @@
   },
   "scripts": {
     "acceptance": "cucumberjs",
-    "test": "eslint api frontend test/unit test/integration && mocha --recursive",
-    "docker-test": "docker exec  okcandidateplatform_app_1 npm test"
+    "test": "eslint api frontend test/unit test/integration && mocha --recursive"
   },
   "engines": {
     "node": ">= 4.0.0"
