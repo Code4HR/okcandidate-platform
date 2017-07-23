@@ -87,7 +87,7 @@ We use mocha and superagent for testing. See the [trails.js](https://trailsjs.io
 
 ## In Docker
 
-If installed with Docker and docker-compose run tests from npm using ` docker-compose exec app  npm run test`.
+If installed with Docker and docker-compose run tests from npm using ` docker-compose exec app  npm run test`. This can be run after running `docker-compose up -d` and having the container `app` running the background.
 
 ## On Host Machine
 
