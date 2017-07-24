@@ -76,6 +76,7 @@ class SurveyCreatorGeneral extends Component {
                 <TextField
                     onChange={this.setSurveyName.bind(this)}
                     value={this.props.general.name}
+                    error={this.props.general.nameError}
                     name="survey-name"
                     label="Survey Name"
                     help="A memorable name for the survey"
@@ -85,6 +86,7 @@ class SurveyCreatorGeneral extends Component {
                     <TextField
                         onChange={this.setStartDate.bind(this)}
                         value={this.props.general.startDate}
+                        error={this.props.general.startDateError}
                         name="start-date"
                         label="Start Date"
                         help="mm/dd/yyyy"
@@ -93,6 +95,7 @@ class SurveyCreatorGeneral extends Component {
                     <TextField
                         onChange={this.setEndDate.bind(this)}
                         value={this.props.general.endDate}
+                        error={this.props.general.endDateError}
                         name="end-date"
                         label="End Date"
                         help="mm/dd/yyyy"
@@ -101,7 +104,8 @@ class SurveyCreatorGeneral extends Component {
 
                 <RadioButtons
                     onChange={this.setSelectedType.bind(this)}
-                    selected={this.props.general.questionTypeId}
+                    selected={this.props.general.QuestionTypeId}
+                    error={this.props.general.QuestionTypeIdError}
                     options={this.props.general.questionTypes}
                     help="What kind of questions will voters and candidates see?"
                     name="Question Type" />

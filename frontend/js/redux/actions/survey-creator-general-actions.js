@@ -178,7 +178,7 @@ export function updateSurveyGeneralInfo(state) {
                 name: state.name,
                 startDate: state.startDate,
                 endDate: state.endDate,
-                QuestionTypeId: state.questionTypeId,
+                QuestionTypeId: state.QuestionTypeId,
                 regionLimit: state.regionLimit
             })
         })
@@ -205,7 +205,7 @@ export function submitSurveyGeneral(state) {
                 name: state.name,
                 startDate: state.startDate,
                 endDate: state.endDate,
-                QuestionTypeId: state.questionTypeId,
+                QuestionTypeId: state.QuestionTypeId,
                 regionLimit: state.regionLimit
             })
         })

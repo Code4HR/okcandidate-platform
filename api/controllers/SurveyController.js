@@ -20,6 +20,17 @@ module.exports = class SurveyController extends Controller {
         });
     }
 
+    update(request, reply) {
+        const record = request.payload;
+        return this.app.orm.Survey.update(record, {where: {id: record.id}})
+        .then((record) => {
+            return reply(record);
+        })
+        .catch((error) => {
+            return reply(Boom.badRequest(error));
+        });
+    }
+
     getSurveyByLatLng(request, reply) {
 
         const coordinates = JSON.parse(request.query.coordinates);

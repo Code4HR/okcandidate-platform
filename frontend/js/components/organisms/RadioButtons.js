@@ -30,6 +30,12 @@ class RadioButtons extends Component {
                         <span>{this.props.help}</span>
                     </div>
                 }
+                {
+                    this.props.error &&
+                    <div className="radio-buttons-error">
+                        <span>{this.props.error}</span>
+                    </div>
+                }
             </div>
         );
     }
@@ -40,7 +46,8 @@ RadioButtons.propTypes = {
     options: PropTypes.array,
     selected: PropTypes.number,
     onChange: PropTypes.func,
-    help: PropTypes.string
+    help: PropTypes.string,
+    error: PropTypes.string
 };
 
 export default RadioButtons;
