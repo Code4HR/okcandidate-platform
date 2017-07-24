@@ -18,7 +18,7 @@ A comprehensive refactor of [OKCandidate](https://github.com/Code4HR/okcandidate
     1. `docker-compose --help` is your friend.
     1. Use `docker-compose logs app` to see the node logs, for example.
     1. Use `docker-compose exec app bash` to get a bash shell inside the running node container, for example. You can also do that against `db` so you can use the `psql` tool against the database interactively.
-    1. To just run a one off psql command, you could do something like this from your host shell: `
+    1. To just run a one off psql command, you could do something like this from your host shell: `docker-compose exec postgres pg_dump -u postgres -d postgres > somefile.sql`
     1. When you're done, you can `docker-compose stop` to exit the running containers, or `docker-compose down` to remove the containers, virtual network, and db data.
 
 In Summary:
