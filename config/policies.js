@@ -20,6 +20,10 @@ module.exports = {
 
   ViewController: {
     admin: ['Auth.isLoggedIn', 'Auth.isAdmin']
+  },
+
+  SurveyController: {
+    create: ['Survey.create']
   }
 
 }

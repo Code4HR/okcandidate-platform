@@ -17,7 +17,6 @@ module.exports = class Survey extends Model {
                         models.Survey.hasMany(models.SurveyResult);
                         models.Survey.belongsToMany(models.Region, {through: 'surveyregion'});
                         models.Survey.belongsToMany(models.Office, {through: 'surveyoffice'});
-                        models.QuestionType.hasOne(models.Survey);
                         models.SurveyStatus.hasOne(models.Survey);
                     }
                 }
@@ -40,7 +39,6 @@ module.exports = class Survey extends Model {
                 allowNull: true
             }
         };
-
     }
 
 };

@@ -1,0 +1,15 @@
+@import 'colors';
+
+.tray {
+    margin-top: 2em;
+    background: $lightGray;
+    padding: 1em;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button, span {
+        margin: 0 .5em;
+    }
+}
