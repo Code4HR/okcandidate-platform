@@ -67,7 +67,7 @@ We use mocha and superagent for testing. See the [trails.js](https://trailsjs.io
 
 ## Running Tests In Docker
 
-Assuming your using `docker-compose`, if nothing is currently up, then you can run tests in a new container with `docker-compose run app npm test`. If you've already started the containers with something like `docker-compose up -d` then you can run tests in that same container with `docker-compose exec app npm test`.
+Assuming you're using `docker-compose`, if nothing is currently up, then you can run tests in a new container with `docker-compose run app npm test`. If you've already started the containers with something like `docker-compose up -d` then you can run tests in that same container with `docker-compose exec app npm test`.
 
 # Contributing
 This project follows a loose interpretation of Git flow. Master is production, develop is staging. Each feature gets one branch.  When opening a PR, please open it against the develop branch.
