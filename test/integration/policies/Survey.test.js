@@ -1,8 +1,10 @@
-'use strict'
+'use strict';
 
-const assert = require('assert')
+const assert = require('assert');
+const app = require('../../../index');
 
 describe('Survey', () => {
-  it('should exist', () => {
-    assert(global.app.policies.Survey) })
-})
+    it('should exist', () => {
+        assert(app.api.policies.Survey);
+    });
+});

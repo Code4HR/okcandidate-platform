@@ -49,34 +49,34 @@ export function setSurveyName(name) {
     return {
         type: SET_SURVEY_NAME,
         name
-    }
+    };
 }
 
 export function setSurveyStartDate(startDate) {
     return {
         type: SET_SURVEY_START_DATE,
         startDate
-    }
+    };
 }
 
 export function setSurveyEndDate(endDate) {
     return {
         type: SET_SURVEY_END_DATE,
         endDate
-    }
+    };
 }
 
 export function selectQuestionType(id) {
     return {
         type: SELECT_QUESTION_TYPE,
         id
-    }
+    };
 }
 
 export function toggleRegionLimit() {
     return {
         type: TOGGLE_REGION_LIMIT
-    }
+    };
 }
 
 export const FETCH_QUESTION_TYPES_REQUEST = 'FETCH_QUESTION_TYPES_REQUEST';
@@ -86,26 +86,26 @@ export const FETCH_QUESTION_TYPES_FAILURE = 'FETCH_QUESTION_TYPES_FAILURE';
 export function fetchQuestionTypesRequest() {
     return {
         type: FETCH_QUESTION_TYPES_REQUEST
-    }
+    };
 }
 
 export function fetchQuestionTypesSuccess(response) {
     return {
         type: FETCH_QUESTION_TYPES_SUCCESS,
         response
-    }
+    };
 }
 
 export function fetchQuestionTypesFailure(error) {
     return {
         type: FETCH_QUESTION_TYPES_FAILURE,
         error
-    }
+    };
 }
 
 export function fetchQuestionTypes() {
     return (dispatch) => {
-        dispatch(fetchQuestionTypesRequest())
+        dispatch(fetchQuestionTypesRequest());
         return fetch('/api/v1/questiontype')
         .then(checkStatus)
         .then(response => response.json())
@@ -115,7 +115,7 @@ export function fetchQuestionTypes() {
         .catch(error => {
             dispatch(fetchQuestionTypesFailure(error));
         });
-    }
+    };
 }
 
 export const SUBMIT_SURVEY_GENERAL_REQUEST = 'SUBMIT_SURVEY_GENERAL_REQUEST';
@@ -125,21 +125,21 @@ export const SUBMIT_SURVEY_GENERAL_FAILURE = 'SUBMIT_SURVEY_GENERAL_FAILURE';
 export function submitSurveyGeneralRequest() {
     return {
         type: SUBMIT_SURVEY_GENERAL_REQUEST
-    }
+    };
 }
 
 export function submitSurveyGeneralSuccess(response) {
     return {
         type: SUBMIT_SURVEY_GENERAL_SUCCESS,
         response
-    }
+    };
 }
 
 export function submitSurveyGeneralFailure(error) {
     return {
         type: SUBMIT_SURVEY_GENERAL_FAILURE,
         error
-    }
+    };
 }
 
 export const UPDATE_SURVEY_GENERAL_INFO_REQUEST = 'UPDATE_SURVEY_GENERAL_INFO_REQUEST';
@@ -149,26 +149,26 @@ export const UPDATE_SURVEY_GENERAL_INFO_FAILURE = 'UPDATE_SURVEY_GENERAL_INFO_FA
 export function updateSurveyGeneralInfoRequest() {
     return {
         type: UPDATE_SURVEY_GENERAL_INFO_REQUEST
-    }
+    };
 }
 
 export function updateSurveyGeneralInfoSuccess(response) {
     return {
         type: UPDATE_SURVEY_GENERAL_INFO_SUCCESS,
         response
-    }
+    };
 }
 
 export function updateSurveyGeneralInfoFailure(error) {
     return {
         type: UPDATE_SURVEY_GENERAL_INFO_FAILURE,
         error
-    }
+    };
 }
 
 export function updateSurveyGeneralInfo(state) {
     return (dispatch) => {
-        dispatch(updateSurveyGeneralInfoRequest());   
+        dispatch(updateSurveyGeneralInfoRequest());
         fetch(`/api/v1/survey/${state.id}`, {
             method: 'PUT',
             headers: {
@@ -190,12 +190,12 @@ export function updateSurveyGeneralInfo(state) {
         .catch(error => {
             dispatch(updateSurveyGeneralInfoFailure(error));
         });
-    }
+    };
 }
 
 export function submitSurveyGeneral(state) {
     return (dispatch) => {
-        dispatch(submitSurveyGeneralRequest());   
+        dispatch(submitSurveyGeneralRequest());
         fetch('/api/v1/survey', {
             method: 'POST',
             headers: {
@@ -218,7 +218,7 @@ export function submitSurveyGeneral(state) {
         .catch(error => {
             dispatch(submitSurveyGeneralFailure(error));
         });
-    }
+    };
 }
 
 export const FETCH_SURVEY_GENERAL_INFO_REQUEST = 'FETCH_SURVEY_GENERAL_INFO_REQUEST';
@@ -228,21 +228,21 @@ export const FETCH_SURVEY_GENERAL_INFO_FAILURE = 'FETCH_SURVEY_GENERAL_INFO_FAIL
 export function fetchSurveyGeneralInfoRequest() {
     return {
         type: FETCH_SURVEY_GENERAL_INFO_REQUEST
-    }    
+    };
 }
 
 export function fetchSurveyGeneralInfoSuccess(response) {
     return {
         type: FETCH_SURVEY_GENERAL_INFO_SUCCESS,
         response
-    }    
+    };
 }
 
 export function fetchSurveyGeneralInfoFailure(error) {
     return {
         type: FETCH_SURVEY_GENERAL_INFO_FAILURE,
         error
-    }    
+    };
 }
 
 export function fetchSurveyGeneralInfo(id) {
@@ -254,7 +254,7 @@ export function fetchSurveyGeneralInfo(id) {
             return dispatch(fetchSurveyGeneralInfoSuccess(response));
         })
         .catch(error => {
-            return dispatch(fetchSurveyGeneralInfoFailure(error)); 
-        })
-    }
+            return dispatch(fetchSurveyGeneralInfoFailure(error));
+        });
+    };
 }

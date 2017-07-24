@@ -8,17 +8,17 @@ class RadioButton extends Component {
         return (
             <label
                 className="radio-button-item">
-                <input 
+                <input
                     onChange={this.props.onChange.bind(this, this.props.id)}
-                    type="radio" 
+                    type="radio"
                     id={this.props.label}
-                    name={this.props.name} 
+                    name={this.props.name}
                     checked={this.props.checked}
                     value={this.props.label} />
                 {this.props.label}
                 <div className={`radio-button-indicator ${this.props.checked && 'checked'}`}></div>
             </label>
-        )
+        );
     }
 }
 
@@ -27,7 +27,8 @@ RadioButton.propTypes = {
     label: PropTypes.string,
     name: PropTypes.string,
     checked: PropTypes.bool,
-    onClick: PropTypes.func
-}
+    onChange: PropTypes.func,
+    id: PropTypes.number
+};
 
 export default RadioButton;

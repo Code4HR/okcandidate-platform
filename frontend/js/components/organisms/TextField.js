@@ -45,7 +45,8 @@ TextField.propTypes = {
     error: PropTypes.string,
     onChange: PropTypes.func,
     type: PropTypes.string,
-    button: PropTypes.element
+    button: PropTypes.element,
+    help: PropTypes.string
 };
 
 export default TextField;

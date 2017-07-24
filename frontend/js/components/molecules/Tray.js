@@ -9,12 +9,12 @@ class Tray extends Component {
             <div className="tray">
                 { this.props.children }
             </div>
-        )
+        );
     }
 }
 
 Tray.propTypes = {
     children: PropTypes.any
-}
+};
 
-export default Tray
+export default Tray;

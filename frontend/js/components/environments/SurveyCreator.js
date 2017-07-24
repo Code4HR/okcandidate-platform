@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import Card from './../atoms/Card';
 
 class SurveyCreator extends Component {
 

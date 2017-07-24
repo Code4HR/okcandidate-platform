@@ -18,7 +18,7 @@ module.exports = class QuestionType extends Model {
                     }
                 }
             }
-        }
+        };
 
     }
 

@@ -1,9 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import Card from './../atoms/Card';
 
-import SearchBox from './../organisms/SearchBox';
-import Icon from './../atoms/Icon';
-
 class SurveyCreatorOffices extends Component {
 
     constructor(props) {

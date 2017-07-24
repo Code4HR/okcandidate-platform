@@ -39,7 +39,6 @@ module.exports = class Survey extends Model {
                 allowNull: true
             }
         };
-
     }
 
 };

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import Card from './../atoms/Card';
 import TextField from './../organisms/TextField';
-import SearchBox from './../organisms/SearchBox';
 import RadioButtons from './../organisms/RadioButtons';
 import Checkbox from './../molecules/Checkbox';
 import Tray from './../molecules/Tray';
@@ -62,11 +61,11 @@ class SurveyCreatorGeneral extends Component {
         if (this.props.general.id) {
             return this.props.dispatch(updateSurveyGeneralInfo(this.props.general));
         }
-        return this.props.dispatch(submitSurveyGeneral(this.props.general))
+        return this.props.dispatch(submitSurveyGeneral(this.props.general));
     }
 
     gotoNextPage() {
-        gotoRoute(`/admin/survey/${this.props.params.id}/offices`)
+        gotoRoute(`/admin/survey/${this.props.params.id}/offices`);
     }
 
     render() {
@@ -107,20 +106,20 @@ class SurveyCreatorGeneral extends Component {
                     help="What kind of questions will voters and candidates see?"
                     name="Question Type" />
 
-                <Checkbox 
+                <Checkbox
                     onChange={this.toggleRegionLimit.bind(this)}
                     checked={this.props.general.regionLimit}
                     help="Should voters in different districts see different candidates?"
                     label="Limit by region?"/>
-                
+
                 <Tray>
                     <button
                         onClick={this.submitSurveyGeneral.bind(this)}
                         className="submit">
                         { this.props.general.id && 'Update' || 'Submit' }
                     </button>
-                    { this.props.general.id && 
-                        <button 
+                    { this.props.general.id &&
+                        <button
                             onClick={this.gotoNextPage.bind(this)}>
                                 Offices <Icon>keyboard_arrow_right</Icon>
                         </button>
@@ -133,7 +132,9 @@ class SurveyCreatorGeneral extends Component {
 }
 
 SurveyCreatorGeneral.propTypes = {
-    general: PropTypes.object
+    general: PropTypes.object,
+    dispatch: PropTypes.func,
+    params: PropTypes.object
 };
 
 export default connect(

@@ -7,7 +7,7 @@ class Checkbox extends Component {
     render() {
         return (
             <div className="checkbox">
-                <label 
+                <label
                     htmlFor={this.props.name}>
                     <input
                         onChange={this.props.onChange}
@@ -27,7 +27,7 @@ class Checkbox extends Component {
                     </div>
                 }
             </div>
-        )
+        );
     }
 }
 
@@ -37,6 +37,6 @@ Checkbox.propTypes = {
     checked: PropTypes.bool,
     onChange: PropTypes.func,
     help: PropTypes.string
-}
+};
 
 export default Checkbox;

@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const Policy = require('trails-policy')
+const Policy = require('trails-policy');
 const Joi = require('joi');
 const Boom = require('boom');
 
@@ -9,7 +9,7 @@ const surveyCreateSchema = Joi.object().keys({
     startDate: Joi.date().min('now'),
     endDate: Joi.date().min(Joi.ref('startDate')),
     QuestionTypeId: Joi.number(),
-    regionLimit: Joi.bool() 
+    regionLimit: Joi.bool()
 });
 
 /**
@@ -25,9 +25,9 @@ module.exports = class SurveyPolicy extends Policy {
             if (err) {
                 return reply(Boom.badData(err));
             }
-            return reply()
+            return reply();
         });
     }
 
-}   
+};
 
