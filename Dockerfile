@@ -22,7 +22,7 @@ RUN npm install && npm cache clean
 # note that even with these two ENV's, node will still try to use the node_modules you
 # bind-mount in with compose files or -v docker commands, so ensure you remove that subdir 
 # on your dev host before running docker-compose
-ENV PATH /data/node_modules/.bin:$PATH
+ENV PATH /usr/src/node_modules/.bin:$PATH
 ENV NODE_PATH=/usr/src/node_modules
 
 # copy in our source code last, as it changes the most
