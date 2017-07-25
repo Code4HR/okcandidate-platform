@@ -4,12 +4,30 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Checkbox extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            focus: false
+        }
+    }
+
+    onFocus(e) {
+        this.setState({focus: true});
+    }
+
+    onBlur(e) {
+        this.setState({focus: false});
+    }
+
     render() {
         return (
             <div className="checkbox">
                 <label
                     htmlFor={this.props.name}>
                     <input
+                        onFocus={this.onFocus.bind(this)}
+                        onBlur={this.onBlur.bind(this)}
                         onChange={this.props.onChange}
                         readOnly
                         type="checkbox"
@@ -18,7 +36,7 @@ class Checkbox extends Component {
                         name={this.props.name}
                         value={this.props.name} />
                     {this.props.label}
-                    <div className={`checkbox-indicator ${this.props.checked && 'checked'}`}></div>
+                    <div className={`checkbox-indicator ${this.props.checked && 'checked'} ${this.state.focus && 'focused'}`}></div>
                 </label>
                 {
                     this.props.help &&
