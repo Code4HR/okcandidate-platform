@@ -9,7 +9,7 @@ class RadioButton extends Component {
         super(props);
         this.state = {
             focus: false
-        }
+        };
     }
 
     onFocus(e) {
@@ -34,7 +34,10 @@ class RadioButton extends Component {
                     checked={this.props.checked}
                     value={this.props.label} />
                 {this.props.label}
-                <div className={`radio-button-indicator ${this.props.checked && 'checked'} ${this.state.focus && 'focused'}`}></div>
+                <div className={`
+                    radio-button-indicator
+                    ${this.props.checked && 'checked'}
+                    ${this.state.focus && 'focused'}`}></div>
             </label>
         );
     }

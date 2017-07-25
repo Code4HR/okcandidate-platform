@@ -9,7 +9,7 @@ class Checkbox extends Component {
         super(props);
         this.state = {
             focus: false
-        }
+        };
     }
 
     onFocus(e) {
@@ -36,7 +36,9 @@ class Checkbox extends Component {
                         name={this.props.name}
                         value={this.props.name} />
                     {this.props.label}
-                    <div className={`checkbox-indicator ${this.props.checked && 'checked'} ${this.state.focus && 'focused'}`}></div>
+                    <div className={`checkbox-indicator
+                        ${this.props.checked && 'checked'}
+                        ${this.state.focus && 'focused'}`}></div>
                 </label>
                 {
                     this.props.help &&
