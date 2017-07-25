@@ -1,10 +1,16 @@
 @import 'colors';
 
 .radio-buttons {
+    
     margin-bottom: 2em;
 
     .radio-buttons-help {
         color: $gray;
+    }
+
+    .radio-buttons-error {
+        color: $red;
+        position: relative;
     }
 
     .radio-button-item {

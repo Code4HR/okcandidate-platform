@@ -36,6 +36,8 @@
 }
 
 .text-field-row {
+    display: flex;
+    align-items: top;
     margin: 0 -.5em;
 
     .text-field {
