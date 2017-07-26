@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Hr from './../atoms/hr';
+import Hr from './../atoms/Hr';
 import Alert from './../organisms/Alert';
 import TextField from './../organisms/TextField';
 

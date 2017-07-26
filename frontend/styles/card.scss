@@ -1,9 +1,25 @@
 @import 'colors';
 
 .card {
-  padding: 2rem;
-  background: #ffffff;
-  border: 3px solid $lightGray;
-  border-radius: 6px;
-  margin-bottom: 1em;
+    padding: 2rem;
+    background: #ffffff;
+    border: 3px solid $lightGray;
+    border-radius: 6px;
+    margin-bottom: 1em;
+
+    .container {
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+    h4 {
+        font-size: 1.25em;
+    }
 }

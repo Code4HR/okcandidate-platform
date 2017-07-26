@@ -6,10 +6,4 @@ coverage
 .DS_STORE
 npm-debug.log
 
-# Docker stuff
-.env
-docker/*.crt
-docker/*.key
-docker/*.srl
-docker/*.csr
-.vscode
+

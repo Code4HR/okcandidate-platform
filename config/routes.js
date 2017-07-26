@@ -21,12 +21,22 @@ module.exports = [
     {
         method: 'GET',
         path: '/survey',
-        handler: 'ViewController.survey'
+        handler: 'ViewController.surveyList'
     },
     {
         method: 'GET',
-        path: '/category',
+        path: '/survey/{id}',
         handler: 'ViewController.category'
+    },
+    {
+        method: 'GET',
+        path: '/survey/{id}/category',
+        handler: 'ViewController.category'
+    },
+    {
+        method: 'GET',
+        path: '/survey/{id}/questions',
+        handler: 'ViewController.survey'
     },
     {
         method: 'GET',
@@ -91,7 +101,16 @@ module.exports = [
         path: '/api/v1/survey/location',
         handler: 'SurveyController.getSurveyByLatLng'
     },
-
+    {
+        method: 'POST',
+        path: '/api/v1/survey',
+        handler: 'SurveyController.create'
+    },
+    {
+        method: 'PUT',
+        path: '/api/v1/survey/{id}',
+        handler: 'SurveyController.update'
+    },
     {
         method: ['GET'],
         path: '/api/v1/category',
