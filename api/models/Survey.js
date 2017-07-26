@@ -17,6 +17,7 @@ module.exports = class Survey extends Model {
                         models.Survey.hasMany(models.SurveyResult);
                         models.Survey.belongsToMany(models.Region, {through: 'surveyregion'});
                         models.Survey.belongsToMany(models.Office, {through: 'surveyoffice'});
+                        models.SurveyStatus.hasOne(models.Survey);
                     }
                 }
             }
@@ -28,9 +29,16 @@ module.exports = class Survey extends Model {
             name: {
                 type: Sequelize.STRING,
                 allowNull: false
+            },
+            startDate: {
+                type: Sequelize.DATE,
+                allowNull: true
+            },
+            endDate: {
+                type: Sequelize.DATE,
+                allowNull: true
             }
         };
-
     }
 
 };

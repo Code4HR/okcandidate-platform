@@ -2,16 +2,13 @@
 
 .text-field {
     text-align: left;
+    display: inline-block;
     input {
         margin-bottom: 16px;
     }
 
     .text-field-input {
         display: flex;
-
-        input {
-            flex: 1;
-        }
 
         &.has-button {
             input {
@@ -25,9 +22,25 @@
         }
     }
 
+    .text-field-help {
+        color: $gray;
+        position: relative;
+        bottom: 12px;
+    }
+
     .text-field-error {
         color: $red;
         position: relative;
         bottom: 12px;
+    }
+}
+
+.text-field-row {
+    display: flex;
+    align-items: top;
+    margin: 0 -.5em;
+
+    .text-field {
+        margin: 0 .5em;
     }
 }

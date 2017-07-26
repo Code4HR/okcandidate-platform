@@ -1,45 +1,36 @@
-# Copyright (c) 2016 code4hr <code4hr-team@codeforamerica.org> (http://code4hr.org/)
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
 version: '3.3'
+
 services:
-  web:
-    image: nginx:alpine
-    volumes:
-      - ./docker/nginx.conf:/etc/nginx/nginx.conf
-      - ./docker/okcandidate.crt:/etc/nginx/okcandidate.crt
-      - ./docker/okcandidate.key:/etc/nginx/okcandidate.key
-      - /data/nginx/cache
-    ports:
-      - "80:80"
-      - "443:443"
 
   app:
-    image: rydente/node:alpine-gyp
-    env_file: .env
-    command: "ash -c 'npm i && npm start'"
-    working_dir: /usr/src/app
+    image: code4hr/okc-node
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    entrypoint: /usr/src/app/docker/docker-entrypoint.sh 
+    command: ../node_modules/.bin/nodemon server.js --inspect=0.0.0.0:9229
+    environment:
+      NODE_ENV: development
+      OKC_DB_HOST: db
+      OKC_DB_NAME: okcandidate_dev
+      OKC_DB_USER: blaine
+      OKC_DB_PASS: complicatedPassword
+      OKC_SESSION_SECRET_KEY: someGobbledygookThatIsAtLeast32CharactersLong
+      GOOGLE_API_KEY: google_api_key
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules
+    ports:
+      - "80:3000"
+      - "9229:9229"
 
   db:
-    env_file: .env
-    image: postgres:alpine
+    image: postgres:9.6.2-alpine
+    environment:
+      POSTGRES_DB: okcandidate_dev
+      POSTGRES_USER: blaine
+      POSTGRES_PASSWORD: complicatedPassword
+    ports:
+      - "5432:5432"
+
 

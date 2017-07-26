@@ -19,7 +19,7 @@ class Frame extends Component {
           width={300}
           isOpen={this.props.ui.sidebarVisibility} />
 
-        <div className="container">
+        <div className="app-container">
           { this.props.children }
         </div>
 

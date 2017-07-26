@@ -10,16 +10,21 @@
  * @see http://trailsjs.io/doc/config/policies
  */
 
-'use strict'
+'use strict';
 
 module.exports = {
 
   DefaultController: {
-    info: [ ]
+      info: [ ]
   },
 
   ViewController: {
-    admin: ['Auth.isLoggedIn', 'Auth.isAdmin']
+      admin: ['Auth.isLoggedIn', 'Auth.isAdmin']
+  },
+
+  SurveyController: {
+      create: ['Survey.create'],
+      update: ['Survey.create']
   }
 
-}
+};
