@@ -11,6 +11,12 @@ module.exports = class SurveyResultService extends Service {
         return this.app.orm.SurveyResult.findAll();
     }
 
+    create (surveyData) {
+        return this.app.orm.SurveyResult.create(
+        Object.assign({}, surveyData)
+      );
+    }
+
     match(params) {
         return this.app.orm.SurveyResult.find({
             where: params
