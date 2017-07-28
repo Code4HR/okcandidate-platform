@@ -1,0 +1,28 @@
+.home {
+    .call-to-action {
+        padding: 2.5em 0em;
+        text-align: center;
+
+        .call-to-action-text {
+            h1 {
+                line-height: 1.25em;
+                margin-bottom: .125em;
+            }
+            p {
+                line-height: 1em;
+                font-size: 1.25em;
+            }
+        }
+    }
+
+    .intro-card {
+        text-align: center;
+        .columns {
+            text-align: center;
+            img {
+                max-width: 50%;
+                margin: 0 auto 1em auto;
+            }
+        }
+    }
+}

@@ -7,9 +7,12 @@ class AppLogo extends Component {
     render() {
         return (
       <section className="app-logo">
-        <IconButton
-          onClick={this.props.onClick}
-          icon="menu" />
+        {
+            this.props.displayMenuButton &&
+            <IconButton
+                onClick={this.props.onClick}
+                icon="menu" />
+        }
         <a href="/">
           <img alt="OKCandidate" src="/dist/images/okcandidate-logo.svg" />
         </a>
@@ -20,7 +23,8 @@ class AppLogo extends Component {
 }
 
 AppLogo.propTypes = {
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    displayMenuButton: PropTypes.bool
 };
 
 export default AppLogo;

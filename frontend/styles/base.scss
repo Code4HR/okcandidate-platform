@@ -1,20 +1,26 @@
 @import 'colors';
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin-top: 64px;
-  color: $darkerGray;
+    margin-top: 64px;
+    color: $darkerGray;
+    background: $lighterGray;
+}
+
+.container {
+    max-width: 960px;
 }
 
 .flex-container {
-  width: 100%;
-  padding: 0 1em;
+    width: 100%;
+    padding: 0 1em;
 }
 
 .app-container {
-  width: 100%;
-  padding: 0 1em;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 .25em;
 }

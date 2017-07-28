@@ -37,8 +37,7 @@ class Results extends Component {
         });
 
         return (
-            <article>
-                <pre>Results Page</pre>
+            <article className="container">
                 { bestMatch.map((m) => {
                     return (<BestMatch
                             key={m.name}
