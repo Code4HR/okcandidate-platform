@@ -37,6 +37,14 @@ module.exports = class Survey extends Model {
             endDate: {
                 type: Sequelize.DATE,
                 allowNull: true
+            },
+            categorySort: {
+                type: Sequelize.BOOLEAN,
+                defaultValue: false
+            },
+            regionLimit: {
+                type: Sequelize.BOOLEAN,
+                defaultValue: false
             }
         };
     }

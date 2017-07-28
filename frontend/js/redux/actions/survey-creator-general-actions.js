@@ -44,6 +44,7 @@ export const SET_SURVEY_START_DATE = 'SET_SURVEY_START_DATE';
 export const SET_SURVEY_END_DATE = 'SET_SURVEY_END_DATE';
 export const SELECT_QUESTION_TYPE = 'SELECT_QUESTION_TYPE';
 export const TOGGLE_REGION_LIMIT = 'TOGGLE_REGION_LIMIT';
+export const TOGGLE_CATEGORY_SORT = 'TOGGLE_CATEGORY_SORT';
 
 export function setSurveyName(name) {
     return {
@@ -76,6 +77,12 @@ export function selectQuestionType(id) {
 export function toggleRegionLimit() {
     return {
         type: TOGGLE_REGION_LIMIT
+    };
+}
+
+export function toggleCategorySort() {
+    return {
+        type: TOGGLE_CATEGORY_SORT
     };
 }
 
@@ -179,7 +186,8 @@ export function updateSurveyGeneralInfo(state) {
                 startDate: state.startDate,
                 endDate: state.endDate,
                 QuestionTypeId: state.QuestionTypeId,
-                regionLimit: state.regionLimit
+                regionLimit: state.regionLimit,
+                categorySort: state.categorySort
             })
         })
         .then(checkStatus)
@@ -206,7 +214,8 @@ export function submitSurveyGeneral(state) {
                 startDate: state.startDate,
                 endDate: state.endDate,
                 QuestionTypeId: state.QuestionTypeId,
-                regionLimit: state.regionLimit
+                regionLimit: state.regionLimit,
+                categorySort: state.categorySort
             })
         })
         .then(checkStatus)

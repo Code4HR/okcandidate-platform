@@ -9,7 +9,8 @@ const surveyCreateSchema = Joi.object().keys({
     startDate: Joi.date().min('now'),
     endDate: Joi.date().min(Joi.ref('startDate')),
     QuestionTypeId: Joi.number().required(),
-    regionLimit: Joi.bool()
+    regionLimit: Joi.bool(),
+    categorySort: Joi.boolean()
 });
 
 const options = {
