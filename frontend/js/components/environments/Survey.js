@@ -26,7 +26,7 @@ class Survey extends Component {
 
     gotoPrevQuestion() {
         if (this.props.survey.questionIndex === 0) {
-            return gotoRoute('/category');
+            return gotoRoute(`/survey/${this.props.routeParams.id}`);
         }
         return this.props.dispatch(gotoPrevQuestion());
     }

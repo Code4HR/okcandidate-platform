@@ -24,7 +24,6 @@ module.exports = (
   <Route path="/" component={Frame}>
     <IndexRoute component={Home} />
     <Route path="survey" component={SurveySelector} />
-    <Route path="survey/:id" component={Category} />
     <Route path="survey/:id/category" component={Category} />
     <Route path="survey/:id/questions" component={Survey} />
     <Route path="results/:passPhrase" component={Results} />

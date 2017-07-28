@@ -19,7 +19,7 @@ class Home extends Component {
                         <h1>Don't go to the polls alone.</h1>
                         <p>Take your OKCandidate</p>
                     </div>
-                    <button className="large primary">Get Started</button>
+                    <a href="/start" className="button large primary">Get Started</a>
                 </div>
 
                 <div className="container">
