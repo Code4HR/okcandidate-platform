@@ -1,0 +1,14 @@
+@import 'colors';
+
+.tagline {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+
+    .heart {
+        color: $red;
+        font-size: 2em;
+        position: relative;
+        top: 3px;
+    }
+}

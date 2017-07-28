@@ -63,12 +63,12 @@ module.exports = class UserService extends Service {
 
     getOne(id) {
         return this.app.orm.User.find({
-            attributes: ['id', 'name', 'emailAddress'],
+            attributes: ['id', 'name', 'emailAddress', 'role'],
             where: {id: id}});
     }
 
     getAll() {
-        return this.app.orm.User.findAll({attributes: ['id', 'name', 'emailAddress']});
+        return this.app.orm.User.findAll({attributes: ['id', 'name', 'emailAddress', 'role']});
     }
 
 };

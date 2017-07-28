@@ -2,17 +2,20 @@ const users = [
   {
     name: 'A. Voter',
     emailAddress: 'user@gmail.com',
-    password: 'leafygreen'
+    password: 'leafygreen',
+    role: 'voter'
   },
   {
     name: 'A. Candidate',
     emailAddress: 'candidate@gmail.com',
-    password: 'mashedpotato'
+    password: 'mashedpotato',
+    role: 'candidate'
   },
   {
     name: 'Anne Admin',
     emailAddress: 'admin@okcandidate.org',
-    password: 'adminpass'
+    password: 'adminpass',
+    role: 'admin'
   }
 ]
 

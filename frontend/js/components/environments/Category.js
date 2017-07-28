@@ -23,12 +23,14 @@ class Category extends Component {
     render() {
         const categories = this.props.category.categories;
         return (
-            <CategoryList
-                surveyId={this.props.router.params.id}
-                dispatch={this.props.dispatch}
-                categories={categories.sort((catA, catB) => {
-                    return catA.rank - catB.rank;
-                })} />
+            <div className="container">
+                <CategoryList
+                    surveyId={this.props.router.params.id}
+                    dispatch={this.props.dispatch}
+                    categories={categories.sort((catA, catB) => {
+                        return catA.rank - catB.rank;
+                    })} />
+            </div>
         );
     }
 }

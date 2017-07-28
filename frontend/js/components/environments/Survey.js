@@ -43,18 +43,20 @@ class Survey extends Component {
         const question = this.props.survey.questions[index];
 
         return (
-            <div className="twelve columns">
-                <article className="survey">
-                    { question &&
-                      <SurveyCard
-                          dispatch={this.props.dispatch}
-                          text={question.text}
-                          id={question.id}
-                          onNextClick={this.gotoNextQuestion.bind(this)}
-                          onBackClick={this.gotoPrevQuestion.bind(this)}
-                          agreement={question.agreement} />
-                    }
-                </article>
+            <div className="container">
+                <div className="twelve columns">
+                    <article className="survey">
+                        { question &&
+                        <SurveyCard
+                            dispatch={this.props.dispatch}
+                            text={question.text}
+                            id={question.id}
+                            onNextClick={this.gotoNextQuestion.bind(this)}
+                            onBackClick={this.gotoPrevQuestion.bind(this)}
+                            agreement={question.agreement} />
+                        }
+                    </article>
+                </div>
             </div>
         );
     }
