@@ -85,7 +85,9 @@ class Sidebar extends Component {
         className="sidemenu height-3">
 
         <div className="wrapper">
-          <AppLogo onClick={this.toggleSidebarVisibility.bind(this)} />
+          <AppLogo
+            displayMenuButton
+            onClick={this.toggleSidebarVisibility.bind(this)} />
         </div>
 
         <Profile login={this.props.login} />
