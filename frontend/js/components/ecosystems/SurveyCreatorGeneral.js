@@ -15,6 +15,7 @@ import {
     setSurveyEndDate,
     selectQuestionType,
     toggleRegionLimit,
+    toggleCategorySort,
     submitSurveyGeneral,
     updateSurveyGeneralInfo,
     fetchSurveyGeneralInfo
@@ -55,6 +56,10 @@ class SurveyCreatorGeneral extends Component {
 
     toggleRegionLimit(event) {
         this.props.dispatch(toggleRegionLimit());
+    }
+
+    toggleCategorySort(event) {
+        this.props.dispatch(toggleCategorySort());
     }
 
     submitSurveyGeneral() {
@@ -115,6 +120,12 @@ class SurveyCreatorGeneral extends Component {
                     checked={this.props.general.regionLimit}
                     help="Should voters in different districts see different candidates?"
                     label="Limit by region?"/>
+
+                <Checkbox
+                    onChange={this.toggleCategorySort.bind(this)}
+                    checked={this.props.general.categorySort}
+                    help="Should survey takers be invited to sort categories by priority?"
+                    label="Show Category Sort?" />
 
                 <Tray>
                     <button

@@ -6,6 +6,7 @@ import {
     SET_SURVEY_END_DATE,
     SELECT_QUESTION_TYPE,
     TOGGLE_REGION_LIMIT,
+    TOGGLE_CATEGORY_SORT,
     FETCH_QUESTION_TYPES_REQUEST,
     FETCH_QUESTION_TYPES_SUCCESS,
     FETCH_QUESTION_TYPES_FAILURE,
@@ -29,7 +30,8 @@ const initialState = {
     questionTypes: [],
     QuestionTypeId: null,
     QuestionTypeError: '',
-    regionLimit: false
+    regionLimit: false,
+    categorySort: false
 };
 
 function getDateString(date) {
@@ -63,6 +65,10 @@ export default (state = initialState, action) => {
         return Object.assign({}, state, {
             regionLimit: !state.regionLimit
         });
+    case TOGGLE_CATEGORY_SORT:
+        return Object.assign({}, state, {
+            categorySort: !state.categorySort
+        });
     case FETCH_QUESTION_TYPES_REQUEST:
         return Object.assign({}, state, {
             isFetching: true,
@@ -91,7 +97,8 @@ export default (state = initialState, action) => {
             startDate: getDateString(action.response.startDate),
             endDate: getDateString(action.response.endDate),
             QuestionTypeId: action.response.QuestionTypeId,
-            regionLimit: action.response.regionLimit
+            regionLimit: action.response.regionLimit,
+            categorySort: action.response.categorySort
         });
     case FETCH_SURVEY_GENERAL_INFO_FAILURE:
         return Object.assign({}, state, {
