@@ -24,7 +24,7 @@ module.exports = class ViewController extends Controller {
             const id = survey.id;
             // If this survey uses the category sort page
             if (survey.categorySort) {
-                return reply.redirect(`/survey/${id}/category`)
+                return reply.redirect(`/survey/${id}/category`);
             }
             // Otherwise, go directly to the questions.
             return reply.redirect(`/survey/${id}/questions`);
@@ -41,7 +41,7 @@ module.exports = class ViewController extends Controller {
             // If so, set regionLimit to true and show LocationForm component.
             // Otherwise, show all the surveys.
             const regionLimit = surveys.some(survey => survey.regionLimit);
-            return reply.redirect(`/survey?regionLimit=${regionLimit}`)
+            return reply.redirect(`/survey?regionLimit=${regionLimit}`);
         })
         .catch((error) => {
             reply(Boom.badRequest(error.message));

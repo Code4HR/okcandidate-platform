@@ -47,7 +47,11 @@ class SurveySelector extends Component {
                     return (
                         <Card
                             key={index}
-                            onClick={this.onClickSurveyCard.bind(this, survey.id, survey.categorySort)}>
+                            onClick={this.onClickSurveyCard.bind(
+                                this,
+                                survey.id,
+                                survey.categorySort
+                            )}>
                             <h2>{survey.name}</h2>
                             <button>Take it!</button>
                         </Card>
@@ -60,7 +64,9 @@ class SurveySelector extends Component {
 
 SurveySelector.propTypes = {
     pickSurvey: PropTypes.object,
-    params: PropTypes.object
+    params: PropTypes.object,
+    location: PropTypes.object,
+    dispatch: PropTypes.func
 };
 
 export default connect(

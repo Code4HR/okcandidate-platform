@@ -8,21 +8,21 @@ export const FETCH_SURVEYS_FAILURE = 'FETCH_SURVEYS_FAILURE';
 export function fetchSurveysRequest() {
     return {
         type: FETCH_SURVEYS_REQUEST
-    }
+    };
 }
 
 export function fetchSurveysSuccess(response) {
     return {
         type: FETCH_SURVEYS_SUCCESS,
         response
-    }
+    };
 }
 
 export function fetchSurveysFailure(error) {
     return {
         type: FETCH_SURVEYS_FAILURE,
         error
-    }
+    };
 }
 
 export function fetchSurveys() {
@@ -36,7 +36,7 @@ export function fetchSurveys() {
         .catch(error => {
             dispatch(fetchSurveysFailure(error));
         });
-    }
+    };
 }
 
 export const FETCH_SURVEYS_BY_LOCATION_REQUEST = 'FETCH_SURVEYS_BY_LOCATION_REQUEST';
