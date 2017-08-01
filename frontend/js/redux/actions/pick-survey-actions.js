@@ -73,9 +73,9 @@ export function fetchNonRegionLimitedSurveys() {
             dispatch(fetchNonRegionLimitedSurveysSuccess(response));
         })
         .catch(error => {
-            dispatch(fetchNonRegionLimitedSurveysFailure(error))
-        })
-    }
+            dispatch(fetchNonRegionLimitedSurveysFailure(error));
+        });
+    };
 }
 
 export const FETCH_SURVEYS_BY_LOCATION_REQUEST = 'FETCH_SURVEYS_BY_LOCATION_REQUEST';
