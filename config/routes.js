@@ -20,13 +20,18 @@ module.exports = [
     },
     {
         method: 'GET',
+        path: '/start',
+        handler: 'ViewController.start'
+    },
+    {
+        method: 'GET',
         path: '/survey',
         handler: 'ViewController.surveyList'
     },
     {
         method: 'GET',
         path: '/survey/{id}',
-        handler: 'ViewController.category'
+        handler: 'ViewController.survey'
     },
     {
         method: 'GET',
@@ -36,7 +41,7 @@ module.exports = [
     {
         method: 'GET',
         path: '/survey/{id}/questions',
-        handler: 'ViewController.survey'
+        handler: 'ViewController.questions'
     },
     {
         method: 'GET',
