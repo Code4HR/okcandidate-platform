@@ -34,7 +34,9 @@ class SurveySelector extends Component {
     render() {
         return (
             <section className="container">
-                { this.props.location && this.props.location.query.regionLimit &&
+                {   this.props.pickSurvey.surveys.length === 0 &&
+                    this.props.location &&
+                    this.props.location.query.regionLimit &&
                     <Card>
                         <LocationForm
                             addressError={this.props.pickSurvey.addressError}

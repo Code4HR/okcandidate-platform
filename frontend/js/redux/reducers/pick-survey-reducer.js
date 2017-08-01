@@ -5,6 +5,9 @@ import {
     FETCH_SURVEYS_BY_LOCATION_REQUEST,
     FETCH_SURVEYS_BY_LOCATION_SUCCESS,
     FETCH_SURVEYS_BY_LOCATION_FAILURE,
+    FETCH_NON_REGION_LIMITED_SURVEYS_REQUEST,
+    FETCH_NON_REGION_LIMITED_SURVEYS_SUCCESS,
+    FETCH_NON_REGION_LIMITED_SURVEYS_FAILURE,
     GET_LOCATION_BY_ADDRESS_REQUEST,
     GET_LOCATION_BY_ADDRESS_SUCCESS,
     GET_LOCATION_BY_ADDRESS_FAILURE,
@@ -25,12 +28,14 @@ export default function surveyReducer(state = initialState, action) {
 
     case FETCH_SURVEYS_REQUEST:
     case FETCH_SURVEYS_BY_LOCATION_REQUEST:
+    case FETCH_NON_REGION_LIMITED_SURVEYS_REQUEST:
         return Object.assign({}, state, {
             isFetching: true,
             error: initialState.error
         });
     case FETCH_SURVEYS_SUCCESS:
     case FETCH_SURVEYS_BY_LOCATION_SUCCESS:
+    case FETCH_NON_REGION_LIMITED_SURVEYS_SUCCESS:
         return Object.assign({}, state, {
             isFetching: false,
             surveys: action.response,
@@ -38,6 +43,7 @@ export default function surveyReducer(state = initialState, action) {
         });
     case FETCH_SURVEYS_FAILURE:
     case FETCH_SURVEYS_BY_LOCATION_FAILURE:
+    case FETCH_NON_REGION_LIMITED_SURVEYS_FAILURE:
         return Object.assign({}, state, {
             isFetching: false,
             error: action.error
