@@ -55,22 +55,21 @@ module.exports = {
             if (count > 0) {
                 return [];
             }
-            else {
-                // Create survey results
-                return Promise.all(
-                    surveyResults.map(surveyResult => {
-                        return app.orm.SurveyResult.create(surveyResult);
-                    })
-                )
-                .then(surveyResults => {
 
-                    const maxId = Math.max.apply(Math,surveyResults.map(function(o){return o.id;}));
-                    app.orm.SurveyResult.sequelize.query('select setval(\'surveyresult_id_seq\', ' + maxId + ')');
+            const maxId = Math.max.apply(Math,surveyResults.map(function(o){return o.id;}));
+            app.orm.SurveyResult.sequelize.query('select setval(\'surveyresult_id_seq\', ' + maxId + ')');
 
-                    app.log.info('Survey results created');
-                    return surveyResults;
-                });
-            }
+            // Create survey results
+            return Promise.all(
+                surveyResults.map(surveyResult => {
+                    return app.orm.SurveyResult.create(surveyResult);
+                })
+            )
+            .then(surveyResults => {
+
+                app.log.info('Survey results created');
+                return surveyResults;
+            });
         });
     }
 };

@@ -58,6 +58,10 @@ module.exports = {
             if (count > 0) {
                 return [];
             }
+
+            const maxId = Math.max.apply(Math,questions.map(function(o){return o.id;}));
+            app.orm.Question.sequelize.query('select setval(\'question_id_seq\', ' + maxId + ')');
+
             // Create questions.
             return Promise.all(
                 questions.map(question => {
@@ -65,9 +69,6 @@ module.exports = {
                 })
             )
             .then(questions => {
-
-                const maxId = Math.max.apply(Math,questions.map(function(o){return o.id;}));
-                app.orm.Question.sequelize.query('select setval(\'question_id_seq\', ' + maxId + ')');
 
                 app.log.info('Questions created');
                 return questions;
