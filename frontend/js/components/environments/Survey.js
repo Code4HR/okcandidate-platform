@@ -4,6 +4,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 
 import SurveyCard from './../ecosystems/SurveyCard';
+import LoadingIndicator from './../organisms/LoadingIndicator';
 
 import {
   gotoNextQuestion,
@@ -46,6 +47,10 @@ class Survey extends Component {
             <div className="container">
                 <div className="twelve columns">
                     <article className="survey">
+                        {
+                            !question &&
+                            <LoadingIndicator message="Loading Questions" />
+                        }
                         { question &&
                         <SurveyCard
                             dispatch={this.props.dispatch}
