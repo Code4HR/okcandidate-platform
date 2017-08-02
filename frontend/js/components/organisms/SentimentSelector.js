@@ -4,31 +4,31 @@ import React, { Component, PropTypes } from 'react';
 import Icon from './../atoms/Icon';
 
 import {
-  setQuestionAgreement
+    setQuestionSentiment
 } from './../../redux/actions/survey-actions';
 
 const Rating = require('react-rating');
 
-class AgreementSelector extends Component {
-    onHeartClick(agreement) {
-        this.props.dispatch(setQuestionAgreement(agreement, this.props.id));
+class SentimentSelector extends Component {
+    onHeartClick(sentiment) {
+        this.props.dispatch(setQuestionSentiment(sentiment, this.props.id));
     }
 
     render() {
         return (
-            <div className="agreement-selector">
+            <div className="sentiment-selector">
                 <Rating
-                    initialRate={this.props.agreement}
+                    initialRate={this.props.sentiment}
                     onChange={this.onHeartClick.bind(this)}
                     empty={<Icon className="hearts big padded">favorite_border</Icon>}
                     full={<Icon className="hearts big padded">favorite</Icon>}
                 />
-                <div className="agreement-selector-labels">
+                <div className="sentiment-selector-labels">
                     <label className="argument-selector-label-disagree">
-                        Strongly<br/>Disagree
+                        {this.props.leftLabel}
                     </label>
                     <label className="argument-selector-label-agree">
-                        Strongly<br/>Agree
+                        {this.props.rightLabel}
                     </label>
                 </div>
             </div>
@@ -36,10 +36,12 @@ class AgreementSelector extends Component {
     }
 }
 
-AgreementSelector.propTypes = {
+SentimentSelector.propTypes = {
     dispatch: PropTypes.func,
-    agreement: PropTypes.number,
-    id: PropTypes.number
+    sentiment: PropTypes.number,
+    id: PropTypes.number,
+    leftLabel: PropTypes.string,
+    rightLabel: PropTypes.string
 };
 
-module.exports = AgreementSelector;
+module.exports = SentimentSelector;

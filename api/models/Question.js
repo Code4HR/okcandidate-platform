@@ -25,6 +25,12 @@ module.exports = class Question extends Model {
                                 allowNull: false
                             }
                         });
+                        models.Question.hasMany(models.Answer, {
+                            onDelete: 'CASCADE',
+                            foreignKey: {
+                                allowNull: false
+                            }
+                        });
                     }
                 }
             }

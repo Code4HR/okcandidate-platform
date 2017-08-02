@@ -12,7 +12,7 @@ const surveys = [
         id: 2,
         name: 'Multiple choice survey with intensity',
         QuestionTypeId: 2,
-        SurveyStatusId: 2,
+        SurveyStatusId: 3,
         regionLimit: true
     },
     {
@@ -32,6 +32,10 @@ module.exports = {
             if (count > 0) {
                 return [];
             }
+            
+            const maxId = Math.max.apply(Math,surveys.map(function(o){return o.id;}));
+            app.orm.Survey.sequelize.query('select setval(\'survey_id_seq\', ' + maxId + ')');
+
             // Create surveys.
             return Promise.all(
               surveys.map(survey => {
@@ -40,10 +44,6 @@ module.exports = {
             );
         })
         .then(surveys => {
-
-            const maxId = Math.max.apply(Math,surveys.map(function(o){return o.id;}));
-            app.orm.Survey.sequelize.query('select setval(\'survey_id_seq\', ' + maxId + ')');
-
             app.log.info('Surveys created');
             return surveys;
         });

@@ -18,12 +18,19 @@
         position: relative;
         padding-left: 3.5em;
         line-height: 2.5em;
-        margin-bottom: 1em;
+        margin-bottom: 1.5em;
 
-        & > input {
+        input {
             z-index: -1;
             position: absolute;
             opacity: 0;
+        }
+
+        label {
+            line-height: 2em;
+            position: relative;
+            top: 4px;
+            margin-bottom: 0;
         }
 
         .radio-button-indicator {

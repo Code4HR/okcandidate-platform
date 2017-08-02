@@ -2,13 +2,17 @@
 
 const types = [
     {
-        name: 'Multiple choice'
+        name: 'Multiple choice',
+        multipleChoice: true
     },
     {
-        name: 'Multiple choice plus intensity'
+        name: 'Multiple choice plus intensity',
+        multipleChoice: true,
+        sentiment: true
     },
     {
-        name: 'Intensity only'
+        name: 'Intensity only',
+        sentiment: true
     }
 ];
 

@@ -55,10 +55,14 @@ class Survey extends Component {
                         <SurveyCard
                             dispatch={this.props.dispatch}
                             text={question.text}
+                            options={question.Answers}
                             id={question.id}
+                            multipleChoice={this.props.survey.multipleChoice}
+                            hasSentiment={this.props.survey.sentiment}
                             onNextClick={this.gotoNextQuestion.bind(this)}
                             onBackClick={this.gotoPrevQuestion.bind(this)}
-                            agreement={question.agreement} />
+                            answerId={question.answerId}
+                            sentiment={question.sentiment} />
                         }
                     </article>
                 </div>
