@@ -47,6 +47,7 @@ class SurveySelector extends Component {
                 }
 
                 {
+                    this.props.pickSurvey.isFetching &&
                     !this.props.pickSurvey.surveys.length &&
                     <LoadingIndicator message="Loading Surveys" />
                 }
