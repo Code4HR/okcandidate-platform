@@ -5,7 +5,7 @@ const app = require('../../../index');
 const supertest = require('supertest');
 const sinon = require('sinon');
 
-describe.only('SurveyResultController', () => {
+describe('SurveyResultController', () => {
     let request;
     before(() => {
         request = supertest('http://localhost:3000');
