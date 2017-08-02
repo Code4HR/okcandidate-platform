@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 
 import Card from './../atoms/Card';
 import LocationForm from './../ecosystems/LocationForm';
+import LoadingIndicator from './../organisms/LoadingIndicator';
 
 import {
     fetchSurveys
@@ -43,6 +44,12 @@ class SurveySelector extends Component {
                             status={this.props.pickSurvey.status}
                             dispatch={this.props.dispatch} />
                     </Card>
+                }
+
+                {
+                    this.props.pickSurvey.isFetching &&
+                    !this.props.pickSurvey.surveys.length &&
+                    <LoadingIndicator message="Loading Surveys" />
                 }
 
                 {this.props.pickSurvey.surveys.map((survey, index) => {
