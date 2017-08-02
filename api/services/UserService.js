@@ -17,11 +17,11 @@ module.exports = class UserService extends Service {
                 resolve(hash);
             });
         })
-    .then(hash => {
-        return this.app.orm.User.create(
-        Object.assign({}, userData, {password: hash})
-      );
-    });
+        .then(hash => {
+            return this.app.orm.User.create(
+            Object.assign({}, userData, {password: hash})
+        );
+        });
 
     }
 

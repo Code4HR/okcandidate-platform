@@ -137,6 +137,11 @@ module.exports = [
         handler: 'DefaultController.info'
     },
     {
+        method: 'POST',
+        path: '/api/v1/surveyresult',
+        handler: 'SurveyResultController.create'
+    },
+    {
         method: ['GET'],
         path: '/api/v1/geolocation',
         handler: 'GeolocationController.get'

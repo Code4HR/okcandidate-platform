@@ -34,6 +34,7 @@
     "immutability-helper": "^2.2.2",
     "inert": "^4.2.0",
     "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.4",
     "joi": "^10.6.0",
     "pg": "^6.1.0",
     "prop-types": "^15.5.10",
@@ -75,6 +76,7 @@
     "eslint-config-trails": "^1.0.8",
     "eslint-plugin-react": "^6.6.0",
     "mocha": "^2.4",
+    "sinon": "^2.3.8",
     "supertest": "^1.2",
     "zombie": "^5.0.5",
     "nodemon": "^1.11.0"
