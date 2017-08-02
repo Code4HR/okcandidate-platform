@@ -44,19 +44,19 @@ class Survey extends Component {
 
         return (
             <div className="container">
-                <div className="twelve columns">
-                    <article className="survey">
-                        { question &&
-                        <SurveyCard
-                            dispatch={this.props.dispatch}
-                            text={question.text}
-                            id={question.id}
-                            onNextClick={this.gotoNextQuestion.bind(this)}
-                            onBackClick={this.gotoPrevQuestion.bind(this)}
-                            agreement={question.agreement} />
-                        }
-                    </article>
-                </div>
+                { question &&
+                    <SurveyCard
+                        dispatch={this.props.dispatch}
+                        text={question.text}
+                        options={question.Answers}
+                        id={question.id}
+                        multipleChoice={this.props.survey.multipleChoice}
+                        hasSentiment={this.props.survey.sentiment}
+                        onNextClick={this.gotoNextQuestion.bind(this)}
+                        onBackClick={this.gotoPrevQuestion.bind(this)}
+                        answerId={question.answerId}
+                        sentiment={question.sentiment} />
+                }
             </div>
         );
     }

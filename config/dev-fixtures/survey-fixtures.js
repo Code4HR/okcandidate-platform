@@ -12,7 +12,7 @@ const surveys = [
         id: 2,
         name: 'Multiple choice survey with intensity',
         QuestionTypeId: 2,
-        SurveyStatusId: 2,
+        SurveyStatusId: 3,
         regionLimit: true
     },
     {
