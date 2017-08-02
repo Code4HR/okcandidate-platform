@@ -15,7 +15,7 @@ module.exports = class AuthController extends Controller {
         this.app.services.AuthService.login(emailAddress, password)
         .then(user => {
             if (user) {
-                request.yar.set('user', user);
+                request.yar.set('user', user.toJSON());
                 reply.redirect('/admin');
             }
             else {
@@ -32,7 +32,7 @@ module.exports = class AuthController extends Controller {
 
     logout (request, reply) {
         request.yar.clear('user');
-        reply.redirect('/login');
+        reply.redirect('/');
     }
 
 };

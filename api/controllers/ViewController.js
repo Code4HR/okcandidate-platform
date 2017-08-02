@@ -76,6 +76,8 @@ module.exports = class ViewController extends Controller {
     }
 
     admin(request, reply) {
+        console.log('request user', request.yar.get('user'));
+        console.log('request passPhrase', request.yar.get('privatePassPhrase'));
         getLayout(request, 'admin', function(error, html) {
             if (error) {
                 // handle error.

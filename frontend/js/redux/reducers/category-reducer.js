@@ -1,13 +1,21 @@
 import {
-  FETCH_CATEGORY_LIST_REQUEST,
-  FETCH_CATEGORY_LIST_SUCCESS,
-  FETCH_CATEGORY_LIST_FAILURE
-} from '../actions/category-actions';
+    FETCH_CATEGORY_LIST_REQUEST,
+    FETCH_CATEGORY_LIST_SUCCESS,
+    FETCH_CATEGORY_LIST_FAILURE,
+    SET_CATEGORY_ORDER
+} from './../actions/category-actions';
+
+import {
+    FETCH_SURVEY_RESULT_SUCCESS,
+    CREATE_SURVEY_RESULT_SUCCESS
+} from './../actions/survey-actions';
 
 const initialState = {
     isFetching: false,
     categories: [],
-    help: ''
+    SurveyResultCategories: [],
+    help: '',
+    SurveyResultId: null
 };
 
 export default (state = initialState, action) => {
@@ -22,22 +30,36 @@ export default (state = initialState, action) => {
     case FETCH_CATEGORY_LIST_SUCCESS:
         return Object.assign({}, state, {
             isFetching: false,
-            categories: action.response.map((c, i) => {
-                return Object.assign({}, c, {
-                    rank: i + 1
-                });
-            })
+            categories: action.response
         });
 
     case FETCH_CATEGORY_LIST_FAILURE:
         return Object.assign({}, state, {
             isFetching: false,
-            help: action.response
+            help: action.respone
+        });
+
+    case CREATE_SURVEY_RESULT_SUCCESS:
+        return Object.assign({}, state, {
+            SurveyResultId: action.response.id,
+        });
+
+    case FETCH_SURVEY_RESULT_SUCCESS:
+        return Object.assign({}, state, {
+            SurveyResultId: action.response.id,
+            SurveyResultCategories: action.response.SurveyResultCategories
+        });
+
+    case SET_CATEGORY_ORDER:
+        return Object.assign({}, state, {
+            categories: action.categories,
+            SurveyResultCategories: state.SurveyResultCategories.map(src => {
+                src.rank = action.categories.findIndex(cat => cat.id === src.CategoryId) + 1;
+                return src;
+            })
         });
 
     default:
         return state;
-
     }
-
 };

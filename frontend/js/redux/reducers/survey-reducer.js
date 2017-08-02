@@ -1,3 +1,4 @@
+
 import {
     FETCH_SURVEY_QUESTIONS_REQUEST,
     FETCH_SURVEY_QUESTIONS_SUCCESS,
@@ -6,24 +7,28 @@ import {
     SET_QUESTION_ANSWER_ID,
     GOTO_NEXT_QUESTION,
     GOTO_PREV_QUESTION,
-    SET_SURVEY_FORMAT
+    SET_SURVEY_FORMAT,
+    FETCH_SURVEY_RESULT_SUCCESS,
+    CREATE_SURVEY_RESULT_SUCCESS,
+    CREATE_SURVEY_RESULT_ANSWER_SUCCESS,
+    SET_SURVEY_RESULT_ANSWERS
 } from './../actions/survey-actions';
 
 const initialState = {
+    SurveyResultId: null,
     isFetching: false,
     questions: [],
     questionIndex: 0,
     error: '',
     multipleChoice: false,
     sentiment: false,
-    surveyResult: {
-        answers: [
-
-        ]
-    }
+    answers: {}
 };
 
 export default function surveyReducer(state = initialState, action) {
+
+    const obj = {};
+
     switch (action.type) {
     case FETCH_SURVEY_QUESTIONS_REQUEST:
         return Object.assign({}, state, {
@@ -45,23 +50,27 @@ export default function surveyReducer(state = initialState, action) {
         });
 
     case SET_QUESTION_SENTIMENT:
+        obj[action.questionId] = Object.assign(
+            {},
+            state.answers[action.questionId], {
+                sentiment: action.sentiment
+            }
+        );
+
         return Object.assign({}, state, {
-            questions: state.questions.map(question => {
-                if (question.id === action.questionId) {
-                    question.sentiment = action.sentiment;
-                }
-                return question;
-            })
+            answers: Object.assign({}, state.answers, obj)
         });
 
     case SET_QUESTION_ANSWER_ID:
+        obj[action.questionId] = Object.assign(
+            {},
+            state.answers[action.questionId], {
+                AnswerId: action.answerId
+            }
+        );
+
         return Object.assign({}, state, {
-            questions: state.questions.map(question => {
-                if (question.id === action.questionId) {
-                    question.answerId = action.answerId;
-                }
-                return question;
-            })
+            answers: Object.assign({}, state.answers, obj)
         });
 
     case GOTO_NEXT_QUESTION:
@@ -78,6 +87,27 @@ export default function surveyReducer(state = initialState, action) {
         return Object.assign({}, state, {
             multipleChoice: action.multipleChoice,
             sentiment: action.sentiment
+        });
+
+    case CREATE_SURVEY_RESULT_SUCCESS:
+        return Object.assign({}, state, {
+            SurveyResultId: action.response.id,
+        });
+
+    case FETCH_SURVEY_RESULT_SUCCESS:
+        return Object.assign({}, state, {
+            SurveyResultId: action.response.id,
+            answers: action.response.SurveyResultAnswers
+                .reduce((memo, value) => {
+                    memo[value.QuestionId] = value;
+                    return memo;
+                }, {})
+        });
+
+    case CREATE_SURVEY_RESULT_ANSWER_SUCCESS:
+        obj[action.response.QuestionId] = action.response;
+        return Object.assign({}, state, {
+            answers: Object.assign({}, state.answers, obj)
         });
 
     default:

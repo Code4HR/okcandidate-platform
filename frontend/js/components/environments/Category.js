@@ -9,7 +9,7 @@ import LoadingIndicator from './../organisms/LoadingIndicator';
 import { gotoRoute } from './../../redux/actions/router-actions';
 
 import {
-  fetchCategoryList
+    fetchCategoryList
 } from './../../redux/actions/category-actions';
 
 class Category extends Component {
@@ -22,12 +22,13 @@ class Category extends Component {
         this.props.dispatch(fetchCategoryList());
     }
 
-    next() {
-        gotoRoute(`/survey/${this.props.router.params.id}/questions`);
+    submit() {
+        gotoRoute(`/survey/${this.props.params.id}/questions`);
     }
 
     render() {
         const categories = this.props.category.categories;
+
         return (
             <div className="container">
 
@@ -40,12 +41,9 @@ class Category extends Component {
 
                 <CategoryList
                     dispatch={this.props.dispatch}
-                    categories={categories.sort((catA, catB) => {
-                        return catA.rank - catB.rank;
-                    })} />
+                    categories={categories} />
 
-                <button onClick={this.next.bind(this)}>OK</button>
-
+                <button onClick={this.submit.bind(this)}>Next</button>
             </div>
         );
     }
@@ -62,9 +60,9 @@ Category.propTypes = {
 };
 
 export default connect(
-  state => ({
-      ui: state.ui,
-      login: state.login,
-      category: state.category
-  })
+    state => ({
+        ui: state.ui,
+        login: state.login,
+        category: state.category
+    })
 )(Category);

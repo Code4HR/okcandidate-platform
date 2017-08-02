@@ -39,7 +39,7 @@ module.exports = class SurveyResultAnswer extends Model {
 
     static schema (app, Sequelize) {
         return {
-            intensity: {
+            sentiment: {
                 type: Sequelize.INTEGER,
                 allowNull: true
             }

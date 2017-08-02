@@ -128,6 +128,16 @@ module.exports = [
     },
     {
         method: ['GET'],
+        path: '/api/v1/surveyresult/getOne',
+        handler: 'SurveyResultController.get'
+    },
+    {
+        method: ['POST'],
+        path: '/api/v1/surveyresult',
+        handler: 'SurveyResultController.create'
+    },
+    {
+        method: ['GET'],
         path: '/api/v1/surveymatch/{publicPassPhrase*}',
         handler: 'SurveyResultController.match'
     },
@@ -137,13 +147,18 @@ module.exports = [
         handler: 'DefaultController.info'
     },
     {
-        method: 'POST',
-        path: '/api/v1/surveyresult',
-        handler: 'SurveyResultController.create'
-    },
-    {
         method: ['GET'],
         path: '/api/v1/geolocation',
         handler: 'GeolocationController.get'
+    },
+    {
+        method: ['POST'],
+        path: '/api/v1/surveyresultcategory/rank',
+        handler: 'SurveyResultCategoryController.postAll'
+    },
+    {
+        method: ['PUT'],
+        path: '/api/v1/surveyresultcategory/rank',
+        handler: 'SurveyResultCategoryController.updateAll'
     }
 ];

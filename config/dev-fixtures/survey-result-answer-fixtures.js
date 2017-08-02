@@ -2,97 +2,97 @@
 
 const surveyResultAnswer = [
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 1,
         QuestionId: 1
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 1,
         QuestionId: 2
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 1,
         QuestionId: 3
     },
     {
-        intensity: 4,
+        sentiment: 4,
         SurveyResultId: 1,
         QuestionId: 4
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 2,
         QuestionId: 1
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 2,
         QuestionId: 2
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 2,
         QuestionId: 3
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 3,
         QuestionId: 1
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 3,
         QuestionId: 2
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 3,
         QuestionId: 3
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 4,
         QuestionId: 1
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 4,
         QuestionId: 2
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 4,
         QuestionId: 3
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 5,
         QuestionId: 1
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 5,
         QuestionId: 2
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 5,
         QuestionId: 3
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 6,
         QuestionId: 1
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 6,
         QuestionId: 2
     },
     {
-        intensity: 3,
+        sentiment: 3,
         SurveyResultId: 6,
         QuestionId: 3
     }

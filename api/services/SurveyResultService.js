@@ -24,11 +24,11 @@ module.exports = class SurveyResultService extends Service {
         .then((result) => {
             const query = `select surveyresult.id as "SurveyResultId"
                 , surveyresultanswer."QuestionId"
-                , surveyresultanswer.intensity as "SurveyResultIntensity"
+                , surveyresultanswer.sentiment as "SurveyResultIntensity"
                 , candidate."CandidateId"
                 , candidate."Name"
                 , candidate."Office"
-                , candidate.intensity as "CandidateItensity"
+                , candidate.sentiment as "CandidateItensity"
                 from surveyresult
                 inner join surveyresultanswer
                   on surveyresultanswer."SurveyResultId" = surveyresult.id
@@ -36,7 +36,7 @@ module.exports = class SurveyResultService extends Service {
                                   , t0.name as "Name"
                                   , t1.name as "Office"
                                   , t3."QuestionId"
-                                  , t3.intensity
+                                  , t3.sentiment
                                   from candidate t0
                                   inner join office t1
                                     on t1.id = t0."OfficeId"

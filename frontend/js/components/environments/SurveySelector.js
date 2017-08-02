@@ -11,7 +11,7 @@ import LocationForm from './../ecosystems/LocationForm';
 import LoadingIndicator from './../organisms/LoadingIndicator';
 
 import {
-    fetchSurveys
+    fetchSurveys,
 } from './../../redux/actions/pick-survey-actions';
 
 class SurveySelector extends Component {
