@@ -18,6 +18,7 @@ module.exports = class Survey extends Model {
                         models.Survey.belongsToMany(models.Region, {through: 'surveyregion'});
                         models.Survey.belongsToMany(models.Office, {through: 'surveyoffice'});
                         models.SurveyStatus.hasOne(models.Survey);
+                        models.Survey.belongsTo(models.QuestionType);
                     }
                 }
             }
