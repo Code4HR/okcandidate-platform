@@ -15,9 +15,11 @@ class Header extends Component {
     render() {
         return (
           <header className="app-header">
-            <div className="flex-container">
+            <div className="container">
               <div className="twelve columns">
-                <AppLogo onClick={this.toggleSidebarVisibility.bind(this)} />
+                <AppLogo
+                  displayMenuButton={this.props.isAdmin}
+                  onClick={this.toggleSidebarVisibility.bind(this)} />
               </div>
             </div>
           </header>
@@ -26,7 +28,8 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    isAdmin: PropTypes.bool
 };
 
 export default Header;

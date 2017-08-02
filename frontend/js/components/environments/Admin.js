@@ -12,15 +12,12 @@ class Admin extends Component {
 
     render() {
         return (
-      <section className="container">
-        <div className="twelve columns">
-          <Card>
-            <pre>OKCandidate Admin Panel</pre>
-          </Card>
-        </div>
-      </section>
-    );
-
+            <div className="container">
+                <Card>
+                    <pre>OKCandidate Admin Panel</pre>
+                </Card>
+            </div>
+        );
     }
 
 }

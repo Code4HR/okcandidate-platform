@@ -4,6 +4,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 
 import SurveyCard from './../ecosystems/SurveyCard';
+import LoadingIndicator from './../organisms/LoadingIndicator';
 
 import {
   gotoNextQuestion,
@@ -21,12 +22,12 @@ class Survey extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchSurveyQuestions(this.props.params.id));
+        this.props.dispatch(fetchSurveyQuestions(this.props.routeParams.id));
     }
 
     gotoPrevQuestion() {
         if (this.props.survey.questionIndex === 0) {
-            return gotoRoute('/category');
+            return gotoRoute(`/survey/${this.props.routeParams.id}`);
         }
         return this.props.dispatch(gotoPrevQuestion());
     }
@@ -43,18 +44,28 @@ class Survey extends Component {
         const question = this.props.survey.questions[index];
 
         return (
-            <div className="twelve columns">
-                <article className="survey">
-                    { question &&
-                      <SurveyCard
-                          dispatch={this.props.dispatch}
-                          text={question.text}
-                          id={question.id}
-                          onNextClick={this.gotoNextQuestion.bind(this)}
-                          onBackClick={this.gotoPrevQuestion.bind(this)}
-                          agreement={question.agreement} />
-                    }
-                </article>
+            <div className="container">
+                <div className="twelve columns">
+                    <article className="survey">
+                        {
+                            !question &&
+                            <LoadingIndicator message="Loading Questions" />
+                        }
+                        { question &&
+                        <SurveyCard
+                            dispatch={this.props.dispatch}
+                            text={question.text}
+                            options={question.Answers}
+                            id={question.id}
+                            multipleChoice={this.props.survey.multipleChoice}
+                            hasSentiment={this.props.survey.sentiment}
+                            onNextClick={this.gotoNextQuestion.bind(this)}
+                            onBackClick={this.gotoPrevQuestion.bind(this)}
+                            answerId={question.answerId}
+                            sentiment={question.sentiment} />
+                        }
+                    </article>
+                </div>
             </div>
         );
     }
@@ -63,7 +74,7 @@ class Survey extends Component {
 Survey.propTypes = {
     dispatch: PropTypes.func,
     survey: PropTypes.object,
-    params: PropTypes.object
+    routeParams: PropTypes.object
 };
 
 module.exports = connect(

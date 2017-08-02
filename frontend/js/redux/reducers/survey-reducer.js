@@ -1,17 +1,26 @@
 import {
-  FETCH_SURVEY_QUESTIONS_REQUEST,
-  FETCH_SURVEY_QUESTIONS_SUCCESS,
-  FETCH_SURVEY_QUESTIONS_FAILURE,
-  SET_QUESTION_AGREEMENT,
-  GOTO_NEXT_QUESTION,
-  GOTO_PREV_QUESTION
+    FETCH_SURVEY_QUESTIONS_REQUEST,
+    FETCH_SURVEY_QUESTIONS_SUCCESS,
+    FETCH_SURVEY_QUESTIONS_FAILURE,
+    SET_QUESTION_SENTIMENT,
+    SET_QUESTION_ANSWER_ID,
+    GOTO_NEXT_QUESTION,
+    GOTO_PREV_QUESTION,
+    SET_SURVEY_FORMAT
 } from './../actions/survey-actions';
 
 const initialState = {
     isFetching: false,
     questions: [],
     questionIndex: 0,
-    error: ''
+    error: '',
+    multipleChoice: false,
+    sentiment: false,
+    surveyResult: {
+        answers: [
+
+        ]
+    }
 };
 
 export default function surveyReducer(state = initialState, action) {
@@ -35,11 +44,21 @@ export default function surveyReducer(state = initialState, action) {
             help: action.error
         });
 
-    case SET_QUESTION_AGREEMENT:
+    case SET_QUESTION_SENTIMENT:
         return Object.assign({}, state, {
             questions: state.questions.map(question => {
                 if (question.id === action.questionId) {
-                    question.agreement = action.agreement;
+                    question.sentiment = action.sentiment;
+                }
+                return question;
+            })
+        });
+
+    case SET_QUESTION_ANSWER_ID:
+        return Object.assign({}, state, {
+            questions: state.questions.map(question => {
+                if (question.id === action.questionId) {
+                    question.answerId = action.answerId;
                 }
                 return question;
             })
@@ -53,6 +72,12 @@ export default function surveyReducer(state = initialState, action) {
     case GOTO_PREV_QUESTION:
         return Object.assign({}, state, {
             questionIndex: state.questionIndex - 1
+        });
+
+    case SET_SURVEY_FORMAT:
+        return Object.assign({}, state, {
+            multipleChoice: action.multipleChoice,
+            sentiment: action.sentiment
         });
 
     default:

@@ -6,7 +6,6 @@ import update from 'immutability-helper';
 
 import CategoryListItem from './../organisms/CategoryListItem';
 import { CategoryListItemNameStatic } from './../organisms/CategoryListItemName';
-import { gotoRoute } from './../../redux/actions/router-actions';
 
 class CategoryList extends Component {
 
@@ -53,35 +52,23 @@ class CategoryList extends Component {
         }));
     }
 
-    back() {
-        gotoRoute('/');
-    }
-
-    next() {
-        gotoRoute(`/survey/${this.props.surveyId}/questions`);
-    }
-
     render() {
         return (
-            <div>
-                <p>Sort these categories in order of importance to you.</p>
-                <div className="category-list">
-                    <Preview generator={this.generatePreview.bind(this)} />
-                    {
-                        this.state.categories.map((categoryItem, index) => {
-                            return (
-                                <CategoryListItem
-                                    key={categoryItem.id}
-                                    index={index}
-                                    id={categoryItem.id}
-                                    name={categoryItem.name}
-                                    icon={categoryItem.icon}
-                                    moveCard={this.moveCard} />
-                            );
-                        })
-                    }
-                </div>
-                <button onClick={this.next.bind(this)}>OK</button>
+            <div className="category-list">
+                <Preview generator={this.generatePreview.bind(this)} />
+                {
+                    this.state.categories.map((categoryItem, index) => {
+                        return (
+                            <CategoryListItem
+                                key={categoryItem.id}
+                                index={index}
+                                id={categoryItem.id}
+                                name={categoryItem.name}
+                                icon={categoryItem.icon}
+                                moveCard={this.moveCard} />
+                        );
+                    })
+                }
             </div>
         );
     }
@@ -89,7 +76,6 @@ class CategoryList extends Component {
 
 CategoryList.propTypes = {
     categories: PropTypes.array,
-    surveyId: PropTypes.string,
     dispatch: PropTypes.func
 };
 

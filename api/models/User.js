@@ -22,7 +22,11 @@ module.exports = class User extends Model {
                 type: Sequelize.STRING,
                 allowNull: false
             },
-            password: Sequelize.STRING
+            password: Sequelize.STRING,
+            role: {
+                type: Sequelize.STRING,
+                defaultValue: 'voter'
+            }
         };
     }
 

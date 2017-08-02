@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import BestMatch from './../ecosystems/BestMatch';
 import OtherMatch from './../ecosystems/OtherMatch';
+import LoadingIndicator from './../organisms/LoadingIndicator';
 
 import {
   fetchSurveyResults
@@ -37,8 +38,14 @@ class Results extends Component {
         });
 
         return (
-            <article>
-                <pre>Results Page</pre>
+            <article className="container">
+
+                {
+                    !bestMatch.length &&
+                    !otherMatches.length &&
+                    <LoadingIndicator message="Loading Matches" />
+                }
+
                 { bestMatch.map((m) => {
                     return (<BestMatch
                             key={m.name}
