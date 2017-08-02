@@ -12,7 +12,7 @@ class IconMessage extends Component {
                 <Icon className="xx-big">{this.props.icon}</Icon>
                 <p>{this.props.message}</p>
             </div>
-        )
+        );
     }
 }
 
