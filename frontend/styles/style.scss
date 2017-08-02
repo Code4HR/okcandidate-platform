@@ -7,6 +7,7 @@ This file exists only to import other stylesheets.
 @import 'base';
 @import 'header';
 @import 'profile';
+@import 'home';
 @import 'card';
 @import 'menu';
 @import 'icon-button';
@@ -17,7 +18,7 @@ This file exists only to import other stylesheets.
 @import 'survey';
 @import 'survey-card';
 @import 'results';
-@import 'agreement-selector';
+@import 'sentiment-selector';
 @import 'alert';
 @import 'hr';
 @import 'location-form';
@@ -26,3 +27,6 @@ This file exists only to import other stylesheets.
 @import 'checkbox';
 @import 'button';
 @import 'tray';
+@import 'tagline';
+@import 'icon-message';
+@import 'loading-indicator';

@@ -83,7 +83,11 @@ function whichStore(name) {
 function getContext(request, bundle, callback) {
     const store = createStore(whichStore(bundle));
     const user = request.yar.get('user') || {};
-    store.dispatch(loginActions.userLogin({ name: user.name, emailAddress: user.emailAddress }));
+    store.dispatch(loginActions.userLogin({
+        name: user.name,
+        emailAddress: user.emailAddress,
+        role: user.role
+    }));
 
     return match({routes, location: request.url.path}, (error, redirectLocation, renderProps) => {
         if (error) {

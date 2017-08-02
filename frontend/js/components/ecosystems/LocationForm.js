@@ -9,7 +9,8 @@ import TextField from './../organisms/TextField';
 
 import {
     getLocationByGPS,
-    getLocationByAddress
+    getLocationByAddress,
+    fetchNonRegionLimitedSurveys
 } from './../../redux/actions/pick-survey-actions';
 
 class LocationForm extends Component {
@@ -34,6 +35,10 @@ class LocationForm extends Component {
 
     geolocate() {
         this.props.dispatch(getLocationByGPS());
+    }
+
+    skip() {
+        this.props.dispatch(fetchNonRegionLimitedSurveys());
     }
 
     render() {
@@ -68,6 +73,18 @@ class LocationForm extends Component {
                         id="gps"
                         onClick={this.geolocate.bind(this)}>
                         Use GPS
+                    </button>
+                </section>
+
+                <Hr label="or" />
+
+                <section className="skip">
+                    <label htmlFor="skip">Or skip it</label>
+                    <button
+                        type="button"
+                        id="skip"
+                        onClick={this.skip.bind(this)}>
+                        Don't search
                     </button>
                 </section>
             </form>

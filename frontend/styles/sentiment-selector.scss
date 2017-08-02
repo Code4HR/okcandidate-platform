@@ -1,13 +1,17 @@
 @import "colors";
 
-.agreement-selector {
+.sentiment-selector {
     margin-bottom: 1.5em;
+    margin: 0 auto;
+    max-width: 240px;
 
-    .agreement-selector-labels {
+    .sentiment-selector-labels {
         display: flex;
         justify-content: space-between;
-        padding: 0 8px;
+        padding: 0 4px;
+
         label {
+            width: 33%;
             font-size: .75em;
             line-height: 1.25em;
             color: $gray;

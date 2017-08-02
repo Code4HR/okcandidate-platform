@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 
 import Header from './ecosystems/Header';
 import Sidebar from './ecosystems/Sidebar';
+import Tagline from './molecules/Tagline';
 
 import { connect } from 'react-redux';
 
@@ -9,22 +10,24 @@ class Frame extends Component {
 
     render() {
         return (
-      <section className="frame">
-        <Header dispatch={this.props.dispatch} />
+            <section className="frame">
+              <Header
+                isAdmin={this.props.login.role === 'admin'}
+                dispatch={this.props.dispatch} />
 
-        <Sidebar
-          role="admin"
-          login={this.props.login}
-          dispatch={this.props.dispatch}
-          width={300}
-          isOpen={this.props.ui.sidebarVisibility} />
+              <Sidebar
+                role="admin"
+                login={this.props.login}
+                dispatch={this.props.dispatch}
+                width={300}
+                isOpen={this.props.ui.sidebarVisibility} />
 
-        <div className="app-container">
-          { this.props.children }
-        </div>
+                { this.props.children }
 
-      </section>
-    );
+                <Tagline />
+
+            </section>
+        );
     }
 
 }

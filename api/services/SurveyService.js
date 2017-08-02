@@ -10,7 +10,7 @@ module.exports = class SurveyService extends Service {
 
     getSurveyByLatLng(lat, lng) {
         return this.app.orm.Survey.findAll({
-            attributes: ['id', 'name']
+            attributes: ['id', 'name', 'categorySort']
         });
     }
 };

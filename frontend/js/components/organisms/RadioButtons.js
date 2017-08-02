@@ -10,16 +10,20 @@ class RadioButtons extends Component {
 
         return (
             <div className="radio-buttons">
-                <label>{this.props.name}</label>
+                {
+                    !this.props.hideName &&
+                    <label>{this.props.name}</label>
+                }
                 {
                     this.props.options.map((item, index) => {
+                        const label = item[this.props.labelKey] || item.name;
                         return (
                             <RadioButton
                                 onChange={this.props.onChange}
                                 checked={item.id === this.props.selected}
                                 key={index}
                                 id={item.id}
-                                label={item.name}
+                                label={label}
                                 name={this.props.name} />
                         );
                     })
@@ -43,11 +47,13 @@ class RadioButtons extends Component {
 
 RadioButtons.propTypes = {
     name: PropTypes.string,
+    labelKey: PropTypes.string,
     options: PropTypes.array,
     selected: PropTypes.number,
     onChange: PropTypes.func,
     help: PropTypes.string,
-    error: PropTypes.string
+    error: PropTypes.string,
+    hideName: PropTypes.bool
 };
 
 export default RadioButtons;

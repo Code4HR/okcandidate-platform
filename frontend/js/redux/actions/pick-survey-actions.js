@@ -1,6 +1,82 @@
 import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
-import { gotoRoute } from './../actions/router-actions';
+
+export const FETCH_SURVEYS_REQUEST = 'FETCH_SURVEYS_REQUEST';
+export const FETCH_SURVEYS_SUCCESS = 'FETCH_SURVEYS_SUCCESS';
+export const FETCH_SURVEYS_FAILURE = 'FETCH_SURVEYS_FAILURE';
+
+export function fetchSurveysRequest() {
+    return {
+        type: FETCH_SURVEYS_REQUEST
+    };
+}
+
+export function fetchSurveysSuccess(response) {
+    return {
+        type: FETCH_SURVEYS_SUCCESS,
+        response
+    };
+}
+
+export function fetchSurveysFailure(error) {
+    return {
+        type: FETCH_SURVEYS_FAILURE,
+        error
+    };
+}
+
+export function fetchSurveys() {
+    return (dispatch) => {
+        fetch('/api/v1/survey')
+        .then(checkStatus)
+        .then(response => response.json())
+        .then(response => {
+            dispatch(fetchSurveysSuccess(response));
+        })
+        .catch(error => {
+            dispatch(fetchSurveysFailure(error));
+        });
+    };
+}
+
+export const FETCH_NON_REGION_LIMITED_SURVEYS_REQUEST = 'FETCH_NON_REGION_LIMITED_SURVEYS_REQUEST';
+export const FETCH_NON_REGION_LIMITED_SURVEYS_SUCCESS = 'FETCH_NON_REGION_LIMITED_SURVEYS_SUCCESS';
+export const FETCH_NON_REGION_LIMITED_SURVEYS_FAILURE = 'FETCH_NON_REGION_LIMITED_SURVEYS_FAILURE';
+
+export function fetchNonRegionLimitedSurveysRequest() {
+    return {
+        type: FETCH_NON_REGION_LIMITED_SURVEYS_REQUEST
+    };
+}
+
+export function fetchNonRegionLimitedSurveysSuccess(response) {
+    return {
+        type: FETCH_NON_REGION_LIMITED_SURVEYS_SUCCESS,
+        response
+    };
+}
+
+export function fetchNonRegionLimitedSurveysFailure(error) {
+    return {
+        type: FETCH_NON_REGION_LIMITED_SURVEYS_FAILURE,
+        error
+    };
+}
+
+export function fetchNonRegionLimitedSurveys() {
+    return (dispatch) => {
+        dispatch(fetchNonRegionLimitedSurveysRequest());
+        return fetch('/api/v1/survey?regionLimit=false')
+        .then(checkStatus)
+        .then(response => response.json())
+        .then(response => {
+            dispatch(fetchNonRegionLimitedSurveysSuccess(response));
+        })
+        .catch(error => {
+            dispatch(fetchNonRegionLimitedSurveysFailure(error));
+        });
+    };
+}
 
 export const FETCH_SURVEYS_BY_LOCATION_REQUEST = 'FETCH_SURVEYS_BY_LOCATION_REQUEST';
 export const FETCH_SURVEYS_BY_LOCATION_SUCCESS = 'FETCH_SURVEYS_BY_LOCATION_SUCCESS';
@@ -34,7 +110,6 @@ export function fetchSurveysByLocation(coordinates) {
         .then(response => response.json())
         .then(response => {
             dispatch(fetchSurveysByLocationSuccess(response));
-            gotoRoute('/survey');
         })
         .catch(error => dispatch(fetchSurveysByLocationFailure(error)));
     };
