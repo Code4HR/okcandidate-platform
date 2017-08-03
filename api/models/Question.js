@@ -19,7 +19,7 @@ module.exports = class Question extends Model {
                                 allowNull: false
                             }
                         });
-                        models.Survey.hasOne(models.Question, {
+                        models.Question.belongsTo(models.Survey, {
                             onDelete: 'CASCADE',
                             foreignKey: {
                                 allowNull: false

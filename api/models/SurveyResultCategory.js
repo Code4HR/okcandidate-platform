@@ -13,13 +13,13 @@ module.exports = class SurveyResultCategory extends Model {
             options: {
                 classMethods: {
                     associate: (models) => {
-                        models.SurveyResult.hasMany(models.SurveyResultCategory, {
+                        models.SurveyResultCategory.belongsTo(models.SurveyResult, {
                             onDelete: 'CASCADE',
                             foreignKey: {
                                 allowNull: false
                             }
                         });
-                        models.Category.hasOne(models.SurveyResultCategory, {
+                        models.SurveyResultCategory.belongsTo(models.Category, {
                             onDelete: 'CASCADE',
                             foreignKey: {
                                 allowNull: false

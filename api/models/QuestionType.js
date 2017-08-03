@@ -12,10 +12,17 @@ module.exports = class QuestionType extends Model {
     static config (app, Sequelize) {
         return {
             options: {
-                classMethods: {}
+                classMethods: {
+                    associate: (models) => {
+                        models.QuestionType.hasMany(models.Survey, {
+                            foreignKey: {
+                                allowNull: false
+                            }
+                        });
+                    }
+                }
             }
         };
-
     }
 
     static schema (app, Sequelize) {

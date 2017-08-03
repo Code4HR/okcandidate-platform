@@ -18,6 +18,11 @@ module.exports = class Candidate extends Model {
                                 allowNull: true
                             }
                         });
+                        models.Candidate.belongsTo(models.Office, {
+                            foreignKey: {
+                                allowNull: false
+                            }
+                        });
                     }
                 }
             }

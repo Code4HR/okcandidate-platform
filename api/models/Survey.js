@@ -13,12 +13,23 @@ module.exports = class Survey extends Model {
             options: {
                 classMethods: {
                     associate: (models) => {
-                        models.Survey.hasMany(models.Question);
-                        models.Survey.hasMany(models.SurveyResult);
+                        models.Survey.belongsTo(models.SurveyStatus, {
+                            foreignKey: {
+                                allowNull: false
+                            }
+                        });
+                        models.Survey.belongsTo(models.QuestionType, {
+                            foreignKey: {
+                                allowNull: false
+                            }
+                        });
+                        models.Survey.hasMany(models.Question, {
+                            foreignKey: {
+                                allowNull: false
+                            }
+                        });
                         models.Survey.belongsToMany(models.Region, {through: 'surveyregion'});
                         models.Survey.belongsToMany(models.Office, {through: 'surveyoffice'});
-                        models.SurveyStatus.hasOne(models.Survey);
-                        models.Survey.belongsTo(models.QuestionType);
                     }
                 }
             }
