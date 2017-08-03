@@ -7,6 +7,7 @@ const Boom = require('boom');
 const surveyCreateSchema = Joi.object().keys({
     name: Joi.string().min(3),
     startDate: Joi.date().min('now'),
+    SurveyStatusId: Joi.number().default(1),
     endDate: Joi.date().min(Joi.ref('startDate')),
     QuestionTypeId: Joi.number().required(),
     regionLimit: Joi.bool(),
@@ -45,6 +46,7 @@ module.exports = class SurveyPolicy extends Policy {
             if (err) {
                 return reply(Boom.badRequest(JSON.stringify(err.details)));
             }
+            request.payload = result;
             return reply();
         });
     }
