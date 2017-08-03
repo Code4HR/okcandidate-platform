@@ -13,7 +13,7 @@ module.exports = class Answer extends Model {
             options: {
                 classMethods: {
                     associate: (models) => {
-                        models.Question.hasOne(models.Answer, {
+                        models.Answer.belongsTo(models.Question, {
                             onDelete: 'CASCADE',
                             foreignKey: {
                                 allowNull: false
