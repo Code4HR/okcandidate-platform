@@ -40,7 +40,6 @@
     "prop-types": "^15.5.10",
     "react": "^15.3.2",
     "react-burger-menu": "^1.10.9",
-    "react-cookies": "^0.1.0",
     "react-dnd": "^2.4.0",
     "react-dnd-multi-backend": "^2.3.7",
     "react-dom": "^15.3.2",
