@@ -41,7 +41,7 @@ export default (state = initialState, action) => {
 
     case CREATE_SURVEY_RESULT_SUCCESS:
         return Object.assign({}, state, {
-            SurveyResultId: action.response.id,
+            SurveyResultId: action.response.id
         });
 
     case FETCH_SURVEY_RESULT_SUCCESS:

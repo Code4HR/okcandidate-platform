@@ -11,7 +11,7 @@ const _ = require('lodash');
 module.exports = class SurveyResultController extends Controller {
 
     /**
-     * Checks to see if a SurveyResult exists with a given 
+     * Checks to see if a SurveyResult exists with a given
      * private passphrase, which is kept in a session.
      * If the session doesn't exist, or if no SurveyResults were found,
      * an empty object is returned.

@@ -10,8 +10,7 @@ import {
     SET_SURVEY_FORMAT,
     FETCH_SURVEY_RESULT_SUCCESS,
     CREATE_SURVEY_RESULT_SUCCESS,
-    CREATE_SURVEY_RESULT_ANSWER_SUCCESS,
-    SET_SURVEY_RESULT_ANSWERS
+    CREATE_SURVEY_RESULT_ANSWER_SUCCESS
 } from './../actions/survey-actions';
 
 const initialState = {
@@ -91,7 +90,7 @@ export default function surveyReducer(state = initialState, action) {
 
     case CREATE_SURVEY_RESULT_SUCCESS:
         return Object.assign({}, state, {
-            SurveyResultId: action.response.id,
+            SurveyResultId: action.response.id
         });
 
     case FETCH_SURVEY_RESULT_SUCCESS:

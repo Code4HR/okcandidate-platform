@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
-import { gotoRoute } from './router-actions';
 
 export const FETCH_CATEGORY_LIST_REQUEST = 'FETCH_CATEGORY_LIST_REQUEST';
 export const FETCH_CATEGORY_LIST_SUCCESS = 'FETCH_CATEGORY_LIST_SUCCESS';
