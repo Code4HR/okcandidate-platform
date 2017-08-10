@@ -150,15 +150,5 @@ module.exports = [
         method: ['GET'],
         path: '/api/v1/geolocation',
         handler: 'GeolocationController.get'
-    },
-    {
-        method: ['POST'],
-        path: '/api/v1/surveyresultcategory/rank',
-        handler: 'SurveyResultCategoryController.postAll'
-    },
-    {
-        method: ['PUT'],
-        path: '/api/v1/surveyresultcategory/rank',
-        handler: 'SurveyResultCategoryController.updateAll'
     }
 ];
