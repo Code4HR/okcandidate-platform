@@ -271,7 +271,7 @@ export function updateSurveyResultAnswer(id, answer, sentiment, callback) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                SurveyResultAnswer: answer,
+                AnswerId: answer.AnswerId,
                 sentiment: sentiment
             })
         })

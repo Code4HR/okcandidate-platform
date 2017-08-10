@@ -11,7 +11,8 @@ import {
     gotoPrevQuestion,
     fetchSurveyQuestions,
     createSurveyResultAnswer,
-    updateSurveyResultAnswer
+    updateSurveyResultAnswer,
+    fetchSurveyResult
 } from './../../redux/actions/survey-actions';
 
 import {
@@ -24,7 +25,11 @@ class Survey extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchSurveyQuestions(this.props.routeParams.id));
+        this.props.dispatch(fetchSurveyResult(this.props.routeParams.id, (error) => {
+            if (!error) {
+                this.props.dispatch(fetchSurveyQuestions(this.props.routeParams.id));
+            }
+        }));
     }
 
     gotoPrevQuestion() {
