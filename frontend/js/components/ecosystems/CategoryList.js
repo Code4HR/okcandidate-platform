@@ -7,15 +7,14 @@ import update from 'immutability-helper';
 import CategoryListItem from './../organisms/CategoryListItem';
 import { CategoryListItemNameStatic } from './../organisms/CategoryListItemName';
 
-import {
-    setCategoryOrder
-} from './../../redux/actions/category-actions';
-
 class CategoryList extends Component {
 
     constructor(props) {
         super(props);
         this.moveCard = this.moveCard.bind(this);
+        this.state = {
+            categories: []
+        };
     }
 
     generatePreview(type, item, style) {
@@ -33,18 +32,24 @@ class CategoryList extends Component {
         );
     }
 
+    componentWillReceiveProps(newProps) {
+        this.setState({
+            categories: newProps.categories
+        });
+    }
+
     moveCard(dragIndex, hoverIndex) {
-        const { categories } = this.props;
+        const { categories } = this.state;
         const dragCard = categories[dragIndex];
 
-        this.props.dispatch(setCategoryOrder(update(this.props, {
+        this.setState(update(this.state, {
             categories: {
                 $splice: [
                     [dragIndex, 1],
                     [hoverIndex, 0, dragCard]
                 ]
             }
-        })));
+        }));
     }
 
     render() {
@@ -52,10 +57,10 @@ class CategoryList extends Component {
             <div className="category-list">
                 <Preview generator={this.generatePreview.bind(this)} />
                 {
-                    this.props.categories.map((categoryItem, index) => {
+                    this.state.categories.map((categoryItem, index) => {
                         return (
                             <CategoryListItem
-                                key={index}
+                                key={categoryItem.id}
                                 index={index}
                                 id={categoryItem.id}
                                 name={categoryItem.name}
