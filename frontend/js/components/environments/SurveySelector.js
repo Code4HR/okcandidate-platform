@@ -55,14 +55,14 @@ class SurveySelector extends Component {
                 {this.props.pickSurvey.surveys.map((survey, index) => {
                     return (
                         <Card
+                            title={survey.name}
                             key={index}
+                            actions={<button>Take it!</button>}
                             onClick={this.onClickSurveyCard.bind(
                                 this,
                                 survey.id,
                                 survey.categorySort
                             )}>
-                            <h2>{survey.name}</h2>
-                            <button>Take it!</button>
                         </Card>
                     );
                 })}
