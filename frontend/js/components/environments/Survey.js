@@ -7,9 +7,12 @@ import SurveyCard from './../ecosystems/SurveyCard';
 import LoadingIndicator from './../organisms/LoadingIndicator';
 
 import {
-  gotoNextQuestion,
-  gotoPrevQuestion,
-  fetchSurveyQuestions
+    gotoNextQuestion,
+    gotoPrevQuestion,
+    fetchSurveyQuestions,
+    createSurveyResultAnswer,
+    updateSurveyResultAnswer,
+    fetchSurveyResult
 } from './../../redux/actions/survey-actions';
 
 import {
@@ -22,7 +25,11 @@ class Survey extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchSurveyQuestions(this.props.routeParams.id));
+        this.props.dispatch(fetchSurveyResult(this.props.routeParams.id, (error) => {
+            if (!error) {
+                this.props.dispatch(fetchSurveyQuestions(this.props.routeParams.id));
+            }
+        }));
     }
 
     gotoPrevQuestion() {
@@ -33,15 +40,55 @@ class Survey extends Component {
     }
 
     gotoNextQuestion() {
-        if (this.props.survey.questionIndex >= this.props.survey.questions.length - 1) {
-            return gotoRoute('/results/publicPhraseOne');
+        const [
+            question,
+            answer,
+            sentiment
+        ] = this.getQuestionAndResponses();
+
+        const callback = () => {
+            if (this.props.survey.questionIndex >= this.props.survey.questions.length - 1) {
+                return gotoRoute('/results/publicPhraseOne');
+            }
+            return this.props.dispatch(gotoNextQuestion());
+        };
+
+        // If answer doesn't have an ID, this is a new record.
+        if (!answer.id) {
+            return this.props.dispatch(
+                createSurveyResultAnswer(
+                    question.id,
+                    this.props.survey.SurveyResultId,
+                    answer.AnswerId,
+                    sentiment,
+                    callback
+                )
+            );
         }
-        return this.props.dispatch(gotoNextQuestion());
+        return this.props.dispatch(
+            updateSurveyResultAnswer(
+                answer.id,
+                answer,
+                sentiment,
+                callback
+            )
+        );
+    }
+
+    getQuestionAndResponses() {
+        const index = this.props.survey.questionIndex;
+        const question = this.props.survey.questions[index];
+        const answer = question && this.props.survey.answers[question.id];
+        const sentiment = answer && answer.sentiment;
+        return [question, answer, sentiment];
     }
 
     render() {
-        const index = this.props.survey.questionIndex;
-        const question = this.props.survey.questions[index];
+        const [
+            question,
+            answer,
+            sentiment
+        ] = this.getQuestionAndResponses();
 
         return (
             <div className="container">
@@ -61,8 +108,8 @@ class Survey extends Component {
                             hasSentiment={this.props.survey.sentiment}
                             onNextClick={this.gotoNextQuestion.bind(this)}
                             onBackClick={this.gotoPrevQuestion.bind(this)}
-                            answerId={question.answerId}
-                            sentiment={question.sentiment} />
+                            answerId={answer && answer.AnswerId}
+                            sentiment={sentiment} />
                         }
                     </article>
                 </div>

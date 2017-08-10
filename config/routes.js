@@ -128,6 +128,16 @@ module.exports = [
     },
     {
         method: ['GET'],
+        path: '/api/v1/surveyresult/getOne',
+        handler: 'SurveyResultController.get'
+    },
+    {
+        method: ['POST'],
+        path: '/api/v1/surveyresult',
+        handler: 'SurveyResultController.create'
+    },
+    {
+        method: ['GET'],
         path: '/api/v1/surveymatch/{publicPassPhrase*}',
         handler: 'SurveyResultController.match'
     },
@@ -135,11 +145,6 @@ module.exports = [
         method: ['GET'],
         path: '/api/v1/default/info',
         handler: 'DefaultController.info'
-    },
-    {
-        method: 'POST',
-        path: '/api/v1/surveyresult',
-        handler: 'SurveyResultController.create'
     },
     {
         method: ['GET'],
