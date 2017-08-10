@@ -29,19 +29,11 @@ export function fetchCategoryList() {
     return function(dispatch) {
         dispatch(fetchCategoryListRequest());
         return fetch('/api/v1/category')
-            .then(checkStatus)
-            .then(response => response.json())
-            .then(response => {
-                dispatch(fetchCategoryListSuccess(response));
-            })
-            .catch(error => dispatch(fetchCategoryListFailure(error)));
-    };
-}
-
-export const SET_CATEGORY_ORDER = 'SET_CATEGORY_ORDER';
-export function setCategoryOrder(category) {
-    return {
-        type: SET_CATEGORY_ORDER,
-        categories: category.categories
+      .then(checkStatus)
+      .then(response => response.json())
+      .then(response => {
+          dispatch(fetchCategoryListSuccess(response));
+      })
+      .catch(error => dispatch(fetchCategoryListFailure(error)));
     };
 }
