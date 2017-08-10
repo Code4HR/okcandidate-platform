@@ -26,7 +26,20 @@ class SurveyCard extends Component {
         const rightLabel = agreement ? 'Strongly\nAgree' : 'Care a lot';
 
         return (
-            <Card className="survey-card">
+            <Card
+                className="survey-card"
+                actions={[
+                    <button
+                        key={1}
+                        onClick={this.props.onBackClick}>
+                        Back
+                    </button>,
+                    <button
+                        key={2}
+                        onClick={this.props.onNextClick}>
+                        Next
+                    </button>
+                ]}>
                 <Icon className="big">check_circle</Icon>
                 <p className="question-text">{this.props.text}</p>
 
@@ -56,15 +69,6 @@ class SurveyCard extends Component {
                                 rightLabel={rightLabel}
                                 dispatch={this.props.dispatch} />
                     }
-
-                    <div className="survey-card-buttons">
-                        <button onClick={this.props.onBackClick}>
-                            Back
-                        </button>
-                        <button onClick={this.props.onNextClick}>
-                            Next
-                        </button>
-                    </div>
                 </div>
             </Card>
         );

@@ -8,9 +8,10 @@ import BestMatch from './../ecosystems/BestMatch';
 import OtherMatch from './../ecosystems/OtherMatch';
 import LoadingIndicator from './../organisms/LoadingIndicator';
 import ElectionReminderPrompt from './../ecosystems/ElectionReminderPrompt';
+import MethodologyPrompt from './../ecosystems/MethodologyPrompt';
 
 import {
-  fetchSurveyResults
+    fetchSurveyResults
 } from './../../redux/actions/result-actions';
 
 class Results extends Component {
@@ -67,6 +68,7 @@ class Results extends Component {
                 })}
 
                 <ElectionReminderPrompt />
+                <MethodologyPrompt />
             </article>
         );
     }
