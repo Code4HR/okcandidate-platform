@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import Icon from './../atoms/Icon';
 
 class Card extends Component {
 
@@ -39,6 +40,7 @@ Card.propTypes = {
     className: PropTypes.string,
     onClick: PropTypes.func,
     title: PropTypes.string,
+    actions: PropTypes.any,
     onClose: PropTypes.func
 };
 
