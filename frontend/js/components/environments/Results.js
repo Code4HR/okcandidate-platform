@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import BestMatch from './../ecosystems/BestMatch';
 import OtherMatch from './../ecosystems/OtherMatch';
 import LoadingIndicator from './../organisms/LoadingIndicator';
+import ElectionReminderPrompt from './../ecosystems/ElectionReminderPrompt';
 
 import {
   fetchSurveyResults
@@ -64,6 +65,8 @@ class Results extends Component {
                             office={m.office}
                             matchRate={m.matchRate} />);
                 })}
+
+                <ElectionReminderPrompt />
             </article>
         );
     }
