@@ -46,11 +46,11 @@ module.exports = class SurveyResult extends Model {
         return {
             publicPassPhrase: {
                 type: Sequelize.STRING,
-                // allowNull: false // revert this before PR
+                allowNull: false
             },
             privatePassPhrase: {
                 type: Sequelize.STRING,
-                // allowNull: false // revert this before PR
+                allowNull: false
             },
             phone: {
                 type: Sequelize.STRING,
