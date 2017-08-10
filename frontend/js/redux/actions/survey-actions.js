@@ -44,7 +44,7 @@ export function fetchSurveyQuestions(id) {
         ])
             .then(responses => Promise.all(responses.map(checkStatus)))
             .then(responses => Promise.all(responses.map(response => response.json())))
-            .then(([questions, survey, surveyresult]) => {
+            .then(([questions, survey]) => {
                 dispatch(setSurveyFormat(
                     survey.QuestionType.multipleChoice,
                     survey.QuestionType.sentiment
