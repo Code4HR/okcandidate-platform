@@ -90,12 +90,14 @@ export default function surveyReducer(state = initialState, action) {
 
     case CREATE_SURVEY_RESULT_SUCCESS:
         return Object.assign({}, state, {
-            SurveyResultId: action.response.id
+            SurveyResultId: action.response.id,
+            publicPassPhrase: action.response.publicPassPhrase
         });
 
     case FETCH_SURVEY_RESULT_SUCCESS:
         return Object.assign({}, state, {
             SurveyResultId: action.response.id,
+            publicPassPhrase: action.response.publicPassPhrase,
             answers: action.response.SurveyResultAnswers
                 .reduce((memo, value) => {
                     memo[value.QuestionId] = value;

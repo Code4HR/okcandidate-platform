@@ -48,7 +48,7 @@ class Survey extends Component {
 
         const callback = () => {
             if (this.props.survey.questionIndex >= this.props.survey.questions.length - 1) {
-                return gotoRoute('/results/publicPhraseOne');
+                return gotoRoute(`/results/${this.props.survey.publicPassPhrase}`);
             }
             return this.props.dispatch(gotoNextQuestion());
         };
