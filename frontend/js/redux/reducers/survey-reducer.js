@@ -10,7 +10,8 @@ import {
     SET_SURVEY_FORMAT,
     FETCH_SURVEY_RESULT_SUCCESS,
     CREATE_SURVEY_RESULT_SUCCESS,
-    CREATE_SURVEY_RESULT_ANSWER_SUCCESS
+    CREATE_SURVEY_RESULT_ANSWER_SUCCESS,
+    UPDATE_SURVEY_RESULT_ANSWER_SUCCESS
 } from './../actions/survey-actions';
 
 const initialState = {
@@ -52,7 +53,8 @@ export default function surveyReducer(state = initialState, action) {
         obj[action.questionId] = Object.assign(
             {},
             state.answers[action.questionId], {
-                sentiment: action.sentiment
+                sentiment: action.sentiment,
+                pristine: false
             }
         );
 
@@ -64,7 +66,8 @@ export default function surveyReducer(state = initialState, action) {
         obj[action.questionId] = Object.assign(
             {},
             state.answers[action.questionId], {
-                AnswerId: action.answerId
+                AnswerId: action.answerId,
+                pristine: false
             }
         );
 
@@ -100,6 +103,7 @@ export default function surveyReducer(state = initialState, action) {
             publicPassPhrase: action.response.publicPassPhrase,
             answers: action.response.SurveyResultAnswers
                 .reduce((memo, value) => {
+                    value['pristine'] = true;
                     memo[value.QuestionId] = value;
                     return memo;
                 }, {})
@@ -107,6 +111,19 @@ export default function surveyReducer(state = initialState, action) {
 
     case CREATE_SURVEY_RESULT_ANSWER_SUCCESS:
         obj[action.response.QuestionId] = action.response;
+        obj[action.response.QuestionId].pristine = true;
+
+        return Object.assign({}, state, {
+            answers: Object.assign({}, state.answers, obj)
+        });
+
+    case UPDATE_SURVEY_RESULT_ANSWER_SUCCESS:
+        obj[action.QuestionId] = Object.assign(
+            {},
+            state.answers[action.QuestionId],
+            {pristine: true}
+        );
+
         return Object.assign({}, state, {
             answers: Object.assign({}, state.answers, obj)
         });

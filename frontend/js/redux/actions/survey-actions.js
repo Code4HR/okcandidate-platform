@@ -248,10 +248,10 @@ export function updateSurveyResultAnswerRequest() {
     };
 }
 
-export function updateSurveyResultAnswerSuccess(response) {
+export function updateSurveyResultAnswerSuccess(QuestionId) {
     return {
         type: UPDATE_SURVEY_RESULT_ANSWER_SUCCESS,
-        response
+        QuestionId
     };
 }
 
@@ -278,8 +278,8 @@ export function updateSurveyResultAnswer(id, answer, sentiment, callback) {
             .then(checkStatus)
             .then(response => response.json())
             .then(response => {
-                dispatch(updateSurveyResultAnswerSuccess(response));
-                callback(null, response);
+                dispatch(updateSurveyResultAnswerSuccess(answer.QuestionId));
+                callback(null);
             })
             .catch(error => {
                 dispatch(updateSurveyResultAnswerFailure(error));
