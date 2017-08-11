@@ -26,6 +26,10 @@ class Survey extends Component {
         super(props);
     }
 
+    /**
+     * On mount, retrieve any stored SurveyResult for this user, then fetch survey questions.
+     */
+
     componentDidMount() {
         this.props.dispatch(fetchSurveyResult(this.props.routeParams.id, (error) => {
             if (!error) {
@@ -34,88 +38,101 @@ class Survey extends Component {
         }));
     }
 
-    gotoPrevQuestion() {
-        if (this.props.survey.questionIndex === 0) {
-            return gotoRoute(`/survey/${this.props.routeParams.id}`);
-        }
-        return this.props.dispatch(gotoPrevQuestion());
+    /**
+     * Returns objects describing the question and the voter's response to the question.
+     */
+
+    getQuestionAndResponse() {
+        const index = this.props.survey.questionIndex;
+        const question = this.props.survey.questions[index];
+        const response = question && this.props.survey.answers[question.id];
+        return [question, response];
     }
 
-    validate(answer, sentiment) {
+    /**
+     * Validates the voter's responses according to the format of the survey. If valid,
+     * fires the callback.
+     */
+
+    validateResponse(response, callback) {
         let valid = true;
         // If this survey is asking for the voter's sentiment, check that it was provided.
-        if (!!this.props.survey.sentiment !== !!sentiment) {
-            this.props.dispatch(setSentimentHelpText('How strongly do you feel about this issue?'));
+        if (!!this.props.survey.sentiment !== !!response.sentiment) {
             valid = false;
+            this.props.dispatch(setSentimentHelpText('How strongly do you feel about this issue?'));
         }
         // If this survey is asking for the voter's opinion, check that it was provided.
-        if (!!this.props.survey.multipleChoice !== !!answer.AnswerId) {
-            this.props.dispatch(setAnswerHelpText('Which choice is closest to your views?'));
+        if (!!this.props.survey.multipleChoice !== !!response.AnswerId) {
             valid = false;
+            this.props.dispatch(setAnswerHelpText('Which choice is closest to your views?'));
         }
-        return valid;
+        return valid && callback();
     }
 
-    gotoNextQuestion() {
-        const [
-            question,
-            answer,
-            sentiment
-        ] = this.getQuestionAndResponses();
+    /**
+     * Validates the voter's selections, and then makes the appropriate network calls
+     * to create or update the response records.
+     */
 
-        const callback = () => {
+    submit(callback) {
+        const [question, response] = this.getQuestionAndResponse();
+        const SurveyResultId = this.props.survey.SurveyResultId;
+
+        // If no input was provided, don't create any records.
+        if (!response) {
+            return callback();
+        }
+
+        this.validateResponse(response, () => {
+            // If answer doesn't have an ID, this is a new record.
+            if (!response.id) {
+                return this.props.dispatch(
+                    createSurveyResultAnswer(
+                        question,
+                        response,
+                        SurveyResultId,
+                        callback
+                    )
+                );
+            }
+            // Otherwise, update the existing record.
+            return this.props.dispatch(
+                updateSurveyResultAnswer(
+                    response,
+                    callback
+                )
+            );
+        });
+    }
+
+    /**
+     * Submits the voter's responses as necessary, then returns to the previous page.
+     */
+
+    gotoPrevQuestion() {
+        this.submit(() => {
+            if (this.props.survey.questionIndex === 0) {
+                return gotoRoute(`/survey/${this.props.routeParams.id}`);
+            }
+            return this.props.dispatch(gotoPrevQuestion());
+        });
+    }
+
+    /**
+     * Submits the voter's responses as necessaray, then goes to the next question/page.
+     */
+
+    gotoNextQuestion() {
+        this.submit(() => {
             if (this.props.survey.questionIndex >= this.props.survey.questions.length - 1) {
                 return gotoRoute(`/results/${this.props.survey.publicPassPhrase}`);
             }
             return this.props.dispatch(gotoNextQuestion());
-        };
-
-        // If no input was provided, don't post this record and move on
-        // to the next question.
-        if (!answer) {
-            return callback();
-        }
-
-        if (!this.validate(answer, sentiment)) {
-            return;
-        }
-
-        // If answer doesn't have an ID, this is a new record.
-        if (!answer.id) {
-            return this.props.dispatch(
-                createSurveyResultAnswer(
-                    question.id,
-                    this.props.survey.SurveyResultId,
-                    answer.AnswerId,
-                    sentiment,
-                    callback
-                )
-            );
-        }
-        return this.props.dispatch(
-            updateSurveyResultAnswer(
-                answer.id,
-                answer,
-                sentiment,
-                callback
-            )
-        );
-    }
-
-    getQuestionAndResponses() {
-        const index = this.props.survey.questionIndex;
-        const question = this.props.survey.questions[index];
-        const answer = question && this.props.survey.answers[question.id];
-        const sentiment = answer && answer.sentiment;
-        return [question, answer, sentiment];
+        });
     }
 
     render() {
-        const [
-            question,
-            answer,
-            sentiment
-        ] = this.getQuestionAndResponses();
+        const [question, response] = this.getQuestionAndResponse();
 
         return (
             <div className="container">
@@ -137,8 +154,8 @@ class Survey extends Component {
                             hasSentiment={this.props.survey.sentiment}
                             onNextClick={this.gotoNextQuestion.bind(this)}
                             onBackClick={this.gotoPrevQuestion.bind(this)}
-                            answerId={answer && answer.AnswerId}
-                            sentiment={sentiment} />
+                            answerId={response && response.AnswerId}
+                            sentiment={response && response.sentiment} />
                         }
                     </article>
                 </div>

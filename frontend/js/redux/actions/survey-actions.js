@@ -227,7 +227,7 @@ export function createSurveyResultAnswerFailure(error) {
     };
 }
 
-export function createSurveyResultAnswer(QuestionId, SurveyResultId, AnswerId, sentiment, callback) {
+export function createSurveyResultAnswer(question, response, SurveyResultId, callback) {
     return (dispatch) => {
         dispatch(createSurveyResultAnswerRequest());
         fetch('/api/v1/surveyresultanswer', {
@@ -236,10 +236,10 @@ export function createSurveyResultAnswer(QuestionId, SurveyResultId, AnswerId, s
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                QuestionId,
+                QuestionId: question.id,
+                AnswerId: response.AnswerId,
                 SurveyResultId,
-                AnswerId,
-                sentiment
+                sentiment: response.sentiment
             })
         })
             .then(checkStatus)
@@ -279,17 +279,17 @@ export function updateSurveyResultAnswerFailure(error) {
     };
 }
 
-export function updateSurveyResultAnswer(id, answer, sentiment, callback) {
+export function updateSurveyResultAnswer(response, callback) {
     return (dispatch) => {
         dispatch(updateSurveyResultAnswerRequest());
-        return fetch(`/api/v1/surveyresultanswer/${id}`, {
+        return fetch(`/api/v1/surveyresultanswer/${response.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                AnswerId: answer.AnswerId,
-                sentiment: sentiment
+                AnswerId: response.AnswerId,
+                sentiment: response.sentiment
             })
         })
             .then(checkStatus)
