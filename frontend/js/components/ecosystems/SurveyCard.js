@@ -101,7 +101,9 @@ SurveyCard.propTypes = {
     options: PropTypes.array,
     answerId: PropTypes.number,
     onBackClick: PropTypes.func,
-    onNextClick: PropTypes.func
+    onNextClick: PropTypes.func,
+    sentimentHelp: PropTypes.string,
+    answerHelp: PropTypes.string
 };
 
 module.exports = SurveyCard;
