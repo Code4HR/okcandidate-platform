@@ -11,6 +11,23 @@ export function setSurveyFormat(multipleChoice, sentiment) {
     };
 }
 
+export const SET_ANSWER_HELP_TEXT = 'SET_ANSWER_HELP_TEXT';
+export const SET_SENTIMENT_HELP_TEXT = 'SET_SENTIMENT_HELP_TEXT';
+
+export function setAnswerHelpText(answerHelp) {
+    return {
+        type: SET_ANSWER_HELP_TEXT,
+        answerHelp
+    };
+}
+
+export function setSentimentHelpText(sentimentHelp) {
+    return {
+        type: SET_SENTIMENT_HELP_TEXT,
+        sentimentHelp
+    };
+}
+
 export const FETCH_SURVEY_QUESTIONS_REQUEST = 'FETCH_SURVEY_QUESTIONS_REQUEST';
 export const FETCH_SURVEY_QUESTIONS_SUCCESS = 'FETCH_SURVEY_QUESTIONS_SUCCESS';
 export const FETCH_SURVEY_QUESTIONS_FAILURE = 'FETCH_SURVEY_QUESTIONS_FAILURE';

@@ -12,7 +12,9 @@ import {
     fetchSurveyQuestions,
     createSurveyResultAnswer,
     updateSurveyResultAnswer,
-    fetchSurveyResult
+    fetchSurveyResult,
+    setAnswerHelpText,
+    setSentimentHelpText
 } from './../../redux/actions/survey-actions';
 
 import {
@@ -39,6 +41,21 @@ class Survey extends Component {
         return this.props.dispatch(gotoPrevQuestion());
     }
 
+    validate(answer, sentiment) {
+        let valid = true;
+        // If this survey is asking for the voter's sentiment, check that it was provided.
+        if (!!this.props.survey.sentiment !== !!sentiment) {
+            this.props.dispatch(setSentimentHelpText('How strongly do you feel about this issue?'));
+            valid = false;
+        }
+        // If this survey is asking for the voter's opinion, check that it was provided.
+        if (!!this.props.survey.multipleChoice !== !!answer.AnswerId) {
+            this.props.dispatch(setAnswerHelpText('Which choice is closest to your views?'));
+            valid = false;
+        }
+        return valid;
+    }
+
     gotoNextQuestion() {
         const [
             question,
@@ -52,6 +69,16 @@ class Survey extends Component {
             }
             return this.props.dispatch(gotoNextQuestion());
         };
+
+        // If no input was provided, don't post this record and move on
+        // to the next question.
+        if (!answer) {
+            return callback();
+        }
+
+        if (!this.validate(answer, sentiment)) {
+            return;
+        }
 
         // If answer doesn't have an ID, this is a new record.
         if (!answer.id) {
@@ -100,6 +127,8 @@ class Survey extends Component {
                         }
                         { question &&
                         <SurveyCard
+                            sentimentHelp={this.props.survey.sentimentHelp}
+                            answerHelp={this.props.survey.answerHelp}
                             dispatch={this.props.dispatch}
                             text={question.text}
                             options={question.Answers}

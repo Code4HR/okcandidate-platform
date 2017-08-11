@@ -5,6 +5,7 @@ import Icon from './../atoms/Icon';
 
 import SentimentSelector from './../organisms/SentimentSelector';
 import RadioButtons from './../organisms/RadioButtons';
+import Alert from './../organisms/Alert';
 import Card from './../atoms/Card';
 
 import {
@@ -44,6 +45,14 @@ class SurveyCard extends Component {
                 <p className="question-text">{this.props.text}</p>
 
                 <div className="survey-card-interface">
+
+                    {
+                        this.props.answerHelp &&
+                        <Alert
+                            level="warning"
+                            message={this.props.answerHelp} />
+                    }
+
                     {
                         this.props.multipleChoice &&
                         <RadioButtons
@@ -53,6 +62,13 @@ class SurveyCard extends Component {
                             selected={this.props.answerId}
                             labelKey="text"
                             onChange={this.onRadioButtonChange.bind(this)} />
+                    }
+
+                    {
+                        this.props.sentimentHelp &&
+                        <Alert
+                            level="warning"
+                            message={this.props.sentimentHelp} />
                     }
 
                     {
