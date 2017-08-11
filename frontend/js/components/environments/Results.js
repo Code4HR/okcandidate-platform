@@ -56,15 +56,15 @@ class Results extends Component {
                               "It's a match!"}
                             name={m.name}
                             office={m.office}
-                            matchRate={m.matchRate} />);
+                            matchRate={Math.round(m.matchRate)} />);
                 })}
 
                 { otherMatches.map((m) => {
-                    return (<OtherMatch
+                    return (<BestMatch
                             key={m.name}
                             name={m.name}
                             office={m.office}
-                            matchRate={m.matchRate} />);
+                            matchRate={Math.round(m.matchRate)} />);
                 })}
 
                 <ElectionReminderPrompt />
