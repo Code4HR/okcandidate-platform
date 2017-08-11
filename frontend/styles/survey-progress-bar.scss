@@ -1,0 +1,56 @@
+@import 'colors';
+
+.survey-progress-bar {
+    position: relative;
+
+    .bar-and-button-container {
+        display: flex;
+        padding-bottom: 2em;
+    }
+
+    .bar-container {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        background: $gray;
+        flex: 1;
+        border-radius: 4px 0 0 4px;
+
+        .bar {
+            border-radius: 4px 0 0 4px;
+            background: $darkGray;
+            height: 37px;
+            transition: width 1s;
+        }
+
+        .minimum-threshold {
+            position: absolute;
+            top: -12px;
+            border-left: 2px solid $red;
+            height: 56px;
+            padding-left: 4px;
+
+            label {
+                font-size: 12px; 
+                position: relative;
+                bottom: 4px;
+                color: $red;
+            }
+        }
+    }
+
+    button {
+        margin-bottom: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .bar-help {
+        color: $gray;
+        text-align: right;
+        position: absolute;
+        width: 100%;
+        bottom: .5em;
+        font-size: 14px;
+    }
+}

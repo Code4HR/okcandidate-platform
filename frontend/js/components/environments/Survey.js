@@ -61,12 +61,20 @@ class Survey extends Component {
             valid = false;
             this.props.dispatch(setSentimentHelpText('How strongly do you feel about this issue?'));
         }
-        // If this survey is asking for the voter's opinion, check that it was provided.
+
         if (!!this.props.survey.multipleChoice !== !!response.AnswerId) {
             valid = false;
-            this.props.dispatch(setAnswerHelpText('Which choice is closest to your views?'));
+            this.props.dispatch(setAnswerHelpText('What position is closest to yours?'));
         }
         return valid && callback();
+    }
+
+    /**
+     * Skips to the results page.
+     */
+
+    gotoResults() {
+        return gotoRoute(`/results/${this.props.survey.publicPassPhrase}`);
     }
 
     /**
@@ -123,6 +131,17 @@ class Survey extends Component {
             return this.props.dispatch(gotoPrevQuestion());
         });
     }
+    countAnsweredQuestions() {
+        const keys = Object.keys(this.props.survey.answers);
+        return keys.reduce((memo, key) => {
+            const question = this.props.survey.answers[key];
+            // If the question doesn't have an ID, it wasn't really answered.
+            if (question.id) {
+                memo = memo + 1;
+            }
+            return memo;
+        }, 0);
+    }
 
     /**
      * Submits the voter's responses as necessaray, then goes to the next question/page.
@@ -148,10 +167,13 @@ class Survey extends Component {
                             !question &&
                             <LoadingIndicator message="Loading Questions" />
                         }
+
                         { question &&
                         <SurveyCard
                             sentimentHelp={this.props.survey.sentimentHelp}
                             answerHelp={this.props.survey.answerHelp}
+                            answerCount={this.countAnsweredQuestions.call(this)}
+                            questionCount={this.props.survey.questions.length}
                             dispatch={this.props.dispatch}
                             text={question.text}
                             options={question.Answers}
@@ -161,7 +183,8 @@ class Survey extends Component {
                             onNextClick={this.gotoNextQuestion.bind(this)}
                             onBackClick={this.gotoPrevQuestion.bind(this)}
                             answerId={response && response.AnswerId}
-                            sentiment={response && response.sentiment} />
+                            sentiment={response && response.sentiment}
+                            onResultsClick={this.gotoResults.bind(this)} />
                         }
                     </article>
                 </div>
