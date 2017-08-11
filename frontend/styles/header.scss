@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 5;
   padding: 8px 0;
 
     .app-profile {
@@ -25,6 +25,7 @@
   i, a {
     display: inline-block;
     vertical-align: middle;
+    text-decoration: none;
   }
 
   img {
@@ -32,4 +33,9 @@
     display: block;
   }
 
+  h1 {
+    font-size: 1.5em;
+    line-height: 36px;
+    color: $black;
+  }
 }
