@@ -10,7 +10,9 @@ import {
     SET_SURVEY_FORMAT,
     FETCH_SURVEY_RESULT_SUCCESS,
     CREATE_SURVEY_RESULT_SUCCESS,
-    CREATE_SURVEY_RESULT_ANSWER_SUCCESS
+    CREATE_SURVEY_RESULT_ANSWER_SUCCESS,
+    SET_ANSWER_HELP_TEXT,
+    SET_SENTIMENT_HELP_TEXT
 } from './../actions/survey-actions';
 
 const initialState = {
@@ -21,7 +23,9 @@ const initialState = {
     error: '',
     multipleChoice: false,
     sentiment: false,
-    answers: {}
+    answers: {},
+    sentimentHelp: '',
+    answerHelp: ''
 };
 
 export default function surveyReducer(state = initialState, action) {
@@ -57,7 +61,8 @@ export default function surveyReducer(state = initialState, action) {
         );
 
         return Object.assign({}, state, {
-            answers: Object.assign({}, state.answers, obj)
+            answers: Object.assign({}, state.answers, obj),
+            sentimentHelp: ''
         });
 
     case SET_QUESTION_ANSWER_ID:
@@ -69,7 +74,8 @@ export default function surveyReducer(state = initialState, action) {
         );
 
         return Object.assign({}, state, {
-            answers: Object.assign({}, state.answers, obj)
+            answers: Object.assign({}, state.answers, obj),
+            answerHelp: ''
         });
 
     case GOTO_NEXT_QUESTION:
@@ -80,6 +86,16 @@ export default function surveyReducer(state = initialState, action) {
     case GOTO_PREV_QUESTION:
         return Object.assign({}, state, {
             questionIndex: state.questionIndex - 1
+        });
+
+    case SET_ANSWER_HELP_TEXT:
+        return Object.assign({}, state, {
+            answerHelp: action.answerHelp
+        });
+
+    case SET_SENTIMENT_HELP_TEXT:
+        return Object.assign({}, state, {
+            sentimentHelp: action.sentimentHelp
         });
 
     case SET_SURVEY_FORMAT:
