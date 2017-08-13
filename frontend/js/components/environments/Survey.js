@@ -95,13 +95,19 @@ class Survey extends Component {
                     )
                 );
             }
-            // Otherwise, update the existing record.
-            return this.props.dispatch(
-                updateSurveyResultAnswer(
-                    response,
-                    callback
-                )
-            );
+
+            // Check to see if the user modified their answer before resubmitting.
+            else if (!response.pristine) {
+                return this.props.dispatch(
+                    updateSurveyResultAnswer(
+                        response,
+                        callback
+                    )
+                );
+            }
+
+            // Otherwise, continue without making changes.
+            return callback();
         });
     }
 

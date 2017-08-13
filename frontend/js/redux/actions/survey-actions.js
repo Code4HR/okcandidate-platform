@@ -265,10 +265,10 @@ export function updateSurveyResultAnswerRequest() {
     };
 }
 
-export function updateSurveyResultAnswerSuccess(response) {
+export function updateSurveyResultAnswerSuccess(QuestionId) {
     return {
         type: UPDATE_SURVEY_RESULT_ANSWER_SUCCESS,
-        response
+        QuestionId
     };
 }
 
@@ -295,8 +295,8 @@ export function updateSurveyResultAnswer(response, callback) {
             .then(checkStatus)
             .then(response => response.json())
             .then(response => {
-                dispatch(updateSurveyResultAnswerSuccess(response));
-                callback(null, response);
+                dispatch(updateSurveyResultAnswerSuccess(response.QuestionId));
+                callback(null);
             })
             .catch(error => {
                 dispatch(updateSurveyResultAnswerFailure(error));
