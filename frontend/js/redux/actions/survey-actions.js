@@ -295,7 +295,7 @@ export function updateSurveyResultAnswer(response, callback) {
             .then(checkStatus)
             .then(response => response.json())
             .then(response => {
-                dispatch(updateSurveyResultAnswerSuccess(answer.QuestionId));
+                dispatch(updateSurveyResultAnswerSuccess(response.QuestionId));
                 callback(null);
             })
             .catch(error => {
