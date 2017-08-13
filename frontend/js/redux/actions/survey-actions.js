@@ -11,6 +11,23 @@ export function setSurveyFormat(multipleChoice, sentiment) {
     };
 }
 
+export const SET_ANSWER_HELP_TEXT = 'SET_ANSWER_HELP_TEXT';
+export const SET_SENTIMENT_HELP_TEXT = 'SET_SENTIMENT_HELP_TEXT';
+
+export function setAnswerHelpText(answerHelp) {
+    return {
+        type: SET_ANSWER_HELP_TEXT,
+        answerHelp
+    };
+}
+
+export function setSentimentHelpText(sentimentHelp) {
+    return {
+        type: SET_SENTIMENT_HELP_TEXT,
+        sentimentHelp
+    };
+}
+
 export const FETCH_SURVEY_QUESTIONS_REQUEST = 'FETCH_SURVEY_QUESTIONS_REQUEST';
 export const FETCH_SURVEY_QUESTIONS_SUCCESS = 'FETCH_SURVEY_QUESTIONS_SUCCESS';
 export const FETCH_SURVEY_QUESTIONS_FAILURE = 'FETCH_SURVEY_QUESTIONS_FAILURE';
@@ -210,7 +227,7 @@ export function createSurveyResultAnswerFailure(error) {
     };
 }
 
-export function createSurveyResultAnswer(QuestionId, SurveyResultId, AnswerId, sentiment, callback) {
+export function createSurveyResultAnswer(question, response, SurveyResultId, callback) {
     return (dispatch) => {
         dispatch(createSurveyResultAnswerRequest());
         fetch('/api/v1/surveyresultanswer', {
@@ -219,10 +236,10 @@ export function createSurveyResultAnswer(QuestionId, SurveyResultId, AnswerId, s
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                QuestionId,
+                QuestionId: question.id,
+                AnswerId: response.AnswerId,
                 SurveyResultId,
-                AnswerId,
-                sentiment
+                sentiment: response.sentiment
             })
         })
             .then(checkStatus)
@@ -262,17 +279,17 @@ export function updateSurveyResultAnswerFailure(error) {
     };
 }
 
-export function updateSurveyResultAnswer(id, answer, sentiment, callback) {
+export function updateSurveyResultAnswer(response, callback) {
     return (dispatch) => {
         dispatch(updateSurveyResultAnswerRequest());
-        return fetch(`/api/v1/surveyresultanswer/${id}`, {
+        return fetch(`/api/v1/surveyresultanswer/${response.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                AnswerId: answer.AnswerId,
-                sentiment: sentiment
+                AnswerId: response.AnswerId,
+                sentiment: response.sentiment
             })
         })
             .then(checkStatus)
