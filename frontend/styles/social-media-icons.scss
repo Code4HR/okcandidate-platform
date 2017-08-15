@@ -1,0 +1,17 @@
+@import 'colors';
+
+.social-media-sharing {
+    padding: .5em;
+    display: flex;
+    align-items: center;
+    margin: 0 -.25em;
+
+    & > * {
+        margin: 0 .25em;
+    }
+
+    &[data-primary] {
+        background: $blue;
+        color: $white;
+    }
+}
