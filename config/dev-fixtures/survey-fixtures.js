@@ -32,7 +32,7 @@ module.exports = {
             if (count > 0) {
                 return [];
             }
-            
+
             const maxId = Math.max.apply(Math,surveys.map(function(o){return o.id;}));
             app.orm.Survey.sequelize.query('select setval(\'survey_id_seq\', ' + maxId + ')');
 
