@@ -1,6 +1,8 @@
 'use strict';
 
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Card from './../atoms/Card';
 import CandidateDisplay from './../organisms/CandidateDisplay';
 import Icon from './../atoms/Icon';

@@ -1,8 +1,9 @@
 'use strict';
 
-import React, { PropTypes, Component } from 'react';
-import Icon from './../atoms/Icon';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
+import Icon from './../atoms/Icon';
 import SentimentSelector from './../organisms/SentimentSelector';
 import RadioButtons from './../organisms/RadioButtons';
 import Alert from './../organisms/Alert';

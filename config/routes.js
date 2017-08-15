@@ -112,11 +112,6 @@ module.exports = [
         handler: 'SurveyController.create'
     },
     {
-        method: 'PUT',
-        path: '/api/v1/survey/{id}',
-        handler: 'SurveyController.update'
-    },
-    {
         method: ['GET'],
         path: '/api/v1/category',
         handler: 'CategoryController.getAll'
