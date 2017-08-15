@@ -2,52 +2,124 @@
 
 const answers = [
     {
-        text: 'Maintain user fees (gas tax) to build new roads',
+        id: 1,
+        text: 'Study it',
         QuestionId: 1
     },
     {
-        text: 'Leverage public-private partnerships to protect taxpayers',
+        id: 2,
+        text: 'Abolish it',
         QuestionId: 1
     },
     {
-        text: 'Provide incentives for carpooling and transit',
+        id: 3,
+        text: 'Give the city more money to fix it',
         QuestionId: 1
     },
     {
-        text: 'Make marijuana legal for medical purposes',
+        id: 4,
+        text: 'Study it',
         QuestionId: 2
     },
     {
-        text: 'Maintain current laws that criminalize all marijuana use',
+        id: 5,
+        text: 'Abolish it',
         QuestionId: 2
     },
     {
-        text: 'Legalize recreational use and tax sales',
+        id: 6,
+        text: 'Give the city more money to fix it',
         QuestionId: 2
     },
     {
-        text: 'Maintain user fees (gas tax) to build new roads',
+        id: 7,
+        text: 'Study it',
         QuestionId: 3
     },
     {
-        text: 'Leverage public-private partnerships to protect taxpayers',
+        id: 8,
+        text: 'Abolish it',
         QuestionId: 3
     },
     {
-        text: 'Provide incentives for carpooling and transit',
+        id: 9,
+        text: 'Give the city more money to fix it',
         QuestionId: 3
     },
     {
-        text: 'Make marijuana legal for medical purposes',
+        id: 10,
+        text: 'Study it',
         QuestionId: 4
     },
     {
-        text: 'Maintain current laws that criminalize all marijuana use',
+        id: 11,
+        text: 'Abolish it',
         QuestionId: 4
     },
     {
-        text: 'Legalize recreational use and tax sales',
+        id: 12,
+        text: 'Give the city more money to fix it',
         QuestionId: 4
+    },
+    {
+        id: 13,
+        text: 'Study it',
+        QuestionId: 5
+    },
+    {
+        id: 14,
+        text: 'Abolish it',
+        QuestionId: 5
+    },
+    {
+        id: 15,
+        text: 'Give the city more money to fix it',
+        QuestionId: 5
+    },
+    {
+        id: 16,
+        text: 'Study it',
+        QuestionId: 6
+    },
+    {
+        id: 17,
+        text: 'Abolish it',
+        QuestionId: 6
+    },
+    {
+        id: 18,
+        text: 'Give the city more money to fix it',
+        QuestionId: 6
+    },
+    {
+        id: 19,
+        text: 'Study it',
+        QuestionId: 7
+    },
+    {
+        id: 20,
+        text: 'Abolish it',
+        QuestionId: 7
+    },
+    {
+        id: 21,
+        text: 'Give the city more money to fix it',
+        QuestionId: 7
+    },
+    {
+        id: 22,
+        text: 'Study it',
+        QuestionId: 8
+    },
+    {
+        id: 23,
+        text: 'Abolish it',
+        QuestionId: 8
+    },
+    {
+        id: 24,
+        text: 'Give the city more money to fix it',
+        QuestionId: 8
     }
 ];
 
@@ -58,6 +130,10 @@ module.exports = {
             if (count > 0) {
                 return [];
             }
+
+            const maxId = Math.max.apply(Math,answers.map(function(o){return o.id;}));
+            app.orm.Question.sequelize.query('select setval(\'answer_id_seq\', ' + maxId + ')');
+
             // Create answers.
             return Promise.all(
                 answers.map(answer => {

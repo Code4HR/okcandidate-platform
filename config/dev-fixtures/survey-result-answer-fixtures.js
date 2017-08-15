@@ -2,99 +2,196 @@
 
 const surveyResultAnswer = [
     {
-        sentiment: 3,
         SurveyResultId: 1,
-        QuestionId: 1
+        QuestionId: 1,
+        AnswerId: 1
     },
     {
-        sentiment: 3,
         SurveyResultId: 1,
-        QuestionId: 2
+        QuestionId: 2,
+        AnswerId: 4
     },
     {
-        sentiment: 3,
         SurveyResultId: 1,
-        QuestionId: 3
+        QuestionId: 3,
+        AnswerId: 7
     },
     {
-        sentiment: 4,
         SurveyResultId: 1,
-        QuestionId: 4
+        QuestionId: 4,
+        AnswerId: 10
     },
     {
-        sentiment: 3,
         SurveyResultId: 2,
-        QuestionId: 1
+        QuestionId: 5,
+        AnswerId: 13,
+        sentiment: 3
     },
     {
-        sentiment: 3,
         SurveyResultId: 2,
-        QuestionId: 2
+        QuestionId: 6,
+        AnswerId: 16,
+        sentiment: 3
     },
     {
-        sentiment: 3,
         SurveyResultId: 2,
-        QuestionId: 3
+        QuestionId: 7,
+        AnswerId: 19,
+        sentiment: 3
     },
     {
-        sentiment: 3,
+        SurveyResultId: 2,
+        QuestionId: 8,
+        AnswerId: 22,
+        sentiment: 3
+    },
+    {
         SurveyResultId: 3,
-        QuestionId: 1
+        QuestionId: 9,
+        sentiment: 3
     },
     {
-        sentiment: 3,
         SurveyResultId: 3,
-        QuestionId: 2
+        QuestionId: 10,
+        sentiment: 3
     },
     {
-        sentiment: 3,
         SurveyResultId: 3,
-        QuestionId: 3
+        QuestionId: 11,
+        sentiment: 3
     },
     {
-        sentiment: 3,
+        SurveyResultId: 3,
+        QuestionId: 12,
+        sentiment: 3
+    },
+    {
         SurveyResultId: 4,
-        QuestionId: 1
+        QuestionId: 1,
+        AnswerId: 2
     },
     {
-        sentiment: 3,
         SurveyResultId: 4,
-        QuestionId: 2
+        QuestionId: 2,
+        AnswerId: 5
     },
     {
-        sentiment: 3,
         SurveyResultId: 4,
-        QuestionId: 3
+        QuestionId: 3,
+        AnswerId: 8
     },
     {
-        sentiment: 3,
+        SurveyResultId: 4,
+        QuestionId: 4,
+        AnswerId: 11
+    },
+    {
         SurveyResultId: 5,
-        QuestionId: 1
+        QuestionId: 5,
+        AnswerId: 14,
+        sentiment: 3
     },
     {
-        sentiment: 3,
         SurveyResultId: 5,
-        QuestionId: 2
+        QuestionId: 6,
+        AnswerId: 17,
+        sentiment: 3
     },
     {
-        sentiment: 3,
         SurveyResultId: 5,
-        QuestionId: 3
+        QuestionId: 7,
+        AnswerId: 20,
+        sentiment: 3
     },
     {
-        sentiment: 3,
-        SurveyResultId: 6,
-        QuestionId: 1
+        SurveyResultId: 5,
+        QuestionId: 8,
+        AnswerId: 23,
+        sentiment: 3
     },
     {
-        sentiment: 3,
         SurveyResultId: 6,
-        QuestionId: 2
+        QuestionId: 9,
+        sentiment: 3
     },
     {
-        sentiment: 3,
         SurveyResultId: 6,
-        QuestionId: 3
+        QuestionId: 10,
+        sentiment: 3
+    },
+    {
+        SurveyResultId: 6,
+        QuestionId: 11,
+        sentiment: 3
+    },
+    {
+        SurveyResultId: 6,
+        QuestionId: 12,
+        sentiment: 3
+    },
+    {
+        SurveyResultId: 7,
+        QuestionId: 1,
+        AnswerId: 2
+    },
+    {
+        SurveyResultId: 7,
+        QuestionId: 2,
+        AnswerId: 6
+    },
+    {
+        SurveyResultId: 7,
+        QuestionId: 3,
+        AnswerId: 9
+    },
+    {
+        SurveyResultId: 7,
+        QuestionId: 4,
+        AnswerId: 12
+    },
+    {
+        SurveyResultId: 8,
+        QuestionId: 5,
+        AnswerId: 15,
+        sentiment: 3
+    },
+    {
+        SurveyResultId: 8,
+        QuestionId: 6,
+        AnswerId: 18,
+        sentiment: 3
+    },
+    {
+        SurveyResultId: 8,
+        QuestionId: 7,
+        AnswerId: 21,
+        sentiment: 3
+    },
+    {
+        SurveyResultId: 8,
+        QuestionId: 8,
+        AnswerId: 24,
+        sentiment: 3
+    },
+    {
+        SurveyResultId: 9,
+        QuestionId: 9,
+        sentiment: 3
+    },
+    {
+        SurveyResultId: 9,
+        QuestionId: 10,
+        sentiment: 3
+    },
+    {
+        SurveyResultId: 9,
+        QuestionId: 11,
+        sentiment: 3
+    },
+    {
+        SurveyResultId: 9,
+        QuestionId: 12,
+        sentiment: 3
     }
 ];
 

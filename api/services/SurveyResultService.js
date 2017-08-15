@@ -23,19 +23,28 @@ module.exports = class SurveyResultService extends Service {
         })
         .then((result) => {
             const query = `select surveyresult.id as "SurveyResultId"
+                , questiontype."multipleChoice"
+                , questiontype.sentiment
                 , surveyresultanswer."QuestionId"
-                , surveyresultanswer.sentiment as "SurveyResultIntensity"
+                , surveyresultanswer."AnswerId"
+                , surveyresultanswer.sentiment as "SurveyResultSentiment"
                 , candidate."CandidateId"
                 , candidate."Name"
                 , candidate."Office"
-                , candidate.sentiment as "CandidateItensity"
+                , candidate."AnswerId" as "CandidateAnswerId"
+                , candidate.sentiment as "CandidateSentiment"
                 from surveyresult
+                inner join survey 
+		          on survey.id = surveyresult."SurveyId"
+		        inner join questiontype
+		          on questiontype.id = survey."QuestionTypeId"
                 inner join surveyresultanswer
                   on surveyresultanswer."SurveyResultId" = surveyresult.id
                 left outer join (select t0.id as "CandidateId"
                                   , t0.name as "Name"
                                   , t1.name as "Office"
                                   , t3."QuestionId"
+                                  , t3."AnswerId"
                                   , t3.sentiment
                                   from candidate t0
                                   inner join office t1
@@ -53,13 +62,28 @@ module.exports = class SurveyResultService extends Service {
             });
         })
         .then((answers) => {
-
             const matches = answers.reduce((a, v) => {
                 if (v.Name != null) {
+
+                    // If survey is multiple choice answers must match to score a point.
+                    // If survey uses sentiment use it for score, otherwise score is always 1.
+                    // If candidate sentiment is null then divide sentiment by 5 otherwise 10.
+                    const score = v.multipleChoice ? (
+                        v.AnswerId == v.CandidateAnswerId ? (
+                            v.sentiment ? (
+                                v.CandidateSentiment > 0 ?
+                                    (v.CandidateSentiment + v.SurveyResultSentiment) / 10 :
+                                    v.SurveyResultSentiment / 5
+                            ) : 1
+                        ) : 0
+                    ) : (v.CandidateSentiment != null ?
+                            (v.CandidateSentiment + v.SurveyResultSentiment) / 10 :
+                            v.SurveyResultSentiment / 5);
+
                     const candidate = {
                         name: v.Name,
                         office: v.Office,
-                        score: (v.CandidateItensity + v.SurveyResultIntensity) / 10,
+                        score: score,
                         numQuestions: 1
                     };
 

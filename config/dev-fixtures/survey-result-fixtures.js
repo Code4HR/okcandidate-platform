@@ -3,47 +3,65 @@
 const surveyResults = [
     {
         id: 1,
-        publicPassPhrase: 'publicPhraseOne',
-        privatePassPhrase: 'privatePhraseOne',
-        phone: '123456789',
-        email: 'testUser@survey.com',
-        SurveyId: 1
-    },
-    {
-        id: 2,
-        publicPassPhrase: 'publicPhraseTwo',
-        privatePassPhrase: 'privatePhraseTwo',
-        phone: '198765432',
-        email: 'NotherUser@survey.com',
-        SurveyId: 1
-    },
-    {
-        id: 3,
-        publicPassPhrase: 'publicPhraseThree',
-        privatePassPhrase: 'privatePhraseThree',
-        phone: '18675309',
-        email: 'ThirdUser@survey.com',
-        SurveyId: 1
-    },
-    {
-        id: 4,
-        publicPassPhrase: 'publicPhraseFour',
-        privatePassPhrase: 'privatePhraseFour',
+        publicPassPhrase: 'candidateOneResultOne',
+        privatePassPhrase: 'privateCandidateOneResultOne',
         SurveyId: 1,
         CandidateId: 1
     },
     {
-        id: 5,
-        publicPassPhrase: 'publicPhraseFive',
-        privatePassPhrase: 'privatePhraseFive',
+        id: 2,
+        publicPassPhrase: 'candidateOneResultTwo',
+        privatePassPhrase: 'privateCandidateOneResultTwo',
+        SurveyId: 2,
+        CandidateId: 1
+    },
+    {
+        id: 3,
+        publicPassPhrase: 'candidateOneResultThree',
+        privatePassPhrase: 'privateCandidateOneResultThree',
+        SurveyId: 3,
+        CandidateId: 1
+    },
+    {
+        id: 4,
+        publicPassPhrase: 'candidateTwoResultOne',
+        privatePassPhrase: 'privateCandidateTwoResultOne',
         SurveyId: 1,
         CandidateId: 2
     },
     {
+        id: 5,
+        publicPassPhrase: 'candidateTwoResultTwo',
+        privatePassPhrase: 'privateCandidateTwoResultTwo',
+        SurveyId: 2,
+        CandidateId: 2
+    },
+    {
         id: 6,
-        publicPassPhrase: 'publicPhraseSix',
-        privatePassPhrase: 'privatePhraseSix',
+        publicPassPhrase: 'candidateTwoResultThree',
+        privatePassPhrase: 'privateCandidateTwoResultThree',
+        SurveyId: 3,
+        CandidateId: 2
+    },
+    {
+        id: 7,
+        publicPassPhrase: 'candidateThreeResultOne',
+        privatePassPhrase: 'privateCandidateThreeResultOne',
         SurveyId: 1,
+        CandidateId: 3
+    },
+    {
+        id: 8,
+        publicPassPhrase: 'candidateThreeResultTwo',
+        privatePassPhrase: 'privateCandidateThreeResultTwo',
+        SurveyId: 2,
+        CandidateId: 3
+    },
+    {
+        id: 9,
+        publicPassPhrase: 'candidateThreeResultThree',
+        privatePassPhrase: 'privateCandidateThreeResultThree',
+        SurveyId: 3,
         CandidateId: 3
     }
 ];
