@@ -6,6 +6,7 @@ import Icon from './../atoms/Icon';
 import SentimentSelector from './../organisms/SentimentSelector';
 import RadioButtons from './../organisms/RadioButtons';
 import Alert from './../organisms/Alert';
+import SurveyProgressBar from './../organisms/SurveyProgressBar';
 import Card from './../atoms/Card';
 
 import {
@@ -41,6 +42,13 @@ class SurveyCard extends Component {
                         Next
                     </button>
                 ]}>
+
+                <SurveyProgressBar
+                    value={this.props.answerCount}
+                    max={this.props.questionCount}
+                    minimum={1}
+                    onClick={this.props.onResultsClick} />
+
                 <Icon className="big">check_circle</Icon>
                 <p className="question-text">{this.props.text}</p>
 
@@ -92,6 +100,8 @@ class SurveyCard extends Component {
 }
 
 SurveyCard.propTypes = {
+    answerCount: PropTypes.number,
+    questionCount: PropTypes.number,
     text: PropTypes.string,
     dispatch: PropTypes.func,
     id: PropTypes.number,
@@ -103,7 +113,8 @@ SurveyCard.propTypes = {
     onBackClick: PropTypes.func,
     onNextClick: PropTypes.func,
     sentimentHelp: PropTypes.string,
-    answerHelp: PropTypes.string
+    answerHelp: PropTypes.string,
+    onResultsClick: PropTypes.func
 };
 
 module.exports = SurveyCard;

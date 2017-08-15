@@ -15,6 +15,12 @@ button, .button {
         background: $blue;
         color: $white;
         border-color: darken($blue, 10);
+
+        &[disabled] {
+            background: lighten($blue, 25%);
+            border-color: lighten($blue, 25%);
+        }
+
     }
 
 }
