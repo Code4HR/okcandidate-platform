@@ -1,41 +1,43 @@
-'use static'
+'use static';
 
 const candidates = [
-  {
-    name: 'Candidate A'
-  },
-  {
-    name: 'Candidate B'
-  },
-  {
-    name: 'Candidate C'
-  }
-]
+    {
+        id: 1,
+        name: 'Candidate A',
+        party: 'Republocrat',
+        OfficeId: 1
+    },
+    {
+        id: 2,
+        name: 'Candidate B',
+        party: 'Democan',
+        OfficeId: 1
+    },
+    {
+        id: 3,
+        name: 'Candidate C',
+        party: 'Yes, Please',
+        OfficeId: 1
+    }
+];
 
 module.exports = {
-  load: (app) => {
-    return app.orm.Candidate.count({})
-    .then(count => {
-      if (count > 0) {
-        return []
-      }
-      else {
-        // For all offices, add one candidate.
-        return app.orm.Office.findAll({where: {}})
-        .then(offices => {
+    load: (app) => {
+      return app.orm.Candidate.count({})
+      .then(count => {
+          if (count > 0) {
+              return [];
+          }
+
+          const maxId = Math.max.apply(Math,candidates.map(function(o){return o.id;}));
+          app.orm.Survey.sequelize.query('select setval(\'candidate_id_seq\', ' + maxId + ')');
+
+          // Create candidates
           return Promise.all(
-            offices.map((office, index) => {
-              return app.orm.Candidate.create(
-                Object.assign({}, candidates[index], {OfficeId: office.id})
-              )
-            })
-          )
-        })
-        .then(candidates => {
-          app.log.info('Created candidates')
-          return candidates
-        })
-      }
-    })
+              candidates.map(candidate => {
+                  return app.orm.Candidate.create(candidate);
+              })
+          );
+      });
   }
-}
+};
