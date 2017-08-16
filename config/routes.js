@@ -132,6 +132,11 @@ module.exports = [
         handler: 'SurveyResultController.create'
     },
     {
+        method: ['PUT'],
+        path: '/api/v1/electionreminder/{SurveyResultId}',
+        handler: 'SurveyResultController.electionReminder'
+    },
+    {
         method: ['GET'],
         path: '/api/v1/surveymatch/{publicPassPhrase*}',
         handler: 'SurveyResultController.match'

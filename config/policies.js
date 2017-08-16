@@ -14,17 +14,21 @@
 
 module.exports = {
 
-  DefaultController: {
-      info: [ ]
-  },
+    DefaultController: {
+        info: [ ]
+    },
 
-  ViewController: {
-      admin: ['Auth.isLoggedIn', 'Auth.isAdmin']
-  },
+    ViewController: {
+        admin: ['Auth.isLoggedIn', 'Auth.isAdmin']
+    },
 
-  SurveyController: {
-      create: ['Survey.create'],
-      update: ['Survey.create']
-  }
+    SurveyController: {
+        create: ['Survey.create'],
+        update: ['Survey.create']
+    },
+
+    SurveyResultController: {
+        electionReminder: ['SurveyResult.electionReminder']
+    }
 
 };

@@ -13,6 +13,7 @@ class ElectionReminderPrompt extends Component {
                 actions={[
                     <button
                         key="1"
+                        onClick={this.props.onClick}
                         className="primary">Sure</button>,
                     <button
                         key="2"
@@ -25,7 +26,8 @@ class ElectionReminderPrompt extends Component {
 }
 
 ElectionReminderPrompt.propTypes = {
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    onClick: PropTypes.func
 };
 
 module.exports = ElectionReminderPrompt;

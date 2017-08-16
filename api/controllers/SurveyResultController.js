@@ -65,6 +65,25 @@ module.exports = class SurveyResultController extends Controller {
             reply(response);
         });
     }
+
+    electionReminder(request, reply) {
+        const SurveyResultId = request.params.SurveyResultId;
+        const email = request.payload.email;
+        const phone = request.payload.phone;
+
+        this.app.orm.SurveyResult.update({
+            email,
+            phone
+        }, {
+            where: {id: SurveyResultId}
+        })
+            .then(response => {
+                reply(response[0]);
+            })
+            .catch(error => {
+                reply(Boom.badRequest(error));
+            });
+    }
 };
 
 function generatePhrase(len) {

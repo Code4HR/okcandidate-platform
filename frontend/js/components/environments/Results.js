@@ -10,10 +10,18 @@ import LoadingIndicator from './../organisms/LoadingIndicator';
 import ElectionReminderPrompt from './../ecosystems/ElectionReminderPrompt';
 import MethodologyPrompt from './../ecosystems/MethodologyPrompt';
 import SocialMediaIcons from './../organisms/SocialMediaIcons';
+import ElectionReminderModal from './../ecosystems/ElectionReminderModal';
+import Alert from './../organisms/Alert';
 
 import {
-    fetchSurveyResults
+    fetchSurveyResults,
+    toggleModalState,
+    hideElectionReminderPrompt
 } from './../../redux/actions/result-actions';
+
+import {
+    fetchSurveyResult
+} from './../../redux/actions/survey-actions';
 
 class Results extends Component {
     constructor(props) {
@@ -22,6 +30,15 @@ class Results extends Component {
 
     componentDidMount() {
         this.props.dispatch(fetchSurveyResults(this.props.params.passPhrase));
+        this.props.dispatch(fetchSurveyResult());
+    }
+
+    showElectionReminderSignup() {
+        this.props.dispatch(toggleModalState());
+    }
+
+    hideElectionReminderPrompt() {
+        this.props.dispatch(hideElectionReminderPrompt());
     }
 
     sortMatches(matchA, matchB) {
@@ -55,6 +72,14 @@ class Results extends Component {
         return (
             <article className="container">
 
+                <ElectionReminderModal
+                    SurveyResultId={this.props.result.SurveyResultId}
+                    email={this.props.result.email}
+                    phone={this.props.result.phone}
+                    newsletter={this.props.result.newsletter}
+                    active={this.props.result.showElectionReminderModal}
+                    dispatch={this.props.dispatch} />
+
                 <SocialMediaIcons primary/>
 
                 {
@@ -62,7 +87,6 @@ class Results extends Component {
                     !otherMatches.length &&
                     <LoadingIndicator message="Loading Matches" />
                 }
-
 
                 { bestMatch.map((m) => {
                     return (<CandidateMatch
@@ -82,7 +106,20 @@ class Results extends Component {
                         matchRate={Math.round(m.matchRate)} />);
                 })}
 
-                <ElectionReminderPrompt />
+                {
+                    this.props.result.showElectionReminderPrompt &&
+                    <ElectionReminderPrompt
+                        onClick={this.showElectionReminderSignup.bind(this)}
+                        onClose={this.hideElectionReminderPrompt.bind(this)} />
+                }
+
+                {
+                    this.props.result.electionReminderCreated &&
+                    <Alert
+                        level="success"
+                        message="Thanks for signing up for a reminder!  We'll contact you on election day." />
+                }
+
                 <MethodologyPrompt />
             </article>
         );
