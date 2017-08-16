@@ -21,7 +21,8 @@ class IconButton extends Component {
 
 IconButton.propTypes = {
     icon: PropTypes.string,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    children: PropTypes.any
 };
 
 export default IconButton;
