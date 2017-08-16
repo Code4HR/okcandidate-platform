@@ -31,24 +31,24 @@ const surveyResultAnswer = [
         SurveyResultId: 2,
         QuestionId: 6,
         AnswerId: 16,
-        sentiment: 3
+        sentiment: 5
     },
     {
         SurveyResultId: 2,
         QuestionId: 7,
         AnswerId: 19,
-        sentiment: 3
+        sentiment: 2
     },
     {
         SurveyResultId: 2,
         QuestionId: 8,
         AnswerId: 22,
-        sentiment: 3
+        sentiment: 1
     },
     {
         SurveyResultId: 3,
         QuestionId: 9,
-        sentiment: 3
+        sentiment: 4
     },
     {
         SurveyResultId: 3,
@@ -58,12 +58,12 @@ const surveyResultAnswer = [
     {
         SurveyResultId: 3,
         QuestionId: 11,
-        sentiment: 3
+        sentiment: 2
     },
     {
         SurveyResultId: 3,
         QuestionId: 12,
-        sentiment: 3
+        sentiment: 5
     },
     {
         SurveyResultId: 4,
@@ -89,13 +89,13 @@ const surveyResultAnswer = [
         SurveyResultId: 5,
         QuestionId: 5,
         AnswerId: 14,
-        sentiment: 3
+        sentiment: 1
     },
     {
         SurveyResultId: 5,
         QuestionId: 6,
         AnswerId: 17,
-        sentiment: 3
+        sentiment: 4
     },
     {
         SurveyResultId: 5,
@@ -107,27 +107,27 @@ const surveyResultAnswer = [
         SurveyResultId: 5,
         QuestionId: 8,
         AnswerId: 23,
-        sentiment: 3
+        sentiment: 5
     },
     {
         SurveyResultId: 6,
         QuestionId: 9,
-        sentiment: 3
+        sentiment: 2
     },
     {
         SurveyResultId: 6,
         QuestionId: 10,
-        sentiment: 3
+        sentiment: 2
     },
     {
         SurveyResultId: 6,
         QuestionId: 11,
-        sentiment: 3
+        sentiment: 4
     },
     {
         SurveyResultId: 6,
         QuestionId: 12,
-        sentiment: 3
+        sentiment: 1
     },
     {
         SurveyResultId: 7,
@@ -153,13 +153,13 @@ const surveyResultAnswer = [
         SurveyResultId: 8,
         QuestionId: 5,
         AnswerId: 15,
-        sentiment: 3
+        sentiment: 2
     },
     {
         SurveyResultId: 8,
         QuestionId: 6,
         AnswerId: 18,
-        sentiment: 3
+        sentiment: 1
     },
     {
         SurveyResultId: 8,
@@ -171,12 +171,12 @@ const surveyResultAnswer = [
         SurveyResultId: 8,
         QuestionId: 8,
         AnswerId: 24,
-        sentiment: 3
+        sentiment: 4
     },
     {
         SurveyResultId: 9,
         QuestionId: 9,
-        sentiment: 3
+        sentiment: 1
     },
     {
         SurveyResultId: 9,
@@ -186,12 +186,12 @@ const surveyResultAnswer = [
     {
         SurveyResultId: 9,
         QuestionId: 11,
-        sentiment: 3
+        sentiment: 5
     },
     {
         SurveyResultId: 9,
         QuestionId: 12,
-        sentiment: 3
+        sentiment: 2
     }
 ];
 
