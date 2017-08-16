@@ -31,6 +31,7 @@ module.exports = class SurveyResultService extends Service {
                 , candidate."CandidateId"
                 , candidate."Name"
                 , candidate."Office"
+                , candidate."Party"
                 , candidate."AnswerId" as "CandidateAnswerId"
                 , candidate.sentiment as "CandidateSentiment"
                 from surveyresult
@@ -43,6 +44,7 @@ module.exports = class SurveyResultService extends Service {
                 left outer join (select t0.id as "CandidateId"
                                   , t0.name as "Name"
                                   , t1.name as "Office"
+                                  , t0.party as "Party"
                                   , t3."QuestionId"
                                   , t3."AnswerId"
                                   , t3.sentiment
@@ -83,6 +85,7 @@ module.exports = class SurveyResultService extends Service {
                     const candidate = {
                         name: v.Name,
                         office: v.Office,
+                        party: v.Party,
                         score: score,
                         numQuestions: 1
                     };

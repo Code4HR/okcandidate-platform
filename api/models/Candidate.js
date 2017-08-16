@@ -35,6 +35,9 @@ module.exports = class Candidate extends Model {
                 type: Sequelize.STRING,
                 allowNull: false
             },
+            party: {
+                type: Sequelize.STRING
+            },
             picture: {
                 type: Sequelize.STRING
             },
