@@ -9,7 +9,11 @@ class IconButton extends Component {
             <button
                 onClick={this.props.onClick}
                 className="icon-button">
-                <Icon class="big padded">{this.props.icon}</Icon>
+                {
+                    this.props.icon &&
+                    <Icon class="big padded">{this.props.icon}</Icon>
+                }
+                { this.props.children }
             </button>
         );
     }
@@ -17,7 +21,8 @@ class IconButton extends Component {
 
 IconButton.propTypes = {
     icon: PropTypes.string,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    children: PropTypes.any
 };
 
 export default IconButton;

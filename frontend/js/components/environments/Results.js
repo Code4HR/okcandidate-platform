@@ -9,6 +9,7 @@ import BestMatch from './../ecosystems/BestMatch';
 import LoadingIndicator from './../organisms/LoadingIndicator';
 import ElectionReminderPrompt from './../ecosystems/ElectionReminderPrompt';
 import MethodologyPrompt from './../ecosystems/MethodologyPrompt';
+import SocialMediaIcons from './../organisms/SocialMediaIcons';
 
 import {
     fetchSurveyResults
@@ -54,11 +55,14 @@ class Results extends Component {
         return (
             <article className="container">
 
+                <SocialMediaIcons primary/>
+
                 {
                     !bestMatch.length &&
                     !otherMatches.length &&
                     <LoadingIndicator message="Loading Matches" />
                 }
+
 
                 { bestMatch.map((m) => {
                     return (<BestMatch

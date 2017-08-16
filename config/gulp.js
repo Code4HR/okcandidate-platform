@@ -26,7 +26,7 @@ module.exports = {
 
     tasks: {
 
-        default: ['compileTemplate', 'compileStyles', 'moveImages', 'bundleAdmin', 'bundleClient', 'watchTemplates', 'watchStyles', 'watchImages'],
+        default: ['compileTemplate', 'compileStyles', 'moveFonts', 'moveImages', 'bundleAdmin', 'bundleClient', 'watchTemplates', 'watchStyles', 'watchImages'],
 
         watchTemplates: () => {
             return gulp.watch(
@@ -65,6 +65,11 @@ module.exports = {
         moveImages: () => {
             return gulp.src('./frontend/images/**/*.*')
                 .pipe(gulp.dest('dist/images'));
+        },
+
+        moveFonts: () => {
+            return gulp.src('./frontend/fonts/**/*.*')
+                .pipe(gulp.dest('dist/fonts'));
         },
 
         bundleAdmin: () => {
