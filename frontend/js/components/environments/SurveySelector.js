@@ -14,6 +14,10 @@ import {
     fetchSurveys
 } from './../../redux/actions/pick-survey-actions';
 
+import {
+    createSurveyResult
+} from './../../redux/actions/survey-actions';
+
 class SurveySelector extends Component {
     constructor(props) {
         super(props);
@@ -26,10 +30,12 @@ class SurveySelector extends Component {
     }
 
     onClickSurveyCard(id, categorySort) {
-        if (categorySort) {
-            return gotoRoute(`/survey/${id}/category`);
-        }
-        return gotoRoute(`/survey/${id}/questions`);
+        this.props.dispatch(createSurveyResult(id, () => {
+            if (categorySort) {
+                return gotoRoute(`/survey/${id}/category`);
+            }
+            return gotoRoute(`/survey/${id}/questions`);
+        }));
     }
 
     render() {
