@@ -40,9 +40,7 @@ export function fetchSurveyResults(passPhrase) {
 
 export const TOGGLE_MODAL_STATE = 'TOGGLE_MODAL_STATE';
 export const SET_EMAIL_VALUE = 'SET_EMAIL_VALUE';
-export const SET_EMAIL_ERROR = 'SET_EMAIL_ERROR';
 export const SET_PHONE_VALUE = 'SET_PHONE_VALUE';
-export const SET_PHONE_ERROR = 'SET_PHONE_ERROR';
 export const TOGGLE_NEWSLETTER_VALUE = 'TOGGLE_NEWSLETTER_VALUE';
 
 export function setEmailValue(value) {
@@ -52,24 +50,10 @@ export function setEmailValue(value) {
     };
 }
 
-export function setEmailError(error) {
-    return {
-        type: SET_EMAIL_ERROR,
-        error
-    };
-}
-
 export function setPhoneValue(value) {
     return {
         type: SET_PHONE_VALUE,
         value
-    };
-}
-
-export function setPhoneError(error) {
-    return {
-        type: SET_PHONE_ERROR,
-        error
     };
 }
 

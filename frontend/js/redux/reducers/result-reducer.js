@@ -4,9 +4,7 @@ import {
     FETCH_SURVEY_RESULTS_FAILURE,
     TOGGLE_MODAL_STATE,
     SET_EMAIL_VALUE,
-    SET_EMAIL_ERROR,
     SET_PHONE_VALUE,
-    SET_PHONE_ERROR,
     TOGGLE_NEWSLETTER_VALUE,
     CREATE_ELECTION_REMINDER_FAILURE,
     CREATE_ELECTION_REMINDER_SUCCESS,
@@ -73,20 +71,6 @@ export default function resultReducer(state = initialState, action) {
             phone: Object.assign({}, state.phone, {
                 value: action.value,
                 error: ''
-            })
-        });
-
-    case SET_EMAIL_ERROR:
-        return Object.assign({}, state, {
-            email: Object.assign({}, state.email, {
-                error: action.error
-            })
-        });
-
-    case SET_PHONE_ERROR:
-        return Object.assign({}, state, {
-            phone: Object.assign({}, state.phone, {
-                error: action.error
             })
         });
 
