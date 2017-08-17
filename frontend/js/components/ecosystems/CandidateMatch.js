@@ -16,16 +16,12 @@ class BestMatch extends Component {
     render() {
         return (
             <Card style={{'textAlign': 'center'}}>
-                <p className="match-text">{this.props.matchText}</p>
                 <CandidateDisplay
                   matchRate={this.props.matchRate} />
-                <div className="best-match-info">
+                <div className="match-info">
                   <p className="candidate-name">{this.props.name}</p>
-                  <p className="candidate-office">{this.props.party}</p>
-                </div>
-                <div className="learn-more">
-                  Learn More
-                  <Icon children="keyboard_arrow_right" />
+                  <p className="candidate-party">{this.props.party}</p>
+                  <button key="1">More Info <Icon children="keyboard_arrow_down" /></button>
                 </div>
             </Card>
         );
@@ -33,7 +29,6 @@ class BestMatch extends Component {
 }
 
 BestMatch.propTypes = {
-    matchText: PropTypes.string,
     name: PropTypes.string,
     office: PropTypes.string,
     party: PropTypes.string,

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-import BestMatch from './../ecosystems/BestMatch';
+import CandidateMatch from './../ecosystems/CandidateMatch';
 import LoadingIndicator from './../organisms/LoadingIndicator';
 import ElectionReminderPrompt from './../ecosystems/ElectionReminderPrompt';
 import MethodologyPrompt from './../ecosystems/MethodologyPrompt';
@@ -65,11 +65,8 @@ class Results extends Component {
 
 
                 { bestMatch.map((m) => {
-                    return (<BestMatch
+                    return (<CandidateMatch
                         key={m.name}
-                        matchText={bestMatch.length > 1 ?
-                            "It's a duplicate!" :
-                            "It's a match!"}
                         name={m.name}
                         party={m.party}
                         office={m.office}
@@ -77,7 +74,7 @@ class Results extends Component {
                 })}
 
                 { otherMatches.map((m) => {
-                    return (<BestMatch
+                    return (<CandidateMatch
                         key={m.name}
                         name={m.name}
                         party={m.party}

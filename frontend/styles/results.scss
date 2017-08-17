@@ -1,9 +1,5 @@
 @import 'colors';
 
-.match-text {
-  color: $darkGray;
-}
-
 .candidate-display {
   display: inline-block;
   text-align: center;
@@ -46,7 +42,7 @@
   z-index: 3;
 }
 
-.best-match-info {
+.match-info {
   display: inline-block;
   margin-left: 2%;
   vertical-align: middle;
@@ -61,18 +57,11 @@
   padding: 0;
 }
 
-.candidate-office {
+.candidate-party {
   color: $darkGray;
   font-size: 1.4em;
-  margin: 0;
-  padding: 0;
-}
-
-.learn-more {
-  display: none;
-  border: 1px solid $darkGray;
-  color: $darkGray;
-  width: 110px;
-  height: 40px;
+  margin-left: 0;
+  margin-right: 0;
   margin-bottom: 1em;
+  padding: 0;
 }
