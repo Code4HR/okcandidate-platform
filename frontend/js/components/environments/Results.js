@@ -71,7 +71,7 @@ class Results extends Component {
                             "It's a duplicate!" :
                             "It's a match!"}
                         name={m.name}
-                        party="Party Affiliation"
+                        party={m.party}
                         office={m.office}
                         matchRate={Math.round(m.matchRate)} />);
                 })}
@@ -80,7 +80,7 @@ class Results extends Component {
                     return (<BestMatch
                         key={m.name}
                         name={m.name}
-                        party="Party Affiliation"
+                        party={m.party}
                         office={m.office}
                         matchRate={Math.round(m.matchRate)} />);
                 })}

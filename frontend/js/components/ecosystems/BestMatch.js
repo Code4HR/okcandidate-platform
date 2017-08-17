@@ -21,7 +21,7 @@ class BestMatch extends Component {
                   matchRate={this.props.matchRate} />
                 <div className="best-match-info">
                   <p className="candidate-name">{this.props.name}</p>
-                  <p className="candidate-office">{this.props.office}</p>
+                  <p className="candidate-office">{this.props.party}</p>
                 </div>
                 <div className="learn-more">
                   Learn More
@@ -36,6 +36,7 @@ BestMatch.propTypes = {
     matchText: PropTypes.string,
     name: PropTypes.string,
     office: PropTypes.string,
+    party: PropTypes.string,
     matchRate: PropTypes.number
 };
 
