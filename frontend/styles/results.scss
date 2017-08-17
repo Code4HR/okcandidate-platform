@@ -8,10 +8,12 @@
   display: inline-block;
   text-align: center;
   vertical-align: middle;
-  width: 40%;
+  min-width: 42%;
   margin-top: 3%;
   margin-bottom: 3%;
-  margin-right: 8%;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 0;
 }
 
 .circle {
@@ -20,9 +22,10 @@
   font-size: 1.7em;
   line-height: 1.7em;
   text-align: center;
-  padding-top: 30px;
-  height: 100px;
-  width: 100px;
+  padding-left: 0.3em;
+  padding-top: 1em;
+  height: 3.8em;
+  width: 3.8em;
   border: 1px solid $darkGray;
   border-radius: 50%;
   background-color: #FFF;
@@ -30,62 +33,24 @@
 
 .candidate-image {
   position: relative;
-  margin-right: -15px;
-  z-index: 3;
+  height: 6em;
+  width: 6em;
+  margin-right: -1em;
+  z-index: 2;
 }
 
 .candidate-rating {
-  z-index: 2;
+  position: relative;
+  margin-bottom: 0;
+  margin-top: 15%;
+  z-index: 3;
 }
 
 .best-match-info {
   display: inline-block;
-  width: 45%;
-  margin-left: 5%;
+  margin-left: 2%;
   vertical-align: middle;
   margin-bottom: 1em;
-}
-
-.other-match-info {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.other-match-info:before {
-  content: '';
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
-}
-
-.other-match-info p {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.other-match-arrow {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  display: inline-block;
-  vertical-align: middle;
-  color: $darkGray;
-}
-
-.other-match-arrow:before {
-  content: '';
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
-}
-
-.other-match-arrow i {
-  display: inline-block;
-  vertical-align: middle;
 }
 
 .candidate-name {
