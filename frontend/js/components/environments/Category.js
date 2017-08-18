@@ -10,8 +10,13 @@ import LoadingIndicator from './../organisms/LoadingIndicator';
 import { gotoRoute } from './../../redux/actions/router-actions';
 
 import {
-  fetchCategoryList
+    fetchCategoryList
 } from './../../redux/actions/category-actions';
+
+import {
+    fetchSurveyResult,
+    createSurveyResult
+} from './../../redux/actions/survey-actions';
 
 class Category extends Component {
 
@@ -20,7 +25,27 @@ class Category extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchCategoryList());
+        const SurveyId = this.props.routeParams.id;
+        const fetchCategories = this.props.dispatch.bind(
+            this,
+            fetchCategoryList()
+        );
+
+        if (this.props.location.query.newSurvey) {
+            return this.props.dispatch(
+                createSurveyResult(SurveyId, fetchCategories)
+            );
+        }
+
+        this.props.dispatch(
+            fetchSurveyResult((error, response) => {
+                if (error) { return; }
+                if (!response.id) {
+                    return this.props.dispatch(createSurveyResult(SurveyId, fetchCategories));
+                }
+                return fetchCategories();
+            })
+        );
     }
 
     next() {

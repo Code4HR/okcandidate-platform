@@ -14,6 +14,7 @@ import {
     createSurveyResultAnswer,
     updateSurveyResultAnswer,
     fetchSurveyResult,
+    createSurveyResult,
     setAnswerHelpText,
     setSentimentHelpText
 } from './../../redux/actions/survey-actions';
@@ -32,11 +33,25 @@ class Survey extends Component {
      */
 
     componentDidMount() {
-        this.props.dispatch(fetchSurveyResult(this.props.routeParams.id, (error) => {
-            if (!error) {
-                this.props.dispatch(fetchSurveyQuestions(this.props.routeParams.id));
-            }
-        }));
+        const SurveyId = this.props.routeParams.id;
+        const fetchQuestions = this.props.dispatch.bind(
+            this,
+            fetchSurveyQuestions(this.props.routeParams.id)
+        );
+
+        if (this.props.location.query.newSurvey) {
+            return this.props.dispatch(createSurveyResult(SurveyId, fetchQuestions));
+        }
+
+        this.props.dispatch(
+            fetchSurveyResult((error, response) => {
+                if (error) { return; }
+                if (!response.id) {
+                    return this.props.dispatch(createSurveyResult(SurveyId, fetchQuestions));
+                }
+                return fetchQuestions();
+            })
+        );
     }
 
     /**

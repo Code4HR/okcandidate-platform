@@ -180,7 +180,7 @@ export function fetchSurveyResultFailure(error) {
     };
 }
 
-export function fetchSurveyResult(SurveyId, callback) {
+export function fetchSurveyResult(callback) {
     return (dispatch) => {
         dispatch(fetchSurveyResultRequest());
         return fetch('/api/v1/surveyresult/getOne', {
@@ -189,16 +189,12 @@ export function fetchSurveyResult(SurveyId, callback) {
             .then(checkStatus)
             .then(response => response.json())
             .then(response => {
-                if (!response.id) {
-                    dispatch(createSurveyResult(SurveyId, callback));
-                    return callback && callback(null, response);
-                }
                 dispatch(fetchSurveyResultSuccess(response));
-                return callback && callback();
+                return callback && callback(null, response);
             })
             .catch(error => {
                 dispatch(fetchSurveyResultFailure(error));
-                return callback && callback();
+                return callback && callback(error);
             });
     };
 }

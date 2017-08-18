@@ -35,7 +35,7 @@ module.exports = class ViewController extends Controller {
         this.app.orm.Survey.findAll({})
         .then((surveys) => {
             if (surveys.length === 1) {
-                return reply.redirect(`/survey/${surveys[0].id}`);
+                return reply.redirect(`/survey/${surveys[0].id}?newSurvey=true`);
             }
             // Are any surveys region limited?
             // If so, set regionLimit to true and show LocationForm component.
