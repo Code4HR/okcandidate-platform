@@ -25,7 +25,7 @@ class Category extends Component {
     }
 
     componentDidMount() {
-        const SurveyId = this.props.routeParams.id;
+        const SurveyId = this.props.params.id;
         const fetchCategories = this.props.dispatch.bind(
             this,
             fetchCategoryList()
@@ -84,13 +84,14 @@ Category.propTypes = {
     survey: PropTypes.object,
     dispatch: PropTypes.func,
     params: PropTypes.object,
+    location: PropTypes.object,
     router: PropTypes.object
 };
 
 export default connect(
-  state => ({
-      ui: state.ui,
-      login: state.login,
-      category: state.category
-  })
+    state => ({
+        ui: state.ui,
+        login: state.login,
+        category: state.category
+    })
 )(Category);

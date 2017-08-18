@@ -33,10 +33,10 @@ class Survey extends Component {
      */
 
     componentDidMount() {
-        const SurveyId = this.props.routeParams.id;
+        const SurveyId = this.props.params.id;
         const fetchQuestions = this.props.dispatch.bind(
             this,
-            fetchSurveyQuestions(this.props.routeParams.id)
+            fetchSurveyQuestions(SurveyId)
         );
 
         if (this.props.location.query.newSurvey) {
@@ -142,7 +142,7 @@ class Survey extends Component {
     gotoPrevQuestion() {
         this.submit(() => {
             if (this.props.survey.questionIndex === 0) {
-                return gotoRoute(`/survey/${this.props.routeParams.id}`);
+                return gotoRoute(`/survey/${this.props.params.id}`);
             }
             return this.props.dispatch(gotoPrevQuestion());
         });
@@ -212,7 +212,8 @@ class Survey extends Component {
 Survey.propTypes = {
     dispatch: PropTypes.func,
     survey: PropTypes.object,
-    routeParams: PropTypes.object
+    params: PropTypes.object,
+    location: PropTypes.object
 };
 
 module.exports = connect(
