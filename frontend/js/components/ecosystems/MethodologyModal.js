@@ -24,7 +24,8 @@ class MethodologyModal extends Component {
 }
 
 MethodologyModal.propTypes = {
-    active: PropTypes.bool
+    active: PropTypes.bool,
+    onClick: PropTypes.func
 };
 
 export default MethodologyModal;
