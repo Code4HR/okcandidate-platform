@@ -41,7 +41,15 @@ export function fetchSurveyResults(passPhrase) {
 export const TOGGLE_MODAL_STATE = 'TOGGLE_MODAL_STATE';
 export const SET_EMAIL_VALUE = 'SET_EMAIL_VALUE';
 export const SET_PHONE_VALUE = 'SET_PHONE_VALUE';
+export const SET_NAME_VALUE = 'SET_NAME_VALUE';
 export const TOGGLE_NEWSLETTER_VALUE = 'TOGGLE_NEWSLETTER_VALUE';
+
+export function setNameValue(value) {
+    return {
+        type: SET_NAME_VALUE,
+        value
+    };
+}
 
 export function setEmailValue(value) {
     return {
@@ -101,6 +109,8 @@ export function createElectionReminder(SurveyResultId, payload, callback) {
         const body = {};
         payload.email && (body.email = payload.email);
         payload.phone && (body.phone = payload.phone);
+        payload.name && (body.name = payload.name);
+        payload.newsletter && (body.newsletter = payload.newsletter);
 
         dispatch(createElectionReminderRequest());
         fetch(`/api/v1/electionreminder/${SurveyResultId}`, {
