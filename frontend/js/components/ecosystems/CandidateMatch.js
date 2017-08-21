@@ -5,34 +5,75 @@ import PropTypes from 'prop-types';
 
 import Card from './../atoms/Card';
 import CandidateDisplay from './../organisms/CandidateDisplay';
-import Icon from './../atoms/Icon';
+import SocialMediaIcons from './../organisms/SocialMediaIcons';
+import Vr from './../atoms/Vr';
+import IconButton from './../molecules/IconButton';
 
-class BestMatch extends Component {
+class CandidateMatch extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {};
+    }
+
+    componentDidMount() {
+        this.setState({
+            expanded: false
+        });
+    }
+
+    toggleExpanded() {
+        this.setState({
+            expanded: !this.state.expanded
+        });
     }
 
     render() {
+
+        const detailStyle = {
+            height: this.state.expanded ? 'auto' : 0
+        };
+
         return (
-            <Card style={{'textAlign': 'center'}}>
-                <CandidateDisplay
-                  matchRate={this.props.matchRate} />
-                <div className="match-info">
-                  <p className="candidate-name">{this.props.name}</p>
-                  <p className="candidate-party">{this.props.party}</p>
-                  <button key="1">More Info <Icon children="keyboard_arrow_down" /></button>
+            <Card className="candidate-match">
+                <div className="candidate-preview">
+                    <CandidateDisplay
+                        matchRate={this.props.matchRate} />
+                    <div className="candidate-info">
+                        <h2 className="candidate-name">{this.props.name}</h2>
+                        <div className="candidate-party">{this.props.party}</div>
+                        <IconButton
+                            icon="keyboard_arrow_down"
+                            label="Learn More"
+                            onClick={this.toggleExpanded.bind(this)}>
+                        </IconButton>
+                    </div>
+                </div>
+
+                <div
+                    style={detailStyle}
+                    className="candidate-detail">
+                    <div className="candidate-detail-links">
+                        <SocialMediaIcons />
+                        <Vr height={36} />
+                        <a
+                            href="#"
+                            className="button" >Learn more about {this.props.name}</a>
+                    </div>
+                    <div className="candidate-detail-categories">
+                        <h2>On the issues</h2>
+                    </div>
                 </div>
             </Card>
         );
     }
 }
 
-BestMatch.propTypes = {
+CandidateMatch.propTypes = {
     name: PropTypes.string,
     office: PropTypes.string,
     party: PropTypes.string,
     matchRate: PropTypes.number
 };
 
-module.exports = BestMatch;
+module.exports = CandidateMatch;
