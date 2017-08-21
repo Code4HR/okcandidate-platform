@@ -80,7 +80,10 @@ class Results extends Component {
                     active={this.props.result.showElectionReminderModal}
                     dispatch={this.props.dispatch} />
 
-                <SocialMediaIcons primary/>
+                <SocialMediaIcons
+                    passPhrase={this.props.params.passPhrase}
+                    matches={bestMatch}
+                    primary/>
 
                 {
                     !bestMatch.length &&
