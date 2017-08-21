@@ -14,6 +14,7 @@ import {
     createSurveyResultAnswer,
     updateSurveyResultAnswer,
     fetchSurveyResult,
+    createSurveyResult,
     setAnswerHelpText,
     setSentimentHelpText
 } from './../../redux/actions/survey-actions';
@@ -32,11 +33,25 @@ class Survey extends Component {
      */
 
     componentDidMount() {
-        this.props.dispatch(fetchSurveyResult(this.props.routeParams.id, (error) => {
-            if (!error) {
-                this.props.dispatch(fetchSurveyQuestions(this.props.routeParams.id));
-            }
-        }));
+        const SurveyId = this.props.params.id;
+        const fetchQuestions = this.props.dispatch.bind(
+            this,
+            fetchSurveyQuestions(SurveyId)
+        );
+
+        if (this.props.location.query.newSurvey) {
+            return this.props.dispatch(createSurveyResult(SurveyId, fetchQuestions));
+        }
+
+        this.props.dispatch(
+            fetchSurveyResult((error, response) => {
+                if (error) { return; }
+                if (!response.id) {
+                    return this.props.dispatch(createSurveyResult(SurveyId, fetchQuestions));
+                }
+                return fetchQuestions();
+            })
+        );
     }
 
     /**
@@ -127,7 +142,7 @@ class Survey extends Component {
     gotoPrevQuestion() {
         this.submit(() => {
             if (this.props.survey.questionIndex === 0) {
-                return gotoRoute(`/survey/${this.props.routeParams.id}`);
+                return gotoRoute(`/survey/${this.props.params.id}`);
             }
             return this.props.dispatch(gotoPrevQuestion());
         });
@@ -197,7 +212,8 @@ class Survey extends Component {
 Survey.propTypes = {
     dispatch: PropTypes.func,
     survey: PropTypes.object,
-    routeParams: PropTypes.object
+    params: PropTypes.object,
+    location: PropTypes.object
 };
 
 module.exports = connect(
