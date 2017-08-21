@@ -16,7 +16,7 @@ import Alert from './../organisms/Alert';
 
 import {
     fetchSurveyResults,
-    toggleModalState,
+    toggleElectionReminderModalVisibility,
     hideElectionReminderPrompt,
     toggleMethodologyModalVisibility
 } from './../../redux/actions/result-actions';
@@ -36,7 +36,7 @@ class Results extends Component {
     }
 
     showElectionReminderSignup() {
-        this.props.dispatch(toggleModalState());
+        this.props.dispatch(toggleElectionReminderModalVisibility());
     }
 
     hideElectionReminderPrompt() {

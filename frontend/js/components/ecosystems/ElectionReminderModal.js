@@ -11,7 +11,7 @@ import {
     setEmailValue,
     setPhoneValue,
     toggleNewsletterValue,
-    toggleModalState,
+    toggleElectionReminderModalVisibility,
     createElectionReminder
 } from './../../redux/actions/result-actions';
 
@@ -30,7 +30,7 @@ class ElectionReminderModal extends Component {
     }
 
     onClose() {
-        this.props.dispatch(toggleModalState());
+        this.props.dispatch(toggleElectionReminderModalVisibility());
     }
 
     onSubmit() {
