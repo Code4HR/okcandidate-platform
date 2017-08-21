@@ -52,10 +52,7 @@ module.exports = class SurveyPolicy extends Policy {
     electionReminder(request, reply) {
         const record = request.payload;
 
-        console.log('record', record);
-
         Joi.validate(record, electionReminderSchema, options, (err, result) => {
-            console.log('record', result);
             if (err) {
                 return reply(Boom.badRequest(JSON.stringify(err.details)));
             }

@@ -65,7 +65,6 @@ module.exports = class SurveyResult extends Model {
             },
             newsletter: {
                 type: Sequelize.STRING,
-                allowNull: true,
                 defaultValue: false
             }
         };
