@@ -20,7 +20,8 @@ import {
 const initialState = {
     SurveyResultId: null,
     isFetching: false,
-    matches: [],
+    bestMatches: [],
+    otherMatches: [],
     error: '',
     showElectionReminderModal: false,
     showElectionReminderPrompt: true,
@@ -41,6 +42,24 @@ const initialState = {
     newsletter: false
 };
 
+function findBestRate(matches) {
+    return Math.max.apply(Math, matches.map((o) => {
+        return o.matchRate;
+    }));
+}
+
+function getBestMatches(bestRate, matches) {
+    return matches.filter((match) => {
+        return match.matchRate === bestRate;
+    });
+}
+
+function getOtherMatches(bestRate, matches) {
+    return matches.filter((o) => {
+        return o.matchRate != bestRate;
+    });
+}
+
 export default function resultReducer(state = initialState, action) {
 
     const obj = {};
@@ -55,7 +74,14 @@ export default function resultReducer(state = initialState, action) {
     case FETCH_SURVEY_RESULTS_SUCCESS:
         return Object.assign({}, state, {
             isFetching: false,
-            matches: action.response,
+            bestMatches: getBestMatches(
+                findBestRate(action.response),
+                action.response
+            ),
+            otherMatches: getOtherMatches(
+                findBestRate(action.response),
+                action.response
+            ),
             error: initialState.error
         });
 

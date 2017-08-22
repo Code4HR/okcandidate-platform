@@ -59,20 +59,8 @@ class Results extends Component {
 
     render () {
 
-        const matches = this.props.result.matches;
-
-        const bestRate = Math.max.apply(Math, matches.map((o) => {
-            return o.matchRate;
-        }));
-
-        const bestMatch = matches.filter((o) => {
-            return o.matchRate == bestRate;
-        });
-
-        const otherMatches = matches
-            .filter((o) => {
-                return o.matchRate != bestRate;
-            })
+        const bestMatches = this.props.result.bestMatches;
+        const otherMatches = this.props.result.otherMatches
             .sort(this.sortMatches);
 
         return (
@@ -97,12 +85,12 @@ class Results extends Component {
                     primary/>
 
                 {
-                    !bestMatch.length &&
+                    !bestMatches.length &&
                     !otherMatches.length &&
                     <LoadingIndicator message="Loading Matches" />
                 }
 
-                { bestMatch.map((m) => {
+                { bestMatches.map((m) => {
                     return (<CandidateMatch
                         key={m.name}
                         name={m.name}
