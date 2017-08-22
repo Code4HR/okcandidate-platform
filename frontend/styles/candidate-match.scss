@@ -1,0 +1,47 @@
+@import 'colors';
+
+.candidate-match {
+    .candidate-preview {
+        margin: 0 -.5em;
+        & > * {
+            margin: 0 .5em;
+        }
+
+        .candidate-info {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .candidate-name {
+            font-size: 1.7em;
+            color: $darkGray;
+            margin: 0;
+        }
+
+        .candidate-party {
+            font-size: 1.4em;
+            color: $darkGray;
+            margin: 0;
+        }
+        
+
+        button {
+            margin-bottom: 0;
+        }
+    }
+
+    .candidate-detail {
+        transition: height 2s;
+        overflow-y: hidden;
+
+        .candidate-detail-links {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .button {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

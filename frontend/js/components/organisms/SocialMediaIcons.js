@@ -8,13 +8,13 @@ class SocialMediaSharing extends Component {
     render() {
         return (
             <section data-primary={this.props.primary} className="social-media-sharing">
-                <IconButton>
+                <IconButton square>
                     <span className="icon-facebook2"></span>
                 </IconButton>
-                <IconButton>
+                <IconButton square>
                     <span className="icon-twitter"></span>
                 </IconButton>
-                <IconButton>
+                <IconButton square>
                     <span className="icon-link"></span>
                 </IconButton>
                 <label>Share</label>
