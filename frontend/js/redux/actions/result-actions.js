@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
+import getIsoUrl from './../utils/getIsoUrl';
 
 export const FETCH_SURVEY_RESULTS_REQUEST = 'FETCH_SURVEY_RESULTS_REQUEST';
 export const FETCH_SURVEY_RESULTS_SUCCESS = 'FETCH_SURVEY_RESULTS_SUCCESS';
@@ -28,7 +29,7 @@ export function fetchSurveyResultsFailure(error) {
 export function fetchSurveyResults(passPhrase) {
     return function(dispatch) {
         dispatch(fetchSurveyResultsRequest());
-        return fetch('/api/v1/surveymatch/' + passPhrase)
+        return fetch(getIsoUrl('/api/v1/surveymatch/' + passPhrase))
             .then(checkStatus)
             .then(response => response.json())
             .then(response => {
@@ -103,7 +104,7 @@ export function createElectionReminder(SurveyResultId, payload, callback) {
         payload.phone && (body.phone = payload.phone);
 
         dispatch(createElectionReminderRequest());
-        fetch(`/api/v1/electionreminder/${SurveyResultId}`, {
+        fetch(getIsoUrl(`/api/v1/electionreminder/${SurveyResultId}`), {
             method: 'put',
             headers: {
                 'Content-Type': 'application/json'

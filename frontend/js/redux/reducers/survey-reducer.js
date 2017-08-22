@@ -1,5 +1,5 @@
 
-import {
+const {
     FETCH_SURVEY_QUESTIONS_REQUEST,
     FETCH_SURVEY_QUESTIONS_SUCCESS,
     FETCH_SURVEY_QUESTIONS_FAILURE,
@@ -14,7 +14,7 @@ import {
     UPDATE_SURVEY_RESULT_ANSWER_SUCCESS,
     SET_ANSWER_HELP_TEXT,
     SET_SENTIMENT_HELP_TEXT
-} from './../actions/survey-actions';
+} = require('./../actions/survey-actions');
 
 const initialState = {
     SurveyResultId: null,
@@ -29,7 +29,7 @@ const initialState = {
     answerHelp: ''
 };
 
-export default function surveyReducer(state = initialState, action) {
+module.exports = function Reducer(state = initialState, action) {
 
     const obj = {};
 
@@ -117,7 +117,7 @@ export default function surveyReducer(state = initialState, action) {
         return Object.assign({}, state, {
             SurveyResultId: action.response.id,
             publicPassPhrase: action.response.publicPassPhrase,
-            answers: action.response.SurveyResultAnswers
+            answers: (action.response.SurveyResultAnswers || [])
                 .reduce((memo, value) => {
                     value['pristine'] = true;
                     memo[value.QuestionId] = value;
@@ -147,4 +147,4 @@ export default function surveyReducer(state = initialState, action) {
     default:
         return state;
     }
-}
+};

@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
+import getIsoUrl from './../utils/getIsoUrl';
 
 export const FETCH_CATEGORY_LIST_REQUEST = 'FETCH_CATEGORY_LIST_REQUEST';
 export const FETCH_CATEGORY_LIST_SUCCESS = 'FETCH_CATEGORY_LIST_SUCCESS';
@@ -28,12 +29,12 @@ export function fetchCategoryListFailure(response) {
 export function fetchCategoryList() {
     return function(dispatch) {
         dispatch(fetchCategoryListRequest());
-        return fetch('/api/v1/category')
-      .then(checkStatus)
-      .then(response => response.json())
-      .then(response => {
-          dispatch(fetchCategoryListSuccess(response));
-      })
-      .catch(error => dispatch(fetchCategoryListFailure(error)));
+        return fetch(getIsoUrl('/api/v1/category'))
+            .then(checkStatus)
+            .then(response => response.json())
+            .then(response => {
+                dispatch(fetchCategoryListSuccess(response));
+            })
+            .catch(error => dispatch(fetchCategoryListFailure(error)));
     };
 }

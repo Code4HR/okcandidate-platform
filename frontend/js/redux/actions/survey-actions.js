@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
+import getIsoUrl from './../utils/getIsoUrl';
 
 export const SET_SURVEY_FORMAT = 'SET_SURVEY_FORMAT';
 
@@ -56,8 +57,8 @@ export function fetchSurveyQuestions(id) {
     return function(dispatch) {
         dispatch(fetchSurveyQuestionsRequest());
         return Promise.all([
-            fetch(`/api/v1/question?SurveyId=${id}`),
-            fetch(`/api/v1/survey/${id}?populate=QuestionType`)
+            fetch(getIsoUrl(`/api/v1/question?SurveyId=${id}`)),
+            fetch(getIsoUrl(`/api/v1/survey/${id}?populate=QuestionType`))
         ])
             .then(responses => Promise.all(responses.map(checkStatus)))
             .then(responses => Promise.all(responses.map(response => response.json())))
@@ -133,7 +134,7 @@ export function createSurveyResultFailure(error) {
 export function createSurveyResult(SurveyId, callback) {
     return (dispatch) => {
         dispatch(createSurveyResultRequest());
-        return fetch('/api/v1/surveyresult', {
+        return fetch(getIsoUrl('/api/v1/surveyresult'), {
             credentials: 'same-origin',
             method: 'POST',
             headers: {
@@ -183,7 +184,7 @@ export function fetchSurveyResultFailure(error) {
 export function fetchSurveyResult(callback) {
     return (dispatch) => {
         dispatch(fetchSurveyResultRequest());
-        return fetch('/api/v1/surveyresult/getOne', {
+        return fetch(getIsoUrl('/api/v1/surveyresult/getOne'), {
             credentials: 'include'
         })
             .then(checkStatus)
@@ -226,7 +227,7 @@ export function createSurveyResultAnswerFailure(error) {
 export function createSurveyResultAnswer(question, response, SurveyResultId, callback) {
     return (dispatch) => {
         dispatch(createSurveyResultAnswerRequest());
-        fetch('/api/v1/surveyresultanswer', {
+        fetch(getIsoUrl('/api/v1/surveyresultanswer'), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -278,7 +279,7 @@ export function updateSurveyResultAnswerFailure(error) {
 export function updateSurveyResultAnswer(response, callback) {
     return (dispatch) => {
         dispatch(updateSurveyResultAnswerRequest());
-        return fetch(`/api/v1/surveyresultanswer/${response.id}`, {
+        return fetch(getIsoUrl(`/api/v1/surveyresultanswer/${response.id}`), {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

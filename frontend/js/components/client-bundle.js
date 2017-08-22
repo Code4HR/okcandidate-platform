@@ -21,16 +21,17 @@ if (NODE_ENV === 'production') {
 else {
     logger = createLogger();
     store = createStore(
-    reducer,
-    applyMiddleware(thunk, logger)
-  );
+        reducer,
+        preloadedState,
+        applyMiddleware(thunk, logger)
+    );
 }
 
 const mountNode = document.getElementById('app-mount');
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router routes={routes} history={browserHistory}/>
-  </Provider>,
-  mountNode
+    <Provider store={store}>
+        <Router routes={routes} history={browserHistory}/>
+    </Provider>,
+    mountNode
 );

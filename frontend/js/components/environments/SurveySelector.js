@@ -20,7 +20,7 @@ class SurveySelector extends Component {
         super(props);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         if (this.props.location && !this.props.location.query.regionLimit) {
             this.props.dispatch(fetchSurveys());
         }

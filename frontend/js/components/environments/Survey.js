@@ -32,7 +32,7 @@ class Survey extends Component {
      * On mount, retrieve any stored SurveyResult for this user, then fetch survey questions.
      */
 
-    componentDidMount() {
+    componentWillMount() {
         const SurveyId = this.props.params.id;
         const fetchQuestions = this.props.dispatch.bind(
             this,

@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
+import getIsoUrl from './../utils/getIsoUrl';
 
 export const FETCH_ALL_USERS_REQUEST = 'FETCH_ALL_USERS_REQUEST';
 export const FETCH_ALL_USERS_SUCCESS = 'FETCH_ALL_USERS_SUCCESS';
@@ -28,13 +29,13 @@ export function fetchAllUsersFailure(response) {
 export function fetchAllUsers() {
     return function(dispatch) {
         dispatch(fetchAllUsersRequest());
-        return fetch('/api/v1/user')
-    .then(checkStatus)
-    .then(response => response.json())
-    .then(response => {
-        dispatch(fetchAllUsersSuccess(response));
-    })
-    .catch(error => dispatch(fetchAllUsersFailure(error)));
+        return fetch(getIsoUrl('/api/v1/user'))
+            .then(checkStatus)
+            .then(response => response.json())
+            .then(response => {
+                dispatch(fetchAllUsersSuccess(response));
+            })
+            .catch(error => dispatch(fetchAllUsersFailure(error)));
     };
 }
 
@@ -65,12 +66,12 @@ export function fetchUserFailure(response) {
 export function fetchUser(id) {
     return function(dispatch) {
         dispatch(fetchUserRequest());
-        return fetch('/api/v1/user/' + id)
-    .then(checkStatus)
-    .then(response => response.json())
-    .then(response => {
-        dispatch(fetchUserSuccess(response));
-    })
-    .catch(error => dispatch(fetchUserFailure(error)));
+        return fetch(getIsoUrl('/api/v1/user/' + id))
+            .then(checkStatus)
+            .then(response => response.json())
+            .then(response => {
+                dispatch(fetchUserSuccess(response));
+            })
+            .catch(error => dispatch(fetchUserFailure(error)));
     };
 }
