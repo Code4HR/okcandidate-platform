@@ -35,7 +35,7 @@ function renderLayout(store, props, bundle = 'client') {
 
 function getInitialRender(request, bundle, callback) {
 
-    const store = configureStore();
+    const store = configureStore(bundle);
     const queue = new Set();
 
     matchRoute(request.url.path, (err, redirect, props) => {
