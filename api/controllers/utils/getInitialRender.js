@@ -11,6 +11,7 @@ const debounce = require('lodash/debounce');
 
 const configureStore = require('./configureStore');
 const routes = require('./../../../dist/routes');
+const loginActions = require('./../../../dist/redux/actions/login-actions');
 
 function matchRoute(url, callback) {
     match({
@@ -37,6 +38,7 @@ function getInitialRender(request, bundle, callback) {
 
     const store = configureStore(bundle);
     const queue = new Set();
+    const user = request.yar.get('user') || {};
 
     matchRoute(request.url.path, (err, redirect, props) => {
 
@@ -48,6 +50,12 @@ function getInitialRender(request, bundle, callback) {
         const debouncedRender = debounce(render, 100, { maxWait: 1250 });
         // Render after 100ms if no actions are dispatched
         const initialRender = setTimeout(render, 1000);
+
+        store.dispatch(loginActions.userLogin({
+            name: user.name,
+            emailAddress: user.emailAddress,
+            role: user.role
+        }));
 
         // Subscribe to the redux store
         store.subscribe(() => {
