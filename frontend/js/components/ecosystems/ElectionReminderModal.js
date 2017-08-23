@@ -116,7 +116,7 @@ class ElectionReminderModal extends Component {
 
 ElectionReminderModal.propTypes = {
     newsletter: PropTypes.bool,
-    name: PropTypes.string,
+    name: PropTypes.object,
     email: PropTypes.object,
     phone: PropTypes.object,
     dispatch: PropTypes.func,

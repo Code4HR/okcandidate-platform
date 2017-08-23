@@ -28,7 +28,10 @@ class Modal extends Component {
 Modal.propTypes = {
     active: PropTypes.bool,
     title: PropTypes.string,
-    actions: PropTypes.array,
+    actions: PropTypes.oneOfType([
+        PropTypes.array,
+        PropTypes.object
+    ]),
     onClose: PropTypes.func,
     children: PropTypes.any
 };

@@ -10,11 +10,11 @@ class MethodologyPrompt extends Component {
         return (
             <Card
                 title="Methodology"
-                actions={[
+                actions={
                     <button
                         onClick={this.props.onClick}
                         className="primary">Learn More</button>
-                ]}>
+                }>
                 How did we calculate these scores?
             </Card>
         );
