@@ -60,8 +60,7 @@ class Results extends Component {
     render () {
 
         const bestMatches = this.props.result.bestMatches;
-        const otherMatches = this.props.result.otherMatches
-            .sort(this.sortMatches);
+        const otherMatches = (this.props.result.otherMatches || []).sort(this.sortMatches);
 
         return (
             <article className="container">
@@ -81,7 +80,7 @@ class Results extends Component {
 
                 <SocialMediaIcons
                     passPhrase={this.props.params.passPhrase}
-                    matches={bestMatch}
+                    matches={bestMatches}
                     primary/>
 
                 {
