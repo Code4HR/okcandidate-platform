@@ -84,7 +84,8 @@
   "scripts": {
     "acceptance": "cucumberjs",
     "test": "eslint api frontend test/unit test/integration && mocha --recursive",
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "start": "npm run gulp && node server"
   },
   "engines": {
     "node": ">= 4.0.0"
