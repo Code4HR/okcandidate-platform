@@ -23,21 +23,25 @@ const candidates = [
 
 module.exports = {
     load: (app) => {
-      return app.orm.Candidate.count({})
-      .then(count => {
-          if (count > 0) {
-              return [];
-          }
+        return app.orm.Candidate.count({})
+        .then(count => {
+            if (count > 0) {
+                return [];
+            }
 
-          const maxId = Math.max.apply(Math,candidates.map(function(o){return o.id;}));
-          app.orm.Survey.sequelize.query('select setval(\'candidate_id_seq\', ' + maxId + ')');
+            const maxId = Math.max.apply(Math,candidates.map(o => o.id));
+            app.orm.Survey.sequelize.query(`select setval('candidate_id_seq', ${maxId})`);
 
-          // Create candidates
-          return Promise.all(
-              candidates.map(candidate => {
-                  return app.orm.Candidate.create(candidate);
-              })
-          );
-      });
-  }
+            // Create candidates
+            return Promise.all(
+                candidates.map(candidate => {
+                    return app.orm.Candidate.create(candidate);
+                })
+            )
+            .then(newCandidates => {
+                app.log.info('Candidates created.');
+                return newCandidates;
+            });
+        });
+    }
 };

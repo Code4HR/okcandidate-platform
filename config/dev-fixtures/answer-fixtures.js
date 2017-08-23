@@ -131,15 +131,19 @@ module.exports = {
                 return [];
             }
 
-            const maxId = Math.max.apply(Math,answers.map(function(o){return o.id;}));
-            app.orm.Question.sequelize.query('select setval(\'answer_id_seq\', ' + maxId + ')');
+            const maxId = Math.max.apply(Math,answers.map(o => o.id));
+            app.orm.Question.sequelize.query(`select setval('answer_id_seq', ${maxId} )`);
 
             // Create answers.
             return Promise.all(
                 answers.map(answer => {
                     return app.orm.Answer.create(answer);
                 })
-            );
+            )
+            .then(newAnswers => {
+                app.log.info('Answers created.');
+                return newAnswers;
+            });
         });
     }
 };
