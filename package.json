@@ -83,7 +83,8 @@
   },
   "scripts": {
     "acceptance": "cucumberjs",
-    "test": "eslint api frontend test/unit test/integration && mocha --recursive"
+    "test": "eslint api frontend test/unit test/integration && mocha --recursive",
+    "gulp": "gulp"
   },
   "engines": {
     "node": ">= 4.0.0"
