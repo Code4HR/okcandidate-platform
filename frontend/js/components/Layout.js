@@ -24,9 +24,9 @@ class Layout extends Component {
     getSocialMediaMetaTags() {
 
         const bestMatches = this.props.state.result.bestMatches;
-        const baseUrl = 'http://okcandiate.code4hr.org';
+        const baseUrl = this.props.host;
         const siteName = 'OKCandidate';
-        const url = baseUrl + this.props.url;
+        const url = this.props.url;
         const creator = '@code4hr';
         let image;
         let description;
@@ -111,6 +111,7 @@ class Layout extends Component {
 Layout.propTypes = {
     bundle: PropTypes.string,
     url: PropTypes.string,
+    host: PropTypes.string,
     state: PropTypes.object,
     children: PropTypes.string,
     store: PropTypes.object

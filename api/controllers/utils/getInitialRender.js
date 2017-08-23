@@ -20,11 +20,14 @@ function matchRoute(url, callback) {
     }, callback);
 }
 
-function renderLayout(store, props, url, bundle = 'client') {
+function renderLayout(store, props, request, bundle = 'client') {
+    const host = `${request.connection.info.protocol}://${request.info.host}`;
+    const url = `${host}${request.url.path}`;
+
     return renderToStaticMarkup(
         React.createElement(
             Layout,
-            { bundle, url, state: store.getState() },
+            { bundle, host, url, state: store.getState() },
             renderToString(React.createElement(
                 Provider,
                 { store: store },
@@ -43,7 +46,7 @@ function getInitialRender(request, bundle, callback) {
     matchRoute(request.url.path, (err, redirect, props) => {
 
         const render = once(() => {
-            const layout = renderLayout(store, props, request.url.path, bundle);
+            const layout = renderLayout(store, props, request, bundle);
             return callback(null, layout);
         });
         // Waits 100ms for next event to occour, but for maximum of 1250ms.
@@ -86,7 +89,7 @@ function getInitialRender(request, bundle, callback) {
         });
 
         // Perform an initial render to kick things off.
-        renderLayout(store, props, request.url.path, bundle);
+        renderLayout(store, props, request, bundle);
     });
 }
 
