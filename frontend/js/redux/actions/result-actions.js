@@ -38,7 +38,7 @@ export function fetchSurveyResults(passPhrase) {
     };
 }
 
-export const TOGGLE_MODAL_STATE = 'TOGGLE_MODAL_STATE';
+export const TOGGLE_ELECTION_REMINDER_MODAL_VISIBILITY = 'TOGGLE_ELECTION_REMINDER_MODAL_VISIBILITY';
 export const SET_EMAIL_VALUE = 'SET_EMAIL_VALUE';
 export const SET_PHONE_VALUE = 'SET_PHONE_VALUE';
 export const SET_NAME_VALUE = 'SET_NAME_VALUE';
@@ -71,9 +71,9 @@ export function toggleNewsletterValue() {
     };
 }
 
-export function toggleModalState() {
+export function toggleElectionReminderModalVisibility() {
     return {
-        type: TOGGLE_MODAL_STATE
+        type: TOGGLE_ELECTION_REMINDER_MODAL_VISIBILITY
     };
 }
 
@@ -138,5 +138,13 @@ export const HIDE_ELECTION_REMINDER_PROMPT = 'HIDE_ELECTION_REMINDER_PROMPT';
 export function hideElectionReminderPrompt() {
     return {
         type: HIDE_ELECTION_REMINDER_PROMPT
+    };
+}
+
+export const TOGGLE_METHODOLOGY_MODAL_VISIBILITY = 'TOGGLE_METHODOLOGY_MODAL_VISIBILITY';
+
+export function toggleMethodologyModalVisibility() {
+    return {
+        type: TOGGLE_METHODOLOGY_MODAL_VISIBILITY
     };
 }
