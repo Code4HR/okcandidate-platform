@@ -45,10 +45,21 @@
 }
 
 .icon-button {
-  padding: 0;
-  margin: 0;
-  width: 42px;
-  height: 42px;
-  display: inline-block;
-  border: none;
+    label {
+        font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        margin-bottom: 0;
+        text-transform: uppercase;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0 21px;
+    height: 42px;
+
+    &.square {
+        padding: 0;
+        width: 42px;
+    }
+
 }

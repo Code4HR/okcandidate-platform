@@ -2,7 +2,9 @@ import {
     FETCH_SURVEY_RESULTS_REQUEST,
     FETCH_SURVEY_RESULTS_SUCCESS,
     FETCH_SURVEY_RESULTS_FAILURE,
-    TOGGLE_MODAL_STATE,
+    SET_NAME_VALUE,
+    TOGGLE_ELECTION_REMINDER_MODAL_VISIBILITY,
+    TOGGLE_METHODOLOGY_MODAL_VISIBILITY,
     SET_EMAIL_VALUE,
     SET_PHONE_VALUE,
     TOGGLE_NEWSLETTER_VALUE,
@@ -22,7 +24,12 @@ const initialState = {
     error: '',
     showElectionReminderModal: false,
     showElectionReminderPrompt: true,
+    showMethodologyModal: false,
     electionReminderCreated: false,
+    name: {
+        value: '',
+        error: ''
+    },
     email: {
         value: '',
         error: ''
@@ -58,6 +65,14 @@ export default function resultReducer(state = initialState, action) {
             error: action.error
         });
 
+    case SET_NAME_VALUE:
+        return Object.assign({}, state, {
+            name: Object.assign({}, state.name, {
+                value: action.value,
+                error: ''
+            })
+        });
+
     case SET_EMAIL_VALUE:
         return Object.assign({}, state, {
             email: Object.assign({}, state.email, {
@@ -79,10 +94,16 @@ export default function resultReducer(state = initialState, action) {
             newsletter: !state.newsletter
         });
 
-    case TOGGLE_MODAL_STATE:
+    case TOGGLE_ELECTION_REMINDER_MODAL_VISIBILITY:
         return Object.assign({}, state, {
             showElectionReminderModal: !state.showElectionReminderModal
         });
+
+    case TOGGLE_METHODOLOGY_MODAL_VISIBILITY: {
+        return Object.assign({}, state, {
+            showMethodologyModal: !state.showMethodologyModal
+        });
+    }
 
     case FETCH_SURVEY_RESULT_SUCCESS:
         return Object.assign({}, state, {
@@ -92,6 +113,7 @@ export default function resultReducer(state = initialState, action) {
     case CREATE_ELECTION_REMINDER_FAILURE:
         obj['email'] = Object.assign({}, state.email);
         obj['phone'] = Object.assign({}, state.phone);
+        obj['name'] = Object.assign({}, state.name);
 
         JSON.parse(action.error.message).forEach(error => {
             obj[error.path].error = error.message;

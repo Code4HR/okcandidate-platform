@@ -21,8 +21,20 @@ const customJoi = Joi.extend((Joi) => ({
 }));
 
 const electionReminderSchema = Joi.object().keys({
-    email: Joi.string().email(),
-    phone: customJoi.string().phone()
+    email: Joi
+        .when('newsletter', {
+            is: true,
+            then: Joi.string().email().required(),
+            otherwise: Joi.string().email()
+        }),
+    phone: customJoi.string().phone(),
+    name: Joi
+        .when('newsletter', {
+            is: true,
+            then: Joi.string().required(),
+            otherwise: Joi.string()
+        }),
+    newsletter: Joi.boolean()
 }).or('email', 'phone');
 
 const options = {

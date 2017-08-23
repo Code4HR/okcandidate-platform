@@ -11,8 +11,9 @@ import {
     setEmailValue,
     setPhoneValue,
     toggleNewsletterValue,
-    toggleModalState,
-    createElectionReminder
+    createElectionReminder,
+    setNameValue,
+    toggleElectionReminderModalVisibility
 } from './../../redux/actions/result-actions';
 
 class ElectionReminderModal extends Component {
@@ -25,12 +26,16 @@ class ElectionReminderModal extends Component {
         this.props.dispatch(setPhoneValue(e.target.value));
     }
 
+    setName(e) {
+        this.props.dispatch(setNameValue(e.target.value));
+    }
+
     toggleNewsletter() {
         this.props.dispatch(toggleNewsletterValue());
     }
 
     onClose() {
-        this.props.dispatch(toggleModalState());
+        this.props.dispatch(toggleElectionReminderModalVisibility());
     }
 
     onSubmit() {
@@ -38,7 +43,9 @@ class ElectionReminderModal extends Component {
             this.props.SurveyResultId,
             {
                 email: this.props.email.value,
-                phone: this.props.phone.value
+                phone: this.props.phone.value,
+                name: this.props.name.value,
+                newsletter: this.props.newsletter
             }
         ));
     }
@@ -64,6 +71,16 @@ class ElectionReminderModal extends Component {
                 ]}>
 
                 <p>We can send you a quick reminder on election day if you provide either your email address or mobile phone number. <a href="#">Privacy Policy</a></p>
+
+                <div>
+                    <TextField
+                        name="name"
+                        label="Name"
+                        value={this.props.name.value}
+                        error={this.props.name.error}
+                        onChange={this.setName.bind(this)}
+                        help="e.g. Abraham Lincoln" />
+                </div>
 
                 <div>
                     <TextField
@@ -99,6 +116,7 @@ class ElectionReminderModal extends Component {
 
 ElectionReminderModal.propTypes = {
     newsletter: PropTypes.bool,
+    name: PropTypes.string,
     email: PropTypes.object,
     phone: PropTypes.object,
     dispatch: PropTypes.func,

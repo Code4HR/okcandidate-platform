@@ -41,7 +41,7 @@ class SocialMediaSharing extends Component {
                 <IconButton onClick={this.shareOnTwitter.bind(this)}>
                     <span className="icon-twitter"></span>
                 </IconButton>
-                <IconButton>
+                <IconButton square>
                     <span className="icon-link"></span>
                 </IconButton>
                 <label>Share</label>

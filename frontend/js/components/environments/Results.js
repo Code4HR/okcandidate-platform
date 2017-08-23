@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import CandidateMatch from './../ecosystems/CandidateMatch';
 import LoadingIndicator from './../organisms/LoadingIndicator';
 import ElectionReminderPrompt from './../ecosystems/ElectionReminderPrompt';
+import MethodologyModal from './../ecosystems/MethodologyModal';
 import MethodologyPrompt from './../ecosystems/MethodologyPrompt';
 import SocialMediaIcons from './../organisms/SocialMediaIcons';
 import ElectionReminderModal from './../ecosystems/ElectionReminderModal';
@@ -15,8 +16,9 @@ import Alert from './../organisms/Alert';
 
 import {
     fetchSurveyResults,
-    toggleModalState,
-    hideElectionReminderPrompt
+    toggleElectionReminderModalVisibility,
+    hideElectionReminderPrompt,
+    toggleMethodologyModalVisibility
 } from './../../redux/actions/result-actions';
 
 import {
@@ -34,11 +36,15 @@ class Results extends Component {
     }
 
     showElectionReminderSignup() {
-        this.props.dispatch(toggleModalState());
+        this.props.dispatch(toggleElectionReminderModalVisibility());
     }
 
     hideElectionReminderPrompt() {
         this.props.dispatch(hideElectionReminderPrompt());
+    }
+
+    toggleMethodologyModal() {
+        this.props.dispatch(toggleMethodologyModalVisibility());
     }
 
     sortMatches(matchA, matchB) {
@@ -74,11 +80,16 @@ class Results extends Component {
 
                 <ElectionReminderModal
                     SurveyResultId={this.props.result.SurveyResultId}
+                    name={this.props.result.name}
                     email={this.props.result.email}
                     phone={this.props.result.phone}
                     newsletter={this.props.result.newsletter}
                     active={this.props.result.showElectionReminderModal}
                     dispatch={this.props.dispatch} />
+
+                <MethodologyModal
+                    onClick={this.toggleMethodologyModal.bind(this)}
+                    active={this.props.result.showMethodologyModal} />
 
                 <SocialMediaIcons
                     passPhrase={this.props.params.passPhrase}
@@ -123,7 +134,8 @@ class Results extends Component {
                         message="Thanks for signing up for a reminder!  We'll contact you on election day." />
                 }
 
-                <MethodologyPrompt />
+                <MethodologyPrompt
+                    onClick={this.toggleMethodologyModal.bind(this)} />
             </article>
         );
     }
