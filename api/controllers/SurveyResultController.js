@@ -70,10 +70,12 @@ module.exports = class SurveyResultController extends Controller {
         const SurveyResultId = request.params.SurveyResultId;
         const email = request.payload.email;
         const phone = request.payload.phone;
+        const name = request.payload.name;
 
         this.app.orm.SurveyResult.update({
             email,
-            phone
+            phone,
+            name
         }, {
             where: {id: SurveyResultId}
         })

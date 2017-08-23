@@ -80,6 +80,7 @@ class Results extends Component {
 
                 <ElectionReminderModal
                     SurveyResultId={this.props.result.SurveyResultId}
+                    name={this.props.result.name}
                     email={this.props.result.email}
                     phone={this.props.result.phone}
                     newsletter={this.props.result.newsletter}

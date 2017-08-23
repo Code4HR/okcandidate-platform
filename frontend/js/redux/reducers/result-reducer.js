@@ -2,6 +2,7 @@ import {
     FETCH_SURVEY_RESULTS_REQUEST,
     FETCH_SURVEY_RESULTS_SUCCESS,
     FETCH_SURVEY_RESULTS_FAILURE,
+    SET_NAME_VALUE,
     TOGGLE_ELECTION_REMINDER_MODAL_VISIBILITY,
     TOGGLE_METHODOLOGY_MODAL_VISIBILITY,
     SET_EMAIL_VALUE,
@@ -25,6 +26,10 @@ const initialState = {
     showElectionReminderPrompt: true,
     showMethodologyModal: false,
     electionReminderCreated: false,
+    name: {
+        value: '',
+        error: ''
+    },
     email: {
         value: '',
         error: ''
@@ -58,6 +63,14 @@ export default function resultReducer(state = initialState, action) {
         return Object.assign({}, state, {
             isFetching: false,
             error: action.error
+        });
+
+    case SET_NAME_VALUE:
+        return Object.assign({}, state, {
+            name: Object.assign({}, state.name, {
+                value: action.value,
+                error: ''
+            })
         });
 
     case SET_EMAIL_VALUE:
@@ -100,6 +113,7 @@ export default function resultReducer(state = initialState, action) {
     case CREATE_ELECTION_REMINDER_FAILURE:
         obj['email'] = Object.assign({}, state.email);
         obj['phone'] = Object.assign({}, state.phone);
+        obj['name'] = Object.assign({}, state.name);
 
         JSON.parse(action.error.message).forEach(error => {
             obj[error.path].error = error.message;

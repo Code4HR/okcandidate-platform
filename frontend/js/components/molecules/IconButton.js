@@ -8,7 +8,11 @@ class IconButton extends Component {
         return (
             <button
                 onClick={this.props.onClick}
-                className="icon-button">
+                className={`icon-button ${this.props.square ? 'square' : ''}`}>
+                {
+                    this.props.label &&
+                    <label>{this.props.label}</label>
+                }
                 {
                     this.props.icon &&
                     <Icon class="big padded">{this.props.icon}</Icon>
@@ -22,7 +26,9 @@ class IconButton extends Component {
 IconButton.propTypes = {
     icon: PropTypes.string,
     onClick: PropTypes.func,
-    children: PropTypes.any
+    children: PropTypes.any,
+    label: PropTypes.string,
+    square: PropTypes.bool
 };
 
 export default IconButton;

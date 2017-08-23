@@ -1,0 +1,13 @@
+@import 'colors';
+
+.vr {
+    width: 24px;
+    height: 36px;
+
+    .vr-line {
+        width: 1px;
+        background: $black;
+        height: 36px;
+    }
+
+}

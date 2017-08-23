@@ -52,6 +52,9 @@ module.exports = class SurveyResult extends Model {
                 type: Sequelize.STRING,
                 allowNull: false
             },
+            name: {
+                type: Sequelize.STRING
+            },
             phone: {
                 type: Sequelize.STRING,
                 allowNull: true
@@ -59,6 +62,10 @@ module.exports = class SurveyResult extends Model {
             email: {
                 type: Sequelize.STRING,
                 allowNull: true
+            },
+            newsletter: {
+                type: Sequelize.STRING,
+                defaultValue: false
             }
         };
     }
