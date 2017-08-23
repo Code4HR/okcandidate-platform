@@ -24,7 +24,7 @@ class Category extends Component {
         super(props);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const SurveyId = this.props.params.id;
         const fetchCategories = this.props.dispatch.bind(
             this,

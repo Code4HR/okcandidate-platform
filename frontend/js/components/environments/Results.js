@@ -30,7 +30,7 @@ class Results extends Component {
         super(props);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.dispatch(fetchSurveyResults(this.props.params.passPhrase));
         this.props.dispatch(fetchSurveyResult());
     }

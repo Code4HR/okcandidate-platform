@@ -2,41 +2,36 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Layout extends Component {
-
     render() {
-
         return (
-      <html>
+            <html>
+                <head>
+                    <title>OKCandidate</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <link rel="stylesheet" href="/dist/styles/style.css" />
+                    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+                </head>
 
-        <head>
-          <title>OKCandidate</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="stylesheet" href="/dist/styles/style.css" />
-          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-        </head>
+                <body>
+                    <div id="app-mount" dangerouslySetInnerHTML={{ __html: this.props.children }} />
 
-        <body>
-          <div id="app-mount" dangerouslySetInnerHTML={{ __html: this.props.children }} />
+                    <script id="app-state"
+                        dangerouslySetInnerHTML={{
+                            __html: 'window.state = ' + JSON.stringify(this.props.state)
+                        }}></script>
 
-          <script id="app-state"
-            dangerouslySetInnerHTML={{
-                __html: 'window.state = ' + JSON.stringify(this.props.state)
-            }}></script>
-
-          {
-            this.props.bundle === 'client' &&
+                    {
+                        this.props.bundle === 'client' &&
             <script src="/dist/client-bundle.js"></script>
-          }
+                    }
 
-          {
-            this.props.bundle === 'admin' &&
+                    {
+                        this.props.bundle === 'admin' &&
             <script src="/dist/admin-bundle.js"></script>
-          }
-
-        </body>
-
-      </html>
-    );
+                    }
+                </body>
+            </html>
+        );
     }
 
 }

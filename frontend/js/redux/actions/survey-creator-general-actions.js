@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
+import getIsoUrl from './../utils/getIsoUrl';
 import { gotoRoute } from './router-actions';
 
 export const FETCH_ALL_CITIES_REQUEST = 'FETCH_ALL_CITIES_REQUEST';
@@ -29,13 +30,13 @@ export function fetchAllCitiesFailure(response) {
 export function fetchAllUsers() {
     return function(dispatch) {
         dispatch(fetchAllCitiesRequest());
-        return fetch('/api/v1/questions')
-        .then(checkStatus)
-        .then(response => response.json())
-        .then(response => {
-            dispatch(fetchAllCitiesSuccess(response));
-        })
-        .catch(error => dispatch(fetchAllCitiesFailure(error)));
+        return fetch(getIsoUrl('/api/v1/questions'))
+            .then(checkStatus)
+            .then(response => response.json())
+            .then(response => {
+                dispatch(fetchAllCitiesSuccess(response));
+            })
+            .catch(error => dispatch(fetchAllCitiesFailure(error)));
     };
 }
 
@@ -113,15 +114,15 @@ export function fetchQuestionTypesFailure(error) {
 export function fetchQuestionTypes() {
     return (dispatch) => {
         dispatch(fetchQuestionTypesRequest());
-        return fetch('/api/v1/questiontype')
-        .then(checkStatus)
-        .then(response => response.json())
-        .then(response => {
-            dispatch(fetchQuestionTypesSuccess(response));
-        })
-        .catch(error => {
-            dispatch(fetchQuestionTypesFailure(error));
-        });
+        return fetch(getIsoUrl('/api/v1/questiontype'))
+            .then(checkStatus)
+            .then(response => response.json())
+            .then(response => {
+                dispatch(fetchQuestionTypesSuccess(response));
+            })
+            .catch(error => {
+                dispatch(fetchQuestionTypesFailure(error));
+            });
     };
 }
 
@@ -176,7 +177,7 @@ export function updateSurveyGeneralInfoFailure(error) {
 export function updateSurveyGeneralInfo(state) {
     return (dispatch) => {
         dispatch(updateSurveyGeneralInfoRequest());
-        fetch(`/api/v1/survey/${state.id}`, {
+        fetch(getIsoUrl(`/api/v1/survey/${state.id}`), {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -190,21 +191,21 @@ export function updateSurveyGeneralInfo(state) {
                 categorySort: state.categorySort
             })
         })
-        .then(checkStatus)
-        .then(response => response.json())
-        .then(response => {
-            dispatch(updateSurveyGeneralInfoSuccess(response));
-        })
-        .catch(error => {
-            dispatch(updateSurveyGeneralInfoFailure(error));
-        });
+            .then(checkStatus)
+            .then(response => response.json())
+            .then(response => {
+                dispatch(updateSurveyGeneralInfoSuccess(response));
+            })
+            .catch(error => {
+                dispatch(updateSurveyGeneralInfoFailure(error));
+            });
     };
 }
 
 export function submitSurveyGeneral(state) {
     return (dispatch) => {
         dispatch(submitSurveyGeneralRequest());
-        fetch('/api/v1/survey', {
+        fetch(getIsoUrl('/api/v1/survey'), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -218,15 +219,15 @@ export function submitSurveyGeneral(state) {
                 categorySort: state.categorySort
             })
         })
-        .then(checkStatus)
-        .then(response => response.json())
-        .then(response => {
-            dispatch(submitSurveyGeneralSuccess(response));
-            gotoRoute(`/admin/survey/${response.id}/offices`);
-        })
-        .catch(error => {
-            dispatch(submitSurveyGeneralFailure(error));
-        });
+            .then(checkStatus)
+            .then(response => response.json())
+            .then(response => {
+                dispatch(submitSurveyGeneralSuccess(response));
+                gotoRoute(`/admin/survey/${response.id}/offices`);
+            })
+            .catch(error => {
+                dispatch(submitSurveyGeneralFailure(error));
+            });
     };
 }
 
@@ -257,13 +258,13 @@ export function fetchSurveyGeneralInfoFailure(error) {
 export function fetchSurveyGeneralInfo(id) {
     return (dispatch) => {
         dispatch(fetchSurveyGeneralInfoRequest());
-        return fetch(`/api/v1/survey/${id}`)
-        .then(response => response.json())
-        .then(response => {
-            return dispatch(fetchSurveyGeneralInfoSuccess(response));
-        })
-        .catch(error => {
-            return dispatch(fetchSurveyGeneralInfoFailure(error));
-        });
+        return fetch(getIsoUrl(`/api/v1/survey/${id})`))
+            .then(response => response.json())
+            .then(response => {
+                return dispatch(fetchSurveyGeneralInfoSuccess(response));
+            })
+            .catch(error => {
+                return dispatch(fetchSurveyGeneralInfoFailure(error));
+            });
     };
 }
