@@ -210,9 +210,9 @@ module.exports = {
                       return app.orm.SurveyResultAnswer.create(surveyResultAnswer);
                   })
                 )
-                .then((surveyResultAnswers) => {
-                    app.log.info('Survey Result Answers created');
-                    return surveyResultAnswers;
+                .then(newSurveyResultAnswers => {
+                    app.log.info('Survey result answers created.');
+                    return newSurveyResultAnswers;
                 });
             }
         });

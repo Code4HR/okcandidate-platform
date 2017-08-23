@@ -31,15 +31,19 @@ module.exports = {
                 return [];
             }
 
-            const maxId = Math.max.apply(Math,categories.map(function(o){return o.id;}));
-            app.orm.Survey.sequelize.query('select setval(\'category_id_seq\', ' + maxId + ')');
+            const maxId = Math.max.apply(Math,categories.map(o => o.id));
+            app.orm.Survey.sequelize.query(`select setval('category_id_seq', ${maxId})`);
 
             // Create categories.
             return Promise.all(
                 categories.map(category => {
                     return app.orm.Category.create(category);
                 })
-            );
+            )
+            .then(newCategories => {
+                app.log.info('Categories created.');
+                return newCategories;
+            });
         });
     }
 };

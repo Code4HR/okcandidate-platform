@@ -33,8 +33,8 @@ module.exports = {
                 return [];
             }
 
-            const maxId = Math.max.apply(Math,surveys.map(function(o){return o.id;}));
-            app.orm.Survey.sequelize.query('select setval(\'survey_id_seq\', ' + maxId + ')');
+            const maxId = Math.max.apply(Math,surveys.map(o => o.id));
+            app.orm.Survey.sequelize.query(`select setval('survey_id_seq', ${maxId})`);
 
             // Create surveys.
             return Promise.all(
@@ -43,9 +43,9 @@ module.exports = {
               })
             );
         })
-        .then(surveys => {
-            app.log.info('Surveys created');
-            return surveys;
+        .then(newSurveys => {
+            app.log.info('Surveys created.');
+            return newSurveys;
         });
     }
 

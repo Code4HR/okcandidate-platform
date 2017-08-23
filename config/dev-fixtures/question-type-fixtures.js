@@ -27,15 +27,19 @@ module.exports = {
                 return [];
             }
 
-            const maxId = Math.max.apply(Math,types.map(function(o){return o.id;}));
-            app.orm.Question.sequelize.query('select setval(\'questiontype_id_seq\', ' + maxId + ')');
+            const maxId = Math.max.apply(Math,types.map(o => o.id));
+            app.orm.Question.sequelize.query(`select setval('questiontype_id_seq', ${maxId})`);
 
             // Create types.
             return Promise.all(
                 types.map(type => {
                     return app.orm.QuestionType.create(type);
                 })
-            );
+            )
+            .then(newTypes => {
+                app.log.info('Question types created.');
+                return newTypes;
+            });
         });
     }
 };

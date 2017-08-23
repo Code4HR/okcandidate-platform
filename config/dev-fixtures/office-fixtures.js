@@ -53,9 +53,9 @@ module.exports = {
           });
         })
         // Whew!
-        .then(offices => {
+        .then(newOffices => {
             app.log.info('Offices created.');
-            return offices;
+            return newOffices;
         });
         }
     });

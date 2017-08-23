@@ -24,7 +24,11 @@ module.exports = {
                 statuses.map(status => {
                     return app.orm.SurveyStatus.create(status);
                 })
-            );
+            )
+            .then(newStatuses => {
+                app.log.info('Survey statuses created.');
+                return newStatuses;
+            });
         });
     }
 };
