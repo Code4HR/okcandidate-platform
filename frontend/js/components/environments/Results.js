@@ -108,6 +108,7 @@ class Results extends Component {
                         name={m.name}
                         party={m.party}
                         office={m.office}
+                        categories={m.categories}
                         matchRate={Math.round(m.matchRate)} />);
                 })}
 
@@ -117,6 +118,7 @@ class Results extends Component {
                         name={m.name}
                         party={m.party}
                         office={m.office}
+                        categories={m.categories}
                         matchRate={Math.round(m.matchRate)} />);
                 })}
 

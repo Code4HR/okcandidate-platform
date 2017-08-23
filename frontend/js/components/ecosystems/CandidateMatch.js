@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Card from './../atoms/Card';
 import CandidateDisplay from './../organisms/CandidateDisplay';
 import SocialMediaIcons from './../organisms/SocialMediaIcons';
+import CandidateMatchCategory from './../molecules/CandidateMatchCategory';
 import Vr from './../atoms/Vr';
 import IconButton from './../molecules/IconButton';
 
@@ -60,8 +61,21 @@ class CandidateMatch extends Component {
                             href="#"
                             className="button" >Learn more about {this.props.name}</a>
                     </div>
+
+                    <h2>On the issues...</h2>
                     <div className="candidate-detail-categories">
-                        <h2>On the issues</h2>
+
+                        {
+                            this.props.categories.map((cat, index) => {
+                                return (
+                                    <CandidateMatchCategory
+                                        key={cat.id}
+                                        categoryName={cat.categoryName}
+                                        matchRate={cat.matchRate} />
+                                );
+                            })
+                        }
+
                     </div>
                 </div>
             </Card>
@@ -73,6 +87,7 @@ CandidateMatch.propTypes = {
     name: PropTypes.string,
     office: PropTypes.string,
     party: PropTypes.string,
+    categories: PropTypes.array,
     matchRate: PropTypes.number
 };
 

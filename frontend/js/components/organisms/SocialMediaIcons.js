@@ -35,13 +35,18 @@ class SocialMediaSharing extends Component {
     render() {
         return (
             <section data-primary={this.props.primary} className="social-media-sharing">
-                <IconButton onClick={this.shareOnFacebook.bind(this)}>
+                <IconButton
+                    square
+                    onClick={this.shareOnFacebook.bind(this)}>
                     <span className="icon-facebook2"></span>
                 </IconButton>
-                <IconButton onClick={this.shareOnTwitter.bind(this)}>
+                <IconButton
+                    square
+                    onClick={this.shareOnTwitter.bind(this)}>
                     <span className="icon-twitter"></span>
                 </IconButton>
-                <IconButton square>
+                <IconButton
+                    square>
                     <span className="icon-link"></span>
                 </IconButton>
                 <label>Share</label>
