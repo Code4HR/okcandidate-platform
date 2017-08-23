@@ -91,7 +91,10 @@ class Results extends Component {
                     onClick={this.toggleMethodologyModal.bind(this)}
                     active={this.props.result.showMethodologyModal} />
 
-                <SocialMediaIcons primary/>
+                <SocialMediaIcons
+                    passPhrase={this.props.params.passPhrase}
+                    matches={bestMatch}
+                    primary/>
 
                 {
                     !bestMatch.length &&
