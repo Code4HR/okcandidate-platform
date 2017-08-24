@@ -138,9 +138,9 @@ module.exports = class SurveyResultService extends Service {
             }, []);
 
             return matches.map(m => {
-                m.matchRate = (m.score / m.numQuestions) * 100;
+                m.matchRate = Math.round((m.score / m.numQuestions) * 100);
                 m.categories = m.categories.map((c) => {
-                    c.matchRate = (c.score == 0 ? 0 : (c.score / c.numQuestions) * 100);
+                    c.matchRate = Math.round(c.score == 0 ? 0 : (c.score / c.numQuestions) * 100);
                     return c;
                 });
                 return m;
