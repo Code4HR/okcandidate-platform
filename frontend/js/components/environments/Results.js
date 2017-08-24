@@ -96,7 +96,7 @@ class Results extends Component {
                         party={m.party}
                         office={m.office}
                         categories={m.categories}
-                        matchRate={Math.round(m.matchRate)} />);
+                        matchRate={m.matchRate} />);
                 })}
 
                 { otherMatches.map((m) => {
@@ -106,7 +106,7 @@ class Results extends Component {
                         party={m.party}
                         office={m.office}
                         categories={m.categories}
-                        matchRate={Math.round(m.matchRate)} />);
+                        matchRate={m.matchRate} />);
                 })}
 
                 {
