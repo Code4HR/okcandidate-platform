@@ -2,6 +2,7 @@
 
 .survey-card {
     text-align: center;
+    padding-top: 1em;
 
     .hearts {
       color: $darkGray;
@@ -16,9 +17,6 @@
     }
 
     .survey-card-interface {
-        margin: 0 auto;
-        max-width: 540px;
-
         .radio-buttons {
             text-align: left;
             margin-bottom: 0;
@@ -29,6 +27,18 @@
         display: flex;
         max-width: 240px;
         margin: 1em auto 0 auto;
+        justify-content: space-between;
+    }
+    
+    .card-body,
+    .card-actions {
+        max-width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-actions {
+        display: flex;
         justify-content: space-between;
     }
 

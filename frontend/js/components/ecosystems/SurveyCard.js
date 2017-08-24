@@ -39,6 +39,7 @@ class SurveyCard extends Component {
                     </button>,
                     <button
                         key={2}
+                        className="primary"
                         onClick={this.props.onNextClick}>
                         Next
                     </button>
