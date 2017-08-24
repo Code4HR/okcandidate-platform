@@ -34,6 +34,7 @@ class CandidateMatch extends Component {
         const detailStyle = {
             height: this.state.expanded ? 'auto' : 0
         };
+        const firstName = this.props.name.split(' ')[0];
 
         return (
             <Card className="candidate-match">
@@ -60,7 +61,7 @@ class CandidateMatch extends Component {
                         <Vr height={36} />
                         <a
                             href={this.props.infoUrl ? this.props.infoUrl : '#'}
-                            className="button" >Learn more about {this.props.name}</a>
+                            className="button" >Learn more about {firstName}</a>
                     </div>
 
                     <h2>On the issues...</h2>
