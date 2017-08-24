@@ -44,6 +44,9 @@ module.exports = class Candidate extends Model {
             url: {
                 type: Sequelize.STRING
             },
+            infoUrl: {
+                type: Sequelize.STRING
+            },
             bio: {
                 type: Sequelize.STRING
             }

@@ -26,7 +26,16 @@
         height: 6em;
         width: 6em;
         margin-right: -1em;
+        padding: 0;
+        overflow: hidden;
         z-index: 2;
+    }
+
+    .candidate-picture {
+        display: inline;
+        margin: 0 auto;
+        height: 100%;
+        width: auto;
     }
 
     .candidate-rating {

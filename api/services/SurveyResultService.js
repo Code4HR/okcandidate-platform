@@ -36,6 +36,9 @@ module.exports = class SurveyResultService extends Service {
             , candidate."Name"
             , candidate."Office"
             , candidate."Party"
+            , candidate.picture
+            , candidate.url
+            , candidate."infoUrl"
             , candidate."AnswerId" as "CandidateAnswerId"
             , candidate.sentiment as "CandidateSentiment"
             from surveyresult
@@ -55,6 +58,9 @@ module.exports = class SurveyResultService extends Service {
                               , t0.name as "Name"
                               , t1.name as "Office"
                               , t0.party as "Party"
+                              , t0.picture
+                              , t0.url
+                              , t0."infoUrl"
                               , t3."QuestionId"
                               , t3."AnswerId"
                               , t3.sentiment
@@ -96,6 +102,9 @@ module.exports = class SurveyResultService extends Service {
                         name: v.Name,
                         office: v.Office,
                         party: v.Party,
+                        picture: v.picture,
+                        url: v.url,
+                        infoUrl: v.infoUrl,
                         score: score,
                         numQuestions: 1,
                         categories: []
