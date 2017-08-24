@@ -1,0 +1,34 @@
+@import 'colors';
+
+.candidate-detail-categories {
+    display: flex;
+    flex-wrap: wrap;
+
+    .candidate-match-category {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin: 0em -.25em .5em -.25em;
+        font-size: 1.125em;
+        & > * {
+            margin: 0 .25em;
+        }
+
+        .match-rate {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3em;
+            height: 3em;
+            color: $darkGray;
+            border-radius: 100%;
+            border: 1px solid $darkGray;
+        }
+    }
+
+    @media (min-width: 720px) {
+        .candidate-match-category {
+            width: 33%;
+        }
+    }
+}

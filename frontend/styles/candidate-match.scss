@@ -1,6 +1,7 @@
 @import 'colors';
 
 .candidate-match {
+
     .candidate-preview {
         margin: 0 -.5em;
         & > * {
@@ -34,7 +35,12 @@
         transition: height 2s;
         overflow-y: hidden;
 
+        h2 {
+            font-size: 1.5em;
+        }
+
         .candidate-detail-links {
+            margin: 1em 0 .75em 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
