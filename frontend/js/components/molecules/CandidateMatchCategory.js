@@ -8,7 +8,7 @@ class CandidateMatchCategory extends Component {
         return (
             <div className="candidate-match-category">
                 <div className="match-rate">
-                    {this.props.matchRate}
+                    {this.props.matchRate  + '%'}
                 </div>
                 <div className="category-name">
                     {this.props.categoryName}
