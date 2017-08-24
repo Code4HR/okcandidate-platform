@@ -39,7 +39,8 @@ class CandidateMatch extends Component {
             <Card className="candidate-match">
                 <div className="candidate-preview">
                     <CandidateDisplay
-                        matchRate={this.props.matchRate} />
+                        matchRate={this.props.matchRate}
+                        picture={this.props.picture} />
                     <div className="candidate-info">
                         <h2 className="candidate-name">{this.props.name}</h2>
                         <div className="candidate-party">{this.props.party}</div>
@@ -58,7 +59,7 @@ class CandidateMatch extends Component {
                         <SocialMediaIcons />
                         <Vr height={36} />
                         <a
-                            href="#"
+                            href={this.props.infoUrl ? this.props.infoUrl : '#'}
                             className="button" >Learn more about {this.props.name}</a>
                     </div>
 
@@ -87,6 +88,9 @@ CandidateMatch.propTypes = {
     name: PropTypes.string,
     office: PropTypes.string,
     party: PropTypes.string,
+    picture: PropTypes.string,
+    url: PropTypes.string,
+    infoUrl: PropTypes.string,
     categories: PropTypes.array,
     matchRate: PropTypes.number
 };

@@ -7,7 +7,7 @@ class CandidateDisplay extends Component {
         return (
       <div className="candidate-display">
         <div className="circle candidate-image">
-          <img src={this.props.image} />
+          <img className="candidate-picture" src={this.props.picture ? this.props.picture : '/dist/images/default-user.png'} />
         </div>
         <div className="circle candidate-rating">
           {this.props.matchRate.toString() + '%'}
@@ -19,7 +19,7 @@ class CandidateDisplay extends Component {
 }
 
 CandidateDisplay.propTypes = {
-    image: PropTypes.string,
+  picture: PropTypes.string,
     matchRate: PropTypes.number
 };
 

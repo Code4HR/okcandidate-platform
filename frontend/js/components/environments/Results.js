@@ -95,6 +95,9 @@ class Results extends Component {
                         name={m.name}
                         party={m.party}
                         office={m.office}
+                        picture={m.picture}
+                        url={m.url}
+                        infoUrl={m.infoUrl}
                         categories={m.categories}
                         matchRate={m.matchRate} />);
                 })}
@@ -105,6 +108,9 @@ class Results extends Component {
                         name={m.name}
                         party={m.party}
                         office={m.office}
+                        picture={m.picture}
+                        url={m.url}
+                        infoUrl={m.infoUrl}
                         categories={m.categories}
                         matchRate={m.matchRate} />);
                 })}
