@@ -5,19 +5,22 @@ const candidates = [
         id: 1,
         name: 'Candidate A',
         party: 'Republocrat',
-        OfficeId: 1
+        OfficeId: 1,
+        picture: '/dist/images/default-user.png'
     },
     {
         id: 2,
         name: 'Candidate B',
         party: 'Democan',
-        OfficeId: 1
+        OfficeId: 1,
+        picture: '/dist/images/default-user.png'
     },
     {
         id: 3,
         name: 'Candidate C',
         party: 'Yes, Please',
-        OfficeId: 1
+        OfficeId: 1,
+        picture: '/dist/images/default-user.png'
     }
 ];
 
