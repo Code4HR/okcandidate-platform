@@ -19,7 +19,7 @@ class CandidateDisplay extends Component {
 }
 
 CandidateDisplay.propTypes = {
-  picture: PropTypes.string,
+    picture: PropTypes.string,
     matchRate: PropTypes.number
 };
 
