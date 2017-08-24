@@ -20,7 +20,7 @@ class CandidateMatchCategory extends Component {
 
 CandidateMatchCategory.propTypes = {
     matchRate: PropTypes.number,
-    category: PropTypes.string
+    categoryName: PropTypes.string
 };
 
 export default CandidateMatchCategory;
