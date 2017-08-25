@@ -6,6 +6,7 @@ import ui from './reducers/ui-reducer';
 import login from './reducers/login-reducer';
 import result from './reducers/result-reducer';
 import lastAction from './reducers/last-action-reducer';
+import social from './reducers/social-reducer.js';
 
 module.exports = combineReducers({
     pickSurvey,
@@ -14,5 +15,6 @@ module.exports = combineReducers({
     ui,
     login,
     result,
-    lastAction
+    lastAction,
+    social
 });

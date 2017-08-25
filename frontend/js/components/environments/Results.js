@@ -59,8 +59,7 @@ class Results extends Component {
 
     render () {
 
-        const bestMatches = this.props.result.bestMatches;
-        const otherMatches = (this.props.result.otherMatches || []).sort(this.sortMatches);
+        const matches = this.props.result.matches;
 
         return (
             <article className="container">
@@ -79,30 +78,15 @@ class Results extends Component {
                     active={this.props.result.showMethodologyModal} />
 
                 <SocialMediaIcons
-                    passPhrase={this.props.params.passPhrase}
-                    matches={bestMatches}
+                    social={this.props.social}
                     primary/>
 
                 {
-                    !bestMatches.length &&
-                    !otherMatches.length &&
+                    matches && !matches.length &&
                     <LoadingIndicator message="Loading Matches" />
                 }
 
-                { bestMatches.map((m) => {
-                    return (<CandidateMatch
-                        key={m.name}
-                        name={m.name}
-                        party={m.party}
-                        office={m.office}
-                        picture={m.picture}
-                        url={m.url}
-                        infoUrl={m.infoUrl}
-                        categories={m.categories}
-                        matchRate={m.matchRate} />);
-                })}
-
-                { otherMatches.map((m) => {
+                { matches && matches.map((m) => {
                     return (<CandidateMatch
                         key={m.name}
                         name={m.name}
@@ -139,13 +123,15 @@ class Results extends Component {
 Results.propTypes = {
     params: PropTypes.object,
     dispatch: PropTypes.func,
-    result: PropTypes.object
+    result: PropTypes.object,
+    social: PropTypes.object
 };
 
 export default connect(
     state => ({
         ui: state.ui,
         login: state.login,
-        result: state.result
+        result: state.result,
+        social: state.social
     })
 )(Results);

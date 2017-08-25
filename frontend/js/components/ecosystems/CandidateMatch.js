@@ -5,9 +5,7 @@ import PropTypes from 'prop-types';
 
 import Card from './../atoms/Card';
 import CandidateDisplay from './../organisms/CandidateDisplay';
-import SocialMediaIcons from './../organisms/SocialMediaIcons';
 import CandidateMatchCategory from './../molecules/CandidateMatchCategory';
-import Vr from './../atoms/Vr';
 import IconButton from './../molecules/IconButton';
 
 class CandidateMatch extends Component {
@@ -57,8 +55,6 @@ class CandidateMatch extends Component {
                     style={detailStyle}
                     className="candidate-detail">
                     <div className="candidate-detail-links">
-                        <SocialMediaIcons />
-                        <Vr height={36} />
                         <a
                             href={this.props.infoUrl ? this.props.infoUrl : '#'}
                             className="button" >Learn more about {firstName}</a>
@@ -71,7 +67,7 @@ class CandidateMatch extends Component {
                             this.props.categories.map((cat, index) => {
                                 return (
                                     <CandidateMatchCategory
-                                        key={cat.id}
+                                        key={index}
                                         categoryName={cat.categoryName}
                                         matchRate={cat.matchRate} />
                                 );

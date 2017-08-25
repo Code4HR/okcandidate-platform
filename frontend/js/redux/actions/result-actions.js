@@ -2,6 +2,10 @@ import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
 import getIsoUrl from './../utils/getIsoUrl';
 
+import {
+    updateSocialMediaTags
+} from './../actions/social-actions';
+
 export const FETCH_SURVEY_RESULTS_REQUEST = 'FETCH_SURVEY_RESULTS_REQUEST';
 export const FETCH_SURVEY_RESULTS_SUCCESS = 'FETCH_SURVEY_RESULTS_SUCCESS';
 export const FETCH_SURVEY_RESULTS_FAILURE = 'FETCH_SURVEY_RESULTS_FAILURE';
@@ -34,6 +38,7 @@ export function fetchSurveyResults(passPhrase) {
             .then(response => response.json())
             .then(response => {
                 dispatch(fetchSurveyResultsSuccess(response));
+                dispatch(updateSocialMediaTags(response));
             })
             .catch(error => dispatch(fetchSurveyResultsFailure(error)));
     };

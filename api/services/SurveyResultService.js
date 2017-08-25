@@ -1,6 +1,7 @@
 'use strict';
 
 const Service = require('trails-service');
+const orderBy = require('lodash/orderBy');
 
 /**
  * @module ResultService
@@ -146,14 +147,14 @@ module.exports = class SurveyResultService extends Service {
                 return a;
             }, []);
 
-            return matches.map(m => {
+            return orderBy(matches.map(m => {
                 m.matchRate = Math.round((m.score / m.numQuestions) * 100);
                 m.categories = m.categories.map((c) => {
                     c.matchRate = Math.round(c.score == 0 ? 0 : (c.score / c.numQuestions) * 100);
                     return c;
                 });
                 return m;
-            });
+            }), ['matchRate'], ['desc']);
         });
     }
 };
