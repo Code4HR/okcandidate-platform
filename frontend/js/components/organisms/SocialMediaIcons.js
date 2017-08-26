@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import IconButton from './../molecules/IconButton';
 
-class SocialMediaSharing extends Component {
+class SocialMediaIcons extends Component {
 
     shareOnFacebook() {
         const url = window.location.href;
@@ -43,9 +43,9 @@ class SocialMediaSharing extends Component {
     }
 }
 
-SocialMediaSharing.propTypes = {
+SocialMediaIcons.propTypes = {
     social: PropTypes.object,
     primary: PropTypes.bool
 };
 
-export default SocialMediaSharing;
+export default SocialMediaIcons;
