@@ -98,6 +98,13 @@ module.exports = class SurveyResultService extends Service {
                             (v.CandidateSentiment + v.SurveyResultSentiment) / 10 :
                             v.SurveyResultSentiment / 5);
 
+                    const numQuestions = v.sentiment ? (
+                        v.multipleChoice ? (
+                            v.AnswerId == v.CandidateAnswerId ?
+                            1 : 0
+                        ) : 1
+                    ) : 1;
+
                     const candidate = {
                         name: v.Name,
                         office: v.Office,
@@ -106,13 +113,13 @@ module.exports = class SurveyResultService extends Service {
                         url: v.url,
                         infoUrl: v.infoUrl,
                         score: score,
-                        numQuestions: 1,
+                        numQuestions: numQuestions,
                         categories: []
                     };
 
                     const category = {
                         categoryName: v.CategoryName,
-                        numQuestions: 1,
+                        numQuestions: numQuestions,
                         score: score
                     };
 
