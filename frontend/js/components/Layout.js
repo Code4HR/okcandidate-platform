@@ -3,64 +3,30 @@ import PropTypes from 'prop-types';
 
 class Layout extends Component {
 
-    titlecase(str) {
-        return str.replace(/\w\S*/g, (txt) => {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        });
-    }
-
-    candidateMatchString(matches) {
-        if (matches.length === 1) {
-            return matches[0].name;
-        }
-        if (matches.length === 2) {
-            return `${matches[0].name} and ${matches[1].name}`;
-        }
-        if (matches.length === 3) {
-            return `${matches[0].name}, ${matches[1].name}, and ${matches[2].name}`;
-        }
-    }
-
     getSocialMediaMetaTags() {
 
-        const bestMatches = this.props.state.result.bestMatches;
-        const baseUrl = this.props.host;
-        const siteName = 'OKCandidate';
-        const url = this.props.url;
-        const creator = '@code4hr';
-        let image;
-        let description;
-
-        if (url.includes('/results/')) {
-            if (!bestMatches.length) {
-                image = baseUrl + '/dist/images/ballot-box.png';
-                description = 'Find out which candidates for local office are a match for you!';
-            }
-
-            if (bestMatches.length >= 1) {
-                // TODO, where do candidate images live?
-                image = baseUrl + '/dist/images/ballot-box.png';
-                description = `I matched with ${this.candidateMatchString(bestMatches)}. See what candidates for local office are a match for you!`;
-            }
+        const social = this.props.state.social;
+        if (!social) {
+            return (<div></div>);
         }
 
         return [
-            { name: 'description', content: description },
-            { itemProp: 'name', content: siteName },
-            { itemProp: 'description', content: description },
-            { itemProp: 'image', content: image },
-            { name: 'twitter:card', content: siteName },
-            { name: 'twitter:site', content: url },
-            { name: 'twitter:title', content: siteName },
-            { name: 'twitter:description', content: description },
-            { name: 'twitter:creator', content: creator },
-            { name: 'twitter:image', content: image },
-            { property: 'og:title', content: siteName },
+            { name: 'description', content: social.description },
+            { itemProp: 'name', content: social.siteName },
+            { itemProp: 'description', content: social.description },
+            { itemProp: 'image', content: social.image },
+            { name: 'twitter:card', content: social.siteName },
+            { name: 'twitter:site', content: this.props.url },
+            { name: 'twitter:title', content: social.siteName },
+            { name: 'twitter:description', content: social.description },
+            { name: 'twitter:creator', content: social.creator },
+            { name: 'twitter:image', content: social.image },
+            { property: 'og:title', content: social.siteName },
             { property: 'og:type', content: 'website' },
-            { property: 'og:url', content: url },
-            { property: 'og:image', content: image },
-            { property: 'og:description', content: description },
-            { property: 'og:site_name', content: siteName }
+            { property: 'og:url', content: social.url },
+            { property: 'og:image', content: social.image },
+            { property: 'og:description', content: social.description },
+            { property: 'og:site_name', content: social.siteName }
         ];
     }
 

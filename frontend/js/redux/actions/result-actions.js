@@ -2,6 +2,12 @@ import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
 import getIsoUrl from './../utils/getIsoUrl';
 
+const orderBy = require('lodash/orderBy');
+
+import {
+    updateSocialMediaTags
+} from './../actions/social-actions';
+
 export const FETCH_SURVEY_RESULTS_REQUEST = 'FETCH_SURVEY_RESULTS_REQUEST';
 export const FETCH_SURVEY_RESULTS_SUCCESS = 'FETCH_SURVEY_RESULTS_SUCCESS';
 export const FETCH_SURVEY_RESULTS_FAILURE = 'FETCH_SURVEY_RESULTS_FAILURE';
@@ -32,8 +38,10 @@ export function fetchSurveyResults(passPhrase) {
         return fetch(getIsoUrl('/api/v1/surveymatch/' + passPhrase))
             .then(checkStatus)
             .then(response => response.json())
+            .then(response => orderBy(response, ['matchRate'], ['desc']))
             .then(response => {
                 dispatch(fetchSurveyResultsSuccess(response));
+                dispatch(updateSocialMediaTags(response));
             })
             .catch(error => dispatch(fetchSurveyResultsFailure(error)));
     };

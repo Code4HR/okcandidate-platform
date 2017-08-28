@@ -4,30 +4,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import IconButton from './../molecules/IconButton';
 
-class SocialMediaSharing extends Component {
-    getMessage() {
-        const matches = this.props.matches;
-        let message = '';
-        if (this.props.matches.length === 2) {
-            message += `I agree with ${matches[0].name} and ${matches[1].name} on ${matches[0].matchRate}% of the issues. `;
-        }
-        else if (this.props.matches.length === 3) {
-            message += `I agree with ${matches[0].name}, ${matches[1].name}, and ${matches[2].name} on ${matches[0].matchRate}% of the issues. `;
-        }
-        else {
-            message += `I agree with ${matches[0].name} on ${matches[0].matchRate}% of the issues. `;
-        }
-        message += `http://okcandidate.code4hr.org/results/${this.props.passPhrase}`;
-        return encodeURIComponent(message);
-    }
+class SocialMediaIcons extends Component {
 
     shareOnFacebook() {
-        const url = `http://okcandidate.code4hr.org/results/${this.props.passPhrase}`;
+        const url = window.location.href;
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
     }
 
     shareOnTwitter() {
-        const message = this.getMessage();
+        let message = this.props.social.description;
+        if (message.length >= 144) {
+            message = this.props.social.shortDescription;
+        }
         const url = `https://twitter.com/intent/tweet?text=${message}&source=webclient`;
         window.open(url, '_blank');
     }
@@ -55,11 +43,9 @@ class SocialMediaSharing extends Component {
     }
 }
 
-SocialMediaSharing.propTypes = {
-    matches: PropTypes.array,
-    primary: PropTypes.bool,
-    name: PropTypes.string,
-    passPhrase: PropTypes.string
+SocialMediaIcons.propTypes = {
+    social: PropTypes.object,
+    primary: PropTypes.bool
 };
 
-export default SocialMediaSharing;
+export default SocialMediaIcons;
