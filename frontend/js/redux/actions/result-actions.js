@@ -2,6 +2,8 @@ import fetch from 'isomorphic-fetch';
 import checkStatus from './../utils/checkStatus';
 import getIsoUrl from './../utils/getIsoUrl';
 
+const orderBy = require('lodash/orderBy');
+
 import {
     updateSocialMediaTags
 } from './../actions/social-actions';
@@ -36,6 +38,7 @@ export function fetchSurveyResults(passPhrase) {
         return fetch(getIsoUrl('/api/v1/surveymatch/' + passPhrase))
             .then(checkStatus)
             .then(response => response.json())
+            .then(response => orderBy(response, ['matchRate'], ['desc']))
             .then(response => {
                 dispatch(fetchSurveyResultsSuccess(response));
                 dispatch(updateSocialMediaTags(response));
