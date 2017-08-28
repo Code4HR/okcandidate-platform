@@ -2,9 +2,19 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CopyToClipboard from 'react-copy-to-clipboard';
+
 import IconButton from './../molecules/IconButton';
 
 class SocialMediaIcons extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            url: window.location.href
+        };
+    }
 
     shareOnFacebook() {
         const url = window.location.href;
@@ -33,10 +43,14 @@ class SocialMediaIcons extends Component {
                     onClick={this.shareOnTwitter.bind(this)}>
                     <span className="icon-twitter"></span>
                 </IconButton>
-                <IconButton
-                    square>
-                    <span className="icon-link"></span>
-                </IconButton>
+                <CopyToClipboard text={this.state.url}
+                    onCopy={() => this.setState({copied: true})}>
+                    <IconButton
+                        square>
+                        <span className="icon-link"></span>
+                    </IconButton>
+                </CopyToClipboard>
+                {this.state.copied ? <label>Copied!</label> : null}
                 <label>Share</label>
             </section>
         );
@@ -45,7 +59,8 @@ class SocialMediaIcons extends Component {
 
 SocialMediaIcons.propTypes = {
     social: PropTypes.object,
-    primary: PropTypes.bool
+    primary: PropTypes.bool,
+    url: PropTypes.string
 };
 
 export default SocialMediaIcons;
