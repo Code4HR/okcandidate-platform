@@ -90,8 +90,8 @@ module.exports = class SurveyResultService extends Service {
                         v.AnswerId == v.CandidateAnswerId ? (
                             v.sentiment ? (
                                 v.CandidateSentiment > 0 ?
-                                    (v.CandidateSentiment + v.SurveyResultSentiment) / 10 :
-                                    v.SurveyResultSentiment / 5
+                                    1 + ((v.CandidateSentiment + v.SurveyResultSentiment) / 10) :
+                                    1 + (v.SurveyResultSentiment / 5)
                             ) : 1
                         ) : 0
                     ) : (v.CandidateSentiment != null ?
@@ -99,10 +99,7 @@ module.exports = class SurveyResultService extends Service {
                             v.SurveyResultSentiment / 5);
 
                     const numQuestions = v.sentiment ? (
-                        v.multipleChoice ? (
-                            v.AnswerId == v.CandidateAnswerId ?
-                            1 : 0
-                        ) : 1
+                        v.multipleChoice ? 2 : 1
                     ) : 1;
 
                     const candidate = {
