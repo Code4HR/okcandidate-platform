@@ -8,7 +8,8 @@ services:
       context: .
       args:
         NODE_ENV: development
-    entrypoint: /usr/src/app/docker/docker-entrypoint.sh 
+    # special startup script just for local development
+    entrypoint: /usr/src/app/docker/docker-entrypoint-dev.sh 
     command: ../node_modules/.bin/nodemon server.js --inspect=0.0.0.0:9229
     environment:
       NODE_ENV: development
@@ -19,7 +20,9 @@ services:
       OKC_SESSION_SECRET_KEY: someGobbledygookThatIsAtLeast32CharactersLong
       GOOGLE_API_KEY: google_api_key
     volumes:
-      - .:/usr/src/app
+      - .:/usr/src/app:delegated
+        # for local dev only, we "hide" host-based node_modules so they don't conflict
+      - notused:/usr/src/app/node_modules
     ports:
       - "80:3000"
       - "9229:9229"
@@ -33,4 +36,5 @@ services:
     ports:
       - "5432:5432"
 
-
+volumes:
+  notused:
