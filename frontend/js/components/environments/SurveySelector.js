@@ -21,7 +21,7 @@ class SurveySelector extends Component {
     }
 
     componentWillMount() {
-        if (this.props.location && !this.props.location.query.regionLimit) {
+        if (this.props.pickSurvey.surveys.length === 0 && this.props.location && !this.props.location.query.regionLimit) {
             this.props.dispatch(fetchSurveys());
         }
     }

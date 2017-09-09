@@ -39,19 +39,21 @@ class Survey extends Component {
             fetchSurveyQuestions(SurveyId)
         );
 
-        if (this.props.location.query.newSurvey) {
-            return this.props.dispatch(createSurveyResult(SurveyId, fetchQuestions));
+        if (!this.props.SurveyResultId) {
+            if (this.props.location.query.newSurvey) {
+                return this.props.dispatch(createSurveyResult(SurveyId, fetchQuestions));
+            }
+    
+            this.props.dispatch(
+                fetchSurveyResult((error, response) => {
+                    if (error) { return; }
+                    if (!response.id) {
+                        return this.props.dispatch(createSurveyResult(SurveyId, fetchQuestions));
+                    }
+                    return fetchQuestions();
+                })
+            );
         }
-
-        this.props.dispatch(
-            fetchSurveyResult((error, response) => {
-                if (error) { return; }
-                if (!response.id) {
-                    return this.props.dispatch(createSurveyResult(SurveyId, fetchQuestions));
-                }
-                return fetchQuestions();
-            })
-        );
     }
 
     /**
