@@ -21,18 +21,15 @@ import {
     toggleMethodologyModalVisibility
 } from './../../redux/actions/result-actions';
 
-import {
-    fetchSurveyResult
-} from './../../redux/actions/survey-actions';
-
 class Results extends Component {
     constructor(props) {
         super(props);
     }
 
     componentWillMount() {
-        this.props.dispatch(fetchSurveyResults(this.props.params.passPhrase));
-        this.props.dispatch(fetchSurveyResult());
+        if (this.props.result.matches.length === 0) {
+            this.props.dispatch(fetchSurveyResults(this.props.params.passPhrase));
+        }
     }
 
     showElectionReminderSignup() {
