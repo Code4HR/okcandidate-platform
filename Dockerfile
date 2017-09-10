@@ -29,6 +29,9 @@ ENV NODE_PATH=/usr/src/node_modules
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
+# do last minute things on the code
+RUN npm run gulp 
+
 # if you want to use npm start instead, then use `docker run --init in production`
 # so that signals are passed properly. Note the code in index.js is needed to catch Docker signals
 # using node here is still more graceful stopping then npm with --init afaik
