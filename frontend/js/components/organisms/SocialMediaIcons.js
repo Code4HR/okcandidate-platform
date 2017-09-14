@@ -12,12 +12,12 @@ class SocialMediaIcons extends Component {
         super(props);
 
         this.state = {
-            url: window.location.href
+            url: window && window.location.href
         };
     }
 
     shareOnFacebook() {
-        const url = window.location.href;
+        const url = window && window.location.href;
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
     }
 
