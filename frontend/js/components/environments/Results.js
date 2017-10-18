@@ -31,7 +31,9 @@ class Results extends Component {
     }
 
     componentWillMount() {
-        this.props.dispatch(fetchSurveyResults(this.props.params.passPhrase));
+        if (this.props.result.matches.length === 0) {
+            this.props.dispatch(fetchSurveyResults(this.props.params.passPhrase));
+        }
         this.props.dispatch(fetchSurveyResult());
     }
 

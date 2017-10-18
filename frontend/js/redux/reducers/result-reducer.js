@@ -20,8 +20,7 @@ import {
 const initialState = {
     SurveyResultId: null,
     isFetching: false,
-    bestMatches: [],
-    otherMatches: [],
+    matches: [],
     error: '',
     showElectionReminderModal: false,
     showElectionReminderPrompt: true,

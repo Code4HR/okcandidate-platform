@@ -18,66 +18,61 @@ module.exports = class SurveyResultService extends Service {
     }
 
     match(params) {
-        return this.app.orm.SurveyResult.find({
-            where: params
-        })
-        .then((result) => {
-            const query = `select surveyresult.id as "SurveyResultId"
-            , survey."categorySort"
-            , questiontype."multipleChoice"
-            , questiontype.sentiment
-            , question."CategoryId"
-            , category.name as "CategoryName"
-            , surveyresultcategory.rank as "CategoryRank"
-            , surveyresultanswer."QuestionId"
-            , surveyresultanswer."AnswerId"
-            , surveyresultanswer.sentiment as "SurveyResultSentiment"
-            , candidate."CandidateId"
-            , candidate."Name"
-            , candidate."Office"
-            , candidate."Party"
-            , candidate.picture
-            , candidate.url
-            , candidate."infoUrl"
-            , candidate."AnswerId" as "CandidateAnswerId"
-            , candidate.sentiment as "CandidateSentiment"
-            from surveyresult
-            inner join survey 
-              on survey.id = surveyresult."SurveyId"
-            inner join questiontype
-              on questiontype.id = survey."QuestionTypeId"
-            inner join surveyresultanswer
-              on surveyresultanswer."SurveyResultId" = surveyresult.id
-            inner join question
-              on question.id = surveyresultanswer."QuestionId"
-            left outer join category
-              on category.id = question."CategoryId"
-            left outer join surveyresultcategory
-              on surveyresultcategory."CategoryId" = question."CategoryId"
-            left outer join (select t0.id as "CandidateId"
-                              , t0.name as "Name"
-                              , t1.name as "Office"
-                              , t0.party as "Party"
-                              , t0.picture
-                              , t0.url
-                              , t0."infoUrl"
-                              , t3."QuestionId"
-                              , t3."AnswerId"
-                              , t3.sentiment
-                              from candidate t0
-                              inner join office t1
-                                on t1.id = t0."OfficeId"
-                              inner join surveyresult t2
-                                on t2."CandidateId" = t0.id
-                              inner join surveyresultanswer t3
-                                on t3."SurveyResultId" = t2.id) candidate
-              on candidate."QuestionId" = surveyresultanswer."QuestionId"
-            where surveyresult.id = ?`;
+        const query = `select surveyresult.id as "SurveyResultId"
+        , survey."categorySort"
+        , questiontype."multipleChoice"
+        , questiontype.sentiment
+        , question."CategoryId"
+        , category.name as "CategoryName"
+        , surveyresultcategory.rank as "CategoryRank"
+        , surveyresultanswer."QuestionId"
+        , surveyresultanswer."AnswerId"
+        , surveyresultanswer.sentiment as "SurveyResultSentiment"
+        , candidate."CandidateId"
+        , candidate."Name"
+        , candidate."Office"
+        , candidate."Party"
+        , candidate.picture
+        , candidate.url
+        , candidate."infoUrl"
+        , candidate."AnswerId" as "CandidateAnswerId"
+        , candidate.sentiment as "CandidateSentiment"
+        from surveyresult
+        inner join survey 
+          on survey.id = surveyresult."SurveyId"
+        inner join questiontype
+          on questiontype.id = survey."QuestionTypeId"
+        inner join surveyresultanswer
+          on surveyresultanswer."SurveyResultId" = surveyresult.id
+        inner join question
+          on question.id = surveyresultanswer."QuestionId"
+        left outer join category
+          on category.id = question."CategoryId"
+        left outer join surveyresultcategory
+          on surveyresultcategory."CategoryId" = question."CategoryId"
+        left outer join (select t0.id as "CandidateId"
+                          , t0.name as "Name"
+                          , t1.name as "Office"
+                          , t0.party as "Party"
+                          , t0.picture
+                          , t0.url
+                          , t0."infoUrl"
+                          , t3."QuestionId"
+                          , t3."AnswerId"
+                          , t3.sentiment
+                          from candidate t0
+                          inner join office t1
+                            on t1.id = t0."OfficeId"
+                          inner join surveyresult t2
+                            on t2."CandidateId" = t0.id
+                          inner join surveyresultanswer t3
+                            on t3."SurveyResultId" = t2.id) candidate
+          on candidate."QuestionId" = surveyresultanswer."QuestionId"
+        where surveyresult."publicPassPhrase" = ?`;
 
-            return this.app.orm.SurveyResultAnswer.sequelize.query(query, {
-                replacements: [result.id],
-                type: this.app.orm.SurveyResultAnswer.sequelize.QueryTypes.SELECT
-            });
+        return this.app.orm.SurveyResultAnswer.sequelize.query(query, {
+            replacements: [params.publicPassPhrase],
+            type: this.app.orm.SurveyResultAnswer.sequelize.QueryTypes.SELECT
         })
         .then((answers) => {
             const matches = answers.reduce((a, v) => {

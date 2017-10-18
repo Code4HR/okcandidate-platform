@@ -41,11 +41,11 @@ module.exports = {
               surveys.map(survey => {
                   return app.orm.Survey.create(survey);
               })
-            );
-        })
-        .then(newSurveys => {
-            app.log.info('Surveys created.');
-            return newSurveys;
+            )
+            .then(newSurveys => {
+                app.log.info('Surveys created.');
+                return newSurveys;
+            });
         });
     }
 
