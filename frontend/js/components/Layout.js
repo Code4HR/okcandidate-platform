@@ -5,12 +5,8 @@ class Layout extends Component {
 
     getSocialMediaMetaTags() {
 
-        const social = this.props.state.social;
-        if (!social) {
-            return (<div></div>);
-        }
-
-        return [
+        const { social } = this.props;
+        return social ? [
             { name: 'description', content: social.description },
             { itemProp: 'name', content: social.siteName },
             { itemProp: 'description', content: social.description },
@@ -27,7 +23,11 @@ class Layout extends Component {
             { property: 'og:image', content: social.image },
             { property: 'og:description', content: social.description },
             { property: 'og:site_name', content: social.siteName }
-        ];
+        ].map((tag, index) => {
+            return (
+                <meta data-doc-meta="true" key={index} {...tag} />
+            );
+        }) : (<div></div>);
     }
 
     render() {
@@ -40,11 +40,7 @@ class Layout extends Component {
                     <title>OKCandidate</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     {
-                        socialMediaTags.map((tag, index) => {
-                            return (
-                                <meta data-doc-meta="true" key={index} {...tag} />
-                            );
-                        })
+                        socialMediaTags
                     }
                     <link rel="stylesheet" href="/dist/styles/style.css" />
                     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -80,7 +76,8 @@ Layout.propTypes = {
     host: PropTypes.string,
     state: PropTypes.object,
     children: PropTypes.string,
-    store: PropTypes.object
+    store: PropTypes.object,
+    social: PropTypes.object
 };
 
 export default Layout;
