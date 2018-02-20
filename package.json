@@ -28,7 +28,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-sass": "^2.3.2",
-    "gulp-watch": "^4.3.10",
+    "gulp-watch": "^5.0.0",
     "hapi": "13.5.3",
     "hapi-react-views": "^9.2.1",
     "immutability-helper": "^2.2.2",
