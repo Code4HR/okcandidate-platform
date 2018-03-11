@@ -1,0 +1,71 @@
+{
+  "name": "okcandidate-platform",
+  "version": "0.0.0",
+  "description": "You don’t have to go to the polls alone. Find your OKCandidate.",
+  "homepage": "http://okcandidate.code4hr.org/",
+  "author": {
+    "name": "code4hr",
+    "email": "code4hr-team@codeforamerica.org",
+    "url": "http://code4hr.org/"
+  },
+  "main": "index.js",
+  "keywords": [
+    "",
+    "trails",
+    "trailsjs"
+  ],
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "hapi": "13.5.3",
+    "joi": "^10.6.0",
+    "lodash": "^4.17.4",
+    "node-fetch": "^2.1.1",
+    "pg": "^6.1.0",
+    "trailpack-bootstrap": "^1.0.1",
+    "trailpack-core": "^1.0.0-beta-3",
+    "trailpack-footprints": "^1.0.1",
+    "trailpack-graphql": "^0.9.0",
+    "trailpack-gulp": "^1.0.2",
+    "trailpack-hapi": "^1.0.4",
+    "trailpack-repl": "^1.0.0-beta-3",
+    "trailpack-router": "^1.0.0-beta-4",
+    "trailpack-sequelize": "^1.1.1",
+    "trails": "^1.0.0-beta-1",
+    "trails-controller": "^1.0.0-beta-2",
+    "trails-model": "^1.0.0-beta-2",
+    "trails-policy": "^1.0.1",
+    "trails-service": "1.0.0-beta-2",
+    "winston": "^2.2",
+    "yar": "^7.0.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "cucumber": "^2.0.0-rc.9",
+    "eslint": "^2.13.1",
+    "eslint-config-trails": "^1.0.8",
+    "eslint-plugin-react": "^6.6.0",
+    "mocha": "^2.4",
+    "sinon": "^2.3.8",
+    "supertest": "^1.2",
+    "zombie": "^5.0.5",
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "acceptance": "cucumberjs",
+    "test": "eslint api frontend test/unit test/integration && mocha --recursive"
+  },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "eslintConfig": {
+    "extends": "trails"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015"
+    ]
+  },
+  "repository": "git@github.com:wbprice/okcandidate-platform.git",
+  "license": "MIT"
+}

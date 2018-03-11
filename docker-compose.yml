@@ -1,15 +1,8 @@
 version: '3.3'
-
 services:
 
-  app:
-    image: code4hr/okc-node
-    build:
-      context: .
-      args:
-        NODE_ENV: development
-    entrypoint: /usr/src/app/docker/docker-entrypoint.sh 
-    command: ../node_modules/.bin/nodemon server.js --inspect=0.0.0.0:9229
+  api:
+    build: ./backend/.
     environment:
       NODE_ENV: development
       OKC_DB_HOST: db
@@ -19,10 +12,17 @@ services:
       OKC_SESSION_SECRET_KEY: someGobbledygookThatIsAtLeast32CharactersLong
       GOOGLE_API_KEY: google_api_key
     volumes:
+      - .:/usr/src/api
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+
+  app:
+    build: ./frontend/.
+    volumes:
       - .:/usr/src/app
     ports:
-      - "80:3000"
-      - "9229:9229"
+      - "80:80"
 
   db:
     image: postgres:9.6.2-alpine
