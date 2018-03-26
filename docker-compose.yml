@@ -4,6 +4,7 @@ services:
   api:
     build: ./backend/.
     environment:
+      PORT: 8080
       NODE_ENV: development
       OKC_DB_HOST: db
       OKC_DB_NAME: okcandidate_dev
@@ -14,7 +15,7 @@ services:
     volumes:
       - .:/usr/src/api
     ports:
-      - "3000:3000"
+      - "8080:8080"
       - "9229:9229"
 
   app:
@@ -22,7 +23,7 @@ services:
     volumes:
       - .:/usr/src/app
     ports:
-      - "80:80"
+      - "80:3000"
 
   db:
     image: postgres:9.6.2-alpine
