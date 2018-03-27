@@ -19,6 +19,7 @@ services:
       - "9229:9229"
 
   app:
+    command: npm run dev
     build: ./frontend/.
     volumes:
       - .:/usr/src/app
