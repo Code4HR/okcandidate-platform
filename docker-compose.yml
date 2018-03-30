@@ -24,7 +24,7 @@ services:
     volumes:
       - .:/usr/src/app
     ports:
-      - "80:3000"
+      - "3000:3000"
 
   db:
     image: postgres:9.6.2-alpine
@@ -35,4 +35,7 @@ services:
     ports:
       - "5432:5432"
 
-
+  reverse-proxy:
+    build: ./reverse-proxy/.
+    ports:
+      - "80:80"
