@@ -56,7 +56,7 @@
     "trailpack-footprints": "^1.0.1",
     "trailpack-graphql": "^0.9.0",
     "trailpack-gulp": "^1.0.2",
-    "trailpack-hapi": "^1.0.4",
+    "trailpack-hapi": "^2.2.0",
     "trailpack-repl": "^1.0.0-beta-3",
     "trailpack-router": "^1.0.0-beta-4",
     "trailpack-sequelize": "^1.1.1",
