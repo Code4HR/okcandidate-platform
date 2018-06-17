@@ -37,4 +37,4 @@ BestMatch.propTypes = {
     matchRate: PropTypes.number
 };
 
-module.exports = BestMatch;
+export default BestMatch;

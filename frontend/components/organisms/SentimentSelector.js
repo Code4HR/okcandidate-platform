@@ -5,7 +5,7 @@ import Icon from './../atoms/Icon';
 
 import {
     setQuestionSentiment
-} from './../../redux/actions/survey-actions';
+} from './../../store/actions/survey-actions';
 
 const Rating = require('react-rating');
 
@@ -44,4 +44,4 @@ SentimentSelector.propTypes = {
     rightLabel: PropTypes.string
 };
 
-module.exports = SentimentSelector;
+export default SentimentSelector;
