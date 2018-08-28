@@ -13,7 +13,7 @@ services:
       OKC_SESSION_SECRET_KEY: someGobbledygookThatIsAtLeast32CharactersLong
       GOOGLE_API_KEY: google_api_key
     volumes:
-      - .:/usr/src/api
+      - ./backend/:/usr/src/api
     ports:
       - "8080:8080"
       - "9229:9229"
@@ -24,7 +24,7 @@ services:
     command: npm run dev
     build: ./frontend/.
     volumes:
-      - .:/usr/src/app
+      - ./frontend:/usr/src/app
     ports:
       - "3000:3000"
 

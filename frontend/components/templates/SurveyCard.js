@@ -8,7 +8,7 @@ import Card from './../atoms/Card';
 
 import {
     setQuestionAnswerId
-} from './../../redux/actions/survey-actions';
+} from './../../store/actions/survey-actions';
 
 class SurveyCard extends Component {
     constructor(props) {
@@ -87,4 +87,4 @@ SurveyCard.propTypes = {
     onNextClick: PropTypes.func
 };
 
-module.exports = SurveyCard;
+export default SurveyCard;
