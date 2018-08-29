@@ -23,6 +23,7 @@
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "request": "^2.88.0",
     "skeleton-scss": "^2.0.4"
   }
 }

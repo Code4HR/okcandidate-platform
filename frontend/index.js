@@ -6,9 +6,9 @@
 
 const express = require('express');
 const exp = express();
-const { parse } = require('url')
-const next = require('next')
-const path = require('path');
+const { parse } = require('url');
+const next = require('next');
+const request = require('request');
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -17,12 +17,19 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
 
   exp.get('/survey/:id/:page', (req, res) => {
-    const {id, page} = req.params;
+    const {page} = req.params;
     return app.render(req, res, `/${page}`, req.params);
   });
 
   exp.get('/results/:passPhrase', (req, res) => {
-    return app.render(req, res, '/results', req.params)
+    const {passPhrase} = req.params;
+    const url = `http://api:8080/api/v1/surveymatch/${passPhrase}`;
+    return request(url, (error, response, body) => {
+      if (error) {
+        return app.render(req, res, '/results', req.params);
+      }
+      return app.render(req, res, '/results', Object.assign({}, req.params, {result: body}));
+    });
   });
 
   exp.get('/*', (req, res) => {
