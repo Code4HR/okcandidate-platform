@@ -26,4 +26,4 @@ ElectionReminderPrompt.propTypes = {
     onClose: PropTypes.func
 };
 
-module.exports = ElectionReminderPrompt;
+export default ElectionReminderPrompt;

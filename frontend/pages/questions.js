@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import SurveyCard from './../ecosystems/SurveyCard';
-import LoadingIndicator from './../organisms/LoadingIndicator';
+import withRedux from 'next-redux-wrapper';
+import { gotoRoute } from './../store/actions/router-actions';
+import { initStore } from './../store';
+
+import SurveyCard from './../components/templates/SurveyCard';
+import LoadingIndicator from './../components/organisms/LoadingIndicator';
+import Layout from './../components/Layout';
 
 import {
     gotoNextQuestion,
-    gotoPrevQuestion,
+    gotoPrevQuestiion,
     fetchSurveyQuestions,
     createSurveyResultAnswer,
     updateSurveyResultAnswer,
     fetchSurveyResult
-} from './../../redux/actions/survey-actions';
-
-import {
-    gotoRoute
-} from './../../redux/actions/router-actions';
+} from './../store/actions/survey-actions';
 
 class Survey extends Component {
     constructor(props) {
@@ -24,16 +24,16 @@ class Survey extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchSurveyResult(this.props.routeParams.id, (error) => {
+        this.props.dispatch(fetchSurveyResult(this.props.url.query.id, (error) => {
             if (!error) {
-                this.props.dispatch(fetchSurveyQuestions(this.props.routeParams.id));
+                this.props.dispatch(fetchSurveyQuestions(this.props.url.query.id));
             }
         }));
     }
 
     gotoPrevQuestion() {
         if (this.props.survey.questionIndex === 0) {
-            return gotoRoute(`/survey/${this.props.routeParams.id}`);
+            return gotoRoute(`/survey/${this.props.url.query.id}`);
         }
         return this.props.dispatch(gotoPrevQuestion());
     }
@@ -90,29 +90,31 @@ class Survey extends Component {
         ] = this.getQuestionAndResponses();
 
         return (
-            <div className="container">
-                <div className="twelve columns">
-                    <article className="survey">
-                        {
-                            !question &&
-                            <LoadingIndicator message="Loading Questions" />
-                        }
-                        { question &&
-                        <SurveyCard
-                            dispatch={this.props.dispatch}
-                            text={question.text}
-                            options={question.Answers}
-                            id={question.id}
-                            multipleChoice={this.props.survey.multipleChoice}
-                            hasSentiment={this.props.survey.sentiment}
-                            onNextClick={this.gotoNextQuestion.bind(this)}
-                            onBackClick={this.gotoPrevQuestion.bind(this)}
-                            answerId={answer && answer.AnswerId}
-                            sentiment={sentiment} />
-                        }
-                    </article>
+            <Layout>
+                <div className="container">
+                    <div className="twelve columns">
+                        <article className="survey">
+                            {
+                                !question &&
+                                <LoadingIndicator message="Loading Questions" />
+                            }
+                            { question &&
+                            <SurveyCard
+                                dispatch={this.props.dispatch}
+                                text={question.text}
+                                options={question.Answers}
+                                id={question.id}
+                                multipleChoice={this.props.survey.multipleChoice}
+                                hasSentiment={this.props.survey.sentiment}
+                                onNextClick={this.gotoNextQuestion.bind(this)}
+                                onBackClick={this.gotoPrevQuestion.bind(this)}
+                                answerId={answer && answer.AnswerId}
+                                sentiment={sentiment} />
+                            }
+                        </article>
+                    </div>
                 </div>
-            </div>
+            </Layout>
         );
     }
 }
@@ -123,10 +125,8 @@ Survey.propTypes = {
     routeParams: PropTypes.object
 };
 
-module.exports = connect(
-    state => ({
-        ui: state.ui,
-        login: state.login,
-        survey: state.survey
-    })
-)(Survey);
+export default withRedux(initStore, state => ({
+    ui: state.ui,
+    login: state.login,
+    survey: state.survey
+}))(Survey);
