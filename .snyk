@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.7.1
+version: v1.13.5
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -20,3 +20,12 @@ patch:
         patched: '2017-10-11T14:02:25.416Z'
     - trailpack-gulp > gulp > vinyl-fs > glob-watcher > gaze > globule > glob > minimatch:
         patched: '2017-10-11T14:02:25.416Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - snyk > proxy-agent > https-proxy-agent:
+        patched: '2019-10-04T05:46:43.788Z'
+    - snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-10-04T05:46:43.788Z'
+    - trailpack-sequelize > snyk > proxy-agent > https-proxy-agent:
+        patched: '2019-10-04T05:46:43.788Z'
+    - trailpack-sequelize > snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-10-04T05:46:43.788Z'
