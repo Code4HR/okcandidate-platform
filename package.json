@@ -79,7 +79,7 @@
     "eslint-plugin-react": "^6.6.0",
     "mocha": "^2.4",
     "sinon": "^2.3.8",
-    "supertest": "^1.2",
+    "supertest": "^6.3",
     "zombie": "^5.0.5",
     "nodemon": "^1.11.0"
   },
